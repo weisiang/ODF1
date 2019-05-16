@@ -1,0 +1,423 @@
+<TimeCharts>
+    <TimeChartSequence Id="1" Name="BcDateTimeCalibration" InitialStep="1"  ScanInterval="200">
+        <Initial>
+        </Initial>
+        <Sequence>
+            <Step Id="1" Name="BcDateTimeCalibration" TriggerOnRunning="1"  Interlock="0"  NextStep="1">
+                <Conditions>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>
+        </Sequence>
+    </TimeChartSequence>
+    <TimeChartSequence Id="2" Name="BcDisplayMessage" InitialStep="1"  ScanInterval="200">
+        <Initial>
+        </Initial>
+        <Sequence>
+            <Step Id="1" Name="BcDisplayMessage" TriggerOnRunning="1"  Interlock="1"  NextStep="1">
+                <Conditions>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>
+        </Sequence>
+    </TimeChartSequence>
+    <TimeChartSequence Id="3" Name="BcFoupDataDownload" InitialStep="1"  ScanInterval="200">
+        <Initial>
+        </Initial>
+        <Sequence>
+            <Step Id="1" Name="BcFoupDataDownload" TriggerOnRunning="1"  Interlock="1"  NextStep="1">
+                <Conditions>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>
+        </Sequence>
+    </TimeChartSequence>
+    <TimeChartSequence Id="4" Name="BcIdleDelayCommand" InitialStep="1"  ScanInterval="200">
+        <Initial>
+        </Initial>
+        <Sequence>
+            <Step Id="1" Name="BcIdleDelayCommand" TriggerOnRunning="1"  Interlock="1"  NextStep="1">
+                <Conditions>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>
+        </Sequence>
+    </TimeChartSequence>
+    <TimeChartSequence Id="5" Name="BcIndexIntervalCommand" InitialStep="1"  ScanInterval="200">
+        <Initial>
+        </Initial>
+        <Sequence>
+            <Step Id="1" Name="BcIndexIntervalCommand" TriggerOnRunning="1"  Interlock="1"  NextStep="1">
+                <Conditions>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>
+        </Sequence>
+    </TimeChartSequence>
+    <TimeChartSequence Id="6" Name="BcPortCommand" InitialStep="1"  ScanInterval="200">
+        <Initial>
+        </Initial>
+        <Sequence>
+            <Step Id="1" Name="BcPortCommand" TriggerOnRunning="1"  Interlock="1"  NextStep="1">
+                <Conditions>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>
+        </Sequence>
+    </TimeChartSequence>
+    <TimeChartSequence Id="7" Name="BcRecipeBodyQuery" InitialStep="1"  ScanInterval="200">
+        <Initial>
+        </Initial>
+        <Sequence>
+            <Step Id="1" Name="BcRecipeBodyQuery" TriggerOnRunning="1"  Interlock="1"  NextStep="1">
+                <Conditions>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>
+        </Sequence>
+    </TimeChartSequence>
+    <TimeChartSequence Id="8" Name="BcRecipeExistCommand" InitialStep="1"  ScanInterval="200">
+        <Initial>
+        </Initial>
+        <Sequence>
+            <Step Id="1" Name="BcRecipeExistCommand" TriggerOnRunning="1"  Interlock="1"  NextStep="1">
+                <Conditions>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>
+        </Sequence>
+    </TimeChartSequence>
+    <TimeChartSequence Id="9" Name="EqAlarmReport" InitialStep="1"  ScanInterval="200">
+        <Initial>
+        </Initial>
+        <Sequence>
+            <Step Id="1" Name="TriggerAlarmIndex" TriggerOnRunning="0"  Interlock="1"  NextStep="2">
+                <Conditions>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>
+            <Step Id="2" Name="WaitTm" TriggerOnRunning="0"  Interlock="0"  NextStep="3">
+                <Conditions>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>
+            <Step Id="3" Name="WaitInterval" TriggerOnRunning="0"  Interlock="0"  NextStep="1">
+                <Conditions>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>
+        </Sequence>
+    </TimeChartSequence>
+    <TimeChartSequence Id="10" Name="EqFetchReport" InitialStep="1"  ScanInterval="200">
+        <Initial>
+        </Initial>
+        <Sequence>
+            <Step Id="1" Name="TriggerFetchIndex" TriggerOnRunning="0"  Interlock="1"  NextStep="2">
+                <Conditions>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>
+			 <Step Id="2" Name="WaitTm" TriggerOnRunning="0"  Interlock="0"  NextStep="3">
+                <Conditions>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>
+            <Step Id="3" Name="WaitInterval" TriggerOnRunning="0"  Interlock="0"  NextStep="1">
+                <Conditions>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>
+        </Sequence>
+    </TimeChartSequence>
+    <TimeChartSequence Id="11" Name="EqLastWorkProcessStartReport" InitialStep="1"  ScanInterval="200">
+        <Initial>
+        </Initial>
+        <Sequence>
+            <Step Id="1" Name="TriggerLastWorkProcessStartIndex" TriggerOnRunning="0"  Interlock="1"  NextStep="2">
+                <Conditions>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>
+			 <Step Id="2" Name="WaitTm" TriggerOnRunning="0"  Interlock="0"  NextStep="3">
+                <Conditions>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>
+            <Step Id="3" Name="WaitInterval" TriggerOnRunning="0"  Interlock="0"  NextStep="1">
+                <Conditions>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>
+        </Sequence>
+    </TimeChartSequence>
+    <TimeChartSequence Id="12" Name="EqRecipeListReport" InitialStep="1"  ScanInterval="200">
+        <Initial>
+        </Initial>
+        <Sequence>
+            <Step Id="1" Name="EqRecipeListReport" TriggerOnRunning="0"  Interlock="1"  NextStep="2">
+                <Conditions>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>
+			 <Step Id="2" Name="WaitTm" TriggerOnRunning="0"  Interlock="0"  NextStep="3">
+                <Conditions>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>
+            <Step Id="3" Name="WaitInterval" TriggerOnRunning="0"  Interlock="0"  NextStep="1">
+                <Conditions>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>
+        </Sequence>
+    </TimeChartSequence>
+    <TimeChartSequence Id="13" Name="EqReceiveReport" InitialStep="1"  ScanInterval="200">
+        <Initial>
+        </Initial>
+        <Sequence>
+            <Step Id="1" Name="TriggerReceiveIndex" TriggerOnRunning="0"  Interlock="1"  NextStep="2">
+                <Conditions>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>
+			 <Step Id="2" Name="WaitTm" TriggerOnRunning="0"  Interlock="0"  NextStep="3">
+                <Conditions>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>
+            <Step Id="3" Name="WaitInterval" TriggerOnRunning="0"  Interlock="0"  NextStep="1">
+                <Conditions>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>
+        </Sequence>
+    </TimeChartSequence>
+    <TimeChartSequence Id="14" Name="EqRecipeBodyReport" InitialStep="1"  ScanInterval="200">
+        <Initial>
+        </Initial>
+        <Sequence>
+            <Step Id="1" Name="TriggerRecipeBodyIndex" TriggerOnRunning="0"  Interlock="1"  NextStep="2">
+                <Conditions>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>
+			 <Step Id="2" Name="WaitTm" TriggerOnRunning="0"  Interlock="0"  NextStep="3">
+                <Conditions>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>
+            <Step Id="3" Name="WaitInterval" TriggerOnRunning="0"  Interlock="0"  NextStep="1">
+                <Conditions>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>
+        </Sequence>
+    </TimeChartSequence>
+    <TimeChartSequence Id="15" Name="EqRecipeExistReport" InitialStep="1"  ScanInterval="200">
+        <Initial>
+        </Initial>
+        <Sequence>
+            <Step Id="1" Name="TriggerRecipeExistIndex" TriggerOnRunning="0"  Interlock="1"  NextStep="2">
+                <Conditions>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>
+			 <Step Id="2" Name="WaitTm" TriggerOnRunning="0"  Interlock="0"  NextStep="3">
+                <Conditions>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>
+            <Step Id="3" Name="WaitInterval" TriggerOnRunning="0"  Interlock="0"  NextStep="1">
+                <Conditions>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>
+        </Sequence>
+    </TimeChartSequence>
+    <TimeChartSequence Id="16" Name="EqSendReport" InitialStep="1"  ScanInterval="200">
+        <Initial>
+        </Initial>
+        <Sequence>
+            <Step Id="1" Name="TriggerSendIndex" TriggerOnRunning="0"  Interlock="1"  NextStep="2">
+                <Conditions>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>
+			 <Step Id="2" Name="WaitTm" TriggerOnRunning="0"  Interlock="0"  NextStep="3">
+                <Conditions>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>
+            <Step Id="3" Name="WaitInterval" TriggerOnRunning="0"  Interlock="0"  NextStep="1">
+                <Conditions>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>
+        </Sequence>
+    </TimeChartSequence>
+    <TimeChartSequence Id="17" Name="EqStoreReport" InitialStep="1"  ScanInterval="200">
+        <Initial>
+        </Initial>
+        <Sequence>
+            <Step Id="1" Name="TriggerStoreIndex" TriggerOnRunning="0"  Interlock="1"  NextStep="2">
+                <Conditions>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>
+			 <Step Id="2" Name="WaitTm" TriggerOnRunning="0"  Interlock="0"  NextStep="3">
+                <Conditions>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>
+            <Step Id="3" Name="WaitInterval" TriggerOnRunning="0"  Interlock="0"  NextStep="1">
+                <Conditions>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>
+        </Sequence>
+    </TimeChartSequence>
+    <TimeChartSequence Id="18" Name="EqVCRReadReport" InitialStep="1"  ScanInterval="200">
+        <Initial>
+        </Initial>
+        <Sequence>
+            <Step Id="1" Name="TriggerVCRReadIndex" TriggerOnRunning="0"  Interlock="1"  NextStep="2">
+                <Conditions>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>
+			 <Step Id="2" Name="WaitTm" TriggerOnRunning="0"  Interlock="0"  NextStep="3">
+                <Conditions>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>
+            <Step Id="3" Name="WaitInterval" TriggerOnRunning="0"  Interlock="0"  NextStep="1">
+                <Conditions>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>
+        </Sequence>
+    </TimeChartSequence>
+    <TimeChartSequence Id="19" Name="EqWorkDataRemoveReport" InitialStep="1"  ScanInterval="200">
+        <Initial>
+        </Initial>
+        <Sequence>
+            <Step Id="1" Name="TriggerWorkDataRemoveIndex" TriggerOnRunning="0"  Interlock="1"  NextStep="2">
+                <Conditions>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>
+			 <Step Id="2" Name="WaitTm" TriggerOnRunning="0"  Interlock="0"  NextStep="3">
+                <Conditions>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>
+            <Step Id="3" Name="WaitInterval" TriggerOnRunning="0"  Interlock="0"  NextStep="1">
+                <Conditions>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>
+        </Sequence>
+    </TimeChartSequence>
+    <TimeChartSequence Id="20" Name="EqWorkDataRequest" InitialStep="1"  ScanInterval="200">
+        <Initial>
+			<SetPort PortNo="0x0384F" BitIndex="1" Value="0"/>
+        </Initial>
+        <Sequence>
+            <Step Id="1" Name="TriggerEqWorkDataRequest" TriggerOnRunning="0"  Interlock="1"  NextStep="2">
+                <Conditions>
+                        <Bit PortNo="0x01AF" BitIndex="1" Value="0" Compare="0" Description="BcWorkDataReply"/>
+                        <Bit PortNo="0x0384F" BitIndex="1" Value="0" Compare="0" Description="EqWorkDataRequest"/>
+                </Conditions>
+                <Actions>
+                    <SetPort PortNo="0x0384F" BitIndex="1" Value="1"/>
+                </Actions>
+            </Step>
+            <Step Id="2" Name="WaitBcWorkDataReplyOn" TriggerOnRunning="0"  Interlock="0"  NextStep="3">
+                <Conditions>
+                    <Group>
+                        <Bit PortNo="0x01AF" BitIndex="1" Value="1" Compare="0" Description="BcWorkDataReply"/>
+                        <Bit PortNo="0x0384F" BitIndex="1" Value="1" Compare="0" Description="EqWorkDataRequest"/>
+                    </Group>
+                </Conditions>
+                <Actions>
+						<SetPort PortNo="0x0384F" Value="0"/>
+                </Actions>
+            </Step>
+            <Step Id="3" Name="WaitBcWorkDataReplyOff" TriggerOnRunning="0"  Interlock="0"  NextStep="1">
+                <Conditions>
+                    <Group>
+                        <Bit PortNo="0x01AF" BitIndex="1" Value="0" Compare="0" Description="BcWorkDataReply"/>
+                        <Bit PortNo="0x0384F" BitIndex="1" Value="0" Compare="0" Description="EqWorkDataRequest"/>
+                    </Group>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>
+        </Sequence>
+    </TimeChartSequence>
+    <TimeChartSequence Id="21" Name="EqWorkDataUpdateReport" InitialStep="1"  ScanInterval="200">
+        <Initial>
+        </Initial>
+        <Sequence>
+            <Step Id="1" Name="TriggerWorkDataUpdateIndex" TriggerOnRunning="0"  Interlock="1"  NextStep="2">
+                <Conditions>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>
+			 <Step Id="2" Name="WaitTm" TriggerOnRunning="0"  Interlock="0"  NextStep="3">
+                <Conditions>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>
+            <Step Id="3" Name="WaitInterval" TriggerOnRunning="0"  Interlock="0"  NextStep="1">
+                <Conditions>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>
+        </Sequence>
+    </TimeChartSequence>
+</TimeCharts>

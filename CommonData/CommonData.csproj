@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{395F747C-8D90-489C-B6FD-6F92908C4678}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CommonData.HIRATA</RootNamespace>
+    <AssemblyName>CommonData</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="KgsCommonX64">
+      <HintPath>..\dll\NewKeyPro\KgsCommonX64.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\CommonData\AccountData.cs" />
+    <Compile Include="Common\CommonData\AlarmData.cs" />
+    <Compile Include="Common\Alarmtable.cs" />
+    <Compile Include="Common\AlignerData.cs" />
+    <Compile Include="Common\BufferData.cs" />
+    <Compile Include="Common\CommonData.cs" />
+    <Compile Include="Common\CommonData\CommonDatabase.cs" />
+    <Compile Include="Common\CommonData\GlassCountData.cs" />
+    <Compile Include="Common\CommonData\RobotAction.cs" />
+    <Compile Include="Common\CommonData\TimeOutData.cs" />
+    <Compile Include="Common\EnumData.cs" />
+    <Compile Include="Common\EqData.cs" />
+    <Compile Include="Common\PortData.cs" />
+    <Compile Include="HIRATA\CIMMessageData.cs" />
+    <Compile Include="HIRATA\GlassData.cs" />
+    <Compile Include="HIRATA\HirataEnum.cs" />
+    <Compile Include="HIRATA\HirataMsg.cs" />
+    <Compile Include="HIRATA\HirataRobotCommand.cs" />
+    <Compile Include="Common\MessageBase.cs" />
+    <Compile Include="Common\MessageData.cs" />
+    <Compile Include="Common\ObjData.cs" />
+    <Compile Include="Common\SystemData.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Common\CommonData\RecipeData.cs" />
+    <Compile Include="Common\RobotData.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KgsMmfEventCenterDll\KgsMmfEventCenterDll.csproj">
+      <Project>{07ede2fb-e26e-45ee-9115-e91bc3a86586}</Project>
+      <Name>KgsMmfEventCenterDll</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

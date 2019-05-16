@@ -1,0 +1,16 @@
+<MemoryIO Name="KGSMEMORYIODEMO" Mode="Passive" Ignore="NO">
+    <!-- Mode="PASSIVE/ACTIVE"
+        Set Mode="ACTIVE" to activate client mode. Default: PASSIVE
+        Ignore ("YES"/"NO") tag will be activated simulation for input. Default: NO
+    -->
+    <Ports>
+        <Device Name="MX01" Type="MX" DeviceID="0">
+            <Input>
+            </Input>
+            <Output>
+                <Port PortNo="00000" Extension="31232" WriteOnly="0"/>
+                <Port PortNo="32768" Extension="4608" WriteOnly="0"/>
+            </Output>
+        </Device>
+    </Ports>
+</MemoryIO>

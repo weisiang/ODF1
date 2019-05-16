@@ -1,0 +1,1620 @@
+<PLCVIEW>
+    <BITS>
+      <GROUP Name="FL_Cleaner Interface">
+            <PORT1 Name="Robot">
+                <Item Index="1"     Port="10000"   BitIndex="1"    Caption="PutComp"           />  
+                <Item Index="2"     Port="10001"   BitIndex="1"    Caption="PutBusy"           />  
+                <Item Index="3"     Port="10002"   BitIndex="1"    Caption="PutGlsReq"         />  
+                <Item Index="4"     Port="10003"   BitIndex="1"    Caption="GetComp"           />  
+                <Item Index="5"     Port="10004"   BitIndex="1"    Caption="GetBusy"           />  
+                <Item Index="6"     Port="10005"   BitIndex="1"    Caption="GetGlsReq"         />  
+                <Item Index="7"     Port="10006"   BitIndex="1"    Caption="GlsTrReset"        />
+                <Item Index="8"     Port="10007"   BitIndex="1"    Caption="PrePut"            />
+                <Item Index="9"     Port="10032"   BitIndex="1"    Caption="EPIDChreq"         />
+                <Item Index="10"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="11"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="12"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="13"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="14"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="15"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="16"    Port=""        BitIndex="1"    Caption=""                  />
+            </PORT1>
+            <PORT2 Name="EQ">
+                <Item Index="1"     Port="11000"   BitIndex="1"    Caption="LGlsReq"           />
+                <Item Index="2"     Port="11001"   BitIndex="1"    Caption="LGlsReady"         />
+                <Item Index="3"     Port="11002"   BitIndex="1"    Caption="UGlsReq"           />
+                <Item Index="4"     Port="11003"   BitIndex="1"    Caption="UGlsReady"         />
+                <Item Index="5"     Port="11004"   BitIndex="1"    Caption="GlaExist"          />
+                <Item Index="6"     Port="11005"   BitIndex="1"    Caption="GlsResetAck"       />
+                <Item Index="7"     Port="11006"   BitIndex="1"    Caption="ReadyrAccess"      />
+                <Item Index="8"     Port="11007"   BitIndex="1"    Caption="ReadyS1"           />
+                <Item Index="9"     Port="11008"   BitIndex="1"    Caption="ReadyS2"           />
+                <Item Index="10"    Port="11032"   BitIndex="1"    Caption="EPIDChReply"       />
+                <Item Index="11"    Port="11033"   BitIndex="1"    Caption="GlsExistS1"        />
+                <Item Index="12"    Port="11034"   BitIndex="1"    Caption="GlsExistS2"        />
+                <Item Index="13"    Port="11035"   BitIndex="1"    Caption="PrePutCon"         />
+                <Item Index="14"    Port="01295"   BitIndex="0"    Caption=""                  />
+                <Item Index="15"    Port="01296"   BitIndex="0"    Caption=""                  />
+                <Item Index="16"    Port="01289"   BitIndex="0"    Caption=""                  />
+            </PORT2>
+			<WORDS>
+								<Item Port="23000" Caption="EqEPPID"                                           />
+        				<Item Port="23001" Caption="EqMaskMode"                                        />
+        				<Item Port="23002" Caption="EqGlassMode"                                       />
+        				<Item Port="23003" Caption="EqPortNo"                                          />
+        				<Item Port="23004" Caption="EqSlotNo"                                          />
+        				<Item Port="23048" Caption="EqInspectionResult"                                /> 
+								<Item Port="20384" Caption="RobotEPPID"                                        />                 
+        				<Item Port="20385" Caption="RobotMaskMode"                                     />                 
+        				<Item Port="20386" Caption="RobotGlassMode"                                    />                 
+        				<Item Port="20387" Caption="RobotPortNo"                                       />                 
+        				<Item Port="20388" Caption="RobotSlotNo"                                       />                 
+        				<Item Port="20432" Caption="RobotInspectionResult"                             />                      				
+			</WORDS>
+			<STRING>
+            	 <Item Port="20390"     Caption="RobotPpid"     WordLength="16"   WordSwap="0"   />
+            	 <Item Port="20411"     Caption="RobotCstId"    WordLength="3"    WordSwap="0"   />
+            	 <Item Port="20416"     Caption="RobotGlassId"  WordLength="7"    WordSwap="0"   />
+            	 <Item Port="23006"     Caption="EqPpid"        WordLength="16"   WordSwap="0"   />
+            	 <Item Port="23027"     Caption="EqCstId"       WordLength="3"    WordSwap="0"   />
+            	 <Item Port="23032"     Caption="EqGlassId"     WordLength="7"    WordSwap="0"   />
+			</STRING>
+      </GROUP>
+      
+      <GROUP Name="FL_Cleaner CommData">
+            <PORT1 Name="Robot">
+                <Item Index="1"     Port="10000"   BitIndex="1"    Caption="PutComp"           />  
+                <Item Index="2"     Port="10001"   BitIndex="1"    Caption="PutBusy"           />  
+                <Item Index="3"     Port="10002"   BitIndex="1"    Caption="PutGlsReq"         />  
+                <Item Index="4"     Port="10003"   BitIndex="1"    Caption="GetComp"           />  
+                <Item Index="5"     Port="10004"   BitIndex="1"    Caption="GetBusy"           />  
+                <Item Index="6"     Port="10005"   BitIndex="1"    Caption="GetGlsReq"         />  
+                <Item Index="7"     Port="10006"   BitIndex="1"    Caption="GlsTrReset"        />
+                <Item Index="8"     Port="10007"   BitIndex="1"    Caption="PrePut"            />
+                <Item Index="9"     Port="10032"   BitIndex="1"    Caption="EPIDChreq"         />
+                <Item Index="10"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="11"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="12"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="13"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="14"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="15"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="16"    Port=""        BitIndex="1"    Caption=""                  />
+            </PORT1>
+            <PORT2 Name="EQ">
+                <Item Index="1"     Port="11000"   BitIndex="1"    Caption="LGlsReq"           />
+                <Item Index="2"     Port="11001"   BitIndex="1"    Caption="LGlsReady"         />
+                <Item Index="3"     Port="11002"   BitIndex="1"    Caption="UGlsReq"           />
+                <Item Index="4"     Port="11003"   BitIndex="1"    Caption="UGlsReady"         />
+                <Item Index="5"     Port="11004"   BitIndex="1"    Caption="GlaExist"          />
+                <Item Index="6"     Port="11005"   BitIndex="1"    Caption="GlsResetAck"       />
+                <Item Index="7"     Port="11006"   BitIndex="1"    Caption="ReadyrAccess"      />
+                <Item Index="8"     Port="11007"   BitIndex="1"    Caption="ReadyS1"           />
+                <Item Index="9"     Port="11008"   BitIndex="1"    Caption="ReadyS2"           />
+                <Item Index="10"    Port="11032"   BitIndex="1"    Caption="EPIDChReply"       />
+                <Item Index="11"    Port="11033"   BitIndex="1"    Caption="GlsExistS1"        />
+                <Item Index="12"    Port="11034"   BitIndex="1"    Caption="GlsExistS2"        />
+                <Item Index="13"    Port="11035"   BitIndex="1"    Caption="PrePutCon"         />
+                <Item Index="14"    Port="01295"   BitIndex="0"    Caption=""                  />
+                <Item Index="15"    Port="01296"   BitIndex="0"    Caption=""                  />
+                <Item Index="16"    Port="01289"   BitIndex="0"    Caption=""                  />
+            </PORT2>
+			<WORDS>
+				        <item Port="20160"     Caption="RBCommonDataIndex"           />
+                <item Port="23863"     Caption="EQCommonDataIndex"           />
+                
+                <Item Port="20161"     Caption="RBMessageIndex"              />
+                <Item Port="23864"     Caption="EQMessageIndex"              />
+                
+                <Item Port="20162"     Caption="RBClockUpdatingIndex"        />
+                <Item Port="23865"     Caption="EQClockUpdatingIndex"        />
+                
+                <Item Port="20163"     Caption="RBPPIDQueryIndex"            />
+                <Item Port="23866"     Caption="EQPPIDQueryIndex"            />
+                
+                <Item Port="20169"     Caption="RBEQPStatusReport"           />
+                <Item Port="23847"     Caption="EQPStatusReport"             />
+                
+                <Item Port="20170"     Caption="RBAlarmIndex"                />
+                <Item Port="23848"     Caption="EQAlarmReportIndex"          />
+                
+                <Item Port="20171"     Caption="RBWarningIndex"              />
+                <Item Port="23849"     Caption="EQWarningReportIndex"        />
+                
+                <Item Port="20172"     Caption="RBGlassScrapIndex"           />
+                <Item Port="23850"     Caption="EQGlassScrapndex"            />
+                
+                <Item Port="20173"     Caption="RBPPIDReportIndex"           />
+                <Item Port="23851"     Caption="EQPPIDReportIndex"           />
+                
+                <Item Port="20174"     Caption="RBRecipeModifyIndex"         />
+                <Item Port="23852"     Caption="EQPPIDModifyIndex"           />
+                
+                <Item Port="20175"     Caption="RBDailyCheckReport"          />
+                <Item Port="23853"     Caption="EQDailyCheckReport"          />
+                
+                <Item Port="20176"     Caption="RBEquipmentEventReport"      />
+                <Item Port="23854"     Caption="EQEventReport"               />
+                
+                <Item Port="20189"     Caption="RBInterlockClock"            />
+                <Item Port="23873"     Caption="EQInterlockClock"            />
+                
+                <Item Port="20190"     Caption="RBRemoteStatus"              />
+                <Item Port="23874"     Caption="EQEquipmentStatus"           />
+                <Item Port="23875"     Caption="EQInlineStatus"              />
+                
+                <Item Port="20191"     Caption="RBEQRunModeTypeofCIM"        />
+                <Item Port="20192"     Caption="RBEQSuspendforCleaner"       />                
+                               
+                <Item Port="23876"     Caption="EQCurrentRecipeID"           />
+                <Item Port="23877"     Caption="EQCIMConnectStatus"          />
+                <Item Port="23878"     Caption="EQSheetCount"                />
+                <Item Port="23913"     Caption="EQErasePortNo"               />
+                <Item Port="23914"     Caption="EQEraseSlotNo"               />
+                <Item Port="23915"     Caption="EQEraseReason"               />
+                
+                <Item Port="20262"     Caption="RBRMSRecipeID"               />
+                <Item Port="24087"     Caption="EQRMSRecipeID"               />
+                <Item Port="24088"     Caption="EQRecipeModifyID"            />
+                <Item Port="24093"     Caption="EQRecipeModifyType"          />
+                <Item Port="24094"     Caption="EQRecipeModifyVer1"          />
+                <Item Port="24095"     Caption="EQRecipeModifyVer2"          />
+                <Item Port="24096"     Caption="EQRecipeModifyVer3"          />
+                <Item Port="24097"     Caption="EQRecipeModifyVer4"          />
+                <Item Port="24098"     Caption="EQRecipeModifyVer5"          />
+                <Item Port="24099"     Caption="EQRecipeModifyVer6"          />
+                <item Port="23889"     Caption="Alarm1"                      />          
+                <Item Port="23890"     Caption="Alarm2"                      />          
+                <Item Port="23891"     Caption="Alarm3"                      />          
+                <Item Port="23892"     Caption="Alarm4"                      />          
+                <Item Port="23893"     Caption="Alarm5"                      />          
+                <Item Port="23894"     Caption="Alarm6"                      />          
+                <Item Port="23895"     Caption="Alarm7"                      />          
+                <Item Port="23896"     Caption="Alarm8"                      />          
+                <Item Port="23897"     Caption="Alarm9"                      />          
+                <Item Port="23898"     Caption="Alarm10"                     /> 
+                <Item Port="23901"     Caption="Warning1"                    />
+							  <Item Port="23902"     Caption="Warning2"                    />
+							  <Item Port="23903"     Caption="Warning3"                    />
+							  <Item Port="23904"     Caption="Warning4"                    />
+							  <Item Port="23905"     Caption="Warning5"                    />
+							  <Item Port="23906"     Caption="Warning6"                    />
+							  <Item Port="23907"     Caption="Warning7"                    />
+							  <Item Port="23908"     Caption="Warning8"                    />
+							  <Item Port="23909"     Caption="Warning9"                    />
+							  <Item Port="23910"     Caption="Warning10"                   />           
+                                      
+			</WORDS>
+			<STRING>
+            	 <Item Port="23916"     Caption="EQEraseMaskID       "  WordLength="7"   WordSwap="0"/>
+            	 <Item Port="23925"     Caption="EQEraseCSTID        "  WordLength="3"   WordSwap="0"/>
+            	 <Item Port="24089"     Caption="EQRecipeModifyUserID"  WordLength="5"   WordSwap="0"/>
+            	 <Item Port="24101"     Caption="EQRecipeModifyBody  "  WordLength="128" WordSwap="0"/>
+            	 <Item Port="24232"     Caption="EQEDSData           "  WordLength="128" WordSwap="0"/>
+            	 <Item Port="24370"     Caption="EQAPCData           "  WordLength="135" WordSwap="0"/>
+	 
+			</STRING>
+      </GROUP>		
+     
+      <GROUP Name="FL_Dim Interface">
+            <PORT1 Name="Robot">
+                <Item Index="1"     Port="10128"   BitIndex="1"    Caption="PutComp"           />  
+                <Item Index="2"     Port="10129"   BitIndex="1"    Caption="PutBusy"           />  
+                <Item Index="3"     Port="10130"   BitIndex="1"    Caption="PutGlsReq"         />  
+                <Item Index="4"     Port="10131"   BitIndex="1"    Caption="GetComp"           />  
+                <Item Index="5"     Port="10132"   BitIndex="1"    Caption="GetBusy"           />  
+                <Item Index="6"     Port="10133"   BitIndex="1"    Caption="GetGlsReq"         />  
+                <Item Index="7"     Port="10134"   BitIndex="1"    Caption="GlsTrReset"        />
+                <Item Index="8"     Port="10160"   BitIndex="1"    Caption="EPIDChreq"         />
+                <Item Index="9"     Port="10032"   BitIndex="0"    Caption=""                  />
+                <Item Index="10"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="11"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="12"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="13"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="14"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="15"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="16"    Port=""        BitIndex="1"    Caption=""                  />
+            </PORT1>
+            <PORT2 Name="EQ">
+                <Item Index="1"     Port="11096"   BitIndex="1"    Caption="LGlsReq"           />
+                <Item Index="2"     Port="11097"   BitIndex="1"    Caption="LGlsReady"         />
+                <Item Index="3"     Port="11098"   BitIndex="1"    Caption="UGlsReq"           />
+                <Item Index="4"     Port="11099"   BitIndex="1"    Caption="UGlsReady"         />
+                <Item Index="5"     Port="11100"   BitIndex="1"    Caption="GlaExist"          />
+                <Item Index="6"     Port="11101"   BitIndex="1"    Caption="GlsResetAck"       />
+                <Item Index="7"     Port="11102"   BitIndex="1"    Caption="ReadyrAccess"      />
+                <Item Index="8"     Port="11128"   BitIndex="1"    Caption="EPIDChReply"       />
+                <Item Index="9"     Port="11008"   BitIndex="0"    Caption=""                  />
+                <Item Index="10"    Port="11032"   BitIndex="0"    Caption=""                  />
+                <Item Index="11"    Port="11033"   BitIndex="0"    Caption=""                  />
+                <Item Index="12"    Port="11034"   BitIndex="0"    Caption=""                  />
+                <Item Index="13"    Port="11035"   BitIndex="0"    Caption=""                  />
+                <Item Index="14"    Port="01295"   BitIndex="0"    Caption=""                  />
+                <Item Index="15"    Port="01296"   BitIndex="0"    Caption=""                  />
+                <Item Index="16"    Port="01289"   BitIndex="0"    Caption=""                  />
+            </PORT2>
+			<WORDS>
+								<Item Port="24520" Caption="EqEPPID"                                           />
+        				<Item Port="24521" Caption="EqMaskMode"                                        />
+        				<Item Port="24522" Caption="EqGlassMode"                                       />
+        				<Item Port="24523" Caption="EqPortNo"                                          />
+        				<Item Port="24524" Caption="EqSlotNo"                                          />
+        				<Item Port="24568" Caption="EqInspectionResult"                                /> 
+								<Item Port="20544" Caption="RobotEPPID"                                        />                 
+        				<Item Port="20545" Caption="RobotMaskMode"                                     />                 
+        				<Item Port="20546" Caption="RobotGlassMode"                                    />                 
+        				<Item Port="20547" Caption="RobotPortNo"                                       />                 
+        				<Item Port="20548" Caption="RobotSlotNo"                                       />                 
+        				<Item Port="20592" Caption="RobotInspectionResult"                             />                      				
+			</WORDS>
+			<STRING>
+            	 <Item Port="20550"     Caption="RobotPpid"     WordLength="16"   WordSwap="0"   />
+            	 <Item Port="20571"     Caption="RobotCstId"    WordLength="3"    WordSwap="0"   />
+            	 <Item Port="20576"     Caption="RobotGlassId"  WordLength="7"    WordSwap="0"   />
+            	 <Item Port="24526"     Caption="EqPpid"        WordLength="16"   WordSwap="0"   />
+            	 <Item Port="24547"     Caption="EqCstId"       WordLength="3"    WordSwap="0"   />
+            	 <Item Port="24552"     Caption="EqGlassId"     WordLength="7"    WordSwap="0"   />
+			</STRING>
+      </GROUP>	
+      <GROUP Name="FL_Dim CommData">
+            <PORT1 Name="Robot">
+                <Item Index="1"     Port="10128"   BitIndex="1"    Caption="PutComp"           />  
+                <Item Index="2"     Port="10129"   BitIndex="1"    Caption="PutBusy"           />  
+                <Item Index="3"     Port="10130"   BitIndex="1"    Caption="PutGlsReq"         />  
+                <Item Index="4"     Port="10131"   BitIndex="1"    Caption="GetComp"           />  
+                <Item Index="5"     Port="10132"   BitIndex="1"    Caption="GetBusy"           />  
+                <Item Index="6"     Port="10133"   BitIndex="1"    Caption="GetGlsReq"         />  
+                <Item Index="7"     Port="10134"   BitIndex="1"    Caption="GlsTrReset"        />
+                <Item Index="8"     Port="10160"   BitIndex="1"    Caption="EPIDChreq"         />
+                <Item Index="9"     Port="10032"   BitIndex="0"    Caption=""                  />
+                <Item Index="10"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="11"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="12"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="13"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="14"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="15"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="16"    Port=""        BitIndex="1"    Caption=""                  />
+            </PORT1>
+            <PORT2 Name="EQ">
+                <Item Index="1"     Port="11096"   BitIndex="1"    Caption="LGlsReq"           />
+                <Item Index="2"     Port="11097"   BitIndex="1"    Caption="LGlsReady"         />
+                <Item Index="3"     Port="11098"   BitIndex="1"    Caption="UGlsReq"           />
+                <Item Index="4"     Port="11099"   BitIndex="1"    Caption="UGlsReady"         />
+                <Item Index="5"     Port="11100"   BitIndex="1"    Caption="GlaExist"          />
+                <Item Index="6"     Port="11101"   BitIndex="1"    Caption="GlsResetAck"       />
+                <Item Index="7"     Port="11102"   BitIndex="1"    Caption="ReadyrAccess"      />
+                <Item Index="8"     Port="11128"   BitIndex="1"    Caption="EPIDChReply"       />
+                <Item Index="9"     Port="11008"   BitIndex="0"    Caption=""                  />
+                <Item Index="10"    Port="11032"   BitIndex="0"    Caption=""                  />
+                <Item Index="11"    Port="11033"   BitIndex="0"    Caption=""                  />
+                <Item Index="12"    Port="11034"   BitIndex="0"    Caption=""                  />
+                <Item Index="13"    Port="11035"   BitIndex="0"    Caption=""                  />
+                <Item Index="14"    Port="01295"   BitIndex="0"    Caption=""                  />
+                <Item Index="15"    Port="01296"   BitIndex="0"    Caption=""                  />
+                <Item Index="16"    Port="01289"   BitIndex="0"    Caption=""                  />
+            </PORT2>
+			<WORDS>
+								<Item Port="20272"     Caption="RBCommonDataIndex"           />
+                <Item Port="24616"     Caption="EQCommonDataIndex"           />
+                
+                <Item Port="20273"     Caption="RBMessageIndex"              />
+                <Item Port="24617"     Caption="EQMessageIndex"              />
+                
+                <Item Port="20274"     Caption="RBClockUpdatingIndex"        />
+                <Item Port="24618"     Caption="EQClockUpdatingIndex"        />
+                
+                <Item Port="20275"     Caption="RBPPIDQueryIndex"            />
+                <Item Port="24619"     Caption="EQPPIDQueryIndex"            />
+                
+                <Item Port="20281"     Caption="RBEQPStatusReport"           />               
+                <Item Port="24600"     Caption="EQPStatusReport"             />
+                
+                <Item Port="20282"     Caption="RBAlarmIndex"                />                
+                <Item Port="24601"     Caption="EQAlarmReportIndex"          />
+                
+                <Item Port="20283"     Caption="RBWarningIndex"              />
+                <Item Port="24602"     Caption="EQWarningReportIndex"        />
+                
+                <Item Port="20284"     Caption="RBGlassScrapIndex"           />
+                <Item Port="24603"     Caption="EQGlassScrapndex"            />
+                
+                <Item Port="20285"     Caption="RBPPIDReportIndex"           />
+                <Item Port="24604"     Caption="EQPPIDReportIndex"           />
+                
+                <Item Port="20286"     Caption="RBRecipeModifyIndex"         />
+                <Item Port="24605"     Caption="EQPPIDModifyIndex"           />
+                
+                <Item Port="20287"     Caption="RBDailyCheckReport"          />
+                <Item Port="24606"     Caption="EQDailyCheckReport"          />
+                
+                <Item Port="20288"     Caption="RBEquipmentEventReport"      />
+                <Item Port="24607"     Caption="EQEventReport"               />
+                
+                <Item Port="20301"     Caption="RBInterlockClock"            />
+                <Item Port="24626"     Caption="EQInterlockClock"            />
+
+                <Item Port="20302"     Caption="RBRemoteStatus"              />
+                <Item Port="24629"     Caption="EQInlineStatus"              />
+                <Item Port="24628"     Caption="EQEquipmentStatus"           />
+                
+                <Item Port="20303"     Caption="RBEQRunModeTypeofCIM"        />
+                <Item Port="20304"     Caption="RBEQSuspendforCleaner"       />                
+                
+                <Item Port="24630"     Caption="EQCurrentRecipeID"           />
+                <Item Port="24631"     Caption="EQCIMConnectStatus"          />
+                <Item Port="24632"     Caption="EQSheetCount"                />
+                
+                <Item Port="24667"     Caption="EQErasePortNo"               />
+                <Item Port="24668"     Caption="EQEraseSlotNo"               />
+                <Item Port="24669"     Caption="EQEraseReason"               />
+                
+                <Item Port="20374"     Caption="RBRMSRecipeID"               />
+                <Item Port="24693"     Caption="EQRMSRecipeID"               />
+                <Item Port="24841"     Caption="EQRecipeModifyID"            />
+                <Item Port="24842"     Caption="EQRecipeModifyType"          />
+                <Item Port="24848"     Caption="EQRecipeModifyVer1"          />
+                <Item Port="24849"     Caption="EQRecipeModifyVer2"          />
+                <Item Port="24850"     Caption="EQRecipeModifyVer3"          />
+                <Item Port="24851"     Caption="EQRecipeModifyVer4"          />
+                <Item Port="24852"     Caption="EQRecipeModifyVer5"          />
+                <Item Port="24853"     Caption="EQRecipeModifyVer6"          /> 
+                <item Port="24643"     Caption="Alarm1"                      />          
+                <Item Port="24644"     Caption="Alarm2"                      />          
+                <Item Port="24645"     Caption="Alarm3"                      />          
+                <Item Port="24646"     Caption="Alarm4"                      />          
+                <Item Port="24647"     Caption="Alarm5"                      />          
+                <Item Port="24648"     Caption="Alarm6"                      />          
+                <Item Port="24649"     Caption="Alarm7"                      />          
+                <Item Port="24650"     Caption="Alarm8"                      />          
+                <Item Port="24651"     Caption="Alarm9"                      />          
+                <Item Port="24652"     Caption="Alarm10"                     /> 
+                <Item Port="24655"     Caption="Warning1"                    />
+							  <Item Port="24656"     Caption="Warning2"                    />
+							  <Item Port="24657"     Caption="Warning3"                    />
+							  <Item Port="24658"     Caption="Warning4"                    />
+							  <Item Port="24659"     Caption="Warning5"                    />
+							  <Item Port="24660"     Caption="Warning6"                    />
+							  <Item Port="24661"     Caption="Warning7"                    />                             
+							  <Item Port="24662"     Caption="Warning8"                    />
+							  <Item Port="24663"     Caption="Warning9"                    />
+							  <Item Port="24664"     Caption="Warning10"                   />                    				
+			</WORDS>
+			<STRING>
+            	 <Item Port="24670"     Caption="EQEraseMaskID       "  WordLength="7"   WordSwap="0"/>
+            	 <Item Port="24679"     Caption="EQEraseCSTID        "  WordLength="3"   WordSwap="0"/>
+            	 <Item Port="24843"     Caption="EQRecipeModifyUserID"  WordLength="5"   WordSwap="0"/>
+            	 <Item Port="24855"     Caption="EQRecipeModifyBody  "  WordLength="128" WordSwap="0"/>
+            	 <Item Port="24986"     Caption="EQEDSData           "  WordLength="128" WordSwap="0"/>
+            	 <Item Port="25124"     Caption="EQAPCData           "  WordLength="135" WordSwap="0"/>
+
+			</STRING>
+      </GROUP> 
+      <GROUP Name="FL_AOI1 Interface">
+            <PORT1 Name="Robot">
+                <Item Index="1"     Port="10064"   BitIndex="1"    Caption="PutComp"           />  
+                <Item Index="2"     Port="10065"   BitIndex="1"    Caption="PutBusy"           />  
+                <Item Index="3"     Port="10066"   BitIndex="1"    Caption="PutGlsReq"         />  
+                <Item Index="4"     Port="10067"   BitIndex="1"    Caption="GetComp"           />  
+                <Item Index="5"     Port="10068"   BitIndex="1"    Caption="GetBusy"           />  
+                <Item Index="6"     Port="10069"   BitIndex="1"    Caption="GetGlsReq"         />  
+                <Item Index="7"     Port="10070"   BitIndex="1"    Caption="GlsTrReset"        />
+                <Item Index="8"     Port="10096"   BitIndex="1"    Caption="EPIDChreq"         />
+                <Item Index="9"     Port="10032"   BitIndex="0"    Caption=""                  />
+                <Item Index="10"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="11"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="12"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="13"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="14"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="15"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="16"    Port=""        BitIndex="1"    Caption=""                  />
+            </PORT1>
+            <PORT2 Name="EQ">
+                <Item Index="1"     Port="11048"   BitIndex="1"    Caption="LGlsReq"           />
+                <Item Index="2"     Port="11049"   BitIndex="1"    Caption="LGlsReady"         />
+                <Item Index="3"     Port="11050"   BitIndex="1"    Caption="UGlsReq"           />
+                <Item Index="4"     Port="11051"   BitIndex="1"    Caption="UGlsReady"         />
+                <Item Index="5"     Port="11052"   BitIndex="1"    Caption="GlaExist"          />
+                <Item Index="6"     Port="11053"   BitIndex="1"    Caption="GlsResetAck"       />
+                <Item Index="7"     Port="11054"   BitIndex="1"    Caption="ReadyrAccess"      />
+                <Item Index="8"     Port="11080"   BitIndex="1"    Caption="EPIDChReply"       />
+                <Item Index="9"     Port="11008"   BitIndex="0"    Caption=""                  />
+                <Item Index="10"    Port="11032"   BitIndex="0"    Caption=""                  />
+                <Item Index="11"    Port="11033"   BitIndex="0"    Caption=""                  />
+                <Item Index="12"    Port="11034"   BitIndex="0"    Caption=""                  />
+                <Item Index="13"    Port="11035"   BitIndex="0"    Caption=""                  />
+                <Item Index="14"    Port="01295"   BitIndex="0"    Caption=""                  />
+                <Item Index="15"    Port="01296"   BitIndex="0"    Caption=""                  />
+                <Item Index="16"    Port="01289"   BitIndex="0"    Caption=""                  />
+            </PORT2>
+			<WORDS>
+								<Item Port="23752" Caption="EqEPPID"                                           />
+        				<Item Port="23753" Caption="EqMaskMode"                                        />
+        				<Item Port="23754" Caption="EqGlassMode"                                       />
+        				<Item Port="23755" Caption="EqPortNo"                                          />
+        				<Item Port="23756" Caption="EqSlotNo"                                          />
+        				<Item Port="23800" Caption="EqInspectionResult"                                /> 
+								<Item Port="20464" Caption="RobotEPPID"                                        />                 
+        				<Item Port="20465" Caption="RobotMaskMode"                                     />                 
+        				<Item Port="20466" Caption="RobotGlassMode"                                    />                 
+        				<Item Port="20467" Caption="RobotPortNo"                                       />                 
+        				<Item Port="20468" Caption="RobotSlotNo"                                       />                 
+        				<Item Port="20512" Caption="RobotInspectionResult"                             />                      				
+			</WORDS>
+			<STRING>
+            	 <Item Port="20470"     Caption="RobotPpid"     WordLength="16"   WordSwap="0"   />
+            	 <Item Port="20491"     Caption="RobotCstId"    WordLength="3"    WordSwap="0"   />
+            	 <Item Port="20496"     Caption="RobotGlassId"  WordLength="7"    WordSwap="0"   />
+            	 <Item Port="23758"     Caption="EqPpid"        WordLength="16"   WordSwap="0"   />
+            	 <Item Port="23779"     Caption="EqCstId"       WordLength="3"    WordSwap="0"   />
+            	 <Item Port="23784"     Caption="EqGlassId"     WordLength="7"    WordSwap="0"   />
+			</STRING>
+      </GROUP>                   
+      <GROUP Name="FL_AOI1 CommData">
+            <PORT1 Name="Robot">
+                <Item Index="1"     Port="10064"   BitIndex="1"    Caption="PutComp"           />  
+                <Item Index="2"     Port="10065"   BitIndex="1"    Caption="PutBusy"           />  
+                <Item Index="3"     Port="10066"   BitIndex="1"    Caption="PutGlsReq"         />  
+                <Item Index="4"     Port="10067"   BitIndex="1"    Caption="GetComp"           />  
+                <Item Index="5"     Port="10068"   BitIndex="1"    Caption="GetBusy"           />  
+                <Item Index="6"     Port="10069"   BitIndex="1"    Caption="GetGlsReq"         />  
+                <Item Index="7"     Port="10070"   BitIndex="1"    Caption="GlsTrReset"        />
+                <Item Index="8"     Port="10096"   BitIndex="1"    Caption="EPIDChreq"         />
+                <Item Index="9"     Port="10032"   BitIndex="0"    Caption=""                  />
+                <Item Index="10"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="11"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="12"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="13"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="14"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="15"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="16"    Port=""        BitIndex="1"    Caption=""                  />
+            </PORT1>
+            <PORT2 Name="EQ">
+                <Item Index="1"     Port="11048"   BitIndex="1"    Caption="LGlsReq"           />
+                <Item Index="2"     Port="11049"   BitIndex="1"    Caption="LGlsReady"         />
+                <Item Index="3"     Port="11050"   BitIndex="1"    Caption="UGlsReq"           />
+                <Item Index="4"     Port="11051"   BitIndex="1"    Caption="UGlsReady"         />
+                <Item Index="5"     Port="11052"   BitIndex="1"    Caption="GlaExist"          />
+                <Item Index="6"     Port="11053"   BitIndex="1"    Caption="GlsResetAck"       />
+                <Item Index="7"     Port="11054"   BitIndex="1"    Caption="ReadyrAccess"      />
+                <Item Index="8"     Port="11080"   BitIndex="1"    Caption="EPIDChReply"       />
+                <Item Index="9"     Port="11008"   BitIndex="0"    Caption=""                  />
+                <Item Index="10"    Port="11032"   BitIndex="0"    Caption=""                  />
+                <Item Index="11"    Port="11033"   BitIndex="0"    Caption=""                  />
+                <Item Index="12"    Port="11034"   BitIndex="0"    Caption=""                  />
+                <Item Index="13"    Port="11035"   BitIndex="0"    Caption=""                  />
+                <Item Index="14"    Port="01295"   BitIndex="0"    Caption=""                  />
+                <Item Index="15"    Port="01296"   BitIndex="0"    Caption=""                  />
+                <Item Index="16"    Port="01289"   BitIndex="0"    Caption=""                  />
+            </PORT2>
+			<WORDS>
+                <Item Port="20160"     Caption="RBCommonDataIndex"           />
+                <item Port="23863"     Caption="EQCommonDataIndex"           />
+                
+                <Item Port="20161"     Caption="RBMessageIndex"              />
+                <Item Port="23864"     Caption="EQMessageIndex"              />
+                
+                <Item Port="20162"     Caption="RBClockUpdatingIndex"        />
+                <Item Port="23865"     Caption="EQClockUpdatingIndex"        />
+                
+                <Item Port="20163"     Caption="RBPPIDQueryIndex"            />
+                <Item Port="23866"     Caption="EQPPIDQueryIndex"            />
+                
+                <Item Port="20169"     Caption="RBEQPStatusReport"           />
+                <Item Port="23847"     Caption="EQPStatusReport"             />
+                
+                <Item Port="20170"     Caption="RBAlarmIndex"                />
+                <Item Port="23848"     Caption="EQAlarmReportIndex"          />
+                
+                <Item Port="20171"     Caption="RBWarningIndex"              />
+                <Item Port="23849"     Caption="EQWarningReportIndex"        />
+                
+                <Item Port="20172"     Caption="RBGlassScrapIndex"           />
+                <Item Port="23850"     Caption="EQGlassScrapndex"            />
+                
+                <Item Port="20173"     Caption="RBPPIDReportIndex"           />
+                <Item Port="23851"     Caption="EQPPIDReportIndex"           />
+                
+                <Item Port="20174"     Caption="RBRecipeModifyIndex"         />
+                <Item Port="23852"     Caption="EQPPIDModifyIndex"           />
+                
+                <Item Port="20175"     Caption="RBDailyCheckReport"          />
+                <Item Port="23853"     Caption="EQDailyCheckReport"          />
+                
+                <Item Port="20176"     Caption="RBEquipmentEventReport"      />
+                <Item Port="23854"     Caption="EQEventReport"               />
+                
+                <Item Port="20189"     Caption="RBInterlockClock"            />
+                <Item Port="23873"     Caption="EQInterlockClock"            />
+                
+                <Item Port="20190"     Caption="RBRemoteStatus"              />
+                <Item Port="23874"     Caption="EQEquipmentStatus"           />
+                <Item Port="23875"     Caption="EQInlineStatus"              />
+                
+                <Item Port="20191"     Caption="RBEQRunModeTypeofCIM"        />
+                <Item Port="20192"     Caption="RBEQSuspendforCleaner"       />                
+                               
+                <Item Port="23876"     Caption="EQCurrentRecipeID"           />
+                <Item Port="23877"     Caption="EQCIMConnectStatus"          />
+                <Item Port="23878"     Caption="EQSheetCount"                />
+                <Item Port="23913"     Caption="EQErasePortNo"               />
+                <Item Port="23914"     Caption="EQEraseSlotNo"               />
+                <Item Port="23915"     Caption="EQEraseReason"               />
+                
+                <Item Port="20262"     Caption="RBRMSRecipeID"               />
+                <Item Port="24087"     Caption="EQRMSRecipeID"               />
+                <Item Port="24088"     Caption="EQRecipeModifyID"            />
+                <Item Port="24093"     Caption="EQRecipeModifyType"          />
+                <Item Port="24094"     Caption="EQRecipeModifyVer1"          />
+                <Item Port="24095"     Caption="EQRecipeModifyVer2"          />
+                <Item Port="24096"     Caption="EQRecipeModifyVer3"          />
+                <Item Port="24097"     Caption="EQRecipeModifyVer4"          />
+                <Item Port="24098"     Caption="EQRecipeModifyVer5"          />
+                <Item Port="24099"     Caption="EQRecipeModifyVer6"          />
+                <Item Port="23889"     Caption="Alarm1"                      />          
+                <Item Port="23890"     Caption="Alarm2"                      />          
+                <Item Port="23891"     Caption="Alarm3"                      />          
+                <Item Port="23892"     Caption="Alarm4"                      />          
+                <Item Port="23893"     Caption="Alarm5"                      />          
+                <Item Port="23894"     Caption="Alarm6"                      />          
+                <Item Port="23895"     Caption="Alarm7"                      />          
+                <Item Port="23896"     Caption="Alarm8"                      />          
+                <Item Port="23897"     Caption="Alarm9"                      />          
+                <Item Port="23898"     Caption="Alarm10"                     /> 
+                <Item Port="23901"     Caption="Warning1"                    />
+							  <Item Port="23902"     Caption="Warning2"                    />
+							  <Item Port="23903"     Caption="Warning3"                    />
+							  <Item Port="23904"     Caption="Warning4"                    />
+							  <Item Port="23905"     Caption="Warning5"                    />
+							  <Item Port="23906"     Caption="Warning6"                    />
+							  <Item Port="23907"     Caption="Warning7"                    />
+							  <Item Port="23908"     Caption="Warning8"                    />
+							  <Item Port="23909"     Caption="Warning9"                    />
+							  <Item Port="23910"     Caption="Warning10"                   />                				
+			</WORDS>
+			<STRING>
+            	 <Item Port="23916"     Caption="EQEraseMaskID       "  WordLength="7"   WordSwap="0"/>
+            	 <Item Port="23925"     Caption="EQEraseCSTID        "  WordLength="3"   WordSwap="0"/>
+            	 <Item Port="24089"     Caption="EQRecipeModifyUserID"  WordLength="5"   WordSwap="0"/>
+            	 <Item Port="24101"     Caption="EQRecipeModifyBody  "  WordLength="128" WordSwap="0"/>
+            	 <Item Port="24232"     Caption="EQEDSData           "  WordLength="128" WordSwap="0"/>
+            	 <item Port="24370"     Caption="EQAPCData           "  WordLength="135" WordSwap="0"/>
+            	  
+			</STRING>
+      </GROUP>
+      <GROUP Name="FL_AOI2 Interface">
+            <PORT1 Name="Robot">
+                <Item Index="1"     Port="10320"   BitIndex="1"    Caption="PutComp"           />  
+                <Item Index="2"     Port="10321"   BitIndex="1"    Caption="PutBusy"           />  
+                <Item Index="3"     Port="10322"   BitIndex="1"    Caption="PutGlsReq"         />  
+                <Item Index="4"     Port="10323"   BitIndex="1"    Caption="GetComp"           />  
+                <Item Index="5"     Port="10324"   BitIndex="1"    Caption="GetBusy"           />  
+                <Item Index="6"     Port="10325"   BitIndex="1"    Caption="GetGlsReq"         />  
+                <Item Index="7"     Port="10326"   BitIndex="1"    Caption="GlsTrReset"        />
+                <Item Index="8"     Port="10352"   BitIndex="1"    Caption="EPIDChreq"         />
+                <Item Index="9"     Port="10032"   BitIndex="0"    Caption=""                  />
+                <Item Index="10"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="11"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="12"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="13"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="14"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="15"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="16"    Port=""        BitIndex="1"    Caption=""                  />
+            </PORT1>
+            <PORT2 Name="EQ">
+                <Item Index="1"     Port="11192"   BitIndex="1"    Caption="LGlsReq"           />
+                <Item Index="2"     Port="11193"   BitIndex="1"    Caption="LGlsReady"         />
+                <Item Index="3"     Port="11194"   BitIndex="1"    Caption="UGlsReq"           />
+                <Item Index="4"     Port="11195"   BitIndex="1"    Caption="UGlsReady"         />
+                <Item Index="5"     Port="11196"   BitIndex="1"    Caption="GlaExist"          />
+                <Item Index="6"     Port="11197"   BitIndex="1"    Caption="GlsResetAck"       />
+                <Item Index="7"     Port="11198"   BitIndex="1"    Caption="ReadyrAccess"      />
+                <Item Index="8"     Port="11224"   BitIndex="1"    Caption="EPIDChReply"       />
+                <Item Index="9"     Port="11008"   BitIndex="0"    Caption=""                  />
+                <Item Index="10"    Port="11032"   BitIndex="0"    Caption=""                  />
+                <Item Index="11"    Port="11033"   BitIndex="0"    Caption=""                  />
+                <Item Index="12"    Port="11034"   BitIndex="0"    Caption=""                  />
+                <Item Index="13"    Port="11035"   BitIndex="0"    Caption=""                  />
+                <Item Index="14"    Port="01295"   BitIndex="0"    Caption=""                  />
+                <Item Index="15"    Port="01296"   BitIndex="0"    Caption=""                  />
+                <Item Index="16"    Port="01289"   BitIndex="0"    Caption=""                  />
+            </PORT2>
+			<WORDS>
+								<Item Port="26040" Caption="EqEPPID"                                           />
+        				<Item Port="26041" Caption="EqMaskMode"                                        />
+        				<Item Port="26042" Caption="EqGlassMode"                                       />
+        				<Item Port="26043" Caption="EqPortNo"                                          />
+        				<Item Port="26044" Caption="EqSlotNo"                                          />
+        				<Item Port="26088" Caption="EqInspectionResult"                                /> 
+								<Item Port="21040" Caption="RobotEPPID"                                        />                 
+        				<Item Port="21041" Caption="RobotMaskMode"                                     />                 
+        				<Item Port="21042" Caption="RobotGlassMode"                                    />                 
+        				<Item Port="21043" Caption="RobotPortNo"                                       />                 
+        				<Item Port="21044" Caption="RobotSlotNo"                                       />                 
+        				<Item Port="21088" Caption="RobotInspectionResult"                             />                      				
+			</WORDS>
+			<STRING>
+            	 <Item Port="21046"     Caption="RobotPpid"     WordLength="16"   WordSwap="0"   />
+            	 <Item Port="21067"     Caption="RobotCstId"    WordLength="3"    WordSwap="0"   />
+            	 <Item Port="21072"     Caption="RobotGlassId"  WordLength="7"    WordSwap="0"   />
+            	 <Item Port="26046"     Caption="EqPpid"        WordLength="16"   WordSwap="0"   />
+            	 <Item Port="26067"     Caption="EqCstId"       WordLength="3"    WordSwap="0"   />
+            	 <Item Port="26072"     Caption="EqGlassId"     WordLength="7"    WordSwap="0"   />
+			</STRING>
+      </GROUP>     
+      <GROUP Name="FL_AOI2 CommData">
+            <PORT1 Name="Robot">
+                <Item Index="1"     Port="10320"   BitIndex="1"    Caption="PutComp"           />  
+                <Item Index="2"     Port="10321"   BitIndex="1"    Caption="PutBusy"           />  
+                <Item Index="3"     Port="10322"   BitIndex="1"    Caption="PutGlsReq"         />  
+                <Item Index="4"     Port="10323"   BitIndex="1"    Caption="GetComp"           />  
+                <Item Index="5"     Port="10324"   BitIndex="1"    Caption="GetBusy"           />  
+                <Item Index="6"     Port="10325"   BitIndex="1"    Caption="GetGlsReq"         />  
+                <Item Index="7"     Port="10326"   BitIndex="1"    Caption="GlsTrReset"        />
+                <Item Index="8"     Port="10352"   BitIndex="1"    Caption="EPIDChreq"         />
+                <Item Index="9"     Port="10032"   BitIndex="0"    Caption=""                  />
+                <Item Index="10"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="11"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="12"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="13"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="14"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="15"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="16"    Port=""        BitIndex="1"    Caption=""                  />
+            </PORT1>
+            <PORT2 Name="EQ">
+                <Item Index="1"     Port="11192"   BitIndex="1"    Caption="LGlsReq"           />
+                <Item Index="2"     Port="11193"   BitIndex="1"    Caption="LGlsReady"         />
+                <Item Index="3"     Port="11194"   BitIndex="1"    Caption="UGlsReq"           />
+                <Item Index="4"     Port="11195"   BitIndex="1"    Caption="UGlsReady"         />
+                <Item Index="5"     Port="11196"   BitIndex="1"    Caption="GlaExist"          />
+                <Item Index="6"     Port="11197"   BitIndex="1"    Caption="GlsResetAck"       />
+                <Item Index="7"     Port="11198"   BitIndex="1"    Caption="ReadyrAccess"      />
+                <Item Index="8"     Port="11224"   BitIndex="1"    Caption="EPIDChReply"       />
+                <Item Index="9"     Port="11008"   BitIndex="0"    Caption=""                  />
+                <Item Index="10"    Port="11032"   BitIndex="0"    Caption=""                  />
+                <Item Index="11"    Port="11033"   BitIndex="0"    Caption=""                  />
+                <Item Index="12"    Port="11034"   BitIndex="0"    Caption=""                  />
+                <Item Index="13"    Port="11035"   BitIndex="0"    Caption=""                  />
+                <Item Index="14"    Port="01295"   BitIndex="0"    Caption=""                  />
+                <Item Index="15"    Port="01296"   BitIndex="0"    Caption=""                  />
+                <Item Index="16"    Port="01289"   BitIndex="0"    Caption=""                  />
+            </PORT2>
+			<WORDS>
+                <Item Port="20736"     Caption="RBCommonDataIndex"           />
+                <Item Port="26151"     Caption="EQCommonDataIndex"           />
+                
+                <Item Port="20737"     Caption="RBMessageIndex"              />
+                <Item Port="26152"     Caption="EQMessageIndex"              />
+                
+                <Item Port="20738"     Caption="RBClockUpdatingIndex"        />
+                <Item Port="26153"     Caption="EQClockUpdatingIndex"        />
+                
+                <Item Port="20739"     Caption="RBPPIDQueryIndex"            />
+                <Item Port="26154"     Caption="EQPPIDQueryIndex"            />
+                
+                <Item Port="20745"     Caption="RBEQPStatusReport"           />
+                <Item Port="26135"     Caption="EQPStatusReport"             />
+                
+                <Item Port="20746"     Caption="RBAlarmIndex"                />
+                <Item Port="26136"     Caption="EQAlarmReportIndex"          />
+                
+                <Item Port="20747"     Caption="RBWarningIndex"              />
+                <Item Port="26137"     Caption="EQWarningReportIndex"        />
+
+                <Item Port="20748"     Caption="RBGlassScrapIndex"           />
+                <Item Port="26138"     Caption="EQGlassScrapndex"            />
+                
+                <Item Port="20749"     Caption="RBPPIDReportIndex"           />
+                <Item Port="26139"     Caption="EQPPIDReportIndex"           />
+                
+                <Item Port="20750"     Caption="RBRecipeModifyIndex"         />
+                <Item Port="26140"     Caption="EQPPIDModifyIndex"           />
+                
+                <Item Port="20751"     Caption="RBDailyCheckReport"          />
+                <Item Port="26141"     Caption="EQDailyCheckReport"          />
+                
+                <Item Port="20752"     Caption="RBEquipmentEventReport"      />
+                <Item Port="26142"     Caption="EQEventReport"               />
+                
+                <Item Port="20765"     Caption="RBInterlockClock"            />
+                <Item Port="26161"     Caption="EQInterlockClock"            />
+                
+                <Item Port="20766"     Caption="RBRemoteStatus"              />
+                <Item Port="26162"     Caption="EQEquipmentStatus"           />
+                <Item Port="26163"     Caption="EQInlineStatus"              />
+                
+                <Item Port="20767"     Caption="RBEQRunModeTypeofCIM"        />
+                <Item Port="20768"     Caption="RBEQSuspendforCleaner"       />                
+                           
+                <Item Port="26164"     Caption="EQCurrentRecipeID"           />
+                <Item Port="26165"     Caption="EQCIMConnectStatus"          />
+                <Item Port="26166"     Caption="EQSheetCount"                />
+                <Item Port="26201"     Caption="EQErasePortNo"               />
+                <Item Port="26202"     Caption="EQEraseSlotNo"               />
+                <Item Port="26203"     Caption="EQEraseReason"               />
+                
+                <Item Port="20838"     Caption="RBRMSRecipeID"               />
+                <Item Port="26227"     Caption="EQRMSRecipeID"               />
+                <Item Port="26375"     Caption="EQRecipeModifyID"            />
+                <Item Port="26376"     Caption="EQRecipeModifyType"          />
+                <Item Port="26382"     Caption="EQRecipeModifyVer1"          />
+                <Item Port="26383"     Caption="EQRecipeModifyVer2"          />
+                <Item Port="26384"     Caption="EQRecipeModifyVer3"          />
+                <Item Port="26385"     Caption="EQRecipeModifyVer4"          />
+                <Item Port="26386"     Caption="EQRecipeModifyVer5"          />
+                <Item Port="26387"     Caption="EQRecipeModifyVer6"          /> 
+            	  <item Port="26177"     Caption="Alarm1"                      />          
+                <Item Port="26178"     Caption="Alarm2"                      />          
+                <Item Port="26179"     Caption="Alarm3"                      />          
+                <Item Port="26180"     Caption="Alarm4"                      />          
+                <Item Port="26181"     Caption="Alarm5"                      />          
+                <Item Port="26182"     Caption="Alarm6"                      />          
+                <Item Port="26183"     Caption="Alarm7"                      />          
+                <Item Port="26184"     Caption="Alarm8"                      />          
+                <Item Port="26185"     Caption="Alarm9"                      />          
+                <Item Port="26186"     Caption="Alarm10"                     /> 
+                <Item Port="26189"     Caption="Warning1"                    />
+							  <Item Port="26190"     Caption="Warning2"                    />
+							  <Item Port="26191"     Caption="Warning3"                    />
+							  <Item Port="26192"     Caption="Warning4"                    />
+							  <Item Port="26193"     Caption="Warning5"                    />
+							  <Item Port="26194"     Caption="Warning6"                    />
+							  <Item Port="26195"     Caption="Warning7"                    />
+							  <Item Port="26196"     Caption="Warning8"                    />
+							  <Item Port="26197"     Caption="Warning9"                    />
+							  <Item Port="26198"     Caption="Warning10"                   />                                     				
+			</WORDS>
+			<STRING>
+            	 <Item Port="26177"     Caption="EQAlarm             "  WordLength="10"  WordSwap="0"/>
+            	 <Item Port="26189"     Caption="EQWarning           "  WordLength="10"  WordSwap="0"/>
+            	 <Item Port="26204"     Caption="EQEraseMaskID       "  WordLength="7"   WordSwap="0"/>
+            	 <Item Port="26213"     Caption="EQEraseCSTID        "  WordLength="3"   WordSwap="0"/>
+            	 <Item Port="26377"     Caption="EQRecipeModifyUserID"  WordLength="5"   WordSwap="0"/>
+            	 <Item Port="26389"     Caption="EQRecipeModifyBody  "  WordLength="128" WordSwap="0"/>
+            	 <Item Port="26520"     Caption="EQEDSData           "  WordLength="128" WordSwap="0"/>
+            	 <Item Port="26658"     Caption="EQAPCData           "  WordLength="135" WordSwap="0"/>
+ 
+			</STRING>
+      </GROUP>
+      <GROUP Name="FL_LaserReapir1 Interface">
+            <PORT1 Name="Robot">
+                <Item Index="1"     Port="10256"   BitIndex="1"    Caption="PutComp"           />  
+                <Item Index="2"     Port="10257"   BitIndex="1"    Caption="PutBusy"           />  
+                <Item Index="3"     Port="10258"   BitIndex="1"    Caption="PutGlsReq"         />  
+                <Item Index="4"     Port="10259"   BitIndex="1"    Caption="GetComp"           />  
+                <Item Index="5"     Port="10260"   BitIndex="1"    Caption="GetBusy"           />  
+                <Item Index="6"     Port="10261"   BitIndex="1"    Caption="GetGlsReq"         />  
+                <Item Index="7"     Port="10262"   BitIndex="1"    Caption="GlsTrReset"        />
+                <Item Index="8"     Port="10288"   BitIndex="1"    Caption="EPIDChreq"         />
+                <Item Index="9"     Port="10032"   BitIndex="0"    Caption=""                  />
+                <Item Index="10"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="11"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="12"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="13"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="14"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="15"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="16"    Port=""        BitIndex="1"    Caption=""                  />
+            </PORT1>
+            <PORT2 Name="EQ">
+                <Item Index="1"     Port="11144"   BitIndex="1"    Caption="LGlsReq"           />
+                <Item Index="2"     Port="11145"   BitIndex="1"    Caption="LGlsReady"         />
+                <Item Index="3"     Port="11146"   BitIndex="1"    Caption="UGlsReq"           />
+                <Item Index="4"     Port="11147"   BitIndex="1"    Caption="UGlsReady"         />
+                <Item Index="5"     Port="11148"   BitIndex="1"    Caption="GlaExist"          />
+                <Item Index="6"     Port="11149"   BitIndex="1"    Caption="GlsResetAck"       />
+                <Item Index="7"     Port="11150"   BitIndex="1"    Caption="ReadyrAccess"      />
+                <Item Index="8"     Port="11176"   BitIndex="1"    Caption="EPIDChReply"       />
+                <Item Index="9"     Port="11008"   BitIndex="0"    Caption=""                  />
+                <Item Index="10"    Port="11032"   BitIndex="0"    Caption=""                  />
+                <Item Index="11"    Port="11033"   BitIndex="0"    Caption=""                  />
+                <Item Index="12"    Port="11034"   BitIndex="0"    Caption=""                  />
+                <Item Index="13"    Port="11035"   BitIndex="0"    Caption=""                  />
+                <Item Index="14"    Port="01295"   BitIndex="0"    Caption=""                  />
+                <Item Index="15"    Port="01296"   BitIndex="0"    Caption=""                  />
+                <Item Index="16"    Port="01289"   BitIndex="0"    Caption=""                  />
+            </PORT2>
+			<WORDS>
+								<Item Port="25272" Caption="EqEPPID"                                           />
+        				<Item Port="25273" Caption="EqMaskMode"                                        />
+        				<Item Port="25274" Caption="EqGlassMode"                                       />
+        				<Item Port="25275" Caption="EqPortNo"                                          />
+        				<Item Port="25276" Caption="EqSlotNo"                                          />
+        				<Item Port="25320" Caption="EqInspectionResult"                                /> 
+								<Item Port="20960" Caption="RobotEPPID"                                        />                 
+        				<Item Port="20961" Caption="RobotMaskMode"                                     />                 
+        				<Item Port="20962" Caption="RobotGlassMode"                                    />                 
+        				<Item Port="20963" Caption="RobotPortNo"                                       />                 
+        				<Item Port="20964" Caption="RobotSlotNo"                                       />                 
+        				<Item Port="21008" Caption="RobotInspectionResult"                             />                      				
+			</WORDS>
+			<STRING>
+            	 <Item Port="20966"     Caption="RobotPpid"     WordLength="16"   WordSwap="0"   />
+            	 <Item Port="20987"     Caption="RobotCstId"    WordLength="3"    WordSwap="0"   />
+            	 <Item Port="20992"     Caption="RobotGlassId"  WordLength="7"    WordSwap="0"   />
+            	 <Item Port="25278"     Caption="EqPpid"        WordLength="16"   WordSwap="0"   />
+            	 <Item Port="25299"     Caption="EqCstId"       WordLength="3"    WordSwap="0"   />
+            	 <Item Port="25304"     Caption="EqGlassId"     WordLength="7"    WordSwap="0"   />
+			</STRING>
+      </GROUP>                   
+      <GROUP Name="FL_LaserRepair1 CommData">
+            <PORT1 Name="Robot">
+                <Item Index="1"     Port="10256"   BitIndex="1"    Caption="PutComp"           />  
+                <Item Index="2"     Port="10257"   BitIndex="1"    Caption="PutBusy"           />  
+                <Item Index="3"     Port="10258"   BitIndex="1"    Caption="PutGlsReq"         />  
+                <Item Index="4"     Port="10259"   BitIndex="1"    Caption="GetComp"           />  
+                <Item Index="5"     Port="10260"   BitIndex="1"    Caption="GetBusy"           />  
+                <Item Index="6"     Port="10261"   BitIndex="1"    Caption="GetGlsReq"         />  
+                <Item Index="7"     Port="10262"   BitIndex="1"    Caption="GlsTrReset"        />
+                <Item Index="8"     Port="10288"   BitIndex="1"    Caption="EPIDChreq"         />
+                <Item Index="9"     Port="10032"   BitIndex="0"    Caption=""                  />
+                <Item Index="10"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="11"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="12"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="13"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="14"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="15"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="16"    Port=""        BitIndex="1"    Caption=""                  />
+            </PORT1>
+            <PORT2 Name="EQ">
+                <Item Index="1"     Port="11144"   BitIndex="1"    Caption="LGlsReq"           />
+                <Item Index="2"     Port="11145"   BitIndex="1"    Caption="LGlsReady"         />
+                <Item Index="3"     Port="11146"   BitIndex="1"    Caption="UGlsReq"           />
+                <Item Index="4"     Port="11147"   BitIndex="1"    Caption="UGlsReady"         />
+                <Item Index="5"     Port="11148"   BitIndex="1"    Caption="GlaExist"          />
+                <Item Index="6"     Port="11149"   BitIndex="1"    Caption="GlsResetAck"       />
+                <Item Index="7"     Port="11150"   BitIndex="1"    Caption="ReadyrAccess"      />
+                <Item Index="8"     Port="11176"   BitIndex="1"    Caption="EPIDChReply"       />
+                <Item Index="9"     Port="11008"   BitIndex="0"    Caption=""                  />
+                <Item Index="10"    Port="11032"   BitIndex="0"    Caption=""                  />
+                <Item Index="11"    Port="11033"   BitIndex="0"    Caption=""                  />
+                <Item Index="12"    Port="11034"   BitIndex="0"    Caption=""                  />
+                <Item Index="13"    Port="11035"   BitIndex="0"    Caption=""                  />
+                <Item Index="14"    Port="01295"   BitIndex="0"    Caption=""                  />
+                <Item Index="15"    Port="01296"   BitIndex="0"    Caption=""                  />
+                <Item Index="16"    Port="01289"   BitIndex="0"    Caption=""                  />
+            </PORT2>
+			<WORDS>
+                <Item Port="20624"     Caption="RBCommonDataIndex"           />
+                <Item Port="25383"     Caption="EQCommonDataIndex"           />
+
+                <item Port="20625"     Caption="RBMessageIndex"              /> 
+                <Item Port="25384"     Caption="EQMessageIndex"              />
+                               
+                <Item Port="20626"     Caption="RBClockUpdatingIndex"        />
+                <Item Port="25385"     Caption="EQClockUpdatingIndex"        />
+                
+                <Item Port="20627"     Caption="RBRecipeBodyQueryIndex"      />  
+                <Item Port="25386"     Caption="EQRecipeBodyQueryIndex"      />              
+               
+                <Item Port="20633"     Caption="RBEQPStatusReport"           />
+                <Item Port="25367"     Caption="EQEQPStatusReport"           />
+               
+                <Item Port="20634"     Caption="RBAlarmReportIndex"          /> 
+                <Item Port="25368"     Caption="EQAlarmReportIndex"          /> 
+                               
+                <Item Port="20635"     Caption="RBWarningReportIndex"        />
+                <Item Port="25369"     Caption="EQWarningReportIndex"        />
+                
+                <Item Port="20636"     Caption="RBGlassScrapIndex"           />
+                <Item Port="25370"     Caption="EQGlassScrapndex"            />
+                
+                <Item Port="20637"     Caption="RBRecipeQueryIndex"/>
+                <Item Port="25371"     Caption="EQRecipeQueryIndex"/>
+                
+                <Item Port="20638"     Caption="RBRecipeBodyModifyIndex"     />
+                <Item Port="25372"     Caption="EQRecipeBodyModifyIndex"     />
+                                
+                <Item Port="20639"     Caption="RBDailyCheckReport"          />
+                <Item Port="25373"     Caption="EQDailyCheckReport"          />
+                
+                <Item Port="20640"     Caption="RBEquipmentEventReport"      />
+                <Item Port="25374"     Caption="EQEventReport"               />
+                                
+                <Item Port="20653"     Caption="RBInterlockClock"            />
+                <Item Port="25393"     Caption="EQInterlockClock"            />
+                
+                <Item Port="20654"     Caption="RBRemoteStatus"              />
+                <Item Port="25394"     Caption="EQEquipmentStatus"           />
+                <Item Port="25395"     Caption="EQInlineStatus"              />     
+                           
+                <Item Port="20655"     Caption="RBEQRunModeTypeofCIM"        />
+                <Item Port="20656"     Caption="RBEQSuspendforCleaner"       />                
+                <Item Port="20669"     Caption="RBBuzzerFlag"                />
+                <Item Port="20711"     Caption="RBTimeSync1"                 />                
+                <Item Port="20712"     Caption="RBTimeSync2"                 />
+                <Item Port="20713"     Caption="RBTimeSync3"                 />                
+                <Item Port="20714"     Caption="RBTimeSync4"                 />
+                <Item Port="20715"     Caption="RBTimeSync5"                 />                
+                <Item Port="20716"     Caption="RBTimeSync6"                 />
+
+                <Item Port="25396"     Caption="EQCurrentRecipeID"           />
+                <Item Port="25397"     Caption="EQCIMConnectStatus"          />
+                <Item Port="25398"     Caption="EQSheetCount"                />
+                <Item Port="25433"     Caption="EQErasePortNo"               />
+                <Item Port="25434"     Caption="EQEraseSlotNo"               />
+                <Item Port="25435"     Caption="EQEraseReason"               />
+                
+                <Item Port="20726"     Caption="RBRMSRecipeID"               />
+                <Item Port="25459"     Caption="EQRMSRecipeID"               />
+                <Item Port="25607"     Caption="EQRecipeModifyID"            />
+                <Item Port="25608"     Caption="EQRecipeModifyType"          />          
+                <Item Port="25614"     Caption="EQRecipeModifyVer1"          />          
+                <Item Port="25615"     Caption="EQRecipeModifyVer2"          />          
+                <Item Port="25616"     Caption="EQRecipeModifyVer3"          />          
+                <Item Port="25617"     Caption="EQRecipeModifyVer4"          />          
+                <Item Port="25618"     Caption="EQRecipeModifyVer5"          />          
+                <Item Port="25619"     Caption="EQRecipeModifyVer6"          />          
+               
+                <Item Port="25409"     Caption="Alarm1"                     />          
+                <Item Port="25410"     Caption="Alarm2"                     />          
+                <Item Port="25411"     Caption="Alarm3"                     />
+                <Item Port="25412"     Caption="Alarm4"                     />          
+                <Item Port="25413"     Caption="Alarm5"                     />          
+                <Item Port="25414"     Caption="Alarm6"                     />
+                <Item Port="25415"     Caption="Alarm7"                     />
+                <Item Port="25416"     Caption="Alarm8"                     />          
+                <Item Port="25417"     Caption="Alarm9"                     />          
+                <Item Port="25418"     Caption="Alarm10"                    /> 
+                <Item Port="25421"     Caption="Warning1"                   />
+							  <Item Port="25422"     Caption="Warning2"                   />
+							  <Item Port="25423"     Caption="Warning3"                   />
+							  <Item Port="25424"     Caption="Warning4"                   />
+							  <Item Port="25425"     Caption="Warning5"                   />
+							  <Item Port="25426"     Caption="Warning6"                   />
+							  <Item Port="25427"     Caption="Warning7"                   />
+							  <Item Port="25428"     Caption="Warning8"                   />
+							  <Item Port="25429"     Caption="Warning9"                   />
+							  <Item Port="25430"     Caption="Warning10"                  />                				
+			</WORDS>
+			<STRING>
+            	 <Item Port="25436"     Caption="EQEraseMaskID       "  WordLength="7"   WordSwap="0"/>
+            	 <Item Port="25445"     Caption="EQEraseCSTID        "  WordLength="3"   WordSwap="0"/>
+            	 <Item Port="25609"     Caption="EQRecipeModifyUserID"  WordLength="5"   WordSwap="0"/>
+            	 <Item Port="25621"     Caption="EQRecipeModifyBody  "  WordLength="128" WordSwap="0"/>
+            	 <Item Port="25752"     Caption="EQEDSData           "  WordLength="128" WordSwap="0"/>
+            	 <item Port="25890"     Caption="EQAPCData           "  WordLength="135" WordSwap="0"/>
+            	  
+			</STRING>
+      </GROUP>      
+      <GROUP Name="FL_LaserReapir2 Interface">
+            <PORT1 Name="Robot">
+                <Item Index="1"     Port="10384"   BitIndex="1"    Caption="PutComp"           />  
+                <Item Index="2"     Port="10385"   BitIndex="1"    Caption="PutBusy"           />  
+                <Item Index="3"     Port="10386"   BitIndex="1"    Caption="PutGlsReq"         />  
+                <Item Index="4"     Port="10387"   BitIndex="1"    Caption="GetComp"           />  
+                <Item Index="5"     Port="10388"   BitIndex="1"    Caption="GetBusy"           />  
+                <Item Index="6"     Port="10389"   BitIndex="1"    Caption="GetGlsReq"         />  
+                <Item Index="7"     Port="10390"   BitIndex="1"    Caption="GlsTrReset"        />
+                <Item Index="8"     Port="10416"   BitIndex="1"    Caption="EPIDChreq"         />
+                <Item Index="9"     Port="10032"   BitIndex="0"    Caption=""                  />
+                <Item Index="10"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="11"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="12"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="13"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="14"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="15"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="16"    Port=""        BitIndex="1"    Caption=""                  />
+            </PORT1>
+            <PORT2 Name="EQ">
+                <Item Index="1"     Port="11240"   BitIndex="1"    Caption="LGlsReq"           />
+                <Item Index="2"     Port="11241"   BitIndex="1"    Caption="LGlsReady"         />
+                <Item Index="3"     Port="11242"   BitIndex="1"    Caption="UGlsReq"           />
+                <Item Index="4"     Port="11243"   BitIndex="1"    Caption="UGlsReady"         />
+                <Item Index="5"     Port="11244"   BitIndex="1"    Caption="GlaExist"          />
+                <Item Index="6"     Port="11245"   BitIndex="1"    Caption="GlsResetAck"       />
+                <Item Index="7"     Port="11246"   BitIndex="1"    Caption="ReadyrAccess"      />
+                <Item Index="8"     Port="11272"   BitIndex="1"    Caption="EPIDChReply"       />
+                <Item Index="9"     Port="11008"   BitIndex="0"    Caption=""                  />
+                <Item Index="10"    Port="11032"   BitIndex="0"    Caption=""                  />
+                <Item Index="11"    Port="11033"   BitIndex="0"    Caption=""                  />
+                <Item Index="12"    Port="11034"   BitIndex="0"    Caption=""                  />
+                <Item Index="13"    Port="11035"   BitIndex="0"    Caption=""                  />
+                <Item Index="14"    Port="01295"   BitIndex="0"    Caption=""                  />
+                <Item Index="15"    Port="01296"   BitIndex="0"    Caption=""                  />
+                <Item Index="16"    Port="01289"   BitIndex="0"    Caption=""                  />
+            </PORT2>
+			<WORDS>
+								<Item Port="26808" Caption="EqEPPID"                                           />
+        				<Item Port="26809" Caption="EqMaskMode"                                        />
+        				<Item Port="26810" Caption="EqGlassMode"                                       />
+        				<Item Port="26811" Caption="EqPortNo"                                          />
+        				<Item Port="26812" Caption="EqSlotNo"                                          />
+        				<Item Port="26856" Caption="EqInspectionResult"                                /> 
+								<Item Port="21120" Caption="RobotEPPID"                                        />                 
+        				<Item Port="21121" Caption="RobotMaskMode"                                     />                 
+        				<Item Port="21122" Caption="RobotGlassMode"                                    />                 
+        				<Item Port="21123" Caption="RobotPortNo"                                       />                 
+        				<Item Port="21124" Caption="RobotSlotNo"                                       />                 
+        				<Item Port="21168" Caption="RobotInspectionResult"                             />                      				
+			</WORDS>
+			<STRING>
+            	 <Item Port="21126"     Caption="RobotPpid"     WordLength="16"   WordSwap="0"   />
+            	 <Item Port="21147"     Caption="RobotCstId"    WordLength="3"    WordSwap="0"   />
+            	 <Item Port="21152"     Caption="RobotGlassId"  WordLength="7"    WordSwap="0"   />
+            	 <Item Port="26814"     Caption="EqPpid"        WordLength="16"   WordSwap="0"   />
+            	 <Item Port="26835"     Caption="EqCstId"       WordLength="3"    WordSwap="0"   />
+            	 <Item Port="26840"     Caption="EqGlassId"     WordLength="7"    WordSwap="0"   />
+			</STRING>
+      </GROUP>                   
+      <GROUP Name="FL_LaserRepair2 CommData">
+            <PORT1 Name="Robot">
+                <Item Index="1"     Port="10384"   BitIndex="1"    Caption="PutComp"           />  
+                <Item Index="2"     Port="10385"   BitIndex="1"    Caption="PutBusy"           />  
+                <Item Index="3"     Port="10386"   BitIndex="1"    Caption="PutGlsReq"         />  
+                <Item Index="4"     Port="10387"   BitIndex="1"    Caption="GetComp"           />  
+                <Item Index="5"     Port="10388"   BitIndex="1"    Caption="GetBusy"           />  
+                <Item Index="6"     Port="10389"   BitIndex="1"    Caption="GetGlsReq"         />  
+                <Item Index="7"     Port="10390"   BitIndex="1"    Caption="GlsTrReset"        />
+                <Item Index="8"     Port="10416"   BitIndex="1"    Caption="EPIDChreq"         />
+                <Item Index="9"     Port="10032"   BitIndex="0"    Caption=""                  />
+                <Item Index="10"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="11"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="12"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="13"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="14"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="15"    Port="12272"   BitIndex="0"    Caption=""                  />
+                <Item Index="16"    Port=""        BitIndex="1"    Caption=""                  />
+            </PORT1>
+            <PORT2 Name="EQ">
+                <Item Index="1"     Port="11240"   BitIndex="1"    Caption="LGlsReq"           />
+                <Item Index="2"     Port="11241"   BitIndex="1"    Caption="LGlsReady"         />
+                <Item Index="3"     Port="11242"   BitIndex="1"    Caption="UGlsReq"           />
+                <Item Index="4"     Port="11243"   BitIndex="1"    Caption="UGlsReady"         />
+                <Item Index="5"     Port="11244"   BitIndex="1"    Caption="GlaExist"          />
+                <Item Index="6"     Port="11245"   BitIndex="1"    Caption="GlsResetAck"       />
+                <Item Index="7"     Port="11246"   BitIndex="1"    Caption="ReadyrAccess"      />
+                <Item Index="8"     Port="11272"   BitIndex="1"    Caption="EPIDChReply"       />
+                <Item Index="9"     Port="11008"   BitIndex="0"    Caption=""                  />
+                <Item Index="10"    Port="11032"   BitIndex="0"    Caption=""                  />
+                <Item Index="11"    Port="11033"   BitIndex="0"    Caption=""                  />
+                <Item Index="12"    Port="11034"   BitIndex="0"    Caption=""                  />
+                <Item Index="13"    Port="11035"   BitIndex="0"    Caption=""                  />
+                <Item Index="14"    Port="01295"   BitIndex="0"    Caption=""                  />
+                <Item Index="15"    Port="01296"   BitIndex="0"    Caption=""                  />
+                <Item Index="16"    Port="01289"   BitIndex="0"    Caption=""                  />
+            </PORT2>
+			<WORDS>
+                <Item Port="20848"     Caption="RBCommonDataIndex"           />
+                <Item Port="26919"     Caption="EQCommonDataIndex"           />
+                
+                <item Port="20849"     Caption="RBMessageIndex"              />
+                <Item Port="26920"     Caption="EQMessageIndex"              />                
+                
+                <Item Port="20850"     Caption="RBClockUpdatingIndex"        />
+                <Item Port="26921"     Caption="EQClockUpdatingIndex"        />
+                
+                <Item Port="20851"     Caption="RBRecipeBodyQueryIndex"      />
+                <Item Port="26922"     Caption="EQRecipeBodyQueryIndex"      />
+                
+                                
+                <Item Port="20857"     Caption="RBEQPStatusReport"           />
+                <Item Port="26903"     Caption="EQEQPStatusReport"           />
+                
+                <Item Port="20858"     Caption="RBAlarmReportIndex"          /> 
+                <Item Port="26904"     Caption="EQAlarmReportIndex"          /> 
+                               
+                <Item Port="20859"     Caption="RBWarningReportIndex"        />
+                <Item Port="26905"     Caption="EQWarningReportIndex"        />
+                
+                <Item Port="20860"     Caption="RBGlassScrapIndex"           />
+                <Item Port="26906"     Caption="EQGlassScrapndex"            />
+                
+                <Item Port="20861"     Caption="RBRecipeQueryIndex"/>
+                <Item Port="26907"     Caption="EQRecipeQueryIndex"/> 
+                
+                <Item Port="20862"     Caption="RBRecipeBodyModifyIndex"     /> 
+                <Item Port="26908"     Caption="EQRecipeBodyModifyIndex"     />
+                               
+                <Item Port="20863"     Caption="RBDailyCheckReport"          />
+                <Item Port="26909"     Caption="EQDailyCheckReport"          />
+                
+                <Item Port="20864"     Caption="RBEquipmentEventReport"      />
+                <Item Port="26910"     Caption="EQEventReport"               />
+                                
+                <Item Port="20877"     Caption="RBInterlockClock"            />
+                <Item Port="26929"     Caption="EQInterlockClock"            />  
+                
+                <Item Port="20878"     Caption="RBRemoteStatus"              /> 
+                <item Port="26930"     Caption="EQEquipmentStatus"           />
+                <Item Port="26931"     Caption="EQInlineStatus"              /> 
+                              
+                <Item Port="20879"     Caption="RBEQRunModeTypeofCIM"        />
+                <Item Port="20880"     Caption="RBEQSuspendforCleaner"       />                
+                <Item Port="20893"     Caption="RBBuzzerFlag"                />
+                <Item Port="20935"     Caption="RBTimeSync1"                 />                
+                <Item Port="20936"     Caption="RBTimeSync2"                 />
+                <Item Port="20937"     Caption="RBTimeSync3"                 />                
+                <Item Port="20938"     Caption="RBTimeSync4"                 />
+                <Item Port="20939"     Caption="RBTimeSync5"                 />                
+                <Item Port="20940"     Caption="RBTimeSync6"                 />
+                                      
+                <Item Port="26932"     Caption="EQCurrentRecipeID"           />
+                <Item Port="26933"     Caption="EQCIMConnectStatus"          />
+                <Item Port="26934"     Caption="EQSheetCount"                />
+                <Item Port="26969"     Caption="EQErasePortNo"               />
+                <Item Port="26970"     Caption="EQEraseSlotNo"               />
+                <Item Port="26971"     Caption="EQEraseReason"               />
+                
+                <Item Port="20950"     Caption="RBRMSRecipeID"               /> 
+                <Item Port="26995"     Caption="EQRMSRecipeID"               />
+                <Item Port="27143"     Caption="EQRecipeModifyID"            />
+                <Item Port="27144"     Caption="EQRecipeModifyType"          />          
+                <Item Port="27150"     Caption="EQRecipeModifyVer1"          />          
+                <Item Port="27151"     Caption="EQRecipeModifyVer2"          />          
+                <Item Port="27152"     Caption="EQRecipeModifyVer3"          />          
+                <Item Port="27153"     Caption="EQRecipeModifyVer4"          />          
+                <Item Port="27154"     Caption="EQRecipeModifyVer5"          />          
+                <Item Port="27155"     Caption="EQRecipeModifyVer6"          />          
+                <Item Port="26945"     Caption="Alarm1"                     /> 
+                <Item Port="26946"     Caption="Alarm2"                     /> 
+                <Item Port="26947"     Caption="Alarm3"                     /> 
+                <Item Port="26948"     Caption="Alarm4"                     />           
+                <Item Port="26949"     Caption="Alarm5"                     />           
+                <Item Port="26950"     Caption="Alarm6"                     />  
+                <Item Port="26951"     Caption="Alarm7"                     /> 
+                <Item Port="26952"     Caption="Alarm8"                     /> 
+                <Item Port="26953"     Caption="Alarm9"                     /> 
+                <Item Port="26954"     Caption="Alarm10"                    /> 
+                <Item Port="26957"     Caption="Warning1"                   /> 
+							  <Item Port="26958"     Caption="Warning2"                   /> 
+							  <Item Port="26959"     Caption="Warning3"                   /> 
+							  <Item Port="26960"     Caption="Warning4"                   /> 
+							  <Item Port="26961"     Caption="Warning5"                   /> 
+							  <Item Port="26962"     Caption="Warning6"                   /> 
+							  <Item Port="26963"     Caption="Warning7"                   /> 
+							  <Item Port="26964"     Caption="Warning8"                   /> 
+							  <Item Port="26965"     Caption="Warning9"                   /> 
+							  <Item Port="26966"     Caption="Warning10"                  />                 				
+			</WORDS>
+			<STRING>
+            	 <Item Port="26972"     Caption="EQEraseMaskID       "  WordLength="7"   WordSwap="0"/>
+            	 <Item Port="26981"     Caption="EQEraseCSTID        "  WordLength="3"   WordSwap="0"/>
+            	 <Item Port="27145"     Caption="EQRecipeModifyUserID"  WordLength="5"   WordSwap="0"/>
+            	 <Item Port="27157"     Caption="EQRecipeModifyBody  "  WordLength="128" WordSwap="0"/>
+            	 <Item Port="27288"     Caption="EQEDSData           "  WordLength="128" WordSwap="0"/>
+            	 <item Port="27426"     Caption="EQAPCData           "  WordLength="135" WordSwap="0"/>
+            	  
+			</STRING>
+      </GROUP>
+      <GROUP Name="CCLINK_Roller2 Interface">
+            <PORT1 Name="Input">               
+                <Item Index="1"     Port="00480"   BitIndex="1"    Caption="Door1"                                />  
+                <Item Index="2"     Port="00481"   BitIndex="1"    Caption="Door2"                                />  
+                <Item Index="3"     Port="00482"   BitIndex="1"    Caption="LGlass\nRequ"                         />  
+                <Item Index="4"     Port="00483"   BitIndex="1"    Caption="LGlass\nReady"                        />  
+                <Item Index="5"     Port="00484"   BitIndex="1"    Caption="UGlass\nReq"                          />  
+                <Item Index="6"     Port="00485"   BitIndex="1"    Caption="UGlass\nReady"                        />  
+                <Item Index="7"     Port="00486"   BitIndex="1"    Caption="Exist"                                />
+                <Item Index="8"     Port="00487"   BitIndex="1"    Caption=""                                     />
+                <Item Index="9"     Port="00488"   BitIndex="1"    Caption=""                                     />
+                <Item Index="10"    Port="12272"   BitIndex="0"    Caption=""                                     />
+                <Item Index="11"    Port="12272"   BitIndex="0"    Caption=""                                     />
+                <Item Index="12"    Port="12272"   BitIndex="0"    Caption=""                                     />
+                <Item Index="13"    Port="12272"   BitIndex="0"    Caption=""                                     />
+                <Item Index="14"    Port="12272"   BitIndex="0"    Caption=""                                     />
+                <Item Index="15"    Port="12272"   BitIndex="0"    Caption=""                                     />
+                <Item Index="16"    Port="00495"   BitIndex="1"    Caption="Alarm Occer"                          />
+            </PORT1>
+            <PORT2 Name="Output">
+                <Item Index="1"     Port="02496"   BitIndex="1"    Caption="RtPut\nComp"                          />
+                <Item Index="2"     Port="02497"   BitIndex="1"    Caption="RtPut\nBusy"                          />
+                <Item Index="3"     Port="02498"   BitIndex="1"    Caption="RtPut\nGlsReq"                        />
+                <Item Index="4"     Port="02499"   BitIndex="1"    Caption="RtGet\nComp"                          />
+                <Item Index="5"     Port="02500"   BitIndex="1"    Caption="RtGet\nBusy"                          />
+                <Item Index="6"     Port="02501"   BitIndex="1"    Caption="RtGetGlsques"                         />
+                <Item Index="7"     Port="02502"   BitIndex="1"    Caption="Recipe1"                              />
+                <Item Index="8"     Port="02503"   BitIndex="1"    Caption="Recipe2"                              />
+                <Item Index="9"     Port="02504"   BitIndex="1"    Caption="Recipe3"                              />
+                <Item Index="10"    Port="02505"   BitIndex="1"    Caption="Recipe4"                              />
+                <Item Index="11"    Port="11033"   BitIndex="0"    Caption=""                                     />
+                <Item Index="12"    Port="11034"   BitIndex="0"    Caption=""                                     />
+                <Item Index="13"    Port="11035"   BitIndex="0"    Caption=""                                     />
+                <Item Index="14"    Port="01295"   BitIndex="0"    Caption=""                                     />
+                <Item Index="15"    Port="01296"   BitIndex="0"    Caption=""                                     />
+                <Item Index="16"    Port="01289"   BitIndex="0"    Caption=""                  />
+            </PORT2>
+      </GROUP>                                      
+      <GROUP Name="CCLINK_LD Mask CST">
+            <PORT1 Name="Input">
+                <Item Index="1"     Port="00256"   BitIndex="1"    Caption="Door Lower"/>
+                <Item Index="2"     Port="00258"   BitIndex="1"    Caption="CST Exists1"/>
+                <Item Index="3"     Port="00259"   BitIndex="1"    Caption="CST Exists2"/>
+                <Item Index="4"     Port="00262"   BitIndex="1"    Caption="Slot 1\nGlass Exist"/>
+                <Item Index="5"     Port="00263"   BitIndex="1"    Caption="Slot 2\nGlass Exist"/>
+                <Item Index="6"     Port="00264"   BitIndex="1"    Caption="Slot 3\nGlass Exist"/>
+                <Item Index="7"     Port="00265"   BitIndex="1"    Caption="Slot 4\nGlass Exist"/>
+                <Item Index="8"     Port="00266"   BitIndex="1"    Caption="Fork Sensor"/>
+                <Item Index="9"     Port="00267"   BitIndex="1"    Caption="Clamp On\nSensor 1"/>
+                <Item Index="10"    Port="00269"   BitIndex="1"    Caption="Clamp On\nSensor 2"/>
+                <Item Index="11"    Port="00268"   BitIndex="1"    Caption="Clamp Off\nSensor 1"/>
+                <Item Index="12"    Port="00270"   BitIndex="1"    Caption="Clamp Off\nSensor 2"/>
+                <Item Index="13"    Port="00279"   BitIndex="1"    Caption="CST In Sensor"/>
+                <Item Index="14"    Port="00280"   BitIndex="1"    Caption="CST Out Sensor"/>
+                <Item Index="15"    Port="00281"   BitIndex="1"    Caption="CST Complete\nSensor"/>
+                <Item Index="16"    Port=""        BitIndex="1"    Caption=""/>
+            </PORT1>
+            <PORT2 Name="Output">
+                <Item Index="1"     Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="2"     Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="3"     Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="4"     Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="5"     Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="6"     Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="7"     Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="8"     Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="9"     Port="01288"   BitIndex="1"    Caption="Clamp On"/>
+                <Item Index="10"    Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="11"    Port="01289"   BitIndex="1"    Caption="Clamp Off"/>
+                <Item Index="12"    Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="13"    Port="01294"   BitIndex="1"    Caption="CST In"/>
+                <Item Index="14"    Port="01295"   BitIndex="1"    Caption="CST Out"/>
+                <Item Index="15"    Port="01296"   BitIndex="1"    Caption="CST Complete"/>
+                <Item Index="16"    Port=""        BitIndex="1"    Caption=""/>
+            </PORT2>
+      </GROUP>
+      <GROUP Name="CCLINK_LD Mask Alignment">
+            <PORT1 Name="Input">
+                <Item Index="1"     Port="00257"   BitIndex="1"    Caption="Door Upper"/>
+                <Item Index="2"     Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="3"     Port="00261"   BitIndex="1"    Caption="Al Glass Exist"/>
+                <Item Index="4"     Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="5"     Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="6"     Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="7"     Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="8"     Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="9"     Port="00271"   BitIndex="1"    Caption="Clamp On\nSensor 1"/>
+                <Item Index="10"    Port="00273"   BitIndex="1"    Caption="Clamp On\nSensor 2"/>
+                <Item Index="11"    Port="00275"   BitIndex="1"    Caption="Clamp On\nSensor 3"/>
+                <Item Index="12"    Port="00277"   BitIndex="1"    Caption="Clamp On\nSensor 4"/>
+                <Item Index="13"    Port="00272"   BitIndex="1"    Caption="Clamp Off\nSensor 1"/>
+                <Item Index="14"    Port="00274"   BitIndex="1"    Caption="Clamp Off\nSensor 2"/>
+                <Item Index="15"    Port="00276"   BitIndex="1"    Caption="Clamp Off\nSensor 1"/>
+                <Item Index="16"    Port="00278"   BitIndex="1"    Caption="Clamp Off\nSensor 2"/>
+            </PORT1>
+            <PORT2 Name="Output">
+                <Item Index="1"     Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="2"     Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="3"     Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="4"     Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="5"     Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="6"     Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="7"     Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="8"     Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="9"     Port="01290"   BitIndex="1"    Caption="Clamp On 1"/>
+                <Item Index="10"    Port="01292"   BitIndex="1"    Caption="Clamp On 2"/>
+                <Item Index="11"    Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="12"    Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="13"    Port="01291"   BitIndex="1"    Caption="Clamp Off 1"/>
+                <Item Index="14"    Port="01293"   BitIndex="1"    Caption="Clamp Off 2"/>
+                <Item Index="15"    Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="16"    Port=""        BitIndex="1"    Caption=""/>
+            </PORT2>
+      </GROUP>
+      <GROUP Name="CCLINK_ULD Mask CST">
+            <PORT1 Name="Input">
+                <Item Index="1"     Port="00192"   BitIndex="1"    Caption="Door Lower"/>
+                <Item Index="2"     Port="00194"   BitIndex="1"    Caption="CST Exists1"/>
+                <Item Index="3"     Port="00195"   BitIndex="1"    Caption="CST Exists2"/>
+                <Item Index="4"     Port="00198"   BitIndex="1"    Caption="Slot 1\nGlass Exist"/>
+                <Item Index="5"     Port="00199"   BitIndex="1"    Caption="Slot 2\nGlass Exist"/>
+                <Item Index="6"     Port="00200"   BitIndex="1"    Caption="Slot 3\nGlass Exist"/>
+                <Item Index="7"     Port="00201"   BitIndex="1"    Caption="Slot 4\nGlass Exist"/>
+                <Item Index="8"     Port="00202"   BitIndex="1"    Caption="Fork Sensor"/>
+                <Item Index="9"     Port="00203"   BitIndex="1"    Caption="Clamp On\nSensor 1"/>
+                <Item Index="10"    Port="00205"   BitIndex="1"    Caption="Clamp On\nSensor 2"/>
+                <Item Index="11"    Port="00204"   BitIndex="1"    Caption="Clamp Off\nSensor 1"/>
+                <Item Index="12"    Port="00206"   BitIndex="1"    Caption="Clamp Off\nSensor 2"/>
+                <Item Index="13"    Port="00215"   BitIndex="1"    Caption="CST In Sensor"/>
+                <Item Index="14"    Port="00216"   BitIndex="1"    Caption="CST Out Sensor"/>
+                <Item Index="15"    Port="00217"   BitIndex="1"    Caption="CST Complete\nSensor"/>
+                <Item Index="16"    Port=""        BitIndex="1"    Caption=""/>
+            </PORT1>
+            <PORT2 Name="Output">
+                <Item Index="1"     Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="2"     Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="3"     Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="4"     Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="5"     Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="6"     Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="7"     Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="8"     Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="9"     Port="01224"   BitIndex="1"    Caption="Clamp On"/>
+                <Item Index="10"    Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="11"    Port="01225"   BitIndex="1"    Caption="Clamp Off"/>
+                <Item Index="12"    Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="13"    Port="01230"   BitIndex="1"    Caption="CST In"/>
+                <Item Index="14"    Port="01231"   BitIndex="1"    Caption="CST Out"/>
+                <Item Index="15"    Port="01232"   BitIndex="1"    Caption="CST Complete"/>
+                <Item Index="16"    Port=""        BitIndex="1"    Caption=""/>
+            </PORT2>
+      </GROUP>
+      <GROUP Name="CCLINK_ULD Mask Alignment">
+            <PORT1 Name="Input">
+                <Item Index="1"     Port="00193"   BitIndex="1"    Caption="Door Upper"/>
+                <Item Index="2"     Port="00197"   BitIndex="1"    Caption="Al Glass Exist"/>
+                <Item Index="3"     Port="00218"   BitIndex="1"    Caption="HOME OK"/>
+				<Item Index="4"     Port="00219"   BitIndex="1"    Caption="SV ALARM"/>
+                <Item Index="5"     Port="00220"   BitIndex="1"    Caption="0 Degree"/>
+                <Item Index="6"     Port="00221"   BitIndex="1"    Caption="Positive Limit"/>
+                <Item Index="7"     Port="00222"   BitIndex="1"    Caption="45 Degree"/>
+                <Item Index="8"     Port="00223"   BitIndex="1"    Caption="Negative Limit"/>
+                <Item Index="9"     Port="00207"   BitIndex="1"    Caption="Clamp On\nSensor 1"/>
+                <Item Index="10"    Port="00209"   BitIndex="1"    Caption="Clamp On\nSensor 2"/>
+                <Item Index="11"    Port="00211"   BitIndex="1"    Caption="Clamp On\nSensor 3"/>
+                <Item Index="12"    Port="00213"   BitIndex="1"    Caption="Clamp On\nSensor 4"/>
+                <Item Index="13"    Port="00208"   BitIndex="1"    Caption="Clamp Off\nSensor 1"/>
+                <Item Index="14"    Port="00210"   BitIndex="1"    Caption="Clamp Off\nSensor 2"/>
+                <Item Index="15"    Port="00212"   BitIndex="1"    Caption="Clamp Off\nSensor 1"/>
+                <Item Index="16"    Port="00214"   BitIndex="1"    Caption="Clamp Off\nSensor 2"/>
+            </PORT1>
+            <PORT2 Name="Output">
+                <Item Index="1"     Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="2"     Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="3"     Port="02239"   BitIndex="1"    Caption="Servo On"/>
+                <Item Index="4"     Port="02234"   BitIndex="1"    Caption="Turn Start"/>
+                <Item Index="5"     Port="02235"   BitIndex="1"    Caption="Turn 0 Degree"/>
+                <Item Index="6"     Port="02236"   BitIndex="1"    Caption="Turn 45 Degree"/>
+                <Item Index="7"     Port="02237"   BitIndex="1"    Caption="Arst"/>
+                <Item Index="8"     Port="02238"   BitIndex="1"    Caption="Emos"/>
+                <Item Index="9"     Port="02226"   BitIndex="1"    Caption="Clamp On 1"/>
+                <Item Index="10"    Port="02228"   BitIndex="1"    Caption="Clamp On 2"/>
+                <Item Index="11"    Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="12"    Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="13"    Port="01227"   BitIndex="1"    Caption="Clamp Off 1"/>
+                <Item Index="14"    Port="01229"   BitIndex="1"    Caption="Clamp Off 2"/>
+                <Item Index="15"    Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="16"    Port=""        BitIndex="1"    Caption=""/>
+            </PORT2>
+      </GROUP>
+      <GROUP Name="CCLINK_Laser Mark Port">
+            <PORT1 Name="Input">
+                <Item Index="1"     Port="00320"   BitIndex="1"    Caption="Door Upper"/>
+                <Item Index="2"     Port="00321"   BitIndex="1"    Caption="Door Lower"/>
+                <Item Index="3"     Port="00325"   BitIndex="1"    Caption="Glass Exist"/>
+                <Item Index="4"     Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="5"     Port="00326"   BitIndex="1"    Caption="Fork Sensor"/>
+                <Item Index="6"     Port="00322"   BitIndex="1"    Caption="CST In Sensor"/>
+                <Item Index="7"     Port="00323"   BitIndex="1"    Caption="CST Out Sensor"/>
+                <Item Index="8"     Port="00324"   BitIndex="1"    Caption="CST Complete\nSensor"/>
+                <Item Index="9"     Port="00327"   BitIndex="1"    Caption="Clamp On\nSensor 1"/>
+                <Item Index="10"    Port="00329"   BitIndex="1"    Caption="Clamp On\nSensor 2"/>
+                <Item Index="11"    Port="00331"   BitIndex="1"    Caption="Clamp On\nSensor 3"/>
+                <Item Index="12"    Port="00333"   BitIndex="1"    Caption="Clamp On\nSensor 4"/>
+                <Item Index="13"    Port="00328"   BitIndex="1"    Caption="Clamp Off\nSensor 1"/>
+                <Item Index="14"    Port="00330"   BitIndex="1"    Caption="Clamp Off\nSensor 2"/>
+                <Item Index="15"    Port="00332"   BitIndex="1"    Caption="Clamp Off\nSensor 1"/>
+                <Item Index="16"    Port="00334"   BitIndex="1"    Caption="Clamp Off\nSensor 2"/>
+            </PORT1>
+            <PORT2 Name="Output">
+                <Item Index="1"     Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="2"     Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="3"     Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="4"     Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="5"     Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="6"     Port="01340"   BitIndex="1"    Caption="CST In"/>
+                <Item Index="7"     Port="01341"   BitIndex="1"    Caption="CST Out"/>
+                <Item Index="8"     Port="01342"   BitIndex="1"    Caption="CST Complete"/>
+                <Item Index="9"     Port="01336"   BitIndex="1"    Caption="Clamp On 1"/>
+                <Item Index="10"    Port="01338"   BitIndex="1"    Caption="Clamp On 2"/>
+                <Item Index="11"    Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="12"    Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="13"    Port="01337"   BitIndex="1"    Caption="Clamp Off 1"/>
+                <Item Index="14"    Port="01339"   BitIndex="1"    Caption="Clamp Off 2"/>
+                <Item Index="15"    Port=""        BitIndex="1"    Caption=""/>
+                <Item Index="16"    Port=""        BitIndex="1"    Caption=""/>
+            </PORT2>
+      </GROUP>
+      <GROUP Name="CCLINK_Sankyo Robot_1_X">
+            <PORT1 Name="Input1">
+                <Item Index="1"     Port="00000"   BitIndex="1"    Caption="Motion\nCMD CD1"                 />
+                <Item Index="2"     Port="00001"   BitIndex="1"    Caption="Motion\nCMD CD2"                 />
+                <Item Index="3"     Port="00002"   BitIndex="1"    Caption="Motion\nCMD CD4"                 />
+                <Item Index="4"     Port="00003"   BitIndex="1"    Caption="Motion\nCMD CD8"                 />
+                <Item Index="5"     Port="00004"   BitIndex="1"    Caption="Motion\nCMD CD16"                />
+                <Item Index="6"     Port="00005"   BitIndex="1"    Caption="Motion\nCMD CD32"                />
+                <Item Index="7"     Port="00006"   BitIndex="1"    Caption="Motion\nStage TY CD1"          />
+                <Item Index="8"     Port="00007"   BitIndex="1"    Caption="Motion\nPos CD1"                 />
+                <Item Index="9"     Port="00008"   BitIndex="1"    Caption="Motion\nPos CD2"                 />
+                <Item Index="10"    Port="00009"   BitIndex="1"    Caption="Motion\nPos CD4"                 />
+                <Item Index="11"    Port="00010"   BitIndex="1"    Caption="Motion\nPos CD8"                 />
+                <Item Index="12"    Port="00011"   BitIndex="1"    Caption="Motion\nPos CD16"                />
+                <Item Index="13"    Port="00012"   BitIndex="1"    Caption="Motion\nAdd CD1"                 />
+                <Item Index="14"    Port="00013"   BitIndex="1"    Caption="Motion\nAdd CD2"                 />
+                <Item Index="15"    Port="00014"   BitIndex="1"    Caption="Motion\nAdd CD4"                 />
+                <Item Index="16"    Port="00015"   BitIndex="1"    Caption="Motion\nAdd CD8"                 />
+            </PORT1>
+            <PORT2 Name="Input2">
+                <Item Index="1"     Port="00016"   BitIndex="1"    Caption="Motion\nAdd CD16"                      />
+                <Item Index="2"     Port="00017"   BitIndex="1"    Caption="Motion\nAdd CD32"                      />
+                <Item Index="3"     Port="00018"   BitIndex="1"    Caption="UppLow\nHand CD1"                      />
+                <Item Index="4"     Port="00019"   BitIndex="1"    Caption="UppLow\nHand CD2"                      />
+                <Item Index="5"     Port="00032"   BitIndex="1"    Caption="Motion\nSpeed CD1"                     />
+                <Item Index="6"     Port="00033"   BitIndex="1"    Caption="Motion\nSpeed CD2"                     />
+                <Item Index="7"     Port="00036"   BitIndex="1"    Caption="Cmd Con\nCheck Req"           />
+                <Item Index="8"     Port="00037"   BitIndex="1"    Caption="Motion\nIn Execution"                         />
+                <Item Index="9"     Port="00038"   BitIndex="1"    Caption="Motion\nComp"                  />
+                <Item Index="10"    Port="00039"   BitIndex="1"    Caption="Motion\nSub Comp"              />
+                <Item Index="11"    Port="00040"   BitIndex="1"    Caption="Cmd Dec\nCon Ack"     />
+                <Item Index="12"    Port="00042"   BitIndex="1"    Caption="Status\nEnter Req"                  />
+                <Item Index="13"    Port="00048"   BitIndex="1"    Caption="Servo\nIs On"                                 />
+                <Item Index="14"    Port="00049"   BitIndex="1"    Caption="Robot\n Start Enab"                    />
+                <Item Index="15"    Port="00050"   BitIndex="1"    Caption="Robot\n In Oper"                     />
+                <Item Index="16"    Port="00051"   BitIndex="1"    Caption="Robot\n In Hold"                          />
+            </PORT2>
+			<WORDS>
+						<Item Port="40001" Caption="Status Type"                                           />
+        				<Item Port="40002" Caption="Status Sub Type"                                        />
+        				<Item Port="40013" Caption="Error Code"                                       />
+        				<Item Port="50001" Caption="Command Type"                                          />
+        				<Item Port="50002" Caption="Command Sub Type"                                          />
+        				<Item Port="50012" Caption="Command Speed Override"                                />                				
+			</WORDS>			
+      </GROUP>
+      <GROUP Name="CCLINK_Sankyo Robot 2_X">
+            <PORT1 Name="Input3">
+                <Item Index="1"     Port="00053"   BitIndex="1"    Caption="Robot Soft\nAt Home"                      />
+                <Item Index="2"     Port="00054"   BitIndex="1"    Caption="Robot Cont\nRemote Mode"                />
+                <Item Index="3"     Port="00055"   BitIndex="1"    Caption="Robot Cont\nLocal Mode"                 />
+                <Item Index="4"     Port="00056"   BitIndex="1"    Caption="Robot Cont\nTeach Mode"              />
+                <Item Index="5"     Port="00057"   BitIndex="1"    Caption="Sys In\nOper"                    />
+                <Item Index="6"     Port="00063"   BitIndex="1"    Caption="ErrCode\nStrobe"                             />
+                <Item Index="7"     Port="00064"   BitIndex="1"    Caption="R Han\nGlsSensor"          />
+                <Item Index="8"     Port="00065"   BitIndex="1"    Caption="L Han\nGlsSensor"          />
+                <Item Index="9"     Port="00066"   BitIndex="1"    Caption="R Han\nGls Sen Comp"             />
+                <Item Index="10"    Port="00067"   BitIndex="1"    Caption="L Han\nGls Sen Comp"             />
+                <Item Index="11"    Port="00068"   BitIndex="1"    Caption="Err\nCode1"                                   />
+                <Item Index="12"    Port="00069"   BitIndex="1"    Caption="Err\nCode2"                                   />
+                <Item Index="13"    Port="00070"   BitIndex="1"    Caption="Err\nCode4"                                   />
+                <Item Index="14"    Port="00071"   BitIndex="1"    Caption="Err\nCode8"                                   />
+                <Item Index="15"    Port="00072"   BitIndex="1"    Caption="Err\nCode16"                                  />
+                <Item Index="16"    Port="00073"   BitIndex="1"    Caption="Err\nCode32"                                  />
+            </PORT1>
+            <PORT2 Name="Input4">
+                <Item Index="1"     Port="00080"   BitIndex="1"    Caption="R Han Gls\nLoaded"                         />
+                <Item Index="2"     Port="00084"   BitIndex="1"    Caption="R Han Vac\nChuck On"                   />
+                <Item Index="3"     Port="00085"   BitIndex="1"    Caption="R Han Vac\nChuck Off"                  />
+                <Item Index="4"     Port="00086"   BitIndex="1"    Caption="R Han Ads\nCheck"                     />
+                <Item Index="5"     Port="00088"   BitIndex="1"    Caption="L Han Gls\nLoaded"                         />
+                <Item Index="6"     Port="00092"   BitIndex="1"    Caption="L Han Vac\nChuc On"                   />
+                <Item Index="7"     Port="00093"   BitIndex="1"    Caption="L Han Vac\nChuc Off"                  />
+                <Item Index="8"     Port="00094"   BitIndex="1"    Caption="L Han Ads\nCheck"                     />
+                <Item Index="9"     Port=""				 BitIndex="1"    Caption=""                                      />
+                <Item Index="10"    Port=""        BitIndex="1"    Caption=""                                            />
+                <Item Index="11"    Port=""        BitIndex="1"    Caption=""                                            />
+                <Item Index="12"    Port=""        BitIndex="1"    Caption=""                                            />
+                <Item Index="13"    Port=""        BitIndex="1"    Caption=""                                            />
+                <Item Index="14"    Port=""        BitIndex="1"    Caption=""                                            />
+                <Item Index="15"    Port=""        BitIndex="1"    Caption=""                                            />
+                <Item Index="16"    Port=""        BitIndex="1"    Caption=""                                            />
+            </PORT2>
+			<WORDS>
+						<Item Port="40001" Caption="Status Type"                                           />
+        				<Item Port="40002" Caption="Status Sub Type"                                        />
+        				<Item Port="40013" Caption="Error Code"                                       />
+        				<Item Port="50001" Caption="Command Type"                                          />
+        				<Item Port="50002" Caption="Command Sub Type"                                          />
+        				<Item Port="50012" Caption="Command Speed Override"                                />                				
+			</WORDS>			
+      </GROUP>
+      <GROUP Name="CCLINK_Sankyo Robot 1_Y">
+            <PORT1 Name="Output1">
+                <Item Index="1"     Port="01000"   BitIndex="1"    Caption="Cmd Spec\nCD1"                    />
+                <Item Index="2"     Port="01001"   BitIndex="1"    Caption="Cmd Spec\nCD2"                    />
+                <Item Index="3"     Port="01002"   BitIndex="1"    Caption="Cmd Spec\nCD4"                    />
+                <Item Index="4"     Port="01003"   BitIndex="1"    Caption="Cmd Spec\nCD8"                    />
+                <Item Index="5"     Port="01004"   BitIndex="1"    Caption="Cmd Spec\nCD16"                   />
+                <Item Index="6"     Port="01005"   BitIndex="1"    Caption="Cmd Spec\nCD32"                   />
+                <Item Index="7"     Port="01006"   BitIndex="1"    Caption="Stage T\nSpec CD1"                 />
+                <Item Index="8"     Port="01007"   BitIndex="1"    Caption="Pos Spec\nCD1"                    />
+                <Item Index="9"     Port="01008"   BitIndex="1"    Caption="Pos Spec\nCD2"                    />
+                <Item Index="10"    Port="01009"   BitIndex="1"    Caption="Pos Spec\nCD4"                    />
+                <Item Index="11"    Port="01010"   BitIndex="1"    Caption="Pos Spec\nCD8"                    />
+                <Item Index="12"    Port="01011"   BitIndex="1"    Caption="Pos Spec\nCD16"                   />
+                <Item Index="13"    Port="01012"   BitIndex="1"    Caption="Add Spec\nCD1"                    />
+                <Item Index="14"    Port="01013"   BitIndex="1"    Caption="Add Spec\nCD2"                    />
+                <Item Index="15"    Port="01014"   BitIndex="1"    Caption="Add Spec\nCD4"                    />
+                <Item Index="16"    Port="01015"   BitIndex="1"    Caption="Add Spec\nCD8"                    />
+            </PORT1>
+            <PORT2 Name="Output2">
+                <Item Index="1"     Port="01016"   BitIndex="1"    Caption="Add Spe\nCD16"                   />
+                <Item Index="2"     Port="01017"   BitIndex="1"    Caption="Add Spe\nCD32"                   />
+                <Item Index="3"     Port="01018"   BitIndex="1"    Caption="UppLow Hand\nSpe CD1"           />
+                <Item Index="4"     Port="01019"   BitIndex="1"    Caption="UppLow Hand\nSpe CD2"           />
+                <Item Index="5"     Port="01032"   BitIndex="1"    Caption="Speed Over\nCD1"             />
+                <Item Index="6"     Port="01033"   BitIndex="1"    Caption="Speed Over\nCD2"             />
+                <Item Index="7"     Port="01034"   BitIndex="1"    Caption="Motion\nStart"                                />
+                <Item Index="8"     Port="01035"   BitIndex="1"    Caption="Cmd\nConsist"                         />
+                <Item Index="9"     Port="01036"   BitIndex="1"    Caption="Motion\n CompAck"              />
+                <Item Index="10"    Port="01037"   BitIndex="1"    Caption="Motion\n SubCompAck"          />
+                <Item Index="11"    Port="01040"   BitIndex="1"    Caption="Cmd Deci\nConti"         />
+                <Item Index="12"    Port="01041"   BitIndex="1"    Caption="Cmd Can\nFlag"                         />
+                <Item Index="13"    Port="01042"   BitIndex="1"    Caption="Cmd Stage\nNoInter"                  />
+                <Item Index="14"    Port="01048"   BitIndex="1"    Caption="Err Reset"                                   />
+                <Item Index="15"    Port="01049"   BitIndex="1"    Caption="Robot\nInit start"                    />
+                <Item Index="16"    Port="01050"   BitIndex="1"    Caption="Robot\nCycle Stop"                       />
+            </PORT2>
+			<WORDS>
+						<Item Port="40001" Caption="Status Type"                                           />
+        				<Item Port="40002" Caption="Status Sub Type"                                        />
+        				<Item Port="40013" Caption="Error Code"                                       />
+        				<Item Port="50001" Caption="Command Type"                                          />
+        				<Item Port="50002" Caption="Command Sub Type"                                          />
+        				<Item Port="50012" Caption="Command Speed Override"                                />                				
+			</WORDS>			
+      </GROUP>
+      <GROUP Name="CCLINK_Sankyo Robot 2_Y">
+            <PORT1 Name="Output3">
+                <Item Index="1"     Port="01051"   BitIndex="1"    Caption="RbHold\nStop"                        />
+                <Item Index="2"     Port="01052"   BitIndex="1"    Caption="RbHold\nReset"                       />
+                <Item Index="3"     Port="01053"   BitIndex="1"    Caption="Rb Soft\nHoming"                       />
+                <Item Index="4"     Port="01063"   BitIndex="1"    Caption="Err\nCode Ack"                              />
+                <Item Index="5"     Port="01064"   BitIndex="1"    Caption="R H Gls\nSen"                        />
+                <Item Index="6"     Port="01065"   BitIndex="1"    Caption="L H Gls\nSen"                        />
+                <Item Index="7"     Port="01066"   BitIndex="1"    Caption="R H Gls\nSen CompAck"         />
+                <Item Index="8"     Port="01067"   BitIndex="1"    Caption="L H Gls\nSen CompAck"         />
+                <Item Index="9"     Port="01084"   BitIndex="1"    Caption="R H Ads\nOn"                    />
+                <Item Index="10"    Port="01085"   BitIndex="1"    Caption="R H Ads\nOff"                   />
+                <Item Index="11"    Port="01090"   BitIndex="1"    Caption="L H Ads\nOn"                    />
+                <Item Index="12"    Port="01091"   BitIndex="1"    Caption="L H Ads\nOff"                   />
+                <Item Index="13"    Port=""        BitIndex="1"    Caption=""                                            />
+                <Item Index="14"    Port=""        BitIndex="1"    Caption=""                                            />
+                <Item Index="15"    Port=""        BitIndex="1"    Caption=""                                            />
+                <Item Index="16"    Port=""        BitIndex="1"    Caption=""                                            />
+            </PORT1>
+            <PORT2 Name="Output4">
+            </PORT2>
+			<WORDS>
+						<Item Port="40001" Caption="Status Type"                                           />
+        				<Item Port="40002" Caption="Status Sub Type"                                        />
+        				<Item Port="40013" Caption="Error Code"                                       />
+        				<Item Port="50001" Caption="Command Type"                                          />
+        				<Item Port="50002" Caption="Command Sub Type"                                          />
+        				<Item Port="50012" Caption="Command Speed Override"                                />                				
+			</WORDS>			
+      </GROUP>
+       <GROUP Name="Sim_Test">
+            <PORT1 Name="Output3">
+                <Item Index="1"     Port="60004"   BitIndex="1"    Caption="ULD\nDisable"                        />
+                <Item Index="2"     Port="60005"   BitIndex="1"    Caption="ULD In"                       />
+                <Item Index="3"     Port="60006"   BitIndex="1"    Caption="Uld Out"                       />
+                <Item Index="4"     Port="60007"   BitIndex="1"    Caption="LD\nDisable"                              />
+                <Item Index="5"     Port="60009"   BitIndex="1"    Caption="LD Out"                        />
+                <Item Index="6"     Port="60010"   BitIndex="1"    Caption="LD In"                        />
+                <Item Index="7"     Port="60012"   BitIndex="1"    Caption="LaeMar\nDisable"         />
+                <Item Index="8"     Port="60013"   BitIndex="1"    Caption="LaeMar\nIn"         />
+                <Item Index="9"     Port="60014"   BitIndex="1"    Caption="LaeMar\nOut"                    />
+                <Item Index="10"    Port="60018"   BitIndex="1"    Caption="LaeMar\nIntDisable"                   />
+                <Item Index="11"    Port="60015"   BitIndex="1"    Caption="LD Alig\n Disable"                    />
+                <Item Index="12"    Port="60016"   BitIndex="1"    Caption="ULD Alig\n Disable"                   />
+                <Item Index="13"    Port="60017"   BitIndex="1"    Caption="Reset\nAutoRoll"                                            />
+                <Item Index="14"    Port=""        BitIndex="1"    Caption=""                                            />
+                <Item Index="15"    Port=""        BitIndex="1"    Caption=""                                            />
+                <Item Index="16"    Port=""        BitIndex="1"    Caption=""                                            />
+            </PORT1>
+            <PORT2 Name="Output4">
+            	  <Item Index="1"     Port="60019"   BitIndex="1"    Caption="VI OK"                        />
+                <Item Index="2"     Port="60020"   BitIndex="1"    Caption="VI NG"                       />
+                <Item Index="3"     Port="60021"   BitIndex="1"    Caption="VI Hold"                       />
+                <Item Index="4"     Port="60022"   BitIndex="0"    Caption=""                        />
+                <Item Index="5"     Port="60009"   BitIndex="0"    Caption=""           />
+                <Item Index="6"     Port="60010"   BitIndex="0"    Caption=""          />
+                <Item Index="7"     Port="60012"   BitIndex="0"    Caption=""     />
+                <Item Index="8"     Port="60013"   BitIndex="0"    Caption=""/>
+                <Item Index="9"     Port="60014"   BitIndex="0"    Caption=""            />
+                <Item Index="10"    Port="60018"   BitIndex="0"    Caption=""                  />
+                <Item Index="11"    Port="60015"   BitIndex="0"    Caption=""                  />
+                <Item Index="12"    Port="60016"   BitIndex="0"    Caption=""                  />
+                <Item Index="13"    Port="60017"   BitIndex="0"    Caption=""                                        />
+                <Item Index="14"    Port=""        BitIndex="0"    Caption=""                                            />
+                <Item Index="15"    Port=""        BitIndex="0"    Caption=""                                            />
+                <Item Index="16"    Port=""        BitIndex="0"    Caption=""                                            />
+            </PORT2>
+			<WORDS>
+						<Item Port="40001" Caption="Status Type"                                           />
+        				<Item Port="40002" Caption="Status Sub Type"                                        />
+        				<Item Port="40013" Caption="Error Code"                                       />
+        				<Item Port="50001" Caption="Command Type"                                          />
+        				<Item Port="50002" Caption="Command Sub Type"                                          />
+        				<Item Port="50012" Caption="Command Speed Override"                                />                				
+			</WORDS>			
+      </GROUP>     
+    </BITS>
+</PLCVIEW>

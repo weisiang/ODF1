@@ -1,0 +1,91 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace CommonData.HIRATA
+{
+    public enum AlignerPreAction { None, WaitHome, AlignerHome , SetToAngle, VuccumOff1 , PutAligner, VuccumOn,
+        WaitVuccumOn, FindNotch, WaitFindNotch , OcrConnect , WaitConnect , ReadOcr, WaitReadOct , ToAngle , 
+        WaitToAngle , VuccumOff2 , WaitVuccomOff2 , GetAligner,};
+    public enum AlignerIJPAction { None, VuccumOff1, AlignerHome, PutAligner , VuccumOn, Alignment , GetAligner, };
+    public enum RobotSideBitAddressOffset
+    {
+        Active_Standby = 0, Load_Only_Reply, Unload_Only_Reply, Exchange_Reply, Receipt_Complete, Interlock_2,
+        Work_Presence_Upper_Arm
+            , Work_Presence_Low_Arm, Spare, Robot_Delivery_Ready, Spare1, Stop_Supply, Force_Complete_Request, Force_Initial_Request,
+    }
+    public enum EqSideBitAddressOffset
+    {
+        Equipment_Ready = 0, Load_Only_Req, Unload_Only_Req, Exchange_Req, Transfer_Complete, Interlock_1, Transfer_Start,
+        Stop_Supply, Force_Initial_Complete, Work_Presence, Spare1, Stage_Delivery_Ready, Spare3, Spare4,
+    };
+    public enum GifTimeout { All = 0, T1 = 2047, T3 = 2048, ForceIni = 2049, ForceCom = 2050, };
+
+    public enum DataRequestKey { ByWorkNo = 1 , ByWorkId ,}
+    public enum DataCheckRule { Recipe = 1, id = 2, slot = 4, seq = 8, };
+    public enum WorkType { Engineer, Dummy, Test, Production, Develop, Monitoring, }
+    public enum ProductCategory{None , Wafer = 1, Glass, Mask, Dummy, };
+    public enum GlassJudge { OK, NG, Repair, Rework, Scrap, };
+    public enum OCRRead { NotNeed, Need, };
+    public enum OCRResult {None = -1 ,  OK, Mismatch, Fail, };
+    public enum AssambleNeed { NotNeed, Need, };
+    public enum AssambleResult { NotComplete, Complete, };
+    public enum BcMsgType { Interval, Continue };
+    public enum BCPortCommand
+    {
+        NoAction = 0, End, Cancel, Finish, Retry, Loader, Unloader, LDUD, Start, Reserve, Pause, Resume,
+    }
+    public enum OCRMode { None = -1, SkipRead = 0, ErrorSkip, ErrorHold, ErrorReturn, };
+    public enum RemoveDataType { WorkRemove = 1, TakeOut, };
+    public enum RecipeBodyReportType { New = 1, Delete, Modity, Query, }
+    public enum EqInterFaceType { None, Load, Unload, Exchange, };
+    public enum ApiFoupStatus { None, FoupPlace, FoupRemove, };
+    public enum OdfFlow { Flow1_1=1, Flow1_2, Flow2_1, Flow2_2, Flow3 ,  FLow4_1, Flow4_2 };
+    public enum EqNode { SDP1 = 3  , SDP2 =4  , IJP =5 , VAS =6 ,UV1 = 7 , SDP3 =8  , AOI =9 ,  UV2 = 10};
+    public enum EqGifTimeChartId
+    {
+        None = 0,
+        TIMECHART_ID_SDP1 = 1,
+        TIMECHART_ID_SDP2 = 2,
+        TIMECHART_ID_IJP = 3,
+        TIMECHART_ID_VAS_UP = 4,
+        TIMECHART_ID_VAS_DOWN = 5,
+        TIMECHART_ID_UV_1 = 6,
+        TIMECHART_ID_SDP3 = 7,
+        TIMECHART_ID_AOI = 8,
+        TIMECHART_ID_UV_2 = 9,
+    }
+    public enum EqId
+    {
+        None = 0,
+        SDP1 = 1,
+        SDP2 = 2,
+        IJP = 3,
+        VAS = 4,
+        UV_1 = 5,
+        SDP3 = 6,
+        AOI = 7,
+        UV_2 = 8,
+    }
+    public enum BufferSlotType { Wafer, Glass };
+    public enum AllDevice
+    {
+        None=0,
+        LP=1,
+        Buffer,
+        UP,
+        Aligner,
+        SDP1 ,
+        SDP2 ,
+        IJP ,
+        VAS ,
+        UV_1 ,
+        SDP3 ,
+        AOI ,
+        UV_2 , 
+    }
+    public enum SignalTowerColor { All , Red , Yellow , Green , Blue, };
+    public enum SignalTowerControl { On , Off , Flash , };
+    public enum RobotJobAction { None, preView, Clean,DropTop };
+}

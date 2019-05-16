@@ -1,0 +1,10 @@
+F:\T450\ODF_exit_20190413\Code - 20190413_1.0.2.6\Tool\CsvReader_Alarm\CsvReader\bin\Debug\CsvReader.exe.config
+F:\T450\ODF_exit_20190413\Code - 20190413_1.0.2.6\Tool\CsvReader_Alarm\CsvReader\bin\Debug\CsvReader.exe
+F:\T450\ODF_exit_20190413\Code - 20190413_1.0.2.6\Tool\CsvReader_Alarm\CsvReader\bin\Debug\CsvReader.pdb
+F:\T450\ODF_exit_20190413\Code - 20190413_1.0.2.6\Tool\CsvReader_Alarm\CsvReader\bin\Debug\KgsCommon.dll
+F:\T450\ODF_exit_20190413\Code - 20190413_1.0.2.6\Tool\CsvReader_Alarm\CsvReader\obj\x86\Debug\CsvReader.csprojResolveAssemblyReference.cache
+F:\T450\ODF_exit_20190413\Code - 20190413_1.0.2.6\Tool\CsvReader_Alarm\CsvReader\obj\x86\Debug\CsvReader.Form1.resources
+F:\T450\ODF_exit_20190413\Code - 20190413_1.0.2.6\Tool\CsvReader_Alarm\CsvReader\obj\x86\Debug\CsvReader.Properties.Resources.resources
+F:\T450\ODF_exit_20190413\Code - 20190413_1.0.2.6\Tool\CsvReader_Alarm\CsvReader\obj\x86\Debug\CsvReader.csproj.GenerateResource.Cache
+F:\T450\ODF_exit_20190413\Code - 20190413_1.0.2.6\Tool\CsvReader_Alarm\CsvReader\obj\x86\Debug\CsvReader.exe
+F:\T450\ODF_exit_20190413\Code - 20190413_1.0.2.6\Tool\CsvReader_Alarm\CsvReader\obj\x86\Debug\CsvReader.pdb

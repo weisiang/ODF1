@@ -1,0 +1,8 @@
+<PLC>
+    <Input>
+    </Input>
+    <Output>
+        <Block Device="W" Address="0x0" Port="00000" Extension="31232" WriteOnly="0"/>
+        <Block Device="B" Address="0x0" Port="32768" Extension="4608" WriteOnly="0"/>
+    </Output>
+</PLC>

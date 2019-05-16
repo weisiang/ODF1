@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Color KGS_TYPE="L" KGS_ITEM_NUMBER="5">
+    <Case1 KGS_TYPE="A" KGS_ITEM_NUMBER="0" Red="255" Blue="255" Green="255"/>
+    <Case2 KGS_TYPE="A" KGS_ITEM_NUMBER="0" Red="199" Blue="197" Green="213"/>
+    <Case3 KGS_TYPE="A" KGS_ITEM_NUMBER="0" Red="135" Blue="233" Green="197"/>
+    <Case4 KGS_TYPE="A" KGS_ITEM_NUMBER="0" Red="255" Blue="0" Green="0"/>
+    <Case5 KGS_TYPE="A" KGS_ITEM_NUMBER="0" Red="0" Blue="0" Green="255"/>
+</Color>

@@ -1,0 +1,55 @@
+<Devices>
+    <MX External="MemoryIOMxDevice">
+        <Areas>
+            <Area ID="A"  IsHex="0" IsBit="0" InputOnly="0" />
+            <Area ID="B"  IsHex="1" IsBit="1" InputOnly="0" />
+            <Area ID="CC" IsHex="0" IsBit="1" InputOnly="0" />
+            <Area ID="CN" IsHex="0" IsBit="0" InputOnly="0" />
+            <Area ID="CS" IsHex="0" IsBit="1" InputOnly="0" />
+            <Area ID="D"  IsHex="0" IsBit="0" InputOnly="0" />
+            <Area ID="L"  IsHex="0" IsBit="1" InputOnly="0" />
+            <Area ID="M"  IsHex="0" IsBit="1" InputOnly="0" />
+            <Area ID="R"  IsHex="0" IsBit="0" InputOnly="0" />
+            <Area ID="S"  IsHex="0" IsBit="1" InputOnly="0" />
+            <Area ID="V"  IsHex="0" IsBit="0" InputOnly="0" />
+            <Area ID="W"  IsHex="1" IsBit="0" InputOnly="0" />
+            <Area ID="WW" IsHex="1" IsBit="0" InputOnly="0" />
+            <Area ID="WR" IsHex="1" IsBit="0" InputOnly="0" />
+            <Area ID="X"  IsHex="1" IsBit="1" InputOnly="0" />
+            <Area ID="Y"  IsHex="1" IsBit="1" InputOnly="0" />
+            <Area ID="Z"  IsHex="0" IsBit="0" InputOnly="0" />
+            <Area ID="ZR" IsHex="0" IsBit="0" InputOnly="0" />
+        </Areas>
+        <Address Min="0x00" Max="0x0"/>
+        <Extension Min="0x01" Max="0x0"/>
+    </MX>
+    <OMRON External="MemoryIOOmronDevice">
+        <Areas>
+            <Area ID="CIO"  InputOnly="0" />
+            <Area ID="DM"   InputOnly="0" />
+            <Area ID="E0DM" InputOnly="0" />
+            <Area ID="E1DM" InputOnly="0" />
+            <Area ID="E2DM" InputOnly="0" />
+            <Area ID="E3DM" InputOnly="0" />
+            <Area ID="E4DM" InputOnly="0" />
+            <Area ID="E5DM" InputOnly="0" />
+            <Area ID="E6DM" InputOnly="0" />
+            <Area ID="E7DM" InputOnly="0" />
+            <Area ID="E8DM" InputOnly="0" />
+            <Area ID="E9DM" InputOnly="0" />
+            <Area ID="EADM" InputOnly="0" />
+            <Area ID="EBDM" InputOnly="0" />
+            <Area ID="ECDM" InputOnly="0" />
+            <Area ID="EDDM" InputOnly="0" />
+            <Area ID="EEDM" InputOnly="0" />
+            <Area ID="EFDM" InputOnly="0" />
+            <Area ID="WR"   InputOnly="0" />
+        </Areas>
+        <Address Min="0x00" Max="0x0"/>
+        <Extension Min="0x01" Max="0x0"/>
+    </OMRON>
+    <VIRTUAL>
+    </VIRTUAL>
+    <OTHERS>
+    </OTHERS>
+</Devices>

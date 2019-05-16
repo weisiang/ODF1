@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Data>
+    <Item RepCode="1001" DeviceCode="01" Unit="0" Level="S" Msg="PORT_Checksun error" Device="P" Type="01"/>
+    <Item RepCode="1002" DeviceCode="02" Unit="0" Level="S" Msg="PORT_E_GETSLOT_1_5 String Length Error" Device="P" Type="01"/>
+    <Item RepCode="1003" DeviceCode="03" Unit="0" Level="S" Msg="PORT_E_GETSLOT_6_10 String Length Error" Device="P" Type="01"/>
+    <Item RepCode="1004" DeviceCode="04" Unit="0" Level="S" Msg="PORT_E_GETSLOT_11_15 String Length Error" Device="P" Type="01"/>
+    <Item RepCode="1005" DeviceCode="05" Unit="0" Level="S" Msg="PORT_E_GETSLOT_16_20 String Length Error" Device="P" Type="01"/>
+    <Item RepCode="1006" DeviceCode="06" Unit="0" Level="S" Msg="PORT_E_GETSLOT_21_25 String Length Error" Device="P" Type="01"/>
+    <Item RepCode="1007" DeviceCode="07" Unit="0" Level="S" Msg="PORT_E_GETSLOT_26_30String Length Error" Device="P" Type="01"/>
+    <Item RepCode="1008" DeviceCode="08" Unit="0" Level="S" Msg="PORT_Get LP Wafer Thickness Over Setp" Device="P" Type="01"/>
+    <Item RepCode="1009" DeviceCode="09" Unit="0" Level="S" Msg="PORT_Get LP Wafer Position Over Setp" Device="P" Type="01"/>
+    <Item RepCode="1010" DeviceCode="01" Unit="0" Level="S" Msg="ALIGNER_Device Error" Device="Aligner" Type="01"/>
+    <Item RepCode="1011" DeviceCode="02" Unit="0" Level="S" Msg="BARCODE_ReadID Error : XXXX" Device="Barcode" Type="01"/>
+    <Item RepCode="1012" DeviceCode="03" Unit="0" Level="S" Msg="OCR_Connect Error" Device="OCRReader" Type="01"/>
+    <Item RepCode="1013" DeviceCode="01" Unit="0" Level="S" Msg="IO_Set Buzzer Fail" Device="IO" Type="01"/>
+    <Item RepCode="1014" DeviceCode="02" Unit="0" Level="S" Msg="IO_Set SignalTower Fail" Device="IO" Type="01"/>
+    <Item RepCode="1015" DeviceCode="03" Unit="0" Level="S" Msg="IO_Set Interlock Fail" Device="IO" Type="01"/>
+    <Item RepCode="1016" DeviceCode="04" Unit="0" Level="S" Msg="IO_Set FFU Fail" Device="IO" Type="01"/>
+    <Item RepCode="1017" DeviceCode="01" Unit="0" Level="S" Msg="ROBOT_Robot S1 Status OverSpec" Device="Robot" Type="01"/>
+    <Item RepCode="1018" DeviceCode="02" Unit="0" Level="S" Msg="ROBOT_Not in ES and Stop signal is not On" Device="Robot" Type="01"/>
+    <Item RepCode="1019" DeviceCode="03" Unit="0" Level="S" Msg="ROBOT_Stop signal is On" Device="Robot" Type="01"/>
+    <Item RepCode="1020" DeviceCode="04" Unit="0" Level="S" Msg="ROBOT_In ES" Device="Robot" Type="01"/>
+    <Item RepCode="1021" DeviceCode="05" Unit="0" Level="S" Msg="ROBOT_In ES and STOP signal is ON" Device="Robot" Type="01"/>
+    <Item RepCode="1022" DeviceCode="06" Unit="0" Level="S" Msg="ROBOT_Robot S2 Status OverSpec" Device="Robot" Type="01"/>
+    <Item RepCode="1023" DeviceCode="07" Unit="0" Level="S" Msg="ROBOT_Neither A-CAL nor positioning has been completed" Device="Robot" Type="01"/>
+    <Item RepCode="1024" DeviceCode="08" Unit="0" Level="S" Msg="ROBOT_Z-axis zone output(SAFTY ZONE" Device="Robot" Type="01"/>
+    <Item RepCode="1025" DeviceCode="09" Unit="0" Level="S" Msg="ROBOT_Positioning has been completed,A-CAL not completed" Device="Robot" Type="01"/>
+    <Item RepCode="1026" DeviceCode="10" Unit="0" Level="S" Msg="ROBOT_A-CAL has been completed but positioning has not" Device="Robot" Type="01"/>
+    <Item RepCode="1027" DeviceCode="11" Unit="0" Level="S" Msg="ROBOT_The Z-axis coordinate is located at a higher position" Device="Robot" Type="01"/>
+    <Item RepCode="1028" DeviceCode="12" Unit="0" Level="S" Msg="ROBOT_Robot S3 Status OverSpec" Device="Robot" Type="01"/>
+    <Item RepCode="1029" DeviceCode="13" Unit="0" Level="S" Msg="ROBOT_Executing action not command" Device="Robot" Type="01"/>
+    <Item RepCode="1030" DeviceCode="14" Unit="0" Level="S" Msg="ROBOT_Robot S4 Status OverSpec" Device="Robot" Type="01"/>
+    <Item RepCode="1031" DeviceCode="15" Unit="0" Level="S" Msg="ROBOT_Robot Step Fail" Device="Robot" Type="01"/>
+    <Item RepCode="1032" DeviceCode="16" Unit="0" Level="S" Msg="ROBOT_Robot LBD Fail" Device="Robot" Type="01"/>
+    <Item RepCode="1033" DeviceCode="17" Unit="0" Level="S" Msg="ROBOT_Command Retry XX.the ABN Finish on Error Condition" Device="Robot" Type="01"/>
+    <Item RepCode="1034" DeviceCode="18" Unit="0" Level="S" Msg="ROBOT_Robot Set Arm Do_On Fail" Device="Robot" Type="01"/>
+    <Item RepCode="1035" DeviceCode="19" Unit="0" Level="S" Msg="ROBOT_Robot Set Arm Do_Off Fail" Device="Robot" Type="01"/>
+    <Item RepCode="1036" DeviceCode="20" Unit="0" Level="S" Msg="ROBOT_Robot Arm Hand WithOut Wafer" Device="Robot" Type="01"/>
+    <Item RepCode="1037" DeviceCode="21" Unit="0" Level="S" Msg="ROBOT_Robot Arm Hand With Wafer" Device="Robot" Type="01"/>
+    <Item RepCode="1038" DeviceCode="22" Unit="0" Level="S" Msg="ROBOT_Robot LowerArm is Turn , No do this Command" Device="Robot" Type="01"/>
+    <Item RepCode="1039" DeviceCode="23" Unit="0" Level="S" Msg="ROBOT_Robot Arm is Extend , No do this Command" Device="Robot" Type="01"/>
+    <Item RepCode="1040" DeviceCode="87" Unit="0" Level="S" Msg="Command Strcturn Fail, Please Check Command Protocol" Device="API" Type="02"/>
+    <Item RepCode="1041" DeviceCode="88" Unit="0" Level="S" Msg="Command No Supply, Please Check API Protocol" Device="API" Type="02"/>
+    <Item RepCode="1042" DeviceCode="89" Unit="0" Level="S" Msg="No Remote Mode,Could Not do Command" Device="API" Type="02"/>
+    <Item RepCode="1043" DeviceCode="90" Unit="0" Level="S" Msg="Command Length Fail, Please Check API Protocol" Device="API" Type="02"/>
+    <Item RepCode="1044" DeviceCode="91" Unit="0" Level="S" Msg="Command Parameter Fail, Please Check API Protocol" Device="API" Type="02"/>
+    <Item RepCode="1045" DeviceCode="92" Unit="0" Level="S" Msg="Command Object Number Fail, Please Check Object Number" Device="API" Type="02"/>
+    <Item RepCode="1046" DeviceCode="0" Unit="0" Level="S" Msg="ROBOT_is Busy . Could Not do Command" Device="Robot" Type="03"/>
+    <Item RepCode="1047" DeviceCode="1" Unit="0" Level="S" Msg="ROBOT_is Busy . Could Not do Command" Device="Robot" Type="03"/>
+    <Item RepCode="1048" DeviceCode="2" Unit="0" Level="S" Msg="ROBOT_is not Door Open , Could not do Robot Command." Device="Robot" Type="03"/>
+    <Item RepCode="1049" DeviceCode="3" Unit="0" Level="S" Msg="ROBOT_Upper Arm Can't turn" Device="Robot" Type="03"/>
+    <Item RepCode="1050" DeviceCode="4" Unit="0" Level="S" Msg="ROBOT_Can't Do TOP Action." Device="Robot" Type="03"/>
+    <Item RepCode="1051" DeviceCode="5" Unit="0" Level="S" Msg="ROBOT_Device WithOut Wafer" Device="Robot" Type="03"/>
+    <Item RepCode="1052" DeviceCode="6" Unit="0" Level="S" Msg="ROBOT_Device With Wafer" Device="Robot" Type="03"/>
+    <Item RepCode="1053" DeviceCode="7" Unit="0" Level="S" Msg="ROBOT_Device Wafer Broken" Device="Robot" Type="03"/>
+    <Item RepCode="1054" DeviceCode="8" Unit="0" Level="S" Msg="ROBOT_Device Wafer UnKnown" Device="Robot" Type="03"/>
+    <Item RepCode="1055" DeviceCode="9" Unit="0" Level="S" Msg="ROBOT_Device Sensor On Vacuum Off" Device="Robot" Type="03"/>
+    <Item RepCode="1056" DeviceCode="10" Unit="0" Level="S" Msg="ROBOT_Device Sensor Off Vacuum On" Device="Robot" Type="03"/>
+    <Item RepCode="1057" DeviceCode="11" Unit="0" Level="S" Msg="ROBOT_Device With Clamp Error" Device="Robot" Type="03"/>
+    <Item RepCode="1058" DeviceCode="12" Unit="0" Level="S" Msg="ROBOT_Device Wafer Data Error" Device="Robot" Type="03"/>
+    <Item RepCode="1059" DeviceCode="13" Unit="0" Level="S" Msg="ROBOT_Device Case Default" Device="Robot" Type="03"/>
+    <Item RepCode="1060" DeviceCode="14" Unit="0" Level="S" Msg="ROBOT_Shutter door is not opened . Could not do Robot Command." Device="Robot" Type="03"/>
+    <Item RepCode="1061" DeviceCode="15" Unit="0" Level="S" Msg="ROBOT_Don't Action because it is Warpage Wafer type. Robot is dangerous" Device="Robot" Type="03"/>
+    <Item RepCode="1062" DeviceCode="16" Unit="0" Level="S" Msg="ROBOT_Arm is Extend , Could Not do Command" Device="Robot" Type="03"/>
+    <Item RepCode="1063" DeviceCode="17" Unit="0" Level="S" Msg="ROBOT_Lower Arm is Turn , Could Not do Command" Device="Robot" Type="03"/>
+    <Item RepCode="1064" DeviceCode="30" Unit="0" Level="S" Msg="PORT_is Load . Could Not do Command" Device="P" Type="03"/>
+    <Item RepCode="1046" DeviceCode="1" Unit="0" Level="S" Msg="PORT_is Busy . Could Not do Command" Device="P" Type="03"/>
+    <Item RepCode="1065" DeviceCode="40" Unit="0" Level="S" Msg="ALIGNER_is Busy . Could Not do Command" Device="Aligner" Type="03"/>
+    <Item RepCode="1066" DeviceCode="50" Unit="0" Level="S" Msg="ALIGNMENT_is Busy , Could Not do Command" Device="Alignment" Type="03"/>
+    <Item RepCode="1067" DeviceCode="51" Unit="0" Level="S" Msg="ALIGNMENT_Could Not do Command . because not 0158_CSUN" Device="Alignment" Type="03"/>
+    <Item RepCode="1068" DeviceCode="60" Unit="0" Level="S" Msg="OCR_is Busy, Could Not do Command" Device="OCRReader" Type="03"/>
+    <Item RepCode="1069" DeviceCode="70" Unit="0" Level="S" Msg="RFID_is Busy, Could Not do Command" Device="RFID" Type="03"/>
+    <Item RepCode="1070" DeviceCode="80" Unit="0" Level="S" Msg="API_Could Not do Command, because PassKey is Fail" Device="API" Type="03"/>
+    <Item RepCode="1071" DeviceCode="81" Unit="0" Level="S" Msg="API_Connent Serial Port Error" Device="API" Type="03"/>
+    <Item RepCode="1072" DeviceCode="82" Unit="0" Level="S" Msg="API_Connent Socket Port Error" Device="API" Type="03"/>
+    <Item RepCode="1073" DeviceCode="83" Unit="0" Level="S" Msg="API_System Ini Default Error, Please Check System Ini File" Device="API" Type="03"/>
+    <Item RepCode="1074" DeviceCode="84" Unit="0" Level="S" Msg="API_System Excel Open Error, Please Check System Excel File" Device="API" Type="03"/>
+    <Item RepCode="1075" DeviceCode="85" Unit="0" Level="S" Msg="API_Could Not do Command, because ADAM_6024 is not Connect" Device="API" Type="03"/>
+    <Item RepCode="1076" DeviceCode="86" Unit="0" Level="S" Msg="API_Could Not do Command, because ADAM_6050 is not Connect" Device="API" Type="03"/>
+    <Item RepCode="1077" DeviceCode="93" Unit="0" Level="S" Msg="API_is Initial Fail, Please Check Device Setting" Device="API" Type="03"/>
+    <Item RepCode="1078" DeviceCode="01" Unit="0" Level="S" Msg="PORT_host available not input" Device="P" Type="04"/>
+    <Item RepCode="1079" DeviceCode="10" Unit="0" Level="S" Msg="PORT_no foup mounting" Device="P" Type="04"/>
+    <Item RepCode="1080" DeviceCode="12" Unit="0" Level="S" Msg="PORT_not home position" Device="P" Type="04"/>
+    <Item RepCode="1081" DeviceCode="13" Unit="0" Level="S" Msg="PORT_loading not completed" Device="P" Type="04"/>
+    <Item RepCode="1082" DeviceCode="14" Unit="0" Level="S" Msg="PORT_clamping not completed" Device="P" Type="04"/>
+    <Item RepCode="1083" DeviceCode="15" Unit="0" Level="S" Msg="PORT_docking not completed" Device="P" Type="04"/>
+    <Item RepCode="1084" DeviceCode="16" Unit="0" Level="S" Msg="PORT_door vaccum not completed" Device="P" Type="04"/>
+    <Item RepCode="1085" DeviceCode="17" Unit="0" Level="S" Msg="PORT_unlatching not completed" Device="P" Type="04"/>
+    <Item RepCode="1086" DeviceCode="18" Unit="0" Level="S" Msg="PORT_door opening not completed" Device="P" Type="04"/>
+    <Item RepCode="1087" DeviceCode="19" Unit="0" Level="S" Msg="PORT_mapping not started" Device="P" Type="04"/>
+    <Item RepCode="1088" DeviceCode="1A" Unit="0" Level="S" Msg="PORT_mapping forward not completed" Device="P" Type="04"/>
+    <Item RepCode="1089" DeviceCode="1C" Unit="0" Level="S" Msg="PORT_Z axis is not door position" Device="P" Type="04"/>
+    <Item RepCode="1090" DeviceCode="1D" Unit="0" Level="S" Msg="PORT_not inmapping range position" Device="P" Type="04"/>
+    <Item RepCode="1091" DeviceCode="1E" Unit="0" Level="S" Msg="PORT_undocking not completed" Device="P" Type="04"/>
+    <Item RepCode="1092" DeviceCode="10" Unit="0" Level="S" Msg="ALIGNER_wafer not loaded" Device="Aligner" Type="04"/>
+    <Item RepCode="1093" DeviceCode="13" Unit="0" Level="S" Msg="ALIGNER_origin returning not completed" Device="Aligner" Type="04"/>
+    <Item RepCode="1094" DeviceCode="15" Unit="0" Level="S" Msg="ALIGNER_clamp not completed" Device="Aligner" Type="04"/>
+    <Item RepCode="1095" DeviceCode="16" Unit="0" Level="S" Msg="ALIGNER_unclamp not completed" Device="Aligner" Type="04"/>
+    <Item RepCode="1096" DeviceCode="18" Unit="0" Level="S" Msg="ALIGNER_lift donw not completed" Device="Aligner" Type="04"/>
+    <Item RepCode="1097" DeviceCode="21" Unit="0" Level="S" Msg="ALIGNER_detection not completed" Device="Aligner" Type="04"/>
+    <Item RepCode="1098" DeviceCode="22" Unit="0" Level="S" Msg="ALIGNER_Warning.CheckSum Fail or Read Score Under Threshold Accept : XXXX" Device="Aligner" Type="04"/>
+    <Item RepCode="1099" DeviceCode="04" Unit="0" Level="S" Msg="OCR_Warning.CheckSum Fail or Read Score Under Threshold Accept : XXXX" Device="Barcode" Type="04"/>
+    <Item RepCode="1100" DeviceCode="10" Unit="0" Level="S" Msg="PORT_clamp time over" Device="P" Type="05"/>
+    <Item RepCode="1101" DeviceCode="11" Unit="0" Level="S" Msg="PORT_unclamp time over" Device="P" Type="05"/>
+    <Item RepCode="1102" DeviceCode="12" Unit="0" Level="S" Msg="PORT_dock time over" Device="P" Type="05"/>
+    <Item RepCode="1103" DeviceCode="13" Unit="0" Level="S" Msg="PORT_undock time over" Device="P" Type="05"/>
+    <Item RepCode="1104" DeviceCode="14" Unit="0" Level="S" Msg="PORT_latch time over" Device="P" Type="05"/>
+    <Item RepCode="1105" DeviceCode="15" Unit="0" Level="S" Msg="PORT_unlatch time over" Device="P" Type="05"/>
+    <Item RepCode="1106" DeviceCode="16" Unit="0" Level="S" Msg="PORT_vaccum time over" Device="P" Type="05"/>
+    <Item RepCode="1107" DeviceCode="17" Unit="0" Level="S" Msg="PORT_vaccum release time over" Device="P" Type="05"/>
+    <Item RepCode="1108" DeviceCode="18" Unit="0" Level="S" Msg="PORT_mapping forward time over" Device="P" Type="05"/>
+    <Item RepCode="1109" DeviceCode="19" Unit="0" Level="S" Msg="PORT_mapping return time over" Device="P" Type="05"/>
+    <Item RepCode="1110" DeviceCode="1A" Unit="0" Level="S" Msg="PORT_communication error" Device="P" Type="05"/>
+    <Item RepCode="1111" DeviceCode="1B" Unit="0" Level="S" Msg="PORT_home return time over" Device="P" Type="05"/>
+    <Item RepCode="1112" DeviceCode="1F" Unit="0" Level="S" Msg="PORT_loading time over" Device="P" Type="05"/>
+    <Item RepCode="1113" DeviceCode="20" Unit="0" Level="S" Msg="PORT_unloading time over" Device="P" Type="05"/>
+    <Item RepCode="1114" DeviceCode="21" Unit="0" Level="S" Msg="PORT_positioning time over" Device="P" Type="05"/>
+    <Item RepCode="1115" DeviceCode="22" Unit="0" Level="S" Msg="PORT_door open or close position movement time over" Device="P" Type="05"/>
+    <Item RepCode="1116" DeviceCode="23" Unit="0" Level="S" Msg="PORT_mapping start position movement time over" Device="P" Type="05"/>
+    <Item RepCode="1117" DeviceCode="28" Unit="0" Level="S" Msg="PORT_mapping end position movement time over" Device="P" Type="05"/>
+    <Item RepCode="1118" DeviceCode="29" Unit="0" Level="S" Msg="PORT_load position movement time over" Device="P" Type="05"/>
+    <Item RepCode="1119" DeviceCode="2A" Unit="0" Level="S" Msg="PORT_mapping data error" Device="P" Type="05"/>
+    <Item RepCode="1120" DeviceCode="2B" Unit="0" Level="S" Msg="PORT_mode select error" Device="P" Type="05"/>
+    <Item RepCode="1121" DeviceCode="40" Unit="0" Level="S" Msg="PORT_clamp sensor error" Device="P" Type="05"/>
+    <Item RepCode="1122" DeviceCode="41" Unit="0" Level="S" Msg="PORT_dock sensor error" Device="P" Type="05"/>
+    <Item RepCode="1123" DeviceCode="70" Unit="0" Level="S" Msg="PORT_latch sensor error" Device="P" Type="05"/>
+    <Item RepCode="1124" DeviceCode="71" Unit="0" Level="S" Msg="PORT_door sensor error" Device="P" Type="05"/>
+    <Item RepCode="1125" DeviceCode="72" Unit="0" Level="S" Msg="PORT_mapping sensor error" Device="P" Type="05"/>
+    <Item RepCode="1126" DeviceCode="73" Unit="0" Level="S" Msg="PORT_elevator axis sensor error" Device="P" Type="05"/>
+    <Item RepCode="1127" DeviceCode="74" Unit="0" Level="S" Msg="PORT_wafer drop" Device="P" Type="05"/>
+    <Item RepCode="1128" DeviceCode="77" Unit="0" Level="S" Msg="PORT_wafer protrusion" Device="P" Type="05"/>
+    <Item RepCode="1129" DeviceCode="A0" Unit="0" Level="S" Msg="PORT_foup mount error mount sensor" Device="P" Type="05"/>
+    <Item RepCode="1130" DeviceCode="A1" Unit="0" Level="S" Msg="PORT_foup mount error load sensor" Device="P" Type="05"/>
+    <Item RepCode="1131" DeviceCode="A3" Unit="0" Level="S" Msg="PORT_air pressure drop" Device="P" Type="05"/>
+    <Item RepCode="1132" DeviceCode="A5" Unit="0" Level="S" Msg="PORT_host error with no pio input" Device="P" Type="05"/>
+    <Item RepCode="1133" DeviceCode="B0" Unit="0" Level="S" Msg="PORT_parameter error" Device="P" Type="05"/>
+    <Item RepCode="1134" DeviceCode="C0" Unit="0" Level="S" Msg="PORT_fan stop drop" Device="P" Type="05"/>
+    <Item RepCode="1135" DeviceCode="E0" Unit="0" Level="S" Msg="PORT_voltage drop" Device="P" Type="05"/>
+    <Item RepCode="1136" DeviceCode="E3" Unit="0" Level="S" Msg="PORT_dock hand pinch error" Device="P" Type="05"/>
+    <Item RepCode="1137" DeviceCode="10" Unit="0" Level="S" Msg="ALIGNER_suction on time over" Device="Aligner" Type="05"/>
+    <Item RepCode="1138" DeviceCode="11" Unit="0" Level="S" Msg="ALIGNER_suction off time over" Device="Aligner" Type="05"/>
+    <Item RepCode="1139" DeviceCode="12" Unit="0" Level="S" Msg="ALIGNER_lift up time over" Device="Aligner" Type="05"/>
+    <Item RepCode="1140" DeviceCode="13" Unit="0" Level="S" Msg="ALIGNER_lift down time over" Device="Aligner" Type="05"/>
+    <Item RepCode="1141" DeviceCode="14" Unit="0" Level="S" Msg="ALIGNER_workpiece lost error" Device="Aligner" Type="05"/>
+    <Item RepCode="1142" DeviceCode="40" Unit="0" Level="S" Msg="ALIGNER_area error" Device="Aligner" Type="05"/>
+    <Item RepCode="1143" DeviceCode="50" Unit="0" Level="S" Msg="ALIGNER_over run error" Device="Aligner" Type="05"/>
+    <Item RepCode="1144" DeviceCode="99" Unit="0" Level="S" Msg="ALIGNER_system error" Device="Aligner" Type="05"/>
+    <Item RepCode="1145" DeviceCode="A0" Unit="0" Level="S" Msg="ALIGNER_driver error" Device="Aligner" Type="05"/>
+    <Item RepCode="1146" DeviceCode="D0" Unit="0" Level="S" Msg="ALIGNER_line sensor not ready" Device="Aligner" Type="05"/>
+    <Item RepCode="1147" DeviceCode="D1" Unit="0" Level="S" Msg="ALIGNER_searched few edges" Device="Aligner" Type="05"/>
+    <Item RepCode="1148" DeviceCode="D3" Unit="0" Level="S" Msg="ALIGNER_scan data over flow" Device="Aligner" Type="05"/>
+    <Item RepCode="1149" DeviceCode="D5" Unit="0" Level="S" Msg="ALIGNER_rotation less" Device="Aligner" Type="05"/>
+    <Item RepCode="1150" DeviceCode="D7" Unit="0" Level="S" Msg="ALIGNER_offset limit over" Device="Aligner" Type="05"/>
+    <Item RepCode="1151" DeviceCode="D8" Unit="0" Level="S" Msg="ALIGNER_offset robot over" Device="Aligner" Type="05"/>
+    <Item RepCode="1152" DeviceCode="D9" Unit="0" Level="S" Msg="ALIGNER_offset axis over" Device="Aligner" Type="05"/>
+    <Item RepCode="1153" DeviceCode="DA" Unit="0" Level="S" Msg="ALIGNER_offset addr error" Device="Aligner" Type="05"/>
+    <Item RepCode="1154" DeviceCode="DB" Unit="0" Level="S" Msg="ALIGNER_motor direction error" Device="Aligner" Type="05"/>
+    <Item RepCode="1155" DeviceCode="DC" Unit="0" Level="S" Msg="ALIGNER_parameter error" Device="Aligner" Type="05"/>
+    <Item RepCode="1156" DeviceCode="05" Unit="0" Level="S" Msg="OCR_Read Error : XXXX" Device="OCRReader" Type="05"/>
+    <Item RepCode="1157" DeviceCode="01" Unit="0" Level="S" Msg="ALIGNMENT_Alignment Set Clamp Fail" Device="Alignment" Type="05"/>
+    <Item RepCode="1158" DeviceCode="02" Unit="0" Level="S" Msg="ALIGNMENT_Alignment Set UnClamp Fail" Device="Alignment" Type="05"/>
+    <Item RepCode="1159" DeviceCode="09" Unit="0" Level="S" Msg="ROBOT_positioning error refer to error axis information" Device="Robot" Type="05"/>
+    <Item RepCode="1160" DeviceCode="10" Unit="0" Level="S" Msg="ROBOT_emergency stop state" Device="Robot" Type="05"/>
+    <Item RepCode="1161" DeviceCode="20" Unit="0" Level="S" Msg="ROBOT_a-cal does not end normally" Device="Robot" Type="05"/>
+    <Item RepCode="1162" DeviceCode="30" Unit="0" Level="S" Msg="ROBOT_the address is out of the limit" Device="Robot" Type="05"/>
+    <Item RepCode="1163" DeviceCode="31" Unit="0" Level="S" Msg="ROBOT_the robot was tried to be moved to the end" Device="Robot" Type="05"/>
+    <Item RepCode="1164" DeviceCode="32" Unit="0" Level="S" Msg="ROBOT_fan alarm status when fan alarm function is active" Device="Robot" Type="05"/>
+    <Item RepCode="1165" DeviceCode="40" Unit="0" Level="S" Msg="ROBOT_the position data is out of the limited area" Device="Robot" Type="05"/>
+    <Item RepCode="1166" DeviceCode="51" Unit="0" Level="S" Msg="ROBOT_the robot is in overrun status." Device="Robot" Type="05"/>
+    <Item RepCode="1167" DeviceCode="61" Unit="0" Level="S" Msg="ROBOT_communication command error" Device="Robot" Type="05"/>
+    <Item RepCode="1168" DeviceCode="62" Unit="0" Level="S" Msg="ROBOT_a command which could not be executed in the current mode was received" Device="Robot" Type="05"/>
+    <Item RepCode="1169" DeviceCode="63" Unit="0" Level="S" Msg="ROBOT_system data SG SP is corrupted" Device="Robot" Type="05"/>
+    <Item RepCode="1170" DeviceCode="64" Unit="0" Level="S" Msg="ROBOT_the position data cannot be read from the memory card" Device="Robot" Type="05"/>
+    <Item RepCode="1171" DeviceCode="67" Unit="0" Level="S" Msg="ROBOT_servo parameter is corrupted" Device="Robot" Type="05"/>
+    <Item RepCode="1172" DeviceCode="70" Unit="0" Level="S" Msg="ROBOT_low encoder battery" Device="Robot" Type="05"/>
+    <Item RepCode="1173" DeviceCode="80" Unit="0" Level="S" Msg="ROBOT_the robot received another command during command processing" Device="Robot" Type="05"/>
+    <Item RepCode="1174" DeviceCode="82" Unit="0" Level="S" Msg="ROBOT_sensor input does not turn on when sensor stop function is active." Device="Robot" Type="05"/>
+    <Item RepCode="1175" DeviceCode="84" Unit="0" Level="S" Msg="ROBOT_the measurement result is out of the range when glass alignment function is active" Device="Robot" Type="05"/>
+    <Item RepCode="1176" DeviceCode="90" Unit="0" Level="S" Msg="ROBOT_the robot was tired to be operated before a-cal had been completed" Device="Robot" Type="05"/>
+    <Item RepCode="1177" DeviceCode="95" Unit="0" Level="S" Msg="ROBOT_coordinate transformation error the specified position data is invalid" Device="Robot" Type="05"/>
+    <Item RepCode="1178" DeviceCode="A0" Unit="0" Level="S" Msg="ROBOT_driver error refer to error axis information." Device="Robot" Type="05"/>
+    <Item RepCode="1179" DeviceCode="B0" Unit="0" Level="S" Msg="ROBOT_servo lock does not work." Device="Robot" Type="05"/>
+    <Item RepCode="1180" DeviceCode="C0" Unit="0" Level="S" Msg="ROBOT_program error when HARL U2 is in use." Device="Robot" Type="05"/>
+    <Item RepCode="1181" DeviceCode="D0" Unit="0" Level="S" Msg="ROBOT_aligner error the line sensor cannot be initialized." Device="Robot" Type="05"/>
+    <Item RepCode="1182" DeviceCode="D1" Unit="0" Level="S" Msg="ROBOT_aligner error the wafer edge cannot be detected." Device="Robot" Type="05"/>
+    <Item RepCode="1183" DeviceCode="D3" Unit="0" Level="S" Msg="ROBOT_aligner error too much scans." Device="Robot" Type="05"/>
+    <Item RepCode="1184" DeviceCode="D5" Unit="0" Level="S" Msg="ROBOT_aligner error the pivot axis rotation frequency is not sufficient." Device="Robot" Type="05"/>
+    <Item RepCode="1185" DeviceCode="D7" Unit="0" Level="S" Msg="ROBOT_aligner error the correction amount exceeds the set value." Device="Robot" Type="05"/>
+    <Item RepCode="1186" DeviceCode="D8" Unit="0" Level="S" Msg="ROBOT_aligner error wrong transfer robot is specified" Device="Robot" Type="05"/>
+    <Item RepCode="1187" DeviceCode="D9" Unit="0" Level="S" Msg="ROBOT_aligner error wrong axis is specified for correction output" Device="Robot" Type="05"/>
+    <Item RepCode="1188" DeviceCode="DA" Unit="0" Level="S" Msg="ROBOT_aligner error wrong address is specified for correction output" Device="Robot" Type="05"/>
+    <Item RepCode="1189" DeviceCode="DB" Unit="0" Level="S" Msg="ROBOT_aligner error wrong direction is specified for motor rotation." Device="Robot" Type="05"/>
+    <Item RepCode="1190" DeviceCode="DC" Unit="0" Level="S" Msg="ROBOT_aligner error wrong parameter is specified" Device="Robot" Type="05"/>
+    <Item RepCode="1191" DeviceCode="E0" Unit="0" Level="S" Msg="ROBOT_axis interlock when axis interlock function is active" Device="Robot" Type="05"/>
+    <Item RepCode="1192" DeviceCode="06" Unit="0" Level="S" Msg="PORT_In command processing" Device="P" Type="06"/>
+    <Item RepCode="1193" DeviceCode="06" Unit="0" Level="S" Msg="ALIGNER_In command processing" Device="Aligner" Type="06"/>
+    <Item RepCode="1194" DeviceCode="07" Unit="0" Level="S" Msg="PORT_Mode error" Device="P" Type="07"/>
+    <Item RepCode="1195" DeviceCode="07" Unit="0" Level="S" Msg="ALIGNER_Mode error" Device="Aligner" Type="07"/>
+    <Item RepCode="1196" DeviceCode="01" Unit="0" Level="S" Msg="ROBOT_OnLine Mode,Key Switch to Manual" Device="Robot" Type="07"/>
+    <Item RepCode="1197" DeviceCode="02" Unit="0" Level="S" Msg="ROBOT_Manual Mode" Device="Robot" Type="07"/>
+    <Item RepCode="1198" DeviceCode="03" Unit="0" Level="S" Msg="ROBOT_Auto Mode" Device="Robot" Type="07"/>
+    <Item RepCode="1199" DeviceCode="08" Unit="0" Level="S" Msg="PORT_Mapping error" Device="P" Type="08"/>
+    <Item RepCode="1200" DeviceCode="09" Unit="0" Level="S" Msg="PORT_Serial Error" Device="P" Type="09"/>
+    <Item RepCode="1201" DeviceCode="09" Unit="0" Level="S" Msg="ROBOT_Serial Error" Device="P" Type="09"/>
+    <Item RepCode="1202" DeviceCode="09" Unit="0" Level="S" Msg="ALIGNER_Serial Error" Device="P" Type="09"/>
+    <Item RepCode="1203" DeviceCode="09" Unit="0" Level="S" Msg="RFID_Serial Error" Device="P" Type="09"/>
+    <Item RepCode="1204" DeviceCode="10" Unit="0" Level="S" Msg="PORT_Command Timeout" Device="P" Type="10"/>
+    <Item RepCode="1205" DeviceCode="10" Unit="0" Level="S" Msg="ROBOT_Command Timeout" Device="Robot" Type="10"/>
+    <Item RepCode="1206" DeviceCode="10" Unit="0" Level="S" Msg="ALIGNER_Command Timeout" Device="Aligner" Type="10"/>
+    <Item RepCode="1207" DeviceCode="10" Unit="0" Level="S" Msg="RFID_Command Timeout" Device="RFID" Type="10"/>
+    <Item RepCode="1208" DeviceCode="10" Unit="0" Level="S" Msg="ALIGNMENT_Alignment Command Timeout" Device="Alignment" Type="10"/>
+    <Item RepCode="1209" DeviceCode="05" Unit="0" Level="S" Msg="PORT_IN Alarm" Device="P" Type="05"/>
+    <Item RepCode="1210" DeviceCode="05" Unit="0" Level="S" Msg="ALIGNER_In Alarm" Device="Aligner" Type="05"/>
+    <Item RepCode="1211" DeviceCode="05" Unit="0" Level="S" Msg="OCR_In Alarm" Device="Ocr" Type="05"/>
+</Data>

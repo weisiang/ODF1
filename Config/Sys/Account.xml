@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Account>
+    <AccountItem>
+        <cv_Id>KGS</cv_Id>
+        <cv_Pw>!@#</cv_Pw>
+        <cv_Permission>3</cv_Permission>
+    </AccountItem>
+    <AccountItem>
+        <cv_Id>Allen</cv_Id>
+        <cv_Pw>123</cv_Pw>
+        <cv_Permission>3</cv_Permission>
+    </AccountItem>
+    <AccountItem>
+        <cv_Id>Mike</cv_Id>
+        <cv_Pw>Mike</cv_Pw>
+        <cv_Permission>3</cv_Permission>
+    </AccountItem>
+    <AccountItem>
+        <cv_Id>ranshao</cv_Id>
+        <cv_Pw>1234</cv_Pw>
+        <cv_Permission>2</cv_Permission>
+    </AccountItem>
+    <AccountItem>
+        <cv_Id>hirata</cv_Id>
+        <cv_Pw>550302</cv_Pw>
+        <cv_Permission>3</cv_Permission>
+    </AccountItem>
+    <AccountItem>
+        <cv_Id>Wayne</cv_Id>
+        <cv_Pw>Wayne</cv_Pw>
+        <cv_Permission>3</cv_Permission>
+    </AccountItem>
+</Account>

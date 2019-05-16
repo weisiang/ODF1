@@ -1,0 +1,1258 @@
+<MemoryIOClient>
+    <Bits>
+        <!-- Sankyo Robot Input-->
+        <Bit Name="Motion In Execution CMD CD1"                 Port="00000"    Mask="0x0001"   Tag="X000" />
+        <Bit Name="Motion In Execution CMD CD2"                 Port="00001"    Mask="0x0001"   Tag="X001" />
+        <Bit Name="Motion In Execution CMD CD4"                 Port="00002"    Mask="0x0001"   Tag="X002" />
+        <Bit Name="Motion In Execution CMD CD8"                 Port="00003"    Mask="0x0001"   Tag="X003" />
+        <Bit Name="Motion In Execution CMD CD16"                Port="00004"    Mask="0x0001"   Tag="X004" />
+        <Bit Name="Motion In Execution CMD CD32"                Port="00005"    Mask="0x0001"   Tag="X005" />
+        <Bit Name="Motion In Execution Stage Type CD1"          Port="00006"    Mask="0x0001"   Tag="X006" />
+        <Bit Name="Motion In Execution Position Code1"          Port="00007"    Mask="0x0001"   Tag="X007" />
+        <Bit Name="Motion In Execution Position Code2"          Port="00008"    Mask="0x0001"   Tag="X008" />
+        <Bit Name="Motion In Execution Position Code4"          Port="00009"    Mask="0x0001"   Tag="X009" />
+        <Bit Name="Motion In Execution Position Code8"          Port="00010"    Mask="0x0001"   Tag="X00A" />
+        <Bit Name="Motion In Execution Position Code16"         Port="00011"    Mask="0x0001"   Tag="X00B" />
+        <Bit Name="Motion In Execution Address Code1"           Port="00012"    Mask="0x0001"   Tag="X00C" />
+        <Bit Name="Motion In Execution Address Code2"           Port="00013"    Mask="0x0001"   Tag="X00D" />
+        <Bit Name="Motion In Execution Address Code4"           Port="00014"    Mask="0x0001"   Tag="X00E" />
+        <Bit Name="Motion In Execution Address Code8"           Port="00015"    Mask="0x0001"   Tag="X00F" />
+        <Bit Name="Motion In Execution Address Code16"          Port="00016"    Mask="0x0001"   Tag="X010" />
+        <Bit Name="Motion In Execution Address Code32"          Port="00017"    Mask="0x0001"   Tag="X011" />
+        <Bit Name="Upper/Lower Hand Code1"                      Port="00018"    Mask="0x0001"   Tag="X012" />
+        <Bit Name="Upper/Lower Hand Code2"                      Port="00019"    Mask="0x0001"   Tag="X013" />
+        <Bit Name="Motion In Execution Speed Override Code1"    Port="00032"    Mask="0x0001"   Tag="X020" />
+        <Bit Name="Motion In Execution Speed Override Code2"    Port="00033"    Mask="0x0001"   Tag="X021" />
+        <Bit Name="Command Consistency Check Request"           Port="00036"    Mask="0x0001"   Tag="X024" />
+        <Bit Name="Motion In Execution"                         Port="00037"    Mask="0x0001"   Tag="X025" />
+        <Bit Name="Motion Execution Completed"                  Port="00038"    Mask="0x0001"   Tag="X026" />
+        <Bit Name="Motion Execution Sub Completed"              Port="00039"    Mask="0x0001"   Tag="X027" />
+        <Bit Name="Commnad Execution Decision Continue Ack"     Port="00040"    Mask="0x0001"   Tag="X028" />
+        <Bit Name="Status Stage Enter Request"                  Port="00042"    Mask="0x0001"   Tag="X02A" />
+        <Bit Name="Servo Is On"                                 Port="00048"    Mask="0x0001"   Tag="X030" />
+        <Bit Name="Robot Task Start Enabled"                    Port="00049"    Mask="0x0001"   Tag="X031" />
+        <Bit Name="Robot Task In Operation"                     Port="00050"    Mask="0x0001"   Tag="X032" />
+        <Bit Name="Robot Task In Hold"                          Port="00051"    Mask="0x0001"   Tag="X033" />
+        <Bit Name="Robot Software At Home"                      Port="00053"    Mask="0x0001"   Tag="X035" />
+        <Bit Name="Robot Controller Remote Mode"                Port="00054"    Mask="0x0001"   Tag="X036" />
+        <Bit Name="Robot Controller Local Mode"                 Port="00055"    Mask="0x0001"   Tag="X037" />
+        <Bit Name="Robot Controller Teaching Mode"              Port="00056"    Mask="0x0001"   Tag="X038" />
+        <Bit Name="System Task In Operation"                    Port="00057"    Mask="0x0001"   Tag="X039" />
+        <Bit Name="Err Code Strobe"                             Port="00063"    Mask="0x0001"   Tag="X03F" />
+        <Bit Name="Status R Hand Glass Sensor Sensing"          Port="00064"    Mask="0x0001"   Tag="X040" />
+        <Bit Name="Status L Hand Glass Sensor Sensing"          Port="00065"    Mask="0x0001"   Tag="X041" />
+        <Bit Name="R Hand Glass Sensing Completion"             Port="00066"    Mask="0x0001"   Tag="X042" />
+        <Bit Name="L Hand Glass Sensing Completion"             Port="00067"    Mask="0x0001"   Tag="X043" />
+        <Bit Name="Err Code1"                                   Port="00068"    Mask="0x0001"   Tag="X044" />
+        <Bit Name="Err Code2"                                   Port="00069"    Mask="0x0001"   Tag="X045" />
+        <Bit Name="Err Code4"                                   Port="00070"    Mask="0x0001"   Tag="X046" />
+        <Bit Name="Err Code8"                                   Port="00071"    Mask="0x0001"   Tag="X047" />
+        <Bit Name="Err Code16"                                  Port="00072"    Mask="0x0001"   Tag="X048" />
+        <Bit Name="Err Code32"                                  Port="00073"    Mask="0x0001"   Tag="X049" />
+        <Bit Name="R Hand Glass Loaded"                         Port="00080"    Mask="0x0001"   Tag="X050" />
+        <Bit Name="R Hand Vacuum Chucking On"                   Port="00084"    Mask="0x0001"   Tag="X054" />
+        <Bit Name="R Hand Vacuum Chucking Off"                  Port="00085"    Mask="0x0001"   Tag="X055" />
+        <Bit Name="R Hand Adsorption Check"                     Port="00086"    Mask="0x0001"   Tag="X056" />
+        <Bit Name="L Hand Glass Loaded"                         Port="00088"    Mask="0x0001"   Tag="X058" />
+        <Bit Name="L Hand Vacuum Chucking On"                   Port="00092"    Mask="0x0001"   Tag="X05C" />
+        <Bit Name="L Hand Vacuum Chucking Off"                  Port="00093"    Mask="0x0001"   Tag="X05D" />
+        <Bit Name="L Hand Adsorption Check"                     Port="00094"    Mask="0x0001"   Tag="X05E" />
+
+        <!-- Station:05 -->
+        <Bit Name="RB_EMSMON1"                                  Port="00128"    Mask="0x0001"   Tag="X080" />
+        <Bit Name="RB_EMSMON2"                                  Port="00129"    Mask="0x0001"   Tag="X081" />
+        <Bit Name="RB_ENABLEMON1"                               Port="00130"    Mask="0x0001"   Tag="X082" />
+        <Bit Name="RB_ENABLEMON2"                               Port="00131"    Mask="0x0001"   Tag="X083" />
+        <Bit Name="RB_SVONMON"                                  Port="00132"    Mask="0x0001"   Tag="X084" />
+        <Bit Name="RB_REMOTE_MODE"                              Port="00133"    Mask="0x0001"   Tag="X085" />
+        <Bit Name="RB_ERROR"                                    Port="00134"    Mask="0x0001"   Tag="X086" />
+        <Bit Name="RB_RDY"                                      Port="00135"    Mask="0x0001"   Tag="X087" />
+
+        <Bit Name="EqRemote"                                    Port="02144"    Mask="0x0001"   Tag="Y090" />
+        <Bit Name="EqServoOn"                                   Port="02145"    Mask="0x0001"   Tag="Y091" />
+        <Bit Name="SignalTowerRedFlash"                         Port="02150"    Mask="0x0001"   Tag="Y092" />
+        <Bit Name="SignalTowerYellowFlash"                      Port="02151"    Mask="0x0001"   Tag="Y093" />
+        <Bit Name="SignalTowerGreenFlash"                       Port="02152"    Mask="0x0001"   Tag="Y094" />
+        <Bit Name="SignalTowerRed"                              Port="02153"    Mask="0x0001"   Tag="Y095" />
+        <Bit Name="SignalTowerYellow"                           Port="02154"    Mask="0x0001"   Tag="Y096" />
+        <Bit Name="SignalTowerGreen"                            Port="02155"    Mask="0x0001"   Tag="Y097" />
+        <Bit Name="Buzzer1"                                     Port="02156"    Mask="0x0001"   Tag="Y098" />
+        <Bit Name="Buzzer2"                                     Port="02157"    Mask="0x0001"   Tag="Y099" />
+
+        <!-- Station:06 -->
+        <Bit Name="InEMOStop"                                   Port="00160"    Mask="0x0001"   Tag="X0A0" />
+        <Bit Name="InSafetyPlug"                                Port="00161"    Mask="0x0001"   Tag="X0A1" />
+        <Bit Name="PowerFailure"                                Port="00162"    Mask="0x0001"   Tag="X0A2" />
+        <Bit Name="InCDVPressureSw"                             Port="00163"    Mask="0x0001"   Tag="X0A3" />
+        <Bit Name="InVacuumPressureSw"                          Port="00164"    Mask="0x0001"   Tag="X0A4" />
+        <Bit Name="InMainPowerControllerDoorSensor"             Port="00165"    Mask="0x0001"   Tag="X0A5" />
+
+        <!-- Station:07 -->
+        <Bit Name="ULDMaskDoorLower"                            Port="00192"    Mask="0x0001"   Tag="X0C0" />
+        <Bit Name="ULDMaskDoorUpper"                            Port="00193"    Mask="0x0001"   Tag="X0C1" />
+        <Bit Name="ULDMaskCSTExists1Sensor"                     Port="00194"    Mask="0x0001"   Tag="X0C2" />
+        <Bit Name="ULDMaskCSTExists2Sensor"                     Port="00195"    Mask="0x0001"   Tag="X0C3" />
+				<Bit Name="RBServoOn"                   			    			Port="00196"    Mask="0x0001"   Tag="X0C4" />        
+				<Bit Name="ULDMaskGlassExistsSensor"                    Port="00197"    Mask="0x0001"   Tag="X0C5" />
+        <Bit Name="ULDMaskSlot1Sensor"                          Port="00198"    Mask="0x0001"   Tag="X0C6" />
+        <Bit Name="ULDMaskSlot2Sensor"                          Port="00199"    Mask="0x0001"   Tag="X0C7" />
+        <Bit Name="ULDMaskSlot3Sensor"                          Port="00200"    Mask="0x0001"   Tag="X0C8" />
+        <Bit Name="ULDMaskSlot4Sensor"                          Port="00201"    Mask="0x0001"   Tag="X0C9" />
+        <Bit Name="ULDMaskForkSensor"                           Port="00202"    Mask="0x0001"   Tag="X0CA" />
+        <Bit Name="ULDMaskCSTClampRR1SensorLower"               Port="00203"    Mask="0x0001"   Tag="X0CB" />
+        <Bit Name="ULDMaskCSTOpenRR1SensorLower"                Port="00204"    Mask="0x0001"   Tag="X0CC" />
+        <Bit Name="ULDMaskCSTClampRL2SensorLower"               Port="00205"    Mask="0x0001"   Tag="X0CD" />
+        <Bit Name="ULDMaskCSTOpenRL2SensorLower"                Port="00206"    Mask="0x0001"   Tag="X0CE" />
+        <Bit Name="ULDMaskClampRR1SensorUpper"                  Port="00207"    Mask="0x0001"   Tag="X0CF" />
+        <Bit Name="ULDMaskOpenRR1SensorUpper"                   Port="00208"    Mask="0x0001"   Tag="X0D0" />
+        <Bit Name="ULDMaskClampRL2SensorUpper"                  Port="00209"    Mask="0x0001"   Tag="X0D1" />
+        <Bit Name="ULDMaskOpenRL2SensorUpper"                   Port="00210"    Mask="0x0001"   Tag="X0D2" />
+        <Bit Name="ULDMaskClampRF3SensorUpper"                  Port="00211"    Mask="0x0001"   Tag="X0D3" />
+        <Bit Name="ULDMaskOpenRF3SensorUpper"                   Port="00212"    Mask="0x0001"   Tag="X0D4" />
+        <Bit Name="ULDMaskClampRN4SensorUpper"                  Port="00213"    Mask="0x0001"   Tag="X0D5" />
+        <Bit Name="ULDMaskOpenRN4SensorUpper"                   Port="00214"    Mask="0x0001"   Tag="X0D6" />
+        <Bit Name="ULDMaskCSTInSensor"                          Port="00215"    Mask="0x0001"   Tag="X0D7" />
+        <Bit Name="ULDMaskCSTOutSensor"                         Port="00216"    Mask="0x0001"   Tag="X0D8" />
+        <Bit Name="ULDMaskCSTCompleteSensor"                    Port="00217"    Mask="0x0001"   Tag="X0D9" />
+				<Bit Name="HOMEOK"					                    				Port="00218"    Mask="0x0001"   Tag="X0DA" />
+				<Bit Name="SVALARM"					                    				Port="00219"    Mask="0x0001"   Tag="X0DB" />	
+        <Bit Name="ULDMaskTable0DegreeSensor"           				Port="00220"    Mask="0x0001"   Tag="X0DC" />
+        <Bit Name="ULDMaskTablePositiveLimit"                   Port="00221"    Mask="0x0001"   Tag="X0DD" />
+        <Bit Name="ULDMaskTable45DegreeSensor"                  Port="00222"    Mask="0x0001"   Tag="X0DE" />
+        <Bit Name="ULDMaskTableNegativeLimit"                   Port="00223"    Mask="0x0001"   Tag="X0DF" />
+
+        <!-- Station:08 -->
+        <Bit Name="ULDMaskCSTClampRL1Lower"                     Port="02224"    Mask="0x0001"   Tag="Y0E0" />
+        <Bit Name="ULDMaskCSTOpenRL1Lower"                      Port="02225"    Mask="0x0001"   Tag="Y0E1" />
+        <Bit Name="ULDMaskClampRL1Upper"                        Port="02226"    Mask="0x0001"   Tag="Y0E2" />
+        <Bit Name="ULDMaskOpenRL1Upper"                         Port="02227"    Mask="0x0001"   Tag="Y0E3" />
+        <Bit Name="ULDMaskClampFN1Upper"                        Port="02228"    Mask="0x0001"   Tag="Y0E4" />
+        <Bit Name="ULDMaskOpenFN1Upper"                         Port="02229"    Mask="0x0001"   Tag="Y0E5" />
+        <Bit Name="ULDMaskRbtCSTIn"                             Port="02230"    Mask="0x0001"   Tag="Y0E6" />
+        <Bit Name="ULDMaskRbtCSTOut"                            Port="02231"    Mask="0x0001"   Tag="Y0E7" />
+        <Bit Name="ULDMaskRbtCSTComplete"                       Port="02232"    Mask="0x0001"   Tag="Y0E8" />
+        <Bit Name="ULDMaskStart"                                Port="02234"    Mask="0x0001"   Tag="Y0EA" />
+        <Bit Name="ULDMaskTcm0"                                 Port="02235"    Mask="0x0001"   Tag="Y0EB" />
+        <Bit Name="ULDMaskTcm1"                                 Port="02236"    Mask="0x0001"   Tag="Y0EC" />
+        <Bit Name="ULDMaskArst"                                 Port="02237"    Mask="0x0001"   Tag="Y0ED" />
+        <Bit Name="ULDMaskEmos"                                 Port="02238"    Mask="0x0001"   Tag="Y0EE" />
+        <Bit Name="ULDMaskServoOn"                              Port="02239"    Mask="0x0001"   Tag="Y0EF" />
+
+        <!-- Station:09 -->
+        <Bit Name="LDMaskDoorLower"                             Port="00256"    Mask="0x0001"   Tag="X100" />
+        <Bit Name="LDMaskDoorUpper"                             Port="00257"    Mask="0x0001"   Tag="X101" />
+        <Bit Name="LDMaskCSTExists1Sensor"                      Port="00258"    Mask="0x0001"   Tag="X102" />
+        <Bit Name="LDMaskCSTExists2Sensor"                      Port="00259"    Mask="0x0001"   Tag="X103" />
+        <Bit Name="LDMaskGlassExistsSensor"                     Port="00261"    Mask="0x0001"   Tag="X105" />
+        <Bit Name="LDMaskSlot1Sensor"                           Port="00262"    Mask="0x0001"   Tag="X106" />
+        <Bit Name="LDMaskSlot2Sensor"                           Port="00263"    Mask="0x0001"   Tag="X107" />
+        <Bit Name="LDMaskSlot3Sensor"                           Port="00264"    Mask="0x0001"   Tag="X108" />
+        <Bit Name="LDMaskSlot4Sensor"                           Port="00265"    Mask="0x0001"   Tag="X109" />
+        <Bit Name="LDMaskForkSensor"                            Port="00266"    Mask="0x0001"   Tag="X10A" />
+        <Bit Name="LDMaskCSTClampRR1SensorLower"                Port="00267"    Mask="0x0001"   Tag="X10B" />
+        <Bit Name="LDMaskCSTOpenRR1SensorLower"                 Port="00268"    Mask="0x0001"   Tag="X10C" />
+        <Bit Name="LDMaskCSTClampRL2SensorLower"                Port="00269"    Mask="0x0001"   Tag="X10D" />
+        <Bit Name="LDMaskCSTOpenRL2SensorLower"                 Port="00270"    Mask="0x0001"   Tag="X10E" />
+        <Bit Name="LDMaskClampRR1SensorUpper"                   Port="00271"    Mask="0x0001"   Tag="X10F" />
+        <Bit Name="LDMaskOpenRR1SensorUpper"                    Port="00272"    Mask="0x0001"   Tag="X110" />
+        <Bit Name="LDMaskClampRL2SensorUpper"                   Port="00273"    Mask="0x0001"   Tag="X111" />
+        <Bit Name="LDMaskOpenRL2SensorUpper"                    Port="00274"    Mask="0x0001"   Tag="X112" />
+        <Bit Name="LDMaskClampRF3SensorUpper"                   Port="00275"    Mask="0x0001"   Tag="X113" />
+        <Bit Name="LDMaskOpenRF3SensorUpper"                    Port="00276"    Mask="0x0001"   Tag="X114" />
+        <Bit Name="LDMaskClampRN4SensorUpper"                   Port="00277"    Mask="0x0001"   Tag="X115" />
+        <Bit Name="LDMaskOpenRN4SensorUpper"                    Port="00278"    Mask="0x0001"   Tag="X116" />
+        <Bit Name="LDMaskCSTInSensor"                           Port="00279"    Mask="0x0001"   Tag="X117" />
+        <Bit Name="LDMaskCSTOutSensor"                          Port="00280"    Mask="0x0001"   Tag="X118" />
+        <Bit Name="LDMaskCSTCompleteSensor"                     Port="00281"    Mask="0x0001"   Tag="X119" />
+        <Bit Name="LaserMarkInputManualCleaning"              	Port="00282"    Mask="0x0001"   Tag="X11A" />
+        <Bit Name="LaserMarkInputOK" 			             	Port="00283"    Mask="0x0001"   Tag="X11B" />
+        <Bit Name="LaserMarkInputNG"            			  	Port="00284"    Mask="0x0001"   Tag="X11C" />
+        <Bit Name="LaserMarkInputHOLD"              			Port="00285"    Mask="0x0001"   Tag="X11D" />
+
+        <!-- Station:10 -->
+        <Bit Name="LDMaskCSTClampRL1Lower"                      Port="02288"    Mask="0x0001"   Tag="Y120" />
+        <Bit Name="LDMaskCSTOpenRL1Lower"                       Port="02289"    Mask="0x0001"   Tag="Y121" />
+        <Bit Name="LDMaskClampRL1Upper"                         Port="02290"    Mask="0x0001"   Tag="Y122" />
+        <Bit Name="LDMaskOpenRL1Upper"                          Port="02291"    Mask="0x0001"   Tag="Y123" />
+        <Bit Name="LDMaskClampFN1Upper"                         Port="02292"    Mask="0x0001"   Tag="Y124" />
+        <Bit Name="LDMaskOpenFN1Upper"                          Port="02293"    Mask="0x0001"   Tag="Y125" />
+        <Bit Name="LDMaskRbtCSTIn"                              Port="02294"    Mask="0x0001"   Tag="Y126" />
+        <Bit Name="LDMaskRbtCSTOut"                             Port="02295"    Mask="0x0001"   Tag="Y127" />
+        <Bit Name="LDMaskRbtCSTComplete"                        Port="02296"    Mask="0x0001"   Tag="Y128" />
+        <Bit Name="LaserMarkOutputManualCleaning"               Port="02297"    Mask="0x0001"   Tag="Y129" />
+        <Bit Name="LaserMarkOutputOK"  			                Port="02298"    Mask="0x0001"   Tag="Y130" />
+        <Bit Name="LaserMarkOutputNG"              				Port="02299"    Mask="0x0001"   Tag="Y131" />
+        <Bit Name="LaserMarkOutputHOLD"              			Port="02300"    Mask="0x0001"   Tag="Y132" />
+
+        <!-- Station:11 -->
+        <Bit Name="LaserMarkDoorLower"                          Port="00320"    Mask="0x0001"   Tag="X140" />
+        <Bit Name="LaserMarkDoorUpper"                          Port="00321"    Mask="0x0001"   Tag="X141" />
+        <Bit Name="LaserMarkCSTInSensor"                        Port="00322"    Mask="0x0001"   Tag="X142" />
+        <Bit Name="LaserMarkCSTOutSensor"                       Port="00323"    Mask="0x0001"   Tag="X143" />
+        <Bit Name="LaserMarkCSTCompleteSensor"                  Port="00324"    Mask="0x0001"   Tag="X144" />
+        <Bit Name="LaserMarkGlassExistsSensor"                  Port="00325"    Mask="0x0001"   Tag="X145" />
+        <Bit Name="LaserMarkForkSensor"                         Port="00326"    Mask="0x0001"   Tag="X146" />
+        <Bit Name="LaserMarkClampRR1Sensor"                     Port="00327"    Mask="0x0001"   Tag="X147" />
+        <Bit Name="LaserMarkOpenRR1Sensor"                      Port="00328"    Mask="0x0001"   Tag="X148" />
+        <Bit Name="LaserMarkClampRL2Sensor"                     Port="00329"    Mask="0x0001"   Tag="X149" />
+        <Bit Name="LaserMarkOpenRL2Sensor"                      Port="00330"    Mask="0x0001"   Tag="X14A" />
+        <Bit Name="LaserMarkClampRF3Sensor"                     Port="00331"    Mask="0x0001"   Tag="X14B" />
+        <Bit Name="LaserMarkOpenRF3Sensor"                      Port="00332"    Mask="0x0001"   Tag="X14C" />
+        <Bit Name="LaserMarkClampRN4Sensor"                     Port="00333"    Mask="0x0001"   Tag="X14D" />
+        <Bit Name="LaserMarkOpenRN4Sensor"                      Port="00334"    Mask="0x0001"   Tag="X14E" />
+
+        <Bit Name="LaserMarkClampRL1"                           Port="02336"    Mask="0x0001"   Tag="Y150" />
+        <Bit Name="LaserMarkOpenRL1"                            Port="02337"    Mask="0x0001"   Tag="Y151" />
+        <Bit Name="LaserMarkClampFN1"                           Port="02338"    Mask="0x0001"   Tag="Y152" />
+        <Bit Name="LaserMarkOpenFN1"                            Port="02339"    Mask="0x0001"   Tag="Y153" />
+        <Bit Name="LaserMarkRbtCSTIn"                           Port="02340"    Mask="0x0001"   Tag="Y154" />
+        <Bit Name="LaserMarkRbtCSTOut"                          Port="02341"    Mask="0x0001"   Tag="Y155" />
+        <Bit Name="LaserMarkRbtCSTComplete"                     Port="02342"    Mask="0x0001"   Tag="Y156" />
+
+        <!-- Station:16 -->
+        <Bit Name="AutoRoller2Door1"                            Port="00480"    Mask="0x0001"   Tag="X1E0" />
+        <Bit Name="AutoRoller2Door2"                            Port="00481"    Mask="0x0001"   Tag="X1E1" />
+        <Bit Name="AutoRoller2LoadGlassRequest"                 Port="00482"    Mask="0x0001"   Tag="X1E2" />
+        <Bit Name="AutoRoller2LoadGlassReady"                   Port="00483"    Mask="0x0001"   Tag="X1E3" />
+        <Bit Name="AutoRoller2UnloadGlassRequest"               Port="00484"    Mask="0x0001"   Tag="X1E4" />
+        <Bit Name="AutoRoller2UnloadGlassReady"                 Port="00485"    Mask="0x0001"   Tag="X1E5" />
+        <Bit Name="AutoRoller2GlassExistOnStage"                Port="00486"    Mask="0x0001"   Tag="X1E6" />
+        <Bit Name="AlarmOccer"             			            Port="00495"    Mask="0x0001"   Tag="X1EF" />
+		
+		
+        <Bit Name="AutoRoller2RobotPutComplete"                 Port="02496"    Mask="0x0001"   Tag="Y1F0" />
+        <Bit Name="AutoRoller2RobotPutBusy"                     Port="02497"    Mask="0x0001"   Tag="Y1F1" />
+        <Bit Name="AutoRoller2RobotPutGlassRequest"             Port="02498"    Mask="0x0001"   Tag="Y1F2" />
+        <Bit Name="AutoRoller2RobotGetComplete"                 Port="02499"    Mask="0x0001"   Tag="Y1F3" />
+        <Bit Name="AutoRoller2RobotGetBusy"                     Port="02500"    Mask="0x0001"   Tag="Y1F4" />
+        <Bit Name="AutoRoller2RobotGetGlassRequest"             Port="02501"    Mask="0x0001"   Tag="Y1F5" />
+        <Bit Name="AutoRoller2RobotRecipe1"                     Port="02502"    Mask="0x0001"   Tag="Y1F6" />
+        <Bit Name="AutoRoller2RobotRecipe2"                     Port="02503"    Mask="0x0001"   Tag="Y1F6" />
+        <Bit Name="AutoRoller2RobotRecipe3"                     Port="02504"    Mask="0x0001"   Tag="Y1F6" />
+        <Bit Name="AutoRoller2RobotRecipe4"                     Port="02505"    Mask="0x0001"   Tag="Y1F6" />
+
+        <!-- Buffer Sensor -->
+        <Bit Name="Buffer1Slot01"                               Port="00620"    Mask="0x0001"   Tag="X26C" />
+        <Bit Name="Buffer1Slot02"                               Port="00619"    Mask="0x0001"   Tag="X26B" />
+        <Bit Name="Buffer1Slot03"                               Port="00618"    Mask="0x0001"   Tag="X26A" />
+        <Bit Name="Buffer1Slot04"                               Port="00617"    Mask="0x0001"   Tag="X269" />
+        <Bit Name="Buffer1Slot05"                               Port="00616"    Mask="0x0001"   Tag="X268" />
+        <Bit Name="Buffer1Slot06"                               Port="00615"    Mask="0x0001"   Tag="X267" />
+        <Bit Name="Buffer1Slot07"                               Port="00614"    Mask="0x0001"   Tag="X266" />
+        <Bit Name="Buffer1Slot08"                               Port="00613"    Mask="0x0001"   Tag="X265" />
+        <Bit Name="Buffer1Slot09"                               Port="00612"    Mask="0x0001"   Tag="X264" />
+        <Bit Name="Buffer1Slot10"                               Port="00611"    Mask="0x0001"   Tag="X263" />
+        <Bit Name="Buffer1Slot11"                               Port="00610"    Mask="0x0001"   Tag="X262" />
+        <Bit Name="Buffer1Slot12"                               Port="00609"    Mask="0x0001"   Tag="X261" />
+        <Bit Name="Buffer1Slot13"                               Port="00608"    Mask="0x0001"   Tag="X260" />
+        <Bit Name="Buffer2Slot01"                               Port="00636"    Mask="0x0001"   Tag="X27C" />
+        <Bit Name="Buffer2Slot02"                               Port="00635"    Mask="0x0001"   Tag="X27B" />
+        <Bit Name="Buffer2Slot03"                               Port="00634"    Mask="0x0001"   Tag="X27A" />
+        <Bit Name="Buffer2Slot04"                               Port="00633"    Mask="0x0001"   Tag="X279" />
+        <Bit Name="Buffer2Slot05"                               Port="00632"    Mask="0x0001"   Tag="X278" />
+        <Bit Name="Buffer2Slot06"                               Port="00631"    Mask="0x0001"   Tag="X277" />
+        <Bit Name="Buffer2Slot07"                               Port="00630"    Mask="0x0001"   Tag="X276" />
+        <Bit Name="Buffer2Slot08"                               Port="00629"    Mask="0x0001"   Tag="X275" />
+        <Bit Name="Buffer2Slot09"                               Port="00628"    Mask="0x0001"   Tag="X274" />
+        <Bit Name="Buffer2Slot10"                               Port="00627"    Mask="0x0001"   Tag="X273" />
+        <Bit Name="Buffer2Slot11"                               Port="00626"    Mask="0x0001"   Tag="X272" />
+        <Bit Name="Buffer2Slot12"                               Port="00625"    Mask="0x0001"   Tag="X271" />
+        <Bit Name="Buffer2Slot13"                               Port="00624"    Mask="0x0001"   Tag="X270" />
+        <Bit Name="Buffer3Slot01"                               Port="00652"    Mask="0x0001"   Tag="X28C" />
+        <Bit Name="Buffer3Slot02"                               Port="00651"    Mask="0x0001"   Tag="X28B" />
+        <Bit Name="Buffer3Slot03"                               Port="00650"    Mask="0x0001"   Tag="X28A" />
+        <Bit Name="Buffer3Slot04"                               Port="00649"    Mask="0x0001"   Tag="X289" />
+        <Bit Name="Buffer3Slot05"                               Port="00648"    Mask="0x0001"   Tag="X288" />
+        <Bit Name="Buffer3Slot06"                               Port="00647"    Mask="0x0001"   Tag="X287" />
+        <Bit Name="Buffer3Slot07"                               Port="00646"    Mask="0x0001"   Tag="X286" />
+        <Bit Name="Buffer3Slot08"                               Port="00645"    Mask="0x0001"   Tag="X285" />
+        <Bit Name="Buffer3Slot09"                               Port="00644"    Mask="0x0001"   Tag="X284" />
+        <Bit Name="Buffer3Slot10"                               Port="00643"    Mask="0x0001"   Tag="X283" />
+        <Bit Name="Buffer3Slot11"                               Port="00642"    Mask="0x0001"   Tag="X282" />
+        <Bit Name="Buffer3Slot12"                               Port="00641"    Mask="0x0001"   Tag="X281" />
+        <Bit Name="Buffer3Slot13"                               Port="00640"    Mask="0x0001"   Tag="X280" />
+        <Bit Name="Buffer4Slot01"                               Port="00668"    Mask="0x0001"   Tag="X29C" />
+        <Bit Name="Buffer4Slot02"                               Port="00667"    Mask="0x0001"   Tag="X29B" />
+        <Bit Name="Buffer4Slot03"                               Port="00666"    Mask="0x0001"   Tag="X29A" />
+        <Bit Name="Buffer4Slot04"                               Port="00665"    Mask="0x0001"   Tag="X299" />
+        <Bit Name="Buffer4Slot05"                               Port="00664"    Mask="0x0001"   Tag="X298" />
+        <Bit Name="Buffer4Slot06"                               Port="00663"    Mask="0x0001"   Tag="X297" />
+        <Bit Name="Buffer4Slot07"                               Port="00662"    Mask="0x0001"   Tag="X296" />
+        <Bit Name="Buffer4Slot08"                               Port="00661"    Mask="0x0001"   Tag="X295" />
+        <Bit Name="Buffer4Slot09"                               Port="00660"    Mask="0x0001"   Tag="X294" />
+        <Bit Name="Buffer4Slot10"                               Port="00659"    Mask="0x0001"   Tag="X293" />
+        <Bit Name="Buffer4Slot11"                               Port="00658"    Mask="0x0001"   Tag="X292" />
+        <Bit Name="Buffer4Slot12"                               Port="00657"    Mask="0x0001"   Tag="X291" />
+        <Bit Name="Buffer4Slot13"                               Port="00656"    Mask="0x0001"   Tag="X290" />
+        <Bit Name="Buffer5Slot01"                               Port="00684"    Mask="0x0001"   Tag="X2AC" />
+        <Bit Name="Buffer5Slot02"                               Port="00683"    Mask="0x0001"   Tag="X2AB" />
+        <Bit Name="Buffer5Slot03"                               Port="00682"    Mask="0x0001"   Tag="X2AA" />
+        <Bit Name="Buffer5Slot04"                               Port="00681"    Mask="0x0001"   Tag="X2A9" />
+        <Bit Name="Buffer5Slot05"                               Port="00680"    Mask="0x0001"   Tag="X2A8" />
+        <Bit Name="Buffer5Slot06"                               Port="00679"    Mask="0x0001"   Tag="X2A7" />
+        <Bit Name="Buffer5Slot07"                               Port="00678"    Mask="0x0001"   Tag="X2A6" />
+        <Bit Name="Buffer5Slot08"                               Port="00677"    Mask="0x0001"   Tag="X2A5" />
+        <Bit Name="Buffer5Slot09"                               Port="00676"    Mask="0x0001"   Tag="X2A4" />
+        <Bit Name="Buffer5Slot10"                               Port="00675"    Mask="0x0001"   Tag="X2A3" />
+        <Bit Name="Buffer5Slot11"                               Port="00674"    Mask="0x0001"   Tag="X2A2" />
+        <Bit Name="Buffer5Slot12"                               Port="00673"    Mask="0x0001"   Tag="X2A1" />
+        <Bit Name="Buffer5Slot13"                               Port="00672"    Mask="0x0001"   Tag="X2A0" />
+        <Bit Name="Buffer6Slot01"                               Port="00700"    Mask="0x0001"   Tag="X2BC" />
+        <Bit Name="Buffer6Slot02"                               Port="00699"    Mask="0x0001"   Tag="X2BB" />
+        <Bit Name="Buffer6Slot03"                               Port="00698"    Mask="0x0001"   Tag="X2BA" />
+        <Bit Name="Buffer6Slot04"                               Port="00697"    Mask="0x0001"   Tag="X2B9" />
+        <Bit Name="Buffer6Slot05"                               Port="00696"    Mask="0x0001"   Tag="X2B8" />
+        <Bit Name="Buffer6Slot06"                               Port="00695"    Mask="0x0001"   Tag="X2B7" />
+        <Bit Name="Buffer6Slot07"                               Port="00694"    Mask="0x0001"   Tag="X2B6" />
+        <Bit Name="Buffer6Slot08"                               Port="00693"    Mask="0x0001"   Tag="X2B5" />
+        <Bit Name="Buffer6Slot09"                               Port="00692"    Mask="0x0001"   Tag="X2B4" />
+        <Bit Name="Buffer6Slot10"                               Port="00691"    Mask="0x0001"   Tag="X2B3" />
+        <Bit Name="Buffer6Slot11"                               Port="00690"    Mask="0x0001"   Tag="X2B2" />
+        <Bit Name="Buffer6Slot12"                               Port="00689"    Mask="0x0001"   Tag="X2B1" />
+        <Bit Name="Buffer6Slot13"                               Port="00688"    Mask="0x0001"   Tag="X2B0" />
+        <Bit Name="Buffer7Slot01"                               Port="00716"    Mask="0x0001"   Tag="X2CC" />
+        <Bit Name="Buffer7Slot02"                               Port="00715"    Mask="0x0001"   Tag="X2CB" />
+        <Bit Name="Buffer7Slot03"                               Port="00714"    Mask="0x0001"   Tag="X2CA" />
+        <Bit Name="Buffer7Slot04"                               Port="00713"    Mask="0x0001"   Tag="X2C9" />
+        <Bit Name="Buffer7Slot05"                               Port="00712"    Mask="0x0001"   Tag="X2C8" />
+        <Bit Name="Buffer7Slot06"                               Port="00711"    Mask="0x0001"   Tag="X2C7" />
+        <Bit Name="Buffer7Slot07"                               Port="00710"    Mask="0x0001"   Tag="X2C6" />
+        <Bit Name="Buffer7Slot08"                               Port="00709"    Mask="0x0001"   Tag="X2C5" />
+        <Bit Name="Buffer7Slot09"                               Port="00708"    Mask="0x0001"   Tag="X2C4" />
+        <Bit Name="Buffer7Slot10"                               Port="00707"    Mask="0x0001"   Tag="X2C3" />
+        <Bit Name="Buffer7Slot11"                               Port="00706"    Mask="0x0001"   Tag="X2C2" />
+        <Bit Name="Buffer7Slot12"                               Port="00705"    Mask="0x0001"   Tag="X2C1" />
+        <Bit Name="Buffer7Slot13"                               Port="00704"    Mask="0x0001"   Tag="X2C0" />
+        <Bit Name="Buffer8Slot01"                               Port="00732"    Mask="0x0001"   Tag="X2CC" />
+        <Bit Name="Buffer8Slot02"                               Port="00731"    Mask="0x0001"   Tag="X2DB" />
+        <Bit Name="Buffer8Slot03"                               Port="00730"    Mask="0x0001"   Tag="X2DA" />
+        <Bit Name="Buffer8Slot04"                               Port="00729"    Mask="0x0001"   Tag="X2D9" />
+        <Bit Name="Buffer8Slot05"                               Port="00728"    Mask="0x0001"   Tag="X2D8" />
+        <Bit Name="Buffer8Slot06"                               Port="00727"    Mask="0x0001"   Tag="X2D7" />
+        <Bit Name="Buffer8Slot07"                               Port="00726"    Mask="0x0001"   Tag="X2D6" />
+        <Bit Name="Buffer8Slot08"                               Port="00725"    Mask="0x0001"   Tag="X2D5" />
+        <Bit Name="Buffer8Slot09"                               Port="00724"    Mask="0x0001"   Tag="X2D4" />
+        <Bit Name="Buffer8Slot10"                               Port="00723"    Mask="0x0001"   Tag="X2D3" />
+        <Bit Name="Buffer8Slot11"                               Port="00722"    Mask="0x0001"   Tag="X2D2" />
+        <Bit Name="Buffer8Slot12"                               Port="00721"    Mask="0x0001"   Tag="X2D1" />
+        <Bit Name="Buffer8Slot13"                               Port="00720"    Mask="0x0001"   Tag="X2D0" />
+        <Bit Name="Buffer9Slot01"                               Port="00748"    Mask="0x0001"   Tag="X2EC" />
+        <Bit Name="Buffer9Slot02"                               Port="00747"    Mask="0x0001"   Tag="X2EB" />
+        <Bit Name="Buffer9Slot03"                               Port="00746"    Mask="0x0001"   Tag="X2EA" />
+        <Bit Name="Buffer9Slot04"                               Port="00745"    Mask="0x0001"   Tag="X2E9" />
+        <Bit Name="Buffer9Slot05"                               Port="00744"    Mask="0x0001"   Tag="X2E8" />
+        <Bit Name="Buffer9Slot06"                               Port="00743"    Mask="0x0001"   Tag="X2E7" />
+        <Bit Name="Buffer9Slot07"                               Port="00742"    Mask="0x0001"   Tag="X2E6" />
+        <Bit Name="Buffer9Slot08"                               Port="00741"    Mask="0x0001"   Tag="X2E5" />
+        <Bit Name="Buffer9Slot09"                               Port="00740"    Mask="0x0001"   Tag="X2E4" />
+        <Bit Name="Buffer9Slot10"                               Port="00739"    Mask="0x0001"   Tag="X2E3" />
+        <Bit Name="Buffer9Slot11"                               Port="00738"    Mask="0x0001"   Tag="X2E2" />
+        <Bit Name="Buffer9Slot12"                               Port="00737"    Mask="0x0001"   Tag="X2E1" />
+        <Bit Name="Buffer9Slot13"                               Port="00736"    Mask="0x0001"   Tag="X2E0" />
+        <Bit Name="Buffer10Slot01"                              Port="00764"    Mask="0x0001"   Tag="X2FC" />
+        <Bit Name="Buffer10Slot02"                              Port="00763"    Mask="0x0001"   Tag="X2FB" />
+        <Bit Name="Buffer10Slot03"                              Port="00762"    Mask="0x0001"   Tag="X2FA" />
+        <Bit Name="Buffer10Slot04"                              Port="00761"    Mask="0x0001"   Tag="X2F9" />
+        <Bit Name="Buffer10Slot05"                              Port="00760"    Mask="0x0001"   Tag="X2F8" />
+        <Bit Name="Buffer10Slot06"                              Port="00759"    Mask="0x0001"   Tag="X2F7" />
+        <Bit Name="Buffer10Slot07"                              Port="00758"    Mask="0x0001"   Tag="X2F6" />
+        <Bit Name="Buffer10Slot08"                              Port="00757"    Mask="0x0001"   Tag="X2F5" />
+        <Bit Name="Buffer10Slot09"                              Port="00756"    Mask="0x0001"   Tag="X2F4" />
+        <Bit Name="Buffer10Slot10"                              Port="00755"    Mask="0x0001"   Tag="X2F3" />
+        <Bit Name="Buffer10Slot11"                              Port="00754"    Mask="0x0001"   Tag="X2F2" />
+        <Bit Name="Buffer10Slot12"                              Port="00753"    Mask="0x0001"   Tag="X2F1" />
+        <Bit Name="Buffer10Slot13"                              Port="00752"    Mask="0x0001"   Tag="X2F0" />
+        <Bit Name="Buffer11Slot01"                              Port="00780"    Mask="0x0001"   Tag="X30C" />
+        <Bit Name="Buffer11Slot02"                              Port="00779"    Mask="0x0001"   Tag="X30B" />
+        <Bit Name="Buffer11Slot03"                              Port="00778"    Mask="0x0001"   Tag="X30A" />
+        <Bit Name="Buffer11Slot04"                              Port="00777"    Mask="0x0001"   Tag="X309" />
+        <Bit Name="Buffer11Slot05"                              Port="00776"    Mask="0x0001"   Tag="X308" />
+        <Bit Name="Buffer11Slot06"                              Port="00775"    Mask="0x0001"   Tag="X307" />
+        <Bit Name="Buffer11Slot07"                              Port="00774"    Mask="0x0001"   Tag="X306" />
+        <Bit Name="Buffer11Slot08"                              Port="00773"    Mask="0x0001"   Tag="X305" />
+        <Bit Name="Buffer11Slot09"                              Port="00772"    Mask="0x0001"   Tag="X304" />
+        <Bit Name="Buffer11Slot10"                              Port="00771"    Mask="0x0001"   Tag="X303" />
+        <Bit Name="Buffer11Slot11"                              Port="00770"    Mask="0x0001"   Tag="X302" />
+        <Bit Name="Buffer11Slot12"                              Port="00769"    Mask="0x0001"   Tag="X301" />
+        <Bit Name="Buffer11Slot13"                              Port="00768"    Mask="0x0001"   Tag="X300" />
+        <Bit Name="Buffer12Slot01"                              Port="00796"    Mask="0x0001"   Tag="X31C" />
+        <Bit Name="Buffer12Slot02"                              Port="00795"    Mask="0x0001"   Tag="X31B" />
+        <Bit Name="Buffer12Slot03"                              Port="00794"    Mask="0x0001"   Tag="X31A" />
+        <Bit Name="Buffer12Slot04"                              Port="00793"    Mask="0x0001"   Tag="X319" />
+        <Bit Name="Buffer12Slot05"                              Port="00792"    Mask="0x0001"   Tag="X318" />
+        <Bit Name="Buffer12Slot06"                              Port="00791"    Mask="0x0001"   Tag="X317" />
+        <Bit Name="Buffer12Slot07"                              Port="00790"    Mask="0x0001"   Tag="X316" />
+        <Bit Name="Buffer12Slot08"                              Port="00789"    Mask="0x0001"   Tag="X315" />
+        <Bit Name="Buffer12Slot09"                              Port="00788"    Mask="0x0001"   Tag="X314" />
+        <Bit Name="Buffer12Slot10"                              Port="00787"    Mask="0x0001"   Tag="X313" />
+        <Bit Name="Buffer12Slot11"                              Port="00786"    Mask="0x0001"   Tag="X312" />
+        <Bit Name="Buffer12Slot12"                              Port="00785"    Mask="0x0001"   Tag="X311" />
+        <Bit Name="Buffer12Slot13"                              Port="00784"    Mask="0x0001"   Tag="X310" />
+
+        <!-- Sankyo Robot Output-->
+        <Bit Name="Command Specifying Code1"                    Port="02000"    Mask="0x0001"   Tag="Y000"/>
+        <Bit Name="Command Specifying Code2"                    Port="02001"    Mask="0x0001"   Tag="Y001"/>
+        <Bit Name="Command Specifying Code4"                    Port="02002"    Mask="0x0001"   Tag="Y002"/>
+        <Bit Name="Command Specifying Code8"                    Port="02003"    Mask="0x0001"   Tag="Y003"/>
+        <Bit Name="Command Specifying Code16"                   Port="02004"    Mask="0x0001"   Tag="Y004"/>
+        <Bit Name="Command Specifying Code32"                   Port="02005"    Mask="0x0001"   Tag="Y005"/>
+        <Bit Name="Stage Type Specifying Code1"                 Port="02006"    Mask="0x0001"   Tag="Y006"/>
+        <Bit Name="Positon Specifying Code1"                    Port="02007"    Mask="0x0001"   Tag="Y007"/>
+        <Bit Name="Positon Specifying Code2"                    Port="02008"    Mask="0x0001"   Tag="Y008"/>
+        <Bit Name="Positon Specifying Code4"                    Port="02009"    Mask="0x0001"   Tag="Y009"/>
+        <Bit Name="Positon Specifying Code8"                    Port="02010"    Mask="0x0001"   Tag="Y00A"/>
+        <Bit Name="Positon Specifying Code16"                   Port="02011"    Mask="0x0001"   Tag="Y00B"/>
+        <Bit Name="Address Specifying Code1"                    Port="02012"    Mask="0x0001"   Tag="Y00C"/>
+        <Bit Name="Address Specifying Code2"                    Port="02013"    Mask="0x0001"   Tag="Y00D"/>
+        <Bit Name="Address Specifying Code4"                    Port="02014"    Mask="0x0001"   Tag="Y00E"/>
+        <Bit Name="Address Specifying Code8"                    Port="02015"    Mask="0x0001"   Tag="Y00F"/>
+        <Bit Name="Address Specifying Code16"                   Port="02016"    Mask="0x0001"   Tag="Y010"/>
+        <Bit Name="Address Specifying Code32"                   Port="02017"    Mask="0x0001"   Tag="Y011"/>
+        <Bit Name="Upper/Lower Hand Specifying Code1"           Port="02018"    Mask="0x0001"   Tag="Y012"/>
+        <Bit Name="Upper/Lower Hand Specifying Code2"           Port="02019"    Mask="0x0001"   Tag="Y013"/>
+        <Bit Name="Speed Override Specifying Code1"             Port="02032"    Mask="0x0001"   Tag="Y020"/>
+        <Bit Name="Speed Override Specifying Code2"             Port="02033"    Mask="0x0001"   Tag="Y021"/>
+        <Bit Name="Motion Start"                                Port="02034"    Mask="0x0001"   Tag="Y022"/>
+        <Bit Name="Command Consistency"                         Port="02035"    Mask="0x0001"   Tag="Y023"/>
+        <Bit Name="Motion Execution Completed Ack"              Port="02036"    Mask="0x0001"   Tag="Y024"/>
+        <Bit Name="Motion Execution Sub Completed Ack"          Port="02037"    Mask="0x0001"   Tag="Y025"/>
+        <Bit Name="Commnad Execution Decision Continue"         Port="02040"    Mask="0x0001"   Tag="Y028"/>
+        <Bit Name="Command Cancel Flag"                         Port="02041"    Mask="0x0001"   Tag="Y029"/>
+        <Bit Name="Commnad Stage No Interlock"                  Port="02042"    Mask="0x0001"   Tag="Y02A"/>
+        <Bit Name="Err Reset"                                   Port="02048"    Mask="0x0001"   Tag="Y030"/>
+        <Bit Name="Robot Task Initial Start"                    Port="02049"    Mask="0x0001"   Tag="Y031"/>
+        <Bit Name="Robot Task Cycle Stop"                       Port="02050"    Mask="0x0001"   Tag="Y032"/>
+        <Bit Name="Robot Task Hold Stop"                        Port="02051"    Mask="0x0001"   Tag="Y033"/>
+        <Bit Name="Robot Task Hold Reset"                       Port="02052"    Mask="0x0001"   Tag="Y034"/>
+        <Bit Name="Robot Software Homing"                       Port="02053"    Mask="0x0001"   Tag="Y035"/>
+        <Bit Name="Error Code Ack"                              Port="02063"    Mask="0x0001"   Tag="Y03F"/>
+        <Bit Name="R Hand Glass Sensing"                        Port="02064"    Mask="0x0001"   Tag="Y040"/>
+        <Bit Name="L Hand Glass Sensing"                        Port="02065"    Mask="0x0001"   Tag="Y041"/>
+        <Bit Name="R Hand Glass Sensing Completion Ack"         Port="02066"    Mask="0x0001"   Tag="Y042"/>
+        <Bit Name="L Hand Glass Sensing Completion Ack"         Port="02067"    Mask="0x0001"   Tag="Y043"/>
+        <Bit Name="R Hand SOL Adsorption On"                    Port="02084"    Mask="0x0001"   Tag="Y054"/>
+        <Bit Name="R Hand SOL Adsorption Off"                   Port="02085"    Mask="0x0001"   Tag="Y055"/>
+        <Bit Name="L Hand SOL Adsorption On"                    Port="02090"    Mask="0x0001"   Tag="Y05A"/>
+        <Bit Name="L Hand SOL Adsorption Off"                   Port="02091"    Mask="0x0001"   Tag="Y05B"/>
+
+
+        <!-- Robot HandShake Input-->
+        <Bit Name="CleanerLoadGlassRequest"                     Port="11000"    Mask="0x0001"   Tag="B580"/>
+        <Bit Name="CleanerLoadGlassReady"                       Port="11001"    Mask="0x0001"   Tag="B581"/>
+        <Bit Name="CleanerUnloadGlassRequest"                   Port="11002"    Mask="0x0001"   Tag="B582"/>
+        <Bit Name="CleanerUnloadGlassReady"                     Port="11003"    Mask="0x0001"   Tag="B583"/>
+        <Bit Name="CleanerGlassExistOnStage"                    Port="11004"    Mask="0x0001"   Tag="B584"/>
+        <Bit Name="CleanerGlassTransferAck"                     Port="11005"    Mask="0x0001"   Tag="B585"/>
+        <Bit Name="CleanerReadyForAccess"                       Port="11006"    Mask="0x0001"   Tag="B586"/>
+        <Bit Name="CleanerReadyForSlot1"                        Port="11007"    Mask="0x0001"   Tag="B587"/>
+        <Bit Name="CleanerReadyForSlot2"                        Port="11008"    Mask="0x0001"   Tag="B588"/>
+        <Bit Name="CleanerEPPIDCheckReply"                      Port="11032"    Mask="0x0001"   Tag="B5A0"/>
+        <Bit Name="CleanerGlassExistOnSlot1"                    Port="11033"    Mask="0x0001"   Tag="B5A1"/>
+        <Bit Name="CleanerGlassExistOnSlot2"                    Port="11034"    Mask="0x0001"   Tag="B5A2"/>
+        <Bit Name="CleanerPrePutConfirm"                        Port="11035"    Mask="0x0001"   Tag="B5A3"/>
+                                                                                              
+        <Bit Name="AOI1LoadGlassRequest"                        Port="11048"    Mask="0x0001"   Tag="B6C0"/>
+        <Bit Name="AOI1LoadGlassReady"                          Port="11049"    Mask="0x0001"   Tag="B6C1"/>
+        <Bit Name="AOI1UnloadGlassRequest"                      Port="11050"    Mask="0x0001"   Tag="B6C2"/>
+        <Bit Name="AOI1UnloadGlassReady"                        Port="11051"    Mask="0x0001"   Tag="B6C3"/>
+        <Bit Name="AOI1GlassExistOnStage"                       Port="11052"    Mask="0x0001"   Tag="B6C4"/>
+        <Bit Name="AOI1GlassTransferAck"                        Port="11053"    Mask="0x0001"   Tag="B6C5"/>
+        <Bit Name="AOI1ReadyForAccess"                          Port="11054"    Mask="0x0001"   Tag="B6C6"/>
+        <Bit Name="AOI1EPPIDCheckReply"                         Port="11080"    Mask="0x0001"   Tag="B6E0"/>
+
+        <Bit Name="DIMLoadGlassRequest"                         Port="11096"    Mask="0x0001"   Tag="B800"/>
+        <Bit Name="DIMLoadGlassReady"                           Port="11097"    Mask="0x0001"   Tag="B801"/>
+        <Bit Name="DIMUnloadGlassRequest"                       Port="11098"    Mask="0x0001"   Tag="B802"/>
+        <Bit Name="DIMUnloadGlassReady"                         Port="11099"    Mask="0x0001"   Tag="B803"/>
+        <Bit Name="DIMGlassExistOnStage"                        Port="11100"    Mask="0x0001"   Tag="B804"/>
+        <Bit Name="DIMGlassTransferAck"                         Port="11101"    Mask="0x0001"   Tag="B805"/>
+        <Bit Name="DIMReadyForAccess"                           Port="11102"    Mask="0x0001"   Tag="B806"/>
+        <Bit Name="DIMEPPIDCheckReply"                          Port="11128"    Mask="0x0001"   Tag="B820"/>
+
+        <Bit Name="LaserRepair1LoadGlassRequest"                Port="11144"    Mask="0x0001"   Tag="B980"/>
+        <Bit Name="LaserRepair1LoadGlassReady"                  Port="11145"    Mask="0x0001"   Tag="B981"/>
+        <Bit Name="LaserRepair1UnloadGlassRequest"              Port="11146"    Mask="0x0001"   Tag="B982"/>
+        <Bit Name="LaserRepair1UnloadGlassReady"                Port="11147"    Mask="0x0001"   Tag="B983"/>
+        <Bit Name="LaserRepair1GlassExistOnStage"               Port="11148"    Mask="0x0001"   Tag="B984"/>
+        <Bit Name="LaserRepair1GlassTransferAck"                Port="11149"    Mask="0x0001"   Tag="B985"/>
+        <Bit Name="LaserRepair1ReadyForAccess"                  Port="11150"    Mask="0x0001"   Tag="B986"/>
+        <Bit Name="LaserRepair1EPPIDCheckReply"                 Port="11176"    Mask="0x0001"   Tag="B9A0"/>
+
+        <Bit Name="AOI2LoadGlassRequest"                        Port="11192"    Mask="0x0001"   Tag="BAC0"/>
+        <Bit Name="AOI2LoadGlassReady"                          Port="11193"    Mask="0x0001"   Tag="BAC1"/>
+        <Bit Name="AOI2UnloadGlassRequest"                      Port="11194"    Mask="0x0001"   Tag="BAC2"/>
+        <Bit Name="AOI2UnloadGlassReady"                        Port="11195"    Mask="0x0001"   Tag="BAC3"/>
+        <Bit Name="AOI2GlassExistOnStage"                       Port="11196"    Mask="0x0001"   Tag="BAC4"/>
+        <Bit Name="AOI2GlassTransferAck"                        Port="11197"    Mask="0x0001"   Tag="BAC5"/>
+        <Bit Name="AOI2ReadyForAccess"                          Port="11198"    Mask="0x0001"   Tag="BAC6"/>
+        <Bit Name="AOI2EPPIDCheckReply"                         Port="11224"    Mask="0x0001"   Tag="BAE0"/>
+
+        <Bit Name="LaserRepair2LoadGlassRequest"                Port="11240"    Mask="0x0001"   Tag="BC00"/>
+        <Bit Name="LaserRepair2LoadGlassReady"                  Port="11241"    Mask="0x0001"   Tag="BC01"/>
+        <Bit Name="LaserRepair2UnloadGlassRequest"              Port="11242"    Mask="0x0001"   Tag="BC02"/>
+        <Bit Name="LaserRepair2UnloadGlassReady"                Port="11243"    Mask="0x0001"   Tag="BC03"/>
+        <Bit Name="LaserRepair2GlassExistOnStage"               Port="11244"    Mask="0x0001"   Tag="BC04"/>
+        <Bit Name="LaserRepair2GlassTransferAck"                Port="11245"    Mask="0x0001"   Tag="BC05"/>
+        <Bit Name="LaserRepair2ReadyForAccess"                  Port="11246"    Mask="0x0001"   Tag="BC06"/>
+        <Bit Name="LaserRepair2EPPIDCheckReply"                 Port="11272"    Mask="0x0001"   Tag="BC07"/>
+
+
+        <!-- Robot HandShake Output-->
+        <Bit Name="CleanerRobotPutComplete"                     Port="10000"    Mask="0x0001"   Tag="B480"/>
+        <Bit Name="CleanerRobotPutBusy"                         Port="10001"    Mask="0x0001"   Tag="B481"/>
+        <Bit Name="CleanerRobotPutGlassRequest"                 Port="10002"    Mask="0x0001"   Tag="B482"/>
+        <Bit Name="CleanerRobotGetComplete"                     Port="10003"    Mask="0x0001"   Tag="B483"/>
+        <Bit Name="CleanerRobotGetBusy"                         Port="10004"    Mask="0x0001"   Tag="B484"/>
+        <Bit Name="CleanerRobotGetGlassRequest"                 Port="10005"    Mask="0x0001"   Tag="B485"/>
+        <Bit Name="CleanerRobotGlassTransferReset"              Port="10006"    Mask="0x0001"   Tag="B486"/>
+        <Bit Name="CleanerRobotPrePut"                          Port="10007"    Mask="0x0001"   Tag="B487"/>
+        <Bit Name="CleanerRobotEPPIDCheckRequest"               Port="10032"    Mask="0x0001"   Tag="B4A0"/>
+                                                                                                
+        <Bit Name="AOI1RobotPutComplete"                        Port="10064"    Mask="0x0001"   Tag="B4C0"/>
+        <Bit Name="AOI1RobotPutBusy"                            Port="10065"    Mask="0x0001"   Tag="B4C1"/>
+        <Bit Name="AOI1RobotPutGlassRequest"                    Port="10066"    Mask="0x0001"   Tag="B4C2"/>
+        <Bit Name="AOI1RobotGetComplete"                        Port="10067"    Mask="0x0001"   Tag="B4C3"/>
+        <Bit Name="AOI1RobotGetBusy"                            Port="10068"    Mask="0x0001"   Tag="B4C4"/>
+        <Bit Name="AOI1RobotGetGlassRequest"                    Port="10069"    Mask="0x0001"   Tag="B4C5"/>
+        <Bit Name="AOI1RobotGlassTransferReset"                 Port="10070"    Mask="0x0001"   Tag="B4C6"/>
+        <Bit Name="AOI1RobotEPPIDCheckRequest"                  Port="10096"    Mask="0x0001"   Tag="B4E0"/>
+
+        <Bit Name="DIMRobotPutComplete"                         Port="10128"    Mask="0x0001"   Tag="B500"/>
+        <Bit Name="DIMRobotPutBusy"                             Port="10129"    Mask="0x0001"   Tag="B501"/>
+        <Bit Name="DIMRobotPutGlassRequest"                     Port="10130"    Mask="0x0001"   Tag="B502"/>
+        <Bit Name="DIMRobotGetComplete"                         Port="10131"    Mask="0x0001"   Tag="B503"/>
+        <Bit Name="DIMRobotGetBusy"                             Port="10132"    Mask="0x0001"   Tag="B504"/>
+        <Bit Name="DIMRobotGetGlassRequest"                     Port="10133"    Mask="0x0001"   Tag="B505"/>
+        <Bit Name="DIMRobotGlassTransferReset"                  Port="10134"    Mask="0x0001"   Tag="B506"/>
+        <Bit Name="DIMRobotEPPIDCheckRequest"                   Port="10160"    Mask="0x0001"   Tag="B520"/>
+
+        <Bit Name="LaserRepair1RobotPutComplete"                Port="10256"    Mask="0x0001"   Tag="B880"/>
+        <Bit Name="LaserRepair1RobotPutBusy"                    Port="10257"    Mask="0x0001"   Tag="B881"/>
+        <Bit Name="LaserRepair1RobotPutGlassRequest"            Port="10258"    Mask="0x0001"   Tag="B882"/>
+        <Bit Name="LaserRepair1RobotGetComplete"                Port="10259"    Mask="0x0001"   Tag="B883"/>
+        <Bit Name="LaserRepair1RobotGetBusy"                    Port="10260"    Mask="0x0001"   Tag="B884"/>
+        <Bit Name="LaserRepair1RobotGetGlassRequest"            Port="10261"    Mask="0x0001"   Tag="B885"/>
+        <Bit Name="LaserRepair1RobotGlassTransferReset"         Port="10262"    Mask="0x0001"   Tag="B886"/>
+        <Bit Name="LaserRepair1RobotEPPIDCheckRequest"          Port="10288"    Mask="0x0001"   Tag="B8A0"/>
+
+        <Bit Name="AOI2RobotPutComplete"                        Port="10320"    Mask="0x0001"   Tag="B8C0"/>
+        <Bit Name="AOI2RobotPutBusy"                            Port="10321"    Mask="0x0001"   Tag="B8C1"/>
+        <Bit Name="AOI2RobotPutGlassRequest"                    Port="10322"    Mask="0x0001"   Tag="B8C2"/>
+        <Bit Name="AOI2RobotGetComplete"                        Port="10323"    Mask="0x0001"   Tag="B8C3"/>
+        <Bit Name="AOI2RobotGetBusy"                            Port="10324"    Mask="0x0001"   Tag="B8C4"/>
+        <Bit Name="AOI2RobotGetGlassRequest"                    Port="10325"    Mask="0x0001"   Tag="B8C5"/>
+        <Bit Name="AOI2RobotGlassTransferReset"                 Port="10326"    Mask="0x0001"   Tag="B8C6"/>
+        <Bit Name="AOI2RobotEPPIDCheckRequest"                  Port="10352"    Mask="0x0001"   Tag="B8E0"/>
+
+        <Bit Name="LaserRepair2RobotPutComplete"                Port="10384"    Mask="0x0001"   Tag="B900"/>
+        <Bit Name="LaserRepair2RobotPutBusy"                    Port="10385"    Mask="0x0001"   Tag="B901"/>
+        <Bit Name="LaserRepair2RobotPutGlassRequest"            Port="10386"    Mask="0x0001"   Tag="B902"/>
+        <Bit Name="LaserRepair2RobotGetComplete"                Port="10387"    Mask="0x0001"   Tag="B903"/>
+        <Bit Name="LaserRepair2RobotGetBusy"                    Port="10388"    Mask="0x0001"   Tag="B904"/>
+        <Bit Name="LaserRepair2RobotGetGlassRequest"            Port="10389"    Mask="0x0001"   Tag="B905"/>
+        <Bit Name="LaserRepair2RobotGlassTransferReset"         Port="10390"    Mask="0x0001"   Tag="B906"/>
+        <Bit Name="LaserRepair2RobotEPPIDCheckRequest"          Port="10416"    Mask="0x0001"   Tag="B920"/>
+		
+		<!--Eq status
+        <Bit Name="CleanerStatus"          						Port="20256"    Mask="0x0001"/>
+        <Bit Name="AOIStatus"          							Port="20257"    Mask="0x0001"/>
+        <Bit Name="DIMStatus"          							Port="20258"    Mask="0x0001"/>
+		-->
+		
+    </Bits>
+    <Words>
+        <!-- Sankyo Robot Input-->
+        <Word Name="Status Type"                                Port="40001"    Tag="WR001" />
+        <Word Name="Status Sub Type"                            Port="40002"    Tag="WR002" />
+        <Word Name="Error Code"                                 Port="40013"    Tag="WR00D" />
+
+        <!-- Sankyo Robot Output-->
+        <Word Name="Command Type"                               Port="50001"    Tag="WW001"/>
+        <Word Name="Command Sub Type"                           Port="50002"    Tag="WW002"/>
+        <Word Name="Command Speed Override"                     Port="50012"    Tag="WW00C"/>
+
+        <!-- Input-->
+        <Word Name="ULDMaskCH1"                                 Port="40016"    Tag="WR010" />
+        <Word Name="ULDMaskCH2"                                 Port="40017"    Tag="WR011" />
+        <Word Name="ULDMaskCH3"                                 Port="40018"    Tag="WR012" />
+        <Word Name="LDMaskCH1"                                  Port="40020"    Tag="WR014" />
+        <Word Name="LDMaskCH2"                                  Port="40021"    Tag="WR015" />
+        <Word Name="LDMaskCH3"                                  Port="40022"    Tag="WR016" />
+        <Word Name="LaserMarkCH1"                               Port="40024"    Tag="WR018" />
+        <Word Name="LaserMarkCH2"                               Port="40025"    Tag="WR019" />
+        <Word Name="LaserMarkCH3"                               Port="40026"    Tag="WR01A" />
+
+
+        <!-- Robot HandShake Input-->
+        <Word Name="CleanerEqEPPID"                             Port="23000"    Tag="W0C00"/>
+        <Word Name="CleanerEqMaskMode"                          Port="23001"    Tag="W0C01"/>
+        <Word Name="CleanerEqGlassMode"                         Port="23002"    Tag="W0C02"/>
+        <Word Name="CleanerEqPortNo"                            Port="23003"    Tag="W0C03"/>
+        <Word Name="CleanerEqSlotNo"                            Port="23004"    Tag="W0C04"/>
+        <Word Name="CleanerEqInspectionResult"                  Port="23048"    Tag="W0C30"/>
+                                                                                
+        <Word Name="AOI1EqEPPID"                                Port="23752"    Tag="W1280"/>
+        <Word Name="AOI1EqMaskMode"                             Port="23753"    Tag="W1281"/>
+        <Word Name="AOI1EqGlassMode"                            Port="23754"    Tag="W1282"/>
+        <Word Name="AOI1EqPortNo"                               Port="23755"    Tag="W1283"/>
+        <Word Name="AOI1EqSlotNo"                               Port="23756"    Tag="W1284"/>
+        <Word Name="AOI1EqInspectionResult"                     Port="23800"    Tag="W12B0"/>
+                                                                           
+        <Word Name="DIMEqEPPID"                                 Port="24520"    Tag="W1900"/>
+        <Word Name="DIMEqMaskMode"                              Port="24521"    Tag="W1901"/>
+        <Word Name="DIMEqGlassMode"                             Port="24522"    Tag="W1902"/>
+        <Word Name="DIMEqPortNo"                                Port="24523"    Tag="W1903"/>
+        <Word Name="DIMEqSlotNo"                                Port="24524"    Tag="W1904"/>
+        <Word Name="DIMEqInspectionResult"                      Port="24568"    Tag="W1930"/>
+                                                                                 
+        <Word Name="LaserRepair1EqEPPID"                        Port="25272"    Tag="W2A00"/>
+        <Word Name="LaserRepair1EqMaskMode"                     Port="25273"    Tag="W2A01"/>
+        <Word Name="LaserRepair1EqGlassMode"                    Port="25274"    Tag="W2A02"/>
+        <Word Name="LaserRepair1EqPortNo"                       Port="25275"    Tag="W2A03"/>
+        <Word Name="LaserRepair1EqSlotNo"                       Port="25276"    Tag="W2A04"/>
+        <Word Name="LaserRepair1EqInspectionResult"             Port="25320"    Tag="W2A30"/>
+                                                                                 
+        <Word Name="LaserRepair2EqEPPID"                        Port="26808"    Tag="W3700"/>
+        <Word Name="LaserRepair2EqMaskMode"                     Port="26809"    Tag="W3701"/>
+        <Word Name="LaserRepair2EqGlassMode"                    Port="26810"    Tag="W3702"/>
+        <Word Name="LaserRepair2EqPortNo"                       Port="26811"    Tag="W3703"/>
+        <Word Name="LaserRepair2EqSlotNo"                       Port="26812"    Tag="W3704"/>
+        <Word Name="LaserRepair2EqInspectionResult"             Port="26856"    Tag="W3740"/>
+                                                                                  
+        <Word Name="AOI2EqEPPID"                                Port="26040"    Tag="W3080"/>
+        <Word Name="AOI2EqMaskMode"                             Port="26041"    Tag="W3081"/>
+        <Word Name="AOI2EqGlassMode"                            Port="26042"    Tag="W3082"/>
+        <Word Name="AOI2EqPortNo"                               Port="26043"    Tag="W3083"/>
+        <Word Name="AOI2EqSlotNo"                               Port="26044"    Tag="W3084"/>
+        <Word Name="AOI2EqInspectionResult"                     Port="26088"    Tag="W30B0"/>
+
+
+        <!-- Robot HandShake Output-->
+        <Word Name="CleanerRobotEPPID"                          Port="20384" Tag="W600"/>
+        <Word Name="CleanerRobotMaskMode"                       Port="20385" Tag="W601"/>
+        <Word Name="CleanerRobotGlassMode"                      Port="20386" Tag="W602"/>
+        <Word Name="CleanerRobotPortNo"                         Port="20387" Tag="W603"/>
+        <Word Name="CleanerRobotSlotNo"                         Port="20388" Tag="W604"/>
+        <Word Name="CleanerRobotInspectionResult"               Port="20432" Tag="W630"/>
+                                                                             
+        <Word Name="AOI1RobotEPPID"                             Port="20464" Tag="W680"/>
+        <Word Name="AOI1RobotMaskMode"                          Port="20465" Tag="W681"/>
+        <Word Name="AOI1RobotGlassMode"                         Port="20466" Tag="W682"/>
+        <Word Name="AOI1RobotPortNo"                            Port="20467" Tag="W683"/>
+        <Word Name="AOI1RobotSlotNo"                            Port="20468" Tag="W684"/>
+        <Word Name="AOI1RobotInspectionResult"                  Port="20512" Tag="W6B0"/>
+
+        <Word Name="DIMRobotEPPID"                              Port="20544" Tag="W700"/>
+        <Word Name="DIMRobotMaskMode"                           Port="20545" Tag="W701"/>
+        <Word Name="DIMRobotGlassMode"                          Port="20546" Tag="W702"/>
+        <Word Name="DIMRobotPortNo"                             Port="20547" Tag="W703"/>
+        <Word Name="DIMRobotSlotNo"                             Port="20548" Tag="W704"/>
+        <Word Name="DIMRobotInspectionResult"                   Port="20592" Tag="W730"/>
+
+        <Word Name="LaserRepair1RobotEPPID"                     Port="20960" Tag="W2400"/>
+        <Word Name="LaserRepair1RobotMaskMode"                  Port="20961" Tag="W2401"/>
+        <Word Name="LaserRepair1RobotGlassMode"                 Port="20962" Tag="W2402"/>
+        <Word Name="LaserRepair1RobotPortNo"                    Port="20963" Tag="W2403"/>
+        <Word Name="LaserRepair1RobotSlotNo"                    Port="20964" Tag="W2404"/>
+        <Word Name="LaserRepair1RobotInspectionResult"          Port="21008" Tag="W2430"/>
+                                                                                  
+        <Word Name="AOI2RobotEPPID"                             Port="21040" Tag="W2480"/>
+        <Word Name="AOI2RobotMaskMode"                          Port="21041" Tag="W2481"/>
+        <Word Name="AOI2RobotGlassMode"                         Port="21042" Tag="W2482"/>
+        <Word Name="AOI2RobotPortNo"                            Port="21043" Tag="W2483"/>
+        <Word Name="AOI2RobotSlotNo"                            Port="21044" Tag="W2484"/>
+        <Word Name="AOI2RobotInspectionResult"                  Port="21088" Tag="W24B0"/>
+                                                                           
+        <Word Name="LaserRepair2RobotEPPID"                     Port="21120" Tag="W2500"/>
+        <Word Name="LaserRepair2RobotMaskMode"                  Port="21121" Tag="W2501"/>
+        <Word Name="LaserRepair2RobotGlassMode"                 Port="21122" Tag="W2502"/>
+        <Word Name="LaserRepair2RobotPortNo"                    Port="21123" Tag="W2503"/>
+        <Word Name="LaserRepair2RobotSlotNo"                    Port="21124" Tag="W2504"/>
+        <Word Name="LaserRepair2RobotInspectionResult"          Port="21168" Tag="W2530"/>
+        
+        <!-- Robot to Cleaner Comm-->
+
+        <Word Name="CleanerRBCommonDataIndex"                     Port="20048" Tag="W0180"/>
+        <Word Name="CleanerRBMessageIndex"                        Port="20049" Tag="W0181"/>
+        <Word Name="CleanerRBClockUpdatingIndex"                  Port="20050" Tag="W0182"/>
+        <Word Name="CleanerRBRecipeBodyQueryIndex"                Port="20051" Tag="W0183"/>
+        <Word Name="CleanerRBEQPStatusReport"                     Port="20057" Tag="W0189"/>
+        <Word Name="CleanerRBAlarmReportIndex"                    Port="20058" Tag="W018A"/>
+        <Word Name="CleanerRBWarningReportIndex"                  Port="20059" Tag="W018B"/>
+        <Word Name="CleanerRBGlassScrapIndex"                     Port="20060" Tag="W018C"/>
+        <Word Name="CleanerRBRecipeBodyQueryReportIndex"          Port="20061" Tag="W018D"/>
+        <Word Name="CleanerRBRecipeBodyModifyIndex"               Port="20062" Tag="W018E"/>
+        <Word Name="CleanerRBDailyCheckReport"                    Port="20063" Tag="W018F"/>
+        <Word Name="CleanerRBEquipmentEventReport"                Port="20064" Tag="W0190"/> 
+        <Word Name="CleanerRBInterlockClock"                      Port="20077" Tag="W019D"/>
+        <Word Name="CleanerRBRemoteStatus"                        Port="20078" Tag="W019E"/>
+        <Word Name="CleanerRBEQRunModeTypeofCIM"                  Port="20079" Tag="W019F"/>
+        <Word Name="CleanerRBEQSuspendforCleaner"                 Port="20080" Tag="W01A0"/>
+        <Word Name="CleanerRBBuzzerFlag"                          Port="20093" Tag="W01AD"/>
+        <Word Name="CleanerRBTimeSync1"                           Port="20135" Tag="W01D7"/>
+        <Word Name="CleanerRBTimeSync2"                           Port="20136" Tag="W01D8"/>
+        <Word Name="CleanerRBTimeSync3"                           Port="20137" Tag="W01D9"/>
+        <Word Name="CleanerRBTimeSync4"                           Port="20138" Tag="W01DA"/>
+        <Word Name="CleanerRBTimeSync5"                           Port="20139" Tag="W01DB"/>
+        <Word Name="CleanerRBTimeSync6"                           Port="20140" Tag="W01DC"/>
+        <Word Name="CleanerRBRMSRecipeID"                         Port="20150" Tag="W01E6"/>       
+         
+        <!-- Robot to AOI1 Comm-->
+
+        <Word Name="AOI1RBCommonDataIndex"                        Port="20160" Tag="W0300"/> 
+        <Word Name="AOI1RBMessageIndex"                           Port="20161" Tag="W0301"/> 
+        <Word Name="AOI1RBClockUpdatingIndex"                     Port="20162" Tag="W0302"/> 
+        <Word Name="AOI1RBRecipeBodyQueryIndex"                   Port="20163" Tag="W0303"/> 
+        <Word Name="AOI1RBEQPStatusReport"                        Port="20169" Tag="W0309"/> 
+        <Word Name="AOI1RBAlarmReportIndex"                       Port="20170" Tag="W030A"/> 
+        <Word Name="AOI1RBWarningReportIndex"                     Port="20171" Tag="W030B"/> 
+        <Word Name="AOI1RBGlassScrapIndex"                        Port="20172" Tag="W030C"/> 
+        <Word Name="AOI1RBRecipeBodyQueryReportIndex"             Port="20173" Tag="W030D"/> 
+        <Word Name="AOI1RBRecipeBodyModifyIndex"                  Port="20174" Tag="W030E"/> 
+        <Word Name="AOI1RBDailyCheckReport"                       Port="20175" Tag="W030F"/> 
+        <Word Name="AOI1RBEquipmentEventReport"                   Port="20176" Tag="W0310"/> 
+        <Word Name="AOI1RBInterlockClock"                         Port="20189" Tag="W031D"/> 
+        <Word Name="AOI1RBRemoteStatus"                           Port="20190" Tag="W031E"/> 
+        <Word Name="AOI1RBEQRunModeTypeofCIM"                     Port="20191" Tag="W031F"/> 
+        <Word Name="AOI1RBEQSuspendforCleaner"                    Port="20192" Tag="W0320"/> 
+        <Word Name="AOI1RBBuzzerFlag"                             Port="20205" Tag="W032D"/> 
+        <Word Name="AOI1RBTimeSync1"                              Port="20247" Tag="W0357"/> 
+        <Word Name="AOI1RBTimeSync2"                              Port="20248" Tag="W0358"/> 
+        <Word Name="AOI1RBTimeSync3"                              Port="20249" Tag="W0359"/> 
+        <Word Name="AOI1RBTimeSync4"                              Port="20250" Tag="W035A"/> 
+        <Word Name="AOI1RBTimeSync5"                              Port="20251" Tag="W035B"/> 
+        <Word Name="AOI1RBTimeSync6"                              Port="20252" Tag="W035C"/> 
+        <Word Name="AOI1RBRMSRecipeID"                            Port="20262" Tag="W0366"/>                                                                                         
+    
+        <!-- Robot to DIM Comm-->                                                               
+                                                                                                 
+        <Word Name="DIMRBCommonDataIndex"                         Port="20272" Tag="W0480"/>     
+        <Word Name="DIMRBMessageIndex"                            Port="20273" Tag="W0481"/>     
+        <Word Name="DIMRBClockUpdatingIndex"                      Port="20274" Tag="W0482"/>     
+        <Word Name="DIMRBRecipeBodyQueryIndex"                    Port="20275" Tag="W0483"/>     
+        <Word Name="DIMRBEQPStatusReport"                         Port="20281" Tag="W0489"/>     
+        <Word Name="DIMRBAlarmReportIndex"                        Port="20282" Tag="W048A"/>     
+        <Word Name="DIMRBWarningReportIndex"                      Port="20283" Tag="W048B"/>   
+        <Word Name="DIMRBGlassScrapIndex"                         Port="20284" Tag="W048C"/>   
+        <Word Name="DIMRBRecipeBodyQueryReportIndex"              Port="20285" Tag="W048D"/>   
+        <Word Name="DIMRBRecipeBodyModifyIndex"                   Port="20286" Tag="W048E"/>   
+        <Word Name="DIMRBDailyCheckReport"                        Port="20287" Tag="W048F"/>   
+        <Word Name="DIMRBEquipmentEventReport"                    Port="20288" Tag="W0490"/>   
+        <Word Name="DIMRBInterlockClock"                          Port="20301" Tag="W049D"/>     
+        <Word Name="DIMRBRemoteStatus"                            Port="20302" Tag="W049E"/>     
+        <Word Name="DIMRBEQRunModeTypeofCIM"                      Port="20303" Tag="W049F"/>     
+        <Word Name="DIMRBEQSuspendforCleaner"                     Port="20304" Tag="W04A0"/>     
+        <Word Name="DIMRBBuzzerFlag"                              Port="20317" Tag="W04AD"/>     
+        <Word Name="DIMRBTimeSync1"                               Port="20359" Tag="W04D7"/>     
+        <Word Name="DIMRBTimeSync2"                               Port="20360" Tag="W04D8"/>     
+        <Word Name="DIMRBTimeSync3"                               Port="20361" Tag="W04D9"/>     
+        <Word Name="DIMRBTimeSync4"                               Port="20362" Tag="W04DA"/>     
+        <Word Name="DIMRBTimeSync5"                               Port="20363" Tag="W04DB"/>     
+        <Word Name="DIMRBTimeSync6"                               Port="20364" Tag="W04DC"/>     
+        <Word Name="DIMRBRMSRecipeID"                             Port="20374" Tag="W04E6"/>     
+
+        <!-- Robot to LaserRepair1 Comm-->                                                            
+                                                                                             
+        <Word Name="LaserRepair1RBCommonDataIndex"                Port="20624" Tag="W1F80"/> 
+        <Word Name="LaserRepair1RBMessageIndex"                   Port="20625" Tag="W1F81"/> 
+        <Word Name="LaserRepair1RBClockUpdatingIndex"             Port="20626" Tag="W1F82"/> 
+        <Word Name="LaserRepair1RBRecipeBodyQueryIndex"           Port="20627" Tag="W1F83"/> 
+        <Word Name="LaserRepair1RBEQPStatusReport"                Port="20633" Tag="W1F89"/> 
+        <Word Name="LaserRepair1RBAlarmReportIndex"               Port="20634" Tag="W1F8A"/> 
+        <Word Name="LaserRepair1RBWarningReportIndex"             Port="20635" Tag="W1F8B"/> 
+        <Word Name="LaserRepair1RBGlassScrapIndex"                Port="20636" Tag="W1F8C"/> 
+        <Word Name="LaserRepair1RBRecipeBodyQueryReportIndex"     Port="20637" Tag="W1F8D"/> 
+        <Word Name="LaserRepair1RBRecipeBodyModifyIndex"          Port="20638" Tag="W1F8E"/> 
+        <Word Name="LaserRepair1RBDailyCheckReport"               Port="20639" Tag="W1F8F"/> 
+        <Word Name="LaserRepair1RBEquipmentEventReport"           Port="20640" Tag="W1F90"/> 
+        <Word Name="LaserRepair1RBInterlockClock"                 Port="20653" Tag="W1F9D"/> 
+        <Word Name="LaserRepair1RBRemoteStatus"                   Port="20654" Tag="W1F9E"/> 
+        <Word Name="LaserRepair1RBEQRunModeTypeofCIM"             Port="20655" Tag="W1F9F"/> 
+        <Word Name="LaserRepair1RBEQSuspendforCleaner"            Port="20656" Tag="W1FA0"/> 
+        <Word Name="LaserRepair1RBBuzzerFlag"                     Port="20669" Tag="W1FAD"/> 
+        <Word Name="LaserRepair1RBTimeSync1"                      Port="20711" Tag="W1FD7"/>     
+        <Word Name="LaserRepair1RBTimeSync2"                      Port="20712" Tag="W1FD8"/>     
+        <Word Name="LaserRepair1RBTimeSync3"                      Port="20713" Tag="W1FD9"/>     
+        <Word Name="LaserRepair1RBTimeSync4"                      Port="20714" Tag="W1FDA"/>     
+        <Word Name="LaserRepair1RBTimeSync5"                      Port="20715" Tag="W1FDB"/>     
+        <Word Name="LaserRepair1RBTimeSync6"                      Port="20716" Tag="W1FDC"/>     
+        <Word Name="LaserRepair1RBRMSRecipeID"                    Port="20726" Tag="W1FE6"/>     
+
+        <!-- Robot to AOI2 Comm-->                                                            
+                                                                                             
+        <Word Name="AOI2RBCommonDataIndex"                        Port="20736" Tag="W2100"/> 
+        <Word Name="AOI2RBMessageIndex"                           Port="20737" Tag="W2101"/> 
+        <Word Name="AOI2RBClockUpdatingIndex"                     Port="20738" Tag="W2102"/> 
+        <Word Name="AOI2RBRecipeBodyQueryIndex"                   Port="20739" Tag="W2103"/> 
+        <Word Name="AOI2RBEQPStatusReport"                        Port="20745" Tag="W2109"/> 
+        <Word Name="AOI2RBAlarmReportIndex"                       Port="20746" Tag="W210A"/> 
+        <Word Name="AOI2RBWarningReportIndex"                     Port="20747" Tag="W210B"/> 
+        <Word Name="AOI2RBGlassScrapIndex"                        Port="20748" Tag="W210C"/> 
+        <Word Name="AOI2RBRecipeBodyQueryReportIndex"             Port="20749" Tag="W210D"/> 
+        <Word Name="AOI2RBRecipeBodyModifyIndex"                  Port="20750" Tag="W210E"/> 
+        <Word Name="AOI2RBDailyCheckReport"                       Port="20751" Tag="W210F"/> 
+        <Word Name="AOI2RBEquipmentEventReport"                   Port="20752" Tag="W2110"/> 
+        <Word Name="AOI2RBInterlockClock"                         Port="20765" Tag="W211D"/> 
+        <Word Name="AOI2RBRemoteStatus"                           Port="20766" Tag="W211E"/> 
+        <Word Name="AOI2RBEQRunModeTypeofCIM"                     Port="20767" Tag="W211F"/> 
+        <Word Name="AOI2RBEQSuspendforCleaner"                    Port="20768" Tag="W2120"/> 
+        <Word Name="AOI2RBBuzzerFlag"                             Port="20781" Tag="W212D"/> 
+        <Word Name="AOI2RBTimeSync1"                              Port="20823" Tag="W2157"/>     
+        <Word Name="AOI2RBTimeSync2"                              Port="20824" Tag="W2158"/>     
+        <Word Name="AOI2RBTimeSync3"                              Port="20825" Tag="W2159"/>     
+        <Word Name="AOI2RBTimeSync4"                              Port="20826" Tag="W215A"/>     
+        <Word Name="AOI2RBTimeSync5"                              Port="20827" Tag="W215B"/>     
+        <Word Name="AOI2RBTimeSync6"                              Port="20828" Tag="W215C"/>     
+        <Word Name="AOI2RBRMSRecipeID"                            Port="20838" Tag="W2166"/>     
+
+        <!-- Robot to LaserRepair2 Comm-->                                                          
+                                                                                            
+        <Word Name="LaserRepair2RBCommonDataIndex"                Port="20848" Tag="W2280"/>
+        <Word Name="LaserRepair2RBMessageIndex"                   Port="20849" Tag="W2281"/>
+        <Word Name="LaserRepair2RBClockUpdatingIndex"             Port="20850" Tag="W2282"/>
+        <Word Name="LaserRepair2RBRecipeBodyQueryIndex"           Port="20851" Tag="W2283"/>
+        <Word Name="LaserRepair2RBEQPStatusReport"                Port="20857" Tag="W2289"/>    
+        <Word Name="LaserRepair2RBAlarmReportIndex"               Port="20858" Tag="W228A"/> 
+        <Word Name="LaserRepair2RBWarningReportIndex"             Port="20859" Tag="W228B"/>
+        <Word Name="LaserRepair2RBGlassScrapIndex"                Port="20860" Tag="W228C"/>
+        <Word Name="LaserRepair2RBRecipeBodyQueryReportIndex"     Port="20861" Tag="W228D"/>
+        <Word Name="LaserRepair2RBRecipeBodyModifyIndex"          Port="20862" Tag="W228E"/>
+        <Word Name="LaserRepair2RBDailyCheckReport"               Port="20863" Tag="W228F"/>
+        <Word Name="LaserRepair2RBEquipmentEventReport"           Port="20864" Tag="W2290"/>
+        <Word Name="LaserRepair2RBInterlockClock"                 Port="20877" Tag="W229D"/>
+        <Word Name="LaserRepair2RBRemoteStatus"                   Port="20878" Tag="W229E"/>
+        <Word Name="LaserRepair2RBEQRunModeTypeofCIM"             Port="20879" Tag="W229F"/>
+        <Word Name="LaserRepair2RBEQSuspendforCleaner"            Port="20880" Tag="W22A0"/>
+        <Word Name="LaserRepair2RBBuzzerFlag"                     Port="20893" Tag="W22AD"/>
+        <Word Name="LaserRepair2RBTimeSync1"                      Port="20935" Tag="W22D7"/>
+        <Word Name="LaserRepair2RBTimeSync2"                      Port="20936" Tag="W22D8"/>
+        <Word Name="LaserRepair2RBTimeSync3"                      Port="20937" Tag="W22D9"/>
+        <Word Name="LaserRepair2RBTimeSync4"                      Port="20938" Tag="W22DA"/>
+        <Word Name="LaserRepair2RBTimeSync5"                      Port="20939" Tag="W22DB"/>
+        <Word Name="LaserRepair2RBTimeSync6"                      Port="20940" Tag="W22DC"/>
+        <Word Name="LaserRepair2RBRMSRecipeID"                    Port="20950" Tag="W22E6"/>    
+       
+        <!-- Cleaner to Robot Comm-->
+
+        <Word Name="CleanerEQEQPStatusReport"                     Port="23080" Tag="W0E00"/>
+        <Word Name="CleanerEQAlarmReportIndex"                    Port="23081" Tag="W0E01"/>
+        <Word Name="CleanerEQWarningReportIndex"                  Port="23082" Tag="W0E02"/>
+        <Word Name="CleanerEQGlassScrapndex"                      Port="23083" Tag="W0E03"/>
+        <Word Name="CleanerEQRecipeBodyQueryReportIndex"          Port="23084" Tag="W0E04"/>
+        <Word Name="CleanerEQRecipeBodyModifyIndex"               Port="23085" Tag="W0E05"/>
+        <Word Name="CleanerEQDailyCheckReport"                    Port="23086" Tag="W0E06"/>
+        <Word Name="CleanerEQEventReport"                         Port="23087" Tag="W0E07"/>
+        <Word Name="CleanerEQCommonDataIndex"                     Port="23096" Tag="W0E10"/>
+        <Word Name="CleanerEQMessageIndex"                        Port="23097" Tag="W0E11"/>
+        <Word Name="CleanerEQClockUpdatingIndex"                  Port="23098" Tag="W0E12"/>
+        <Word Name="CleanerEQRecipeBodyQueryIndex"                Port="23099" Tag="W0E13"/> 
+        <Word Name="CleanerEQInterlockClock"                      Port="23106" Tag="W0E1A"/>
+        <Word Name="CleanerEQEquipmentStatus"                     Port="23107" Tag="W0E1B"/>
+        <Word Name="CleanerEQInlineStatus"                        Port="23108" Tag="W0E1C"/>
+        <Word Name="CleanerEQCurrentRecipeID"                     Port="23109" Tag="W0E1D"/>
+        <Word Name="CleanerEQCIMConnectStatus"                    Port="23110" Tag="W0E1E"/>
+        <Word Name="CleanerEQSheetCount"                          Port="23111" Tag="W0E1F"/>
+        <Word Name="CleanerEQErasePortNo"                         Port="23146" Tag="W0E42"/>
+        <Word Name="CleanerEQEraseSlotNo"                         Port="23147" Tag="W0E43"/>
+        <Word Name="CleanerEQEraseReason"                         Port="23148" Tag="W0E44"/>       
+        <Word Name="CleanerEQRMSRecipeID"                         Port="23172" Tag="W0E5C"/>
+        <Word Name="CleanerEQRecipeModifyID"                      Port="23320" Tag="W0EF0"/>
+        <Word Name="CleanerEQRecipeModifyType"                    Port="23321" Tag="W0EF1"/> 
+        <Word Name="CleanerEQRecipeModifyVer1"                    Port="23327" Tag="W0EF7"/> 
+        <Word Name="CleanerEQRecipeModifyVer2"                    Port="23328" Tag="W0EF8"/> 
+        <Word Name="CleanerEQRecipeModifyVer3"                    Port="23329" Tag="W0EF9"/> 
+        <Word Name="CleanerEQRecipeModifyVer4"                    Port="23330" Tag="W0EFA"/> 
+        <Word Name="CleanerEQRecipeModifyVer5"                    Port="23331" Tag="W0EFB"/> 
+        <Word Name="CleanerEQRecipeModifyVer6"                    Port="23332" Tag="W0EFC"/> 
+
+        <!-- AOI1 to Robot Comm-->
+
+        <Word Name="AOI1EQEQPStatusReport"                        Port="23847" Tag="W13FF"/>
+        <Word Name="AOI1EQAlarmReportIndex"                       Port="23848" Tag="W1400"/>
+        <Word Name="AOI1EQWarningReportIndex"                     Port="23849" Tag="W1401"/>
+        <Word Name="AOI1EQGlassScrapndex"                         Port="23850" Tag="W1402"/>
+        <Word Name="AOI1EQRecipeBodyQueryReportIndex"             Port="23851" Tag="W1403"/>
+        <Word Name="AOI1EQRecipeBodyModifyIndex"                  Port="23852" Tag="W1404"/>
+        <Word Name="AOI1EQDailyCheckReport"                       Port="23853" Tag="W1405"/>
+        <Word Name="AOI1EQEventReport"                            Port="23854" Tag="W1406"/>
+        <Word Name="AOI1EQCommonDataIndex"                        Port="23863" Tag="W140F"/>
+        <Word Name="AOI1EQMessageIndex"                           Port="23864" Tag="W1410"/>
+        <Word Name="AOI1EQClockUpdatingIndex"                     Port="23865" Tag="W1411"/>
+        <Word Name="AOI1EQRecipeBodyQueryIndex"                   Port="23866" Tag="W1412"/> 
+        <Word Name="AOI1EQInterlockClock"                         Port="23873" Tag="W1419"/>
+        <Word Name="AOI1EQEquipmentStatus"                        Port="23874" Tag="W141A"/>
+        <Word Name="AOI1EQInlineStatus"                           Port="23875" Tag="W141B"/>
+        <Word Name="AOI1EQCurrentRecipeID"                        Port="23876" Tag="W141C"/>
+        <Word Name="AOI1EQCIMConnectStatus"                       Port="23877" Tag="W141D"/>
+        <Word Name="AOI1EQSheetCount"                             Port="23878" Tag="W141E"/>
+        <Word Name="AOI1EQErasePortNo"                            Port="23913" Tag="W1441"/>
+        <Word Name="AOI1EQEraseSlotNo"                            Port="23914" Tag="W1442"/>
+        <Word Name="AOI1EQEraseReason"                            Port="23915" Tag="W1443"/>       
+        <Word Name="AOI1EQRMSRecipeID"                            Port="24087" Tag="W14EF"/>
+        <Word Name="AOI1EQRecipeModifyID"                         Port="24088" Tag="W14F0"/>
+        <Word Name="AOI1EQRecipeModifyType"                       Port="24093" Tag="W14F5"/> 
+        <Word Name="AOI1EQRecipeModifyVer1"                       Port="24094" Tag="W14F6"/> 
+        <Word Name="AOI1EQRecipeModifyVer2"                       Port="24095" Tag="W14F7"/> 
+        <Word Name="AOI1EQRecipeModifyVer3"                       Port="24096" Tag="W14F8"/> 
+        <Word Name="AOI1EQRecipeModifyVer4"                       Port="24097" Tag="W14F9"/> 
+        <Word Name="AOI1EQRecipeModifyVer5"                       Port="24098" Tag="W14FA"/> 
+        <Word Name="AOI1EQRecipeModifyVer6"                       Port="24099" Tag="W14FB"/> 
+
+        <!-- DIM to Robot Comm-->
+
+        <Word Name="DIMEQEQPStatusReport"                         Port="24600" Tag="W1A00"/>
+        <Word Name="DIMEQAlarmReportIndex"                        Port="24601" Tag="W1A01"/>
+        <Word Name="DIMEQWarningReportIndex"                      Port="24602" Tag="W1A02"/>
+        <Word Name="DIMEQGlassScrapndex"                          Port="24603" Tag="W1A03"/>
+        <Word Name="DIMEQRecipeBodyQueryReportIndex"              Port="24604" Tag="W1A04"/>
+        <Word Name="DIMEQRecipeBodyModifyIndex"                   Port="24605" Tag="W1A05"/>
+        <Word Name="DIMEQDailyCheckReport"                        Port="24606" Tag="W1A06"/>
+        <Word Name="DIMEQEventReport"                             Port="24607" Tag="W1A07"/>
+        <Word Name="DIMEQCommonDataIndex"                         Port="24616" Tag="W1A10"/>
+        <Word Name="DIMEQMessageIndex"                            Port="24617" Tag="W1A11"/>
+        <Word Name="DIMEQClockUpdatingIndex"                      Port="24618" Tag="W1A12"/>
+        <Word Name="DIMEQRecipeBodyQueryIndex"                    Port="24619" Tag="W1A13"/> 
+        <Word Name="DIMEQInterlockClock"                          Port="24626" Tag="W1A1A"/>
+        <Word Name="DIMEQEquipmentStatus"                         Port="24628" Tag="W1A1C"/>
+        <Word Name="DIMEQInlineStatus"                            Port="24629" Tag="W1A1D"/>
+        <Word Name="DIMEQCurrentRecipeID"                         Port="24630" Tag="W1A1E"/>
+        <Word Name="DIMEQCIMConnectStatus"                        Port="24631" Tag="W1A1F"/>
+        <Word Name="DIMEQSheetCount"                              Port="24632" Tag="W1A20"/>
+        <Word Name="DIMEQErasePortNo"                             Port="24667" Tag="W1A43"/>
+        <Word Name="DIMEQEraseSlotNo"                             Port="24668" Tag="W1A44"/>
+        <Word Name="DIMEQEraseReason"                             Port="24669" Tag="W1A45"/>       
+        <Word Name="DIMEQRMSRecipeID"                             Port="24693" Tag="W1A5D"/>
+        <Word Name="DIMEQRecipeModifyID"                          Port="24841" Tag="W1AF1"/>
+        <Word Name="DIMEQRecipeModifyType"                        Port="24842" Tag="W1AF2"/> 
+        <Word Name="DIMEQRecipeModifyVer1"                        Port="24848" Tag="W1AF8"/> 
+        <Word Name="DIMEQRecipeModifyVer2"                        Port="24849" Tag="W1AF9"/> 
+        <Word Name="DIMEQRecipeModifyVer3"                        Port="24850" Tag="W1AFA"/> 
+        <Word Name="DIMEQRecipeModifyVer4"                        Port="24851" Tag="W1AFB"/> 
+        <Word Name="DIMEQRecipeModifyVer5"                        Port="24852" Tag="W1AFC"/> 
+        <Word Name="DIMEQRecipeModifyVer6"                        Port="24853" Tag="W1AFD"/>
+
+        <!-- LaserRepair1 to Robot Comm-->
+
+        <Word Name="LaserRepair1EQEQPStatusReport"                Port="25367" Tag="W2C00"/>
+        <Word Name="LaserRepair1EQAlarmReportIndex"               Port="25368" Tag="W2C01"/>
+        <Word Name="LaserRepair1EQWarningReportIndex"             Port="25369" Tag="W2C02"/>
+        <Word Name="LaserRepair1EQGlassScrapndex"                 Port="25370" Tag="W2C03"/>
+        <Word Name="LaserRepair1EQRecipeBodyQueryReportIndex"     Port="25371" Tag="W2C04"/>
+        <Word Name="LaserRepair1EQRecipeBodyModifyIndex"          Port="25372" Tag="W2C05"/>
+        <Word Name="LaserRepair1EQDailyCheckReport"               Port="25373" Tag="W2C06"/>
+        <Word Name="LaserRepair1EQEventReport"                    Port="25374" Tag="W2C07"/>
+        <Word Name="LaserRepair1EQCommonDataIndex"                Port="25383" Tag="W2C10"/>
+        <Word Name="LaserRepair1EQMessageIndex"                   Port="25384" Tag="W2C11"/>
+        <Word Name="LaserRepair1EQClockUpdatingIndex"             Port="25385" Tag="W2C12"/>
+        <Word Name="LaserRepair1EQRecipeBodyQueryIndex"           Port="25386" Tag="W2C13"/> 
+        <Word Name="LaserRepair1EQInterlockClock"                 Port="25393" Tag="W2C1A"/>
+        <Word Name="LaserRepair1EQEquipmentStatus"                Port="25394" Tag="W2C1B"/>
+        <Word Name="LaserRepair1EQInlineStatus"                   Port="25395" Tag="W2C1C"/>
+        <Word Name="LaserRepair1EQCurrentRecipeID"                Port="25396" Tag="W2C1D"/>
+        <Word Name="LaserRepair1EQCIMConnectStatus"               Port="25397" Tag="W2C1E"/>
+        <Word Name="LaserRepair1EQSheetCount"                     Port="25398" Tag="W2C1F"/>
+        <Word Name="LaserRepair1EQErasePortNo"                    Port="25433" Tag="W2C42"/>
+        <Word Name="LaserRepair1EQEraseSlotNo"                    Port="25434" Tag="W2C43"/>
+        <Word Name="LaserRepair1EQEraseReason"                    Port="25435" Tag="W2C44"/>       
+        <Word Name="LaserRepair1EQRMSRecipeID"                    Port="25459" Tag="W2C5C"/>
+        <Word Name="LaserRepair1EQRecipeModifyID"                 Port="25607" Tag="W2CF0"/>
+        <Word Name="LaserRepair1EQRecipeModifyType"               Port="25608" Tag="W2CF1"/> 
+        <Word Name="LaserRepair1EQRecipeModifyVer1"               Port="25614" Tag="W2CF7"/> 
+        <Word Name="LaserRepair1EQRecipeModifyVer2"               Port="25615" Tag="W2CF8"/> 
+        <Word Name="LaserRepair1EQRecipeModifyVer3"               Port="25616" Tag="W2CF9"/> 
+        <Word Name="LaserRepair1EQRecipeModifyVer4"               Port="25617" Tag="W2CFA"/> 
+        <Word Name="LaserRepair1EQRecipeModifyVer5"               Port="25618" Tag="W2CFB"/> 
+        <Word Name="LaserRepair1EQRecipeModifyVer6"               Port="25619" Tag="W2CFC"/>
+
+        <!-- AOI to Robot Comm-->
+
+        <Word Name="AOI2EQEQPStatusReport"                        Port="26135" Tag="W31FF"/>
+        <Word Name="AOI2EQAlarmReportIndex"                       Port="26136" Tag="W3200"/>
+        <Word Name="AOI2EQWarningReportIndex"                     Port="26137" Tag="W3201"/>
+        <Word Name="AOI2EQGlassScrapndex"                         Port="26138" Tag="W3202"/>
+        <Word Name="AOI2EQRecipeBodyQueryReportIndex"             Port="26139" Tag="W3203"/>
+        <Word Name="AOI2EQRecipeBodyModifyIndex"                  Port="26140" Tag="W3204"/>
+        <Word Name="AOI2EQDailyCheckReport"                       Port="26141" Tag="W3205"/>
+        <Word Name="AOI2EQEventReport"                            Port="26142" Tag="W3206"/>
+        <Word Name="AOI2EQCommonDataIndex"                        Port="26151" Tag="W320F"/>
+        <Word Name="AOI2EQMessageIndex"                           Port="26152" Tag="W3210"/>
+        <Word Name="AOI2EQClockUpdatingIndex"                     Port="26153" Tag="W3211"/>
+        <Word Name="AOI2EQRecipeBodyQueryIndex"                   Port="26154" Tag="W3212"/> 
+        <Word Name="AOI2EQInterlockClock"                         Port="26161" Tag="W3219"/>
+        <Word Name="AOI2EQEquipmentStatus"                        Port="26162" Tag="W321A"/>
+        <Word Name="AOI2EQInlineStatus"                           Port="26163" Tag="W321B"/>
+        <Word Name="AOI2EQCurrentRecipeID"                        Port="26164" Tag="W321C"/>
+        <Word Name="AOI2EQCIMConnectStatus"                       Port="26165" Tag="W321D"/>
+        <Word Name="AOI2EQSheetCount"                             Port="26166" Tag="W321E"/>
+        <Word Name="AOI2EQErasePortNo"                            Port="26201" Tag="W3241"/>
+        <Word Name="AOI2EQEraseSlotNo"                            Port="26202" Tag="W3242"/>
+        <Word Name="AOI2EQEraseReason"                            Port="26203" Tag="W3243"/>       
+        <Word Name="AOI2EQRMSRecipeID"                            Port="26227" Tag="W325B"/>
+        <Word Name="AOI2EQRecipeModifyID"                         Port="26375" Tag="W32EF"/>
+        <Word Name="AOI2EQRecipeModifyType"                       Port="26376" Tag="W32F0"/> 
+        <Word Name="AOI2EQRecipeModifyVer1"                       Port="26382" Tag="W32F6"/> 
+        <Word Name="AOI2EQRecipeModifyVer2"                       Port="26383" Tag="W32F7"/> 
+        <Word Name="AOI2EQRecipeModifyVer3"                       Port="26384" Tag="W32F8"/> 
+        <Word Name="AOI2EQRecipeModifyVer4"                       Port="26385" Tag="W32F9"/> 
+        <Word Name="AOI2EQRecipeModifyVer5"                       Port="26386" Tag="W32FA"/> 
+        <Word Name="AOI2EQRecipeModifyVer6"                       Port="26387" Tag="W32FB"/>
+
+        <!-- LaserRepair2 to Robot Comm-->
+
+        <Word Name="LaserRepair2EQEQPStatusReport"                Port="26903" Tag="W3800"/>
+        <Word Name="LaserRepair2EQAlarmReportIndex"               Port="26904" Tag="W3801"/>
+        <Word Name="LaserRepair2EQWarningReportIndex"             Port="26905" Tag="W3802"/>
+        <Word Name="LaserRepair2EQGlassScrapndex"                 Port="26906" Tag="W3803"/>
+        <Word Name="LaserRepair2EQRecipeBodyQueryReportIndex"     Port="26907" Tag="W3804"/>
+        <Word Name="LaserRepair2EQRecipeBodyModifyIndex"          Port="26908" Tag="W3805"/>
+        <Word Name="LaserRepair2EQDailyCheckReport"               Port="26909" Tag="W3806"/>
+        <Word Name="LaserRepair2EQEventReport"                    Port="26910" Tag="W3807"/>
+        <Word Name="LaserRepair2EQCommonDataIndex"                Port="26919" Tag="W3810"/>
+        <Word Name="LaserRepair2EQMessageIndex"                   Port="26920" Tag="W3811"/>
+        <Word Name="LaserRepair2EQClockUpdatingIndex"             Port="26921" Tag="W3812"/>
+        <Word Name="LaserRepair2EQRecipeBodyQueryIndex"           Port="26922" Tag="W3813"/> 
+        <Word Name="LaserRepair2EQInterlockClock"                 Port="26929" Tag="W381A"/>
+        <Word Name="LaserRepair2EQEquipmentStatus"                Port="26930" Tag="W381B"/>
+        <Word Name="LaserRepair2EQInlineStatus"                   Port="26931" Tag="W381C"/>
+        <Word Name="LaserRepair2EQCurrentRecipeID"                Port="26932" Tag="W381D"/>
+        <Word Name="LaserRepair2EQCIMConnectStatus"               Port="26933" Tag="W381E"/>
+        <Word Name="LaserRepair2EQSheetCount"                     Port="26934" Tag="W381F"/>
+        <Word Name="LaserRepair2EQErasePortNo"                    Port="26969" Tag="W3842"/>
+        <Word Name="LaserRepair2EQEraseSlotNo"                    Port="26970" Tag="W3843"/>
+        <Word Name="LaserRepair2EQEraseReason"                    Port="26971" Tag="W3844"/>       
+        <Word Name="LaserRepair2EQRMSRecipeID"                    Port="26995" Tag="W385C"/>
+        <Word Name="LaserRepair2EQRecipeModifyID"                 Port="27143" Tag="W38F0"/>
+        <Word Name="LaserRepair2EQRecipeModifyType"               Port="27144" Tag="W38F1"/> 
+        <Word Name="LaserRepair2EQRecipeModifyVer1"               Port="27150" Tag="W38F7"/> 
+        <Word Name="LaserRepair2EQRecipeModifyVer2"               Port="27151" Tag="W38F8"/> 
+        <Word Name="LaserRepair2EQRecipeModifyVer3"               Port="27152" Tag="W38F9"/> 
+        <Word Name="LaserRepair2EQRecipeModifyVer4"               Port="27153" Tag="W38FA"/> 
+        <Word Name="LaserRepair2EQRecipeModifyVer5"               Port="27154" Tag="W38FB"/> 
+        <Word Name="LaserRepair2EQRecipeModifyVer6"               Port="27155" Tag="W38FC"/>
+
+
+    
+    </Words>
+    <Strings>
+    	  <!-- Robot to EQ Comm-->
+    	  <String Name="CleanerRBCimmessage"                        Port="20094" WordLength="40"  Tag="W01AE"/>                       	  
+    	  <String Name="AOI1RBCimmessage"                           Port="20206" WordLength="40"  Tag="W032E"/>                   
+    	  <String Name="DIMRBCimmessage"                            Port="20318" WordLength="40"  Tag="W04AE"/>                   
+    	  <String Name="LaserRepair1RBCimmessage"                   Port="20670" WordLength="40"  Tag="W1FAE"/>                   
+    	  <String Name="AOI2RBCimmessage"                           Port="20782" WordLength="40"  Tag="W212E"/>                   
+    	  <String Name="LaserRepair2RBCimmessage"                   Port="20894" WordLength="40"  Tag="W22AE"/>                   
+    	                                                            
+    	  <!-- EQ to Robot Comm-->                                  
+    	  <String Name="CleanerEQAlarm1"                             Port="23122" WordLength="1"  Tag="W0E2A"/>                   
+    	  <String Name="CleanerEQAlarm2"                             Port="23123" WordLength="1"  Tag="W0E2A"/>                   
+    	  <String Name="CleanerEQAlarm3"                             Port="23124" WordLength="1"  Tag="W0E2A"/>                   
+    	  <String Name="CleanerEQAlarm4"                             Port="23125" WordLength="1"  Tag="W0E2A"/>                   
+    	  <String Name="CleanerEQAlarm5"                             Port="23126" WordLength="1"  Tag="W0E2A"/>                   
+    	  <String Name="CleanerEQAlarm6"                             Port="23127" WordLength="1"  Tag="W0E2A"/>                   
+    	  <String Name="CleanerEQAlarm7"                             Port="23128" WordLength="1"  Tag="W0E2A"/>                   
+    	  <String Name="CleanerEQAlarm8"                             Port="23129" WordLength="1"  Tag="W0E2A"/>                   
+    	  <String Name="CleanerEQAlarm9"                             Port="23130" WordLength="1"  Tag="W0E2A"/>                   
+    	  <String Name="CleanerEQAlarm10"                            Port="23131" WordLength="1"  Tag="W0E2A"/>                   
+     	  <String Name="CleanerEQWarning1"                           Port="23134" WordLength="1"  Tag="W0E36"/>  
+     	  <String Name="CleanerEQWarning2"                           Port="23135" WordLength="1"  Tag="W0E36"/>  
+     	  <String Name="CleanerEQWarning3"                           Port="23136" WordLength="1"  Tag="W0E36"/>  
+     	  <String Name="CleanerEQWarning4"                           Port="23137" WordLength="1"  Tag="W0E36"/>  
+     	  <String Name="CleanerEQWarning5"                           Port="23138" WordLength="1"  Tag="W0E36"/>  
+     	  <String Name="CleanerEQWarning6"                           Port="23139" WordLength="1"  Tag="W0E36"/>  
+     	  <String Name="CleanerEQWarning7"                           Port="23140" WordLength="1"  Tag="W0E36"/>  
+     	  <String Name="CleanerEQWarning8"                           Port="23141" WordLength="1"  Tag="W0E36"/>  
+     	  <String Name="CleanerEQWarning9"                           Port="23142" WordLength="1"  Tag="W0E36"/>  
+     	  <String Name="CleanerEQWarning10"                          Port="23143" WordLength="1"  Tag="W0E36"/>  
+     	  <String Name="CleanerEQEraseMaskID"                       Port="23149" WordLength="7"   Tag="W0E45"/>      	  
+     	  <String Name="CleanerEQEraseCSTID"                        Port="23158" WordLength="3"   Tag="W0E4E"/>      	       	  
+     	  <String Name="CleanerEQRecipeModifyUserID"                Port="23322" WordLength="5"   Tag="W0EF2"/>      	  
+     	  <String Name="CleanerEQRecipeModifyBody"                  Port="23334" WordLength="128" Tag="W0EFE"/>      	  
+     	  <String Name="CleanerEQEDSData"                           Port="23464" WordLength="128" Tag="W0F80"/>       	  
+     	  <String Name="CleanerEQAPCData"                           Port="23602" WordLength="135" Tag="W100A"/>     	  
+     	  
+    	  <String Name="AOI1EQAlarm1"                                Port="23889" WordLength="1"  Tag="W1429"/> 
+    	  <String Name="AOI1EQAlarm2"                                Port="23890" WordLength="1"  Tag="W1429"/> 
+    	  <String Name="AOI1EQAlarm3"                                Port="23891" WordLength="1"  Tag="W1429"/> 
+    	  <String Name="AOI1EQAlarm4"                                Port="23892" WordLength="1"  Tag="W1429"/> 
+    	  <String Name="AOI1EQAlarm5"                                Port="23893" WordLength="1"  Tag="W1429"/> 
+    	  <String Name="AOI1EQAlarm6"                                Port="23894" WordLength="1"  Tag="W1429"/> 
+    	  <String Name="AOI1EQAlarm7"                                Port="23895" WordLength="1"  Tag="W1429"/> 
+    	  <String Name="AOI1EQAlarm8"                                Port="23896" WordLength="1"  Tag="W1429"/> 
+    	  <String Name="AOI1EQAlarm9"                                Port="23897" WordLength="1"  Tag="W1429"/> 
+    	  <String Name="AOI1EQAlarm10"                               Port="23898" WordLength="1"  Tag="W1429"/> 
+     	  <String Name="AOI1EQWarning1"                              Port="23901" WordLength="1"  Tag="W1435"/> 
+     	  <String Name="AOI1EQWarning2"                              Port="23902" WordLength="1"  Tag="W1435"/> 
+     	  <String Name="AOI1EQWarning3"                              Port="23903" WordLength="1"  Tag="W1435"/> 
+     	  <String Name="AOI1EQWarning4"                              Port="23904" WordLength="1"  Tag="W1435"/> 
+     	  <String Name="AOI1EQWarning5"                              Port="23905" WordLength="1"  Tag="W1435"/> 
+     	  <String Name="AOI1EQWarning6"                              Port="23906" WordLength="1"  Tag="W1435"/> 
+     	  <String Name="AOI1EQWarning7"                              Port="23907" WordLength="1"  Tag="W1435"/> 
+     	  <String Name="AOI1EQWarning8"                              Port="23908" WordLength="1"  Tag="W1435"/> 
+     	  <String Name="AOI1EQWarning9"                              Port="23909" WordLength="1"  Tag="W1435"/> 
+     	  <String Name="AOI1EQWarning10"                             Port="23910" WordLength="1"  Tag="W1435"/> 
+     	  <String Name="AOI1EQEraseMaskID"                          Port="23916" WordLength="7"   Tag="W1444"/> 
+     	  <String Name="AOI1EQEraseCSTID"                           Port="23925" WordLength="3"   Tag="W144D"/> 
+     	  <String Name="AOI1EQRecipeModifyUserID"                   Port="24089" WordLength="5"   Tag="W14F1"/> 
+     	  <String Name="AOI1EQRecipeModifyBody"                     Port="24101" WordLength="128" Tag="W14FD"/> 
+     	  <String Name="AOI1EQEDSData"                              Port="24232" WordLength="128" Tag="W1580"/> 
+     	  <String Name="AOI1EQAPCData"                              Port="24370" WordLength="135" Tag="W160A"/> 
+
+    	  <String Name="DIMEQAlarm1"                                 Port="24643" WordLength="1"  Tag="W1A2B"/> 
+    	  <String Name="DIMEQAlarm2"                                 Port="24644" WordLength="1"  Tag="W1A2B"/> 
+    	  <String Name="DIMEQAlarm3"                                 Port="24645" WordLength="1"  Tag="W1A2B"/> 
+    	  <String Name="DIMEQAlarm4"                                 Port="24646" WordLength="1"  Tag="W1A2B"/> 
+    	  <String Name="DIMEQAlarm5"                                 Port="24647" WordLength="1"  Tag="W1A2B"/> 
+    	  <String Name="DIMEQAlarm6"                                 Port="24648" WordLength="1"  Tag="W1A2B"/> 
+    	  <String Name="DIMEQAlarm7"                                 Port="24649" WordLength="1"  Tag="W1A2B"/> 
+    	  <String Name="DIMEQAlarm8"                                 Port="24650" WordLength="1"  Tag="W1A2B"/> 
+    	  <String Name="DIMEQAlarm9"                                 Port="24651" WordLength="1"  Tag="W1A2B"/> 
+    	  <String Name="DIMEQAlarm10"                                Port="24652" WordLength="1"  Tag="W1A2B"/> 
+     	  <String Name="DIMEQWarning1"                               Port="24655" WordLength="1"  Tag="W1A37"/> 
+     	  <String Name="DIMEQWarning2"                               Port="24656" WordLength="1"  Tag="W1A37"/> 
+     	  <String Name="DIMEQWarning3"                               Port="24657" WordLength="1"  Tag="W1A37"/> 
+     	  <String Name="DIMEQWarning4"                               Port="24658" WordLength="1"  Tag="W1A37"/> 
+     	  <String Name="DIMEQWarning5"                               Port="24659" WordLength="1"  Tag="W1A37"/> 
+     	  <String Name="DIMEQWarning6"                               Port="24660" WordLength="1"  Tag="W1A37"/> 
+     	  <String Name="DIMEQWarning7"                               Port="24661" WordLength="1"  Tag="W1A37"/> 
+     	  <String Name="DIMEQWarning8"                               Port="24662" WordLength="1"  Tag="W1A37"/> 
+     	  <String Name="DIMEQWarning9"                               Port="24663" WordLength="1"  Tag="W1A37"/> 
+     	  <String Name="DIMEQWarning10"                              Port="24664" WordLength="1"  Tag="W1A37"/> 
+     	  <String Name="DIMEQEraseMaskID"                           Port="24670" WordLength="7"   Tag="W1A46"/> 
+     	  <String Name="DIMEQEraseCSTID"                            Port="24679" WordLength="3"   Tag="W1A4F"/> 
+     	  <String Name="DIMEQRecipeModifyUserID"                    Port="24843" WordLength="5"   Tag="W1AF3"/> 
+     	  <String Name="DIMEQRecipeModifyBody"                      Port="24855" WordLength="128" Tag="W1AFF"/> 
+     	  <String Name="DIMEQEDSData"                               Port="24986" WordLength="128" Tag="W1B82"/> 
+     	  <String Name="DIMEQAPCData"                               Port="25124" WordLength="135" Tag="W1C0C"/> 
+     	                                                                                                        
+     	  <String Name="LaserRepair1EQEraseMaskID"                  Port="25436" WordLength="7"   Tag="W2C45"/> 
+     	  <String Name="LaserRepair1EQEraseCSTID"                   Port="25445" WordLength="3"   Tag="W2C4E"/> 
+     	  <String Name="LaserRepair1EQRecipeModifyUserID"           Port="25609" WordLength="5"   Tag="W2CF2"/> 
+     	  <String Name="LaserRepair1EQRecipeModifyBody"             Port="25621" WordLength="128" Tag="W2CFE"/> 
+     	  <String Name="LaserRepair1EQEDSData"                      Port="25752" WordLength="128" Tag="W2D81"/> 
+     	  <String Name="LaserRepair1EQAPCData"                      Port="25890" WordLength="135" Tag="W2E0B"/> 
+		  <String Name="LaserRepair1EQAlarm1"                        Port="25409" WordLength="1" Tag="W2C2A"/> 
+		  <String Name="LaserRepair1EQAlarm2"                        Port="25410" WordLength="1" Tag="W2C2B"/> 
+		  <String Name="LaserRepair1EQAlarm3"                        Port="25411" WordLength="1" Tag="W2C2C"/> 
+		  <String Name="LaserRepair1EQAlarm4"                        Port="25412" WordLength="1" Tag="W2C2D"/> 
+		  <String Name="LaserRepair1EQAlarm5"                        Port="25413" WordLength="1" Tag="W2C2E"/> 
+		  <String Name="LaserRepair1EQAlarm6"                        Port="25414" WordLength="1" Tag="W2C2F"/> 
+		  <String Name="LaserRepair1EQAlarm7"                        Port="25415" WordLength="1" Tag="W2C30"/> 
+		  <String Name="LaserRepair1EQAlarm8"                        Port="25416" WordLength="1" Tag="W2C31"/> 
+		  <String Name="LaserRepair1EQAlarm9"                        Port="25417" WordLength="1" Tag="W2C32"/> 
+		  <String Name="LaserRepair1EQAlarm10"                       Port="25418" WordLength="1" Tag="W2C33"/> 
+		  <String Name="LaserRepair1EQWarning1"                      Port="25421" WordLength="1" Tag="W2C36"/> 
+		  <String Name="LaserRepair1EQWarning2"                      Port="25422" WordLength="1" Tag="W2C37"/> 
+		  <String Name="LaserRepair1EQWarning3"                      Port="25423" WordLength="1" Tag="W2C38"/> 
+		  <String Name="LaserRepair1EQWarning4"                      Port="25424" WordLength="1" Tag="W2C39"/> 
+		  <String Name="LaserRepair1EQWarning5"                      Port="25425" WordLength="1" Tag="W2C3A"/> 
+		  <String Name="LaserRepair1EQWarning6"                      Port="25426" WordLength="1" Tag="W2C3B"/> 
+		  <String Name="LaserRepair1EQWarning7"                      Port="25427" WordLength="1" Tag="W2C3C"/> 
+		  <String Name="LaserRepair1EQWarning8"                      Port="25428" WordLength="1" Tag="W2C3D"/> 
+		  <String Name="LaserRepair1EQWarning9"                      Port="25429" WordLength="1" Tag="W2C3E"/> 
+		  <String Name="LaserRepair1EQWarning10"                     Port="25430" WordLength="1" Tag="W2C3F"/> 
+                                                                                                                    	  
+    	  <String Name="AOI2EQAlarm1"                                Port="26177" WordLength="1"  Tag="W3229"/> 
+    	  <String Name="AOI2EQAlarm2"                                Port="26178" WordLength="1"  Tag="W3229"/> 
+    	  <String Name="AOI2EQAlarm3"                                Port="26179" WordLength="1"  Tag="W3229"/> 
+    	  <String Name="AOI2EQAlarm4"                                Port="26180" WordLength="1"  Tag="W3229"/> 
+    	  <String Name="AOI2EQAlarm5"                                Port="26181" WordLength="1"  Tag="W3229"/> 
+    	  <String Name="AOI2EQAlarm6"                                Port="26182" WordLength="1"  Tag="W3229"/> 
+    	  <String Name="AOI2EQAlarm7"                                Port="26183" WordLength="1"  Tag="W3229"/> 
+    	  <String Name="AOI2EQAlarm8"                                Port="26184" WordLength="1"  Tag="W3229"/> 
+    	  <String Name="AOI2EQAlarm9"                                Port="26185" WordLength="1"  Tag="W3229"/> 
+    	  <String Name="AOI2EQAlarm10"                               Port="26186" WordLength="1"  Tag="W3229"/> 
+     	  <String Name="AOI2EQWarning1"                              Port="26189" WordLength="1"  Tag="W3235"/> 
+     	  <String Name="AOI2EQWarning2"                              Port="26190" WordLength="1"  Tag="W3235"/> 
+     	  <String Name="AOI2EQWarning3"                              Port="26191" WordLength="1"  Tag="W3235"/> 
+     	  <String Name="AOI2EQWarning4"                              Port="26192" WordLength="1"  Tag="W3235"/> 
+     	  <String Name="AOI2EQWarning5"                              Port="26193" WordLength="1"  Tag="W3235"/> 
+     	  <String Name="AOI2EQWarning6"                              Port="26194" WordLength="1"  Tag="W3235"/> 
+     	  <String Name="AOI2EQWarning7"                              Port="26195" WordLength="1"  Tag="W3235"/> 
+     	  <String Name="AOI2EQWarning8"                              Port="26196" WordLength="1"  Tag="W3235"/> 
+     	  <String Name="AOI2EQWarning9"                              Port="26197" WordLength="1"  Tag="W3235"/> 
+     	  <String Name="AOI2EQWarning10"                              Port="26198" WordLength="1"  Tag="W3235"/> 
+     	  <String Name="AOI2EQEraseMaskID"                          Port="26204" WordLength="7"   Tag="W3244"/> 
+     	  <String Name="AOI2EQEraseCSTID"                           Port="26213" WordLength="3"   Tag="W324D"/> 
+     	  <String Name="AOI2EQRecipeModifyUserID"                   Port="26377" WordLength="5"   Tag="W32F1"/> 
+     	  <String Name="AOI2EQRecipeModifyBody"                     Port="26389" WordLength="128" Tag="W32FD"/> 
+     	  <String Name="AOI2EQEDSData"                              Port="26520" WordLength="128" Tag="W3380"/> 
+     	  <String Name="AOI2EQAPCData"                              Port="26658" WordLength="135" Tag="W340A"/> 
+
+    	  <String Name="LaserRepair2EQAlarm1"                        Port="26945" WordLength="10"  Tag="W382A"/> 
+    	  <String Name="LaserRepair2EQAlarm2"                        Port="26946" WordLength="10"  Tag="W382A"/> 
+    	  <String Name="LaserRepair2EQAlarm3"                        Port="26947" WordLength="10"  Tag="W382A"/> 
+    	  <String Name="LaserRepair2EQAlarm4"                        Port="26948" WordLength="10"  Tag="W382A"/> 
+    	  <String Name="LaserRepair2EQAlarm5"                        Port="26949" WordLength="10"  Tag="W382A"/> 
+    	  <String Name="LaserRepair2EQAlarm6"                        Port="26950" WordLength="10"  Tag="W382A"/> 
+    	  <String Name="LaserRepair2EQAlarm7"                        Port="26951" WordLength="10"  Tag="W382A"/> 
+    	  <String Name="LaserRepair2EQAlarm8"                        Port="26952" WordLength="10"  Tag="W382A"/> 
+    	  <String Name="LaserRepair2EQAlarm9"                        Port="26953" WordLength="10"  Tag="W382A"/> 
+    	  <String Name="LaserRepair2EQAlarm10"                       Port="26954" WordLength="10"  Tag="W382A"/> 
+     	  <String Name="LaserRepair2EQWarning1"                      Port="26957" WordLength="10"  Tag="W3836"/> 
+     	  <String Name="LaserRepair2EQWarning2"                      Port="26958" WordLength="10"  Tag="W3836"/> 
+     	  <String Name="LaserRepair2EQWarning3"                      Port="26959" WordLength="10"  Tag="W3836"/> 
+     	  <String Name="LaserRepair2EQWarning4"                      Port="26960" WordLength="10"  Tag="W3836"/> 
+     	  <String Name="LaserRepair2EQWarning5"                      Port="26961" WordLength="10"  Tag="W3836"/> 
+     	  <String Name="LaserRepair2EQWarning6"                      Port="26962" WordLength="10"  Tag="W3836"/> 
+     	  <String Name="LaserRepair2EQWarning7"                      Port="26963" WordLength="10"  Tag="W3836"/> 
+     	  <String Name="LaserRepair2EQWarning8"                      Port="26964" WordLength="10"  Tag="W3836"/> 
+     	  <String Name="LaserRepair2EQWarning9"                      Port="26965" WordLength="10"  Tag="W3836"/> 
+     	  <String Name="LaserRepair2EQWarning10"                     Port="26966" WordLength="10"  Tag="W3836"/> 
+     	  <String Name="LaserRepair2EQEraseMaskID"                  Port="26972" WordLength="7"   Tag="W3845"/> 
+     	  <String Name="LaserRepair2EQEraseCSTID"                   Port="26981" WordLength="3"   Tag="W384E"/> 
+     	  <String Name="LaserRepair2EQRecipeModifyUserID"           Port="27145" WordLength="5"   Tag="W38F2"/> 
+     	  <String Name="LaserRepair2EQRecipeModifyBody"             Port="27157" WordLength="128" Tag="W38FE"/> 
+     	  <String Name="LaserRepair2EQEDSData"                      Port="27288" WordLength="128" Tag="W3981"/> 
+     	  <String Name="LaserRepair2EQAPCData"                      Port="27426" WordLength="135" Tag="W3A0B"/>      	                    
+ 
+        <!-- Robot HandShake Output-->
+        <String Name="CleanerRobotPpid"                           Port="20390" WordLength="16" Tag="W606"/>
+        <String Name="CleanerRobotCstId"                          Port="20411" WordLength="3"  Tag="W61B"/>
+        <String Name="CleanerRobotGlassId"                        Port="20416" WordLength="7"  Tag="W620"/>
+                                                                  
+        <String Name="AOI1RobotPpid"                              Port="20470" WordLength="16" Tag="W686"/>
+        <String Name="AOI1RobotCstId"                             Port="20491" WordLength="3"  Tag="W69B"/>
+        <String Name="AOI1RobotGlassId"                           Port="20496" WordLength="7"  Tag="W6A0"/>
+                                                                                               
+        <String Name="DIMRobotPpid"                               Port="20550" WordLength="16" Tag="W706"/>
+        <String Name="DIMRobotCstId"                              Port="20571" WordLength="3"  Tag="W71B"/>
+        <String Name="DIMRobotGlassId"                            Port="20576" WordLength="7"  Tag="W720"/>
+                                                                  
+        <String Name="LaserRepair1RobotPpid"                      Port="20966" WordLength="16" Tag="W2406"/>
+        <String Name="LaserRepair1RobotCstId"                     Port="20987" WordLength="3"  Tag="W241B"/>
+        <String Name="LaserRepair1RobotGlassId"                   Port="20992" WordLength="7"  Tag="W2420"/>
+                                                                  
+        <String Name="AOI2RobotPpid"                              Port="21046" WordLength="16" Tag="W2486"/>
+        <String Name="AOI2RobotCstId"                             Port="21067" WordLength="3"  Tag="W249B"/>
+        <String Name="AOI2RobotGlassId"                           Port="21072" WordLength="7"  Tag="W24A0"/>
+                                                                  
+        <String Name="LaserRepair2RobotPpid"                      Port="21126" WordLength="16" Tag="W2506"/>
+        <String Name="LaserRepair2RobotCstId"                     Port="21147" WordLength="3"  Tag="W251B"/>
+        <String Name="LaserRepair2RobotGlassId"                   Port="21152" WordLength="7"  Tag="W2520"/>
+                                                                  
+        <!-- Robot HandShake Input-->                             
+        <String Name="CleanerEqPpid"                              Port="23006" WordLength="16" Tag="W0C06"/>
+        <String Name="CleanerEqCstId"                             Port="23027" WordLength="3"  Tag="W0C1B"/>
+        <String Name="CleanerEqGlassId"                           Port="23032" WordLength="7"  Tag="W0C20"/>
+                                                                  
+        <String Name="AOI1EqPpid"                                 Port="23758" WordLength="16" Tag="W1286"/>
+        <String Name="AOI1EqCstId"                                Port="23779" WordLength="3"  Tag="W129B"/>
+        <String Name="AOI1EqGlassId"                              Port="23784" WordLength="7"  Tag="W12A0"/>
+                                                                  
+        <String Name="DIMEqPpid"                                  Port="24526" WordLength="16" Tag="W1906"/>
+        <String Name="DIMEqCstId"                                 Port="24547" WordLength="3"  Tag="W191B"/>
+        <String Name="DIMEqGlassId"                               Port="24552" WordLength="7"  Tag="W1920"/>
+                                                                  
+        <String Name="LaserRepair1EqPpid"                         Port="25278" WordLength="16" Tag="W2A06"/>
+        <String Name="LaserRepair1EqCstId"                        Port="25299" WordLength="3"  Tag="W2A1B"/>
+        <String Name="LaserRepair1EqGlassId"                      Port="25304" WordLength="7"  Tag="W2A20"/>
+                                                                                               
+        <String Name="AOI2EqPpid"                                 Port="26046" WordLength="16" Tag="W3086"/>
+        <String Name="AOI2EqCstId"                                Port="26067" WordLength="3"  Tag="W309B"/>
+        <String Name="AOI2EqGlassId"                              Port="26072" WordLength="7"  Tag="W30A0"/>
+                                                                  
+        <String Name="LaserRepair2EqPpid"                         Port="26814" WordLength="16" Tag="W3706"/>
+        <String Name="LaserRepair2EqCstId"                        Port="26835" WordLength="3"  Tag="W371B"/>
+        <String Name="LaserRepair2EqGlassId"                      Port="26840" WordLength="7"  Tag="W3720"/>
+    </Strings>
+</MemoryIOClient>

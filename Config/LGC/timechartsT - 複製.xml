@@ -1,0 +1,1709 @@
+<TimeCharts>
+    <TimeChartSequence Id="1" Name="Seal_1" InitialStep="1"  ScanInterval="200">
+        <Initial>
+			<SetPort PortNo="0x8000" BitIndex="1" Value="0"/>
+			<SetPort PortNo="0x8001" BitIndex="1" Value="0"/>
+			<SetPort PortNo="0x8002" BitIndex="1" Value="0"/>
+			<SetPort PortNo="0x8003" BitIndex="1" Value="0"/>
+			<SetPort PortNo="0x8004" BitIndex="1" Value="0"/>
+			<SetPort PortNo="0x8005" BitIndex="1" Value="0"/>
+			<SetPort PortNo="0x8006" BitIndex="1" Value="0"/>
+			<SetPort PortNo="0x8007" BitIndex="1" Value="0"/>
+			<SetPort PortNo="0x8008" BitIndex="1" Value="0"/>
+			<SetPort PortNo="0x8009" BitIndex="1" Value="0"/>
+			<SetPort PortNo="0x800A" BitIndex="1" Value="0"/>
+			<SetPort PortNo="0x800B" BitIndex="1" Value="0"/>
+			<SetPort PortNo="0x800C" BitIndex="1" Value="0"/>
+			<SetPort PortNo="0x800D" BitIndex="1" Value="0"/>
+			<SetPort PortNo="0x800E" BitIndex="1" Value="0"/>
+			<SetPort PortNo="0x800F" BitIndex="1" Value="0"/>
+        </Initial>
+        <Sequence>
+            <Step Id="1" Name="CheckStatusOK" TriggerOnRunning="1"  Interlock="0"  NextStep="2">
+                <Conditions>
+                    <Group>
+                        <Bit PortNo="0x8200" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8204"  BitIndex="1" Value="0" Compare="0"/>
+                        <Bit PortNo="0x8205"  BitIndex="1" Value="1" Compare="0"/>
+                        <Bit PortNo="0x8206" BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8207"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8208"  BitIndex="1" Value="0" Compare="0"/> 
+                    </Group>
+                </Conditions>
+                <Actions>
+					<StopTimeout Id="200"/>
+					<StopTimeout Id="201"/>
+					<StopTimeout Id="202"/>
+					<StopTimeout Id="203"/>
+                </Actions>
+            </Step>
+            <Step Id="2" Name="SelectMode" TriggerOnRunning="1"  Interlock="0"  NextStep="2">
+                <Conditions>
+                        <Bit PortNo="0x8200" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8204"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8205"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8206" BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8207"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8208"  BitIndex="1" Value="0" Compare="0"/> 
+                </Conditions>
+                <Actions>
+						<JumpToStep Id="3">
+							<Conditions>
+								<Group>
+									<Bit PortNo="0x8200" BitIndex="1" Value="1" Compare="0"/>
+									<Bit PortNo="0x8201" BitIndex="1" Value="1" Compare="0"/>
+									<Bit PortNo="0x8205"  BitIndex="1" Value="1" Compare="0"/>
+								</Group>
+							</Conditions>
+						</JumpToStep>
+						<JumpToStep Id="4">
+							<Conditions>
+								<Group>
+									<Bit PortNo="0x8200" BitIndex="1" Value="1" Compare="0"/>
+									<Bit PortNo="0x8202" BitIndex="1" Value="1" Compare="0"/>
+									<Bit PortNo="0x8205"  BitIndex="1" Value="1" Compare="0"/>
+								</Group>
+							</Conditions>
+						</JumpToStep>
+						<JumpToStep Id="5">
+							<Conditions>
+								<Group>
+									<Bit PortNo="0x8200" BitIndex="1" Value="1" Compare="0"/>
+									<Bit PortNo="0x8203" BitIndex="1" Value="1" Compare="0"/>
+									<Bit PortNo="0x8205"  BitIndex="1" Value="1" Compare="0"/>
+								</Group>
+							</Conditions>
+						</JumpToStep>
+                </Actions>
+            </Step>
+            <Step Id="3" Name="EqLoadReqOn" TriggerOnRunning="1"  Interlock="0"  NextStep="3">
+                <Conditions>
+                        <Bit PortNo="0x8200" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8201" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8205"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8204"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8206" BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8207"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8208"  BitIndex="1" Value="0" Compare="0"/> 
+                </Conditions>
+                <Actions>
+						<JumpToStep Id="1">
+							<Conditions>
+								<Group>
+									<Bit PortNo="0x8200"  BitIndex="1" Value="0" Compare="0"/>
+								</Group>
+								<Group>
+									<Bit PortNo="0x8201" BitIndex="1" Value="0" Compare="0"/>
+								</Group>
+								<Group>
+									<Bit PortNo="0x8205" BitIndex="1" Value="0" Compare="0"/>
+								</Group>
+							</Conditions>
+						</JumpToStep>
+                </Actions>
+            </Step>
+            <Step Id="4" Name="EqUnloadOn" TriggerOnRunning="1"  Interlock="0"  NextStep="4">
+                <Conditions>
+                        <Bit PortNo="0x8200" BitIndex="1" Value="1" Compare="0"/>                         
+                        <Bit PortNo="0x8202"  BitIndex="1" Value="1" Compare="0"/>                         
+                        <Bit PortNo="0x8204"  BitIndex="1" Value="0" Compare="0"/>                         
+                        <Bit PortNo="0x8205"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8206" BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8207"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8208"  BitIndex="1" Value="0" Compare="0"/>                         
+                </Conditions>
+                <Actions>
+						<JumpToStep Id="1">
+							<Conditions>
+								<Group>
+									<Bit PortNo="0x8200"  BitIndex="1" Value="0" Compare="0"/>
+								</Group>
+								<Group>
+									<Bit PortNo="0x8202" BitIndex="1" Value="0" Compare="0"/>
+								</Group>
+								<Group>
+									<Bit PortNo="0x8205" BitIndex="1" Value="0" Compare="0"/>
+								</Group>
+							</Conditions>
+						</JumpToStep>
+                </Actions>
+            </Step>
+            <Step Id="5" Name="EqExchangeOn" TriggerOnRunning="1"  Interlock="0"  NextStep="5">
+                <Conditions>
+                        <Bit PortNo="0x8200" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8203"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8204"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8205"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8206" BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8207"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8208"  BitIndex="1" Value="0" Compare="0"/>                         
+                </Conditions>
+                <Actions>
+						<JumpToStep Id="1">
+							<Conditions>
+								<Group>
+									<Bit PortNo="0x8200"  BitIndex="1" Value="0" Compare="0"/>
+								</Group>
+								<Group>
+									<Bit PortNo="0x8203" BitIndex="1" Value="0" Compare="0"/>
+								</Group>
+								<Group>
+									<Bit PortNo="0x8205" BitIndex="1" Value="0" Compare="0"/>
+								</Group>
+							</Conditions>
+						</JumpToStep>
+                </Actions>
+            </Step>			
+            <Step Id="10" Name="RBLoadReplyOn" TriggerOnRunning="1"  Interlock="1"  NextStep="11">
+                <Conditions>
+                    <Group>
+                        <Bit PortNo="0x8200" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8201" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8204"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8205"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8206" BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8207"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8208"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8209"  BitIndex="1" Value="0" Compare="0"/> 
+                    </Group>						
+                </Conditions>
+                <Actions>
+					<SetPort PortNo="0x8001" BitIndex="1" Value="1"/>					
+                </Actions>
+            </Step>
+            <Step Id="11" Name="WaitLoadEqTransferStartOn" TriggerOnRunning="0"  Interlock="0"  NextStep="12">
+                <Conditions>
+                    <Group>
+                        <Bit PortNo="0x8200" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8201" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8204"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8205"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8206" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8207"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8208"  BitIndex="1" Value="0" Compare="0"/> 
+                    </Group>
+                </Conditions>
+                <Actions>
+					<StopTimeout Id="200"/>
+                </Actions>
+            </Step>
+            <Step Id="12" Name="WaitLoadRbPutCommand" TriggerOnRunning="0"  Interlock="1"  NextStep="13">
+                <Conditions>
+                    <Group>
+                        <Bit PortNo="0x8200" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8201" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8204"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8205"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8206" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8207"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8208"  BitIndex="1" Value="0" Compare="0"/> 
+                    </Group>
+                </Conditions>
+                <Actions>
+					<SetPort PortNo="0x8005" BitIndex="1" Value="0"/>
+                </Actions>
+            </Step>
+            <Step Id="13" Name="WaitLoadRbFinish" TriggerOnRunning="1"  Interlock="1"  NextStep="14">
+                <Conditions>
+                    <Group>
+                        <Bit PortNo="0x8200" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8201" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8204"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8205"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8206" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8207"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8208"  BitIndex="1" Value="0" Compare="0"/> 
+                    </Group>
+                </Conditions>
+                <Actions>					
+					<SetPort PortNo="0x8004" BitIndex="1" Value="1"/>
+                </Actions>
+            </Step>
+            <Step Id="14" Name="WaitLoadEqCompleteOn" TriggerOnRunning="0"  Interlock="0"  NextStep="15">
+                <Conditions>
+                    <Group>
+                        <Bit PortNo="0x8200" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8201" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8204"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8205"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8206" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8207"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8208"  BitIndex="1" Value="0" Compare="0"/> 
+                    </Group>
+                </Conditions>
+                <Actions>					
+					<StopTimeout Id="201"/>
+					<SetPort PortNo="0x8004" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8001" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8005" BitIndex="1" Value="1"/>					
+                </Actions>
+            </Step>
+            <Step Id="15" Name="WaitLoadEqCompleteOFF" TriggerOnRunning="0"  Interlock="0"  NextStep="1">
+                <Conditions>
+                    <Group>
+                        <Bit PortNo="0x8200" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8201" BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8204"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8205"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8206" BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8207"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8208"  BitIndex="1" Value="0" Compare="0"/> 
+                    </Group>
+                </Conditions>
+                <Actions>
+					<SetPort PortNo="0x8001" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8004" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8005" BitIndex="1" Value="1"/>
+					<StopTimeout Id="201"/>
+                </Actions>
+            </Step>
+            <Step Id="20" Name="WaitLoadEqPauseResume" TriggerOnRunning="0"  Interlock="0"  NextStep="20">
+                <Conditions>
+                    <Group>
+                    </Group>
+                </Conditions>
+                <Actions>
+					<JumpToStep Id="26">
+						<Conditions>
+							<Group>
+								<Bit PortNo="0x8200" BitIndex="1" Value="1" Compare="0"/> 
+								<Bit PortNo="0x8201" BitIndex="1" Value="1" Compare="0"/> 
+								<Bit PortNo="0x8204"  BitIndex="1" Value="0" Compare="0"/> 
+								<Bit PortNo="0x8205"  BitIndex="1" Value="1" Compare="0"/> 
+								<Bit PortNo="0x8206" BitIndex="1" Value="1" Compare="0"/> 
+								<Bit PortNo="0x8207"  BitIndex="1" Value="0" Compare="0"/> 
+								<Bit PortNo="0x8208"  BitIndex="1" Value="0" Compare="0"/> 								
+							</Group>
+						</Conditions>
+					</JumpToStep>
+					<JumpToStep Id="21">
+						<Conditions>
+							<Group>
+								<Bit PortNo="0x8200" BitIndex="1" Value="0" Compare="0"/> 
+								<Bit PortNo="0x8205"  BitIndex="1" Value="0" Compare="0"/> 
+							</Group>
+						</Conditions>
+					</JumpToStep>
+					<SetPort PortNo="0x8005" BitIndex="1" Value="1"/>
+                </Actions>
+            </Step>						
+            <Step Id="21" Name="WaitLoadUseForceFeature" TriggerOnRunning="0"  Interlock="0"  NextStep="21">
+                <Conditions>
+                    <Group>
+                    </Group>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>						
+            <Step Id="22" Name="RbSetForceCompleteOn" TriggerOnRunning="0"  Interlock="0"  NextStep="23">
+                <Conditions>
+                    <Group>
+                    </Group>
+                </Conditions>
+                <Actions>
+					<SetPort PortNo="0x800C" BitIndex="1" Value="1"/>
+                </Actions>
+            </Step>						
+            <Step Id="23" Name="WaitEqForceCompleteOn" TriggerOnRunning="0"  Interlock="0"  NextStep="1">
+                <Conditions>
+                    <Group>
+						<Bit PortNo="0x8204" BitIndex="1" Value="1" Compare="0"/> 
+                    </Group>
+                </Conditions>
+                <Actions>
+					<StopTimeout Id="202"/>
+					<SetPort PortNo="0x800C" BitIndex="1" Value="0"/>				
+                </Actions>
+            </Step>						
+            <Step Id="24" Name="RbSetForceIniOn" TriggerOnRunning="0"  Interlock="1"  NextStep="25">
+                <Conditions>
+                    <Group>
+                    </Group>
+                </Conditions>
+                <Actions>
+					<SetPort PortNo="0x800D" BitIndex="1" Value="1"/>
+                </Actions>
+            </Step>						
+            <Step Id="25" Name="WaitEqForceIniOn" TriggerOnRunning="0"  Interlock="0"  NextStep="1">
+                <Conditions>
+                    <Group>
+						<Bit PortNo="0x8208" BitIndex="1" Value="1" Compare="0"/> 
+                    </Group>
+                </Conditions>
+                <Actions>
+					<StopTimeout Id="202"/>
+					<SetPort PortNo="0x800D" BitIndex="1" Value="0"/>
+                </Actions>
+            </Step>						
+            <Step Id="26" Name="WaitRobotRestart" TriggerOnRunning="0"  Interlock="0"  NextStep="13">
+                <Conditions>
+                    <Group>
+                    </Group>
+                </Conditions>
+                <Actions>
+					<SetPort PortNo="0x8005" BitIndex="1" Value="0"/>
+                </Actions>
+            </Step>						
+            <Step Id="30" Name="EqUnLoadReqOn" TriggerOnRunning="0"  Interlock="1"  NextStep="31">
+                <Conditions>
+                    <Group>
+                        <Bit PortNo="0x8200" BitIndex="1" Value="1" Compare="0"/>                         
+                        <Bit PortNo="0x8202"  BitIndex="1" Value="1" Compare="0"/>                         
+                        <Bit PortNo="0x8204"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8205"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8206" BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8207"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8208"  BitIndex="1" Value="0" Compare="0"/> 
+                    </Group>						
+                </Conditions>
+                <Actions>					
+					<SetPort PortNo="0x8002" BitIndex="1" Value="1"/>
+                </Actions>
+            </Step>
+            <Step Id="31" Name="WaitEqUnloadTransferStartOn" TriggerOnRunning="0"  Interlock="0"  NextStep="32">
+                <Conditions>
+                    <Group>
+                        <Bit PortNo="0x8200" BitIndex="1" Value="1" Compare="0"/>                         
+                        <Bit PortNo="0x8202"  BitIndex="1" Value="1" Compare="0"/>                        
+                        <Bit PortNo="0x8204"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8205"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8206" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8207"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8208"  BitIndex="1" Value="0" Compare="0"/> 
+                    </Group>
+                </Conditions>
+                <Actions>
+					<StopTimeout Id="200"/>				
+                </Actions>
+            </Step>
+            <Step Id="32" Name="WaitRbGetCommand" TriggerOnRunning="0"  Interlock="1"  NextStep="33">
+                <Conditions>
+                    <Group>
+                        <Bit PortNo="0x8200" BitIndex="1" Value="1" Compare="0"/>                         
+                        <Bit PortNo="0x8202"  BitIndex="1" Value="1" Compare="0"/>                        
+                        <Bit PortNo="0x8204"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8205"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8206" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8207"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8208"  BitIndex="1" Value="0" Compare="0"/> 
+                    </Group>
+                </Conditions>
+                <Actions>
+					<SetPort PortNo="0x8005" BitIndex="1" Value="0"/>
+                </Actions>
+            </Step>
+            <Step Id="33" Name="WaitRbFinish" TriggerOnRunning="1"  Interlock="1"  NextStep="34">
+                <Conditions>
+                    <Group>
+                        <Bit PortNo="0x8200" BitIndex="1" Value="1" Compare="0"/>                         
+                        <Bit PortNo="0x8202"  BitIndex="1" Value="1" Compare="0"/>                        
+                        <Bit PortNo="0x8204"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8205"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8206" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8207"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8208"  BitIndex="1" Value="0" Compare="0"/>                         
+                    </Group>
+                </Conditions>
+                <Actions>
+					<SetPort PortNo="0x8004" BitIndex="1" Value="1"/>
+                </Actions>
+            </Step>
+            <Step Id="34" Name="WaitEqCompleteOn" TriggerOnRunning="0"  Interlock="0"  NextStep="35">
+                <Conditions>
+                    <Group>
+                        <Bit PortNo="0x8200" BitIndex="1" Value="1" Compare="0"/>                         
+                        <Bit PortNo="0x8202"  BitIndex="1" Value="1" Compare="0"/>                        
+                        <Bit PortNo="0x8204"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8205"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8206" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8207"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8208"  BitIndex="1" Value="0" Compare="0"/> 
+                    </Group>
+                </Conditions>
+                <Actions>					
+					<StopTimeout Id="201"/>
+					<SetPort PortNo="0x8004" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8002" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8005" BitIndex="1" Value="1"/>					               
+					<SetPort PortNo="0x8003" BitIndex="1" Value="0"/>
+			   </Actions>
+            </Step>
+            <Step Id="35" Name="WaitEqCompleteOFF" TriggerOnRunning="0"  Interlock="0"  NextStep="1">
+                <Conditions>
+                    <Group>
+                        <Bit PortNo="0x8200" BitIndex="1" Value="1" Compare="0"/>                         
+                        <Bit PortNo="0x8202"  BitIndex="1" Value="0" Compare="0"/>                        
+                        <Bit PortNo="0x8204"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8205"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8206" BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8207"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8208"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8209"  BitIndex="1" Value="0" Compare="0"/> 
+                    </Group>
+                </Conditions>
+                <Actions>					
+					<SetPort PortNo="0x8002" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8004" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8005" BitIndex="1" Value="1"/>                
+				</Actions>
+            </Step>
+            <Step Id="40" Name="WaitUnLoadResume" TriggerOnRunning="0"  Interlock="0"  NextStep="40">
+                <Conditions>
+                    <Group>
+                    </Group>
+                </Conditions>
+                <Actions>
+					<JumpToStep Id="46">
+						<Conditions>
+							<Group>
+								<Bit PortNo="0x8200" BitIndex="1" Value="1" Compare="0"/> 								
+								<Bit PortNo="0x8202"  BitIndex="1" Value="1" Compare="0"/>								
+								<Bit PortNo="0x8204"  BitIndex="1" Value="0" Compare="0"/> 
+								<Bit PortNo="0x8205"  BitIndex="1" Value="1" Compare="0"/> 
+								<Bit PortNo="0x8206" BitIndex="1" Value="1" Compare="0"/> 
+								<Bit PortNo="0x8207"  BitIndex="1" Value="0" Compare="0"/> 
+								<Bit PortNo="0x8208"  BitIndex="1" Value="0" Compare="0"/> 								
+							</Group>
+						</Conditions>
+					</JumpToStep>
+					<JumpToStep Id="41">
+						<Conditions>
+							<Group>
+								<Bit PortNo="0x8200" BitIndex="1" Value="0" Compare="0"/> 
+								<Bit PortNo="0x8205"  BitIndex="1" Value="0" Compare="0"/> 
+							</Group>
+						</Conditions>
+					</JumpToStep>
+					<SetPort PortNo="0x8005" BitIndex="1" Value="1"/>					
+                </Actions>
+            </Step>						
+            <Step Id="41" Name="WaitUseForceFeature" TriggerOnRunning="0"  Interlock="0"  NextStep="41">
+                <Conditions>
+                    <Group>
+                    </Group>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>						
+            <Step Id="42" Name="RbSetForceCompleteOn" TriggerOnRunning="0"  Interlock="0"  NextStep="43">
+                <Conditions>
+                    <Group>
+                    </Group>
+                </Conditions>
+                <Actions>
+					<SetPort PortNo="0x800C" BitIndex="1" Value="1"/>					
+                </Actions>
+            </Step>						
+            <Step Id="43" Name="WaitEqForceCompleteOn" TriggerOnRunning="0"  Interlock="0"  NextStep="1">
+                <Conditions>
+                    <Group>
+						<Bit PortNo="0x8204" BitIndex="1" Value="1" Compare="0"/>                     
+					</Group>
+                </Conditions>
+                <Actions>
+					<StopTimeout Id="202"/>					
+					<SetPort PortNo="0x800C" BitIndex="1" Value="0"/>				
+                </Actions>
+            </Step>						
+            <Step Id="44" Name="RbSetForceIniOn" TriggerOnRunning="0"  Interlock="1"  NextStep="45">
+                <Conditions>
+                    <Group>
+                    </Group>
+                </Conditions>
+                <Actions>					
+					<SetPort PortNo="0x800D" BitIndex="1" Value="1"/>
+                </Actions>
+            </Step>						
+            <Step Id="45" Name="WaitEqForceIniOn" TriggerOnRunning="0"  Interlock="0"  NextStep="1">
+                <Conditions>
+                    <Group>
+						<Bit PortNo="0x8208" BitIndex="1" Value="1" Compare="0"/> 
+                    </Group>
+                </Conditions>
+                <Actions>
+					<StopTimeout Id="202"/>
+					<SetPort PortNo="0x800D" BitIndex="1" Value="0"/>
+                </Actions>
+            </Step>						
+            <Step Id="46" Name="WaitEqForceIniOn" TriggerOnRunning="0"  Interlock="0"  NextStep="33">
+                <Conditions>
+                    <Group>
+                    </Group>
+                </Conditions>
+                <Actions>
+					<SetPort PortNo="0x8005" BitIndex="1" Value="0"/>
+                </Actions>
+            </Step>						
+            <Step Id="50" Name="EqExchangeReplyOn" TriggerOnRunning="1"  Interlock="1"  NextStep="51">
+                <Conditions>
+                    <Group>
+                        <Bit PortNo="0x8200" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8203"  BitIndex="1" Value="1" Compare="0"/>
+                        <Bit PortNo="0x8204"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8205"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8206" BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8207"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8208"  BitIndex="1" Value="0" Compare="0"/> 
+                    </Group>
+                </Conditions>
+                <Actions>
+					<SetPort PortNo="0x8003" BitIndex="1" Value="1"/>					
+				</Actions>
+            </Step>
+            <Step Id="51" Name="WaitTransferStartOn" TriggerOnRunning="0"  Interlock="0"  NextStep="52">
+                <Conditions>
+                    <Group>
+                        <Bit PortNo="0x8200" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8203"  BitIndex="1" Value="1" Compare="0"/>
+                        <Bit PortNo="0x8204"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8205"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8206" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8207"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8208"  BitIndex="1" Value="0" Compare="0"/> 
+                    </Group>
+                </Conditions>
+                <Actions>					
+					<StopTimeout Id="200"/>                
+				</Actions>
+            </Step>
+            <Step Id="52" Name="WaitRbGetCommand" TriggerOnRunning="0"  Interlock="1"  NextStep="53">
+                <Conditions>
+                    <Group>
+                        <Bit PortNo="0x8200" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8203"  BitIndex="1" Value="1" Compare="0"/>
+                        <Bit PortNo="0x8204"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8205"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8206" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8207"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8208"  BitIndex="1" Value="0" Compare="0"/> 
+                    </Group>
+                </Conditions>
+                <Actions>										
+					<SetPort PortNo="0x8005" BitIndex="1" Value="0"/>               
+			   </Actions>
+            </Step>
+            <Step Id="53" Name="WaitRbGetFinish" TriggerOnRunning="1"  Interlock="1"  NextStep="54">
+                <Conditions>
+                    <Group>
+                        <Bit PortNo="0x8200" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8203"  BitIndex="1" Value="1" Compare="0"/>
+                        <Bit PortNo="0x8204"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8205"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8206" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8207"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8208"  BitIndex="1" Value="0" Compare="0"/> 
+                    </Group>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>
+            <Step Id="54" Name="WaitRbPutCommand" TriggerOnRunning="1"  Interlock="1"  NextStep="55">
+                <Conditions>
+                    <Group>
+                        <Bit PortNo="0x8200" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8203"  BitIndex="1" Value="1" Compare="0"/>
+                        <Bit PortNo="0x8204"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8205"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8206" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8207"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8208"  BitIndex="1" Value="0" Compare="0"/> 
+                    </Group>
+                </Conditions>
+                <Actions>										
+                </Actions>
+            </Step>
+            <Step Id="55" Name="WaitRbPutFinish" TriggerOnRunning="1"  Interlock="1"  NextStep="56">
+                <Conditions>
+                    <Group>
+                        <Bit PortNo="0x8200" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8203"  BitIndex="1" Value="1" Compare="0"/>
+                        <Bit PortNo="0x8204"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8205"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8206" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8207"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8208"  BitIndex="1" Value="0" Compare="0"/> 
+                    </Group>
+                </Conditions>
+                <Actions>					
+					<SetPort PortNo="0x8004" BitIndex="1" Value="1"/>
+				</Actions>
+            </Step>
+            <Step Id="56" Name="WaitEqCompleteOn" TriggerOnRunning="0"  Interlock="0"  NextStep="57">
+                <Conditions>
+                    <Group>
+                        <Bit PortNo="0x8200" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8203"  BitIndex="1" Value="1" Compare="0"/>
+                        <Bit PortNo="0x8204"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8205"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8206" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8207"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8208"  BitIndex="1" Value="0" Compare="0"/> 
+                    </Group>
+                </Conditions>
+                <Actions>
+					<StopTimeout Id="201"/>
+					<SetPort PortNo="0x8003" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8004" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8005" BitIndex="1" Value="1"/>					                
+				</Actions>
+            </Step>
+            <Step Id="57" Name="WaitEqCompleteOFF" TriggerOnRunning="0"  Interlock="0"  NextStep="1">
+                <Conditions>
+                    <Group>
+                        <Bit PortNo="0x8200" BitIndex="1" Value="1" Compare="0"/>                         
+                        <Bit PortNo="0x8203"  BitIndex="1" Value="0" Compare="0"/>
+                        <Bit PortNo="0x8204"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8205"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8206" BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8207"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8208"  BitIndex="1" Value="0" Compare="0"/> 
+                    </Group>
+                </Conditions>
+                <Actions>
+					<SetPort PortNo="0x8003" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8004" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8005" BitIndex="1" Value="1"/>
+					<StopTimeout Id="201"/>                
+				</Actions>
+            </Step>
+            <Step Id="60" Name="WaitExchangeResume" TriggerOnRunning="0"  Interlock="0"  NextStep="60">
+                <Conditions>
+                    <Group>
+                    </Group>
+                </Conditions>
+                <Actions>
+					<JumpToStep Id="54">
+						<Conditions>
+							<Group>
+								<Bit PortNo="0x8200" BitIndex="1" Value="1" Compare="0"/> 
+								<Bit PortNo="0x8203"  BitIndex="1" Value="1" Compare="0"/>
+								<Bit PortNo="0x8204"  BitIndex="1" Value="0" Compare="0"/> 
+								<Bit PortNo="0x8205"  BitIndex="1" Value="1" Compare="0"/> 
+								<Bit PortNo="0x8206" BitIndex="1" Value="1" Compare="0"/> 
+								<Bit PortNo="0x8207"  BitIndex="1" Value="0" Compare="0"/> 
+								<Bit PortNo="0x8208"  BitIndex="1" Value="0" Compare="0"/> 
+							</Group>
+						</Conditions>
+					</JumpToStep>
+					<JumpToStep Id="61">
+						<Conditions>
+							<Group>
+								<Bit PortNo="0x8200" BitIndex="1" Value="0" Compare="0"/> 
+								<Bit PortNo="0x8205"  BitIndex="1" Value="0" Compare="0"/> 
+							</Group>
+						</Conditions>
+					</JumpToStep>
+						<SetPort PortNo="0x8005" BitIndex="1" Value="1"/>
+                </Actions>
+            </Step>						
+            <Step Id="61" Name="WaitUseForceFeature" TriggerOnRunning="0"  Interlock="0"  NextStep="61">
+                <Conditions>
+                    <Group>
+                    </Group>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>						
+            <Step Id="62" Name="RbSetForceCompleteOn" TriggerOnRunning="0"  Interlock="0"  NextStep="63">
+                <Conditions>
+                    <Group>
+                    </Group>
+                </Conditions>
+                <Actions>
+					<SetPort PortNo="0x800C" BitIndex="1" Value="1"/>					
+                </Actions>
+            </Step>						
+            <Step Id="63" Name="WaitEqForceCompleteOn" TriggerOnRunning="0"  Interlock="0"  NextStep="1">
+                <Conditions>
+                    <Group>
+						<Bit PortNo="0x8204" BitIndex="1" Value="1" Compare="0"/>                    
+				   </Group>
+                </Conditions>
+                <Actions>
+					<StopTimeout Id="202"/>
+					<SetPort PortNo="0x800C" BitIndex="1" Value="0"/>				
+                </Actions>
+            </Step>						
+            <Step Id="64" Name="RbSetForceIniOn" TriggerOnRunning="0"  Interlock="1"  NextStep="65">
+                <Conditions>
+                    <Group>
+                    </Group>
+                </Conditions>
+                <Actions>					
+					<SetPort PortNo="0x800D" BitIndex="1" Value="1"/>
+                </Actions>
+            </Step>						
+            <Step Id="65" Name="WaitEqForceIniOn" TriggerOnRunning="0"  Interlock="0"  NextStep="1">
+                <Conditions>
+                    <Group>
+						<Bit PortNo="0x8208" BitIndex="1" Value="1" Compare="0"/>                    
+				   </Group>
+                </Conditions>
+                <Actions>
+					<StopTimeout Id="202"/>
+					<SetPort PortNo="0x800D" BitIndex="1" Value="0"/>
+                </Actions>
+            </Step>	
+			<Step Id="66" Name="WaitEqForceIniOn" TriggerOnRunning="0"  Interlock="0"  NextStep="54">
+                <Conditions>
+                    <Group>
+                    </Group>
+                </Conditions>
+                <Actions>
+					<SetPort PortNo="0x800D" BitIndex="1" Value="0"/>
+                </Actions>
+            </Step>					
+        </Sequence>
+    </TimeChartSequence>
+	<!--
+	<TimeChartSequence Id="4" Name="VAS_UP" InitialStep="1"  ScanInterval="200">
+        <Initial>
+			<SetPort PortNo="0x8060" BitIndex="1" Value="0"/>
+			<SetPort PortNo="0x8061" BitIndex="1" Value="0"/>
+			<SetPort PortNo="0x8062" BitIndex="1" Value="0"/>
+			<SetPort PortNo="0x8063" BitIndex="1" Value="0"/>
+			<SetPort PortNo="0x8064" BitIndex="1" Value="0"/>
+			<SetPort PortNo="0x8065" BitIndex="1" Value="0"/>
+			<SetPort PortNo="0x8066" BitIndex="1" Value="0"/>
+			<SetPort PortNo="0x8067" BitIndex="1" Value="0"/>
+			<SetPort PortNo="0x8068" BitIndex="1" Value="0"/>
+			<SetPort PortNo="0x8069" BitIndex="1" Value="0"/>
+			<SetPort PortNo="0x806A" BitIndex="1" Value="0"/>
+			<SetPort PortNo="0x806B" BitIndex="1" Value="0"/>
+			<SetPort PortNo="0x806C" BitIndex="1" Value="0"/>
+			<SetPort PortNo="0x806D" BitIndex="1" Value="0"/>
+			<SetPort PortNo="0x806E" BitIndex="1" Value="0"/>
+			<SetPort PortNo="0x806F" BitIndex="1" Value="0"/>
+        </Initial>
+        <Sequence>
+            <Step Id="1" Name="CheckStatusOK" TriggerOnRunning="1"  Interlock="0"  NextStep="2">
+                <Conditions>
+                    <Group>
+                        <Bit PortNo="0x8800" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8804"  BitIndex="1" Value="0" Compare="0"/>
+                        <Bit PortNo="0x8805"  BitIndex="1" Value="1" Compare="0"/>
+                        <Bit PortNo="0x8806" BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8807"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8808"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8811"  BitIndex="1" Value="0" Compare="0"/> 
+                    </Group>
+                </Conditions>
+                <Actions>
+					<StopTimeout Id="200"/>
+					<StopTimeout Id="201"/>
+					<StopTimeout Id="202"/>
+					<StopTimeout Id="203"/>
+                </Actions>
+            </Step>
+            <Step Id="2" Name="SelectMode" TriggerOnRunning="1"  Interlock="0"  NextStep="2">
+                <Conditions>
+                        <Bit PortNo="0x8800" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8804"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8805"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8806" BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8807"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8808"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8811"  BitIndex="1" Value="0" Compare="0"/> 
+                </Conditions>
+                <Actions>
+						<JumpToStep Id="3">
+							<Conditions>
+								<Group>
+									<Bit PortNo="0x8800" BitIndex="1" Value="1" Compare="0"/>
+									<Bit PortNo="0x8801" BitIndex="1" Value="1" Compare="0"/>
+									<Bit PortNo="0x8805"  BitIndex="1" Value="1" Compare="0"/>
+									<Bit PortNo="0x8811"  BitIndex="1" Value="0" Compare="0"/> 
+								</Group>
+							</Conditions>
+						</JumpToStep>
+                </Actions>
+            </Step>
+            <Step Id="3" Name="EqLoadReqOn" TriggerOnRunning="1"  Interlock="0"  NextStep="3">
+                <Conditions>
+                        <Bit PortNo="0x8800" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8801" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8805"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8804"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8806" BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8807"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8808"  BitIndex="1" Value="0" Compare="0"/> 
+						<Bit PortNo="0x8811"  BitIndex="1" Value="0" Compare="0"/> 
+                </Conditions>
+                <Actions>
+						<JumpToStep Id="1">
+							<Conditions>
+								<Group>
+									<Bit PortNo="0x8800"  BitIndex="1" Value="0" Compare="0"/>
+								</Group>
+								<Group>
+									<Bit PortNo="0x8801" BitIndex="1" Value="0" Compare="0"/>
+								</Group>
+								<Group>
+									<Bit PortNo="0x8805" BitIndex="1" Value="0" Compare="0"/>
+								</Group>
+							</Conditions>
+						</JumpToStep>
+                </Actions>
+            </Step>
+            <Step Id="10" Name="RBLoadReplyOn" TriggerOnRunning="1"  Interlock="1"  NextStep="11">
+                <Conditions>
+                    <Group>
+                        <Bit PortNo="0x8800" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8801" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8804"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8805"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8806" BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8807"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8808"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8809"  BitIndex="1" Value="0" Compare="0"/> 
+						<Bit PortNo="0x8811"  BitIndex="1" Value="0" Compare="0"/> 
+                    </Group>						
+                </Conditions>
+                <Actions>
+					<SetPort PortNo="0x8061" BitIndex="1" Value="1"/>					
+                </Actions>
+            </Step>
+            <Step Id="11" Name="WaitLoadEqTransferStartOn" TriggerOnRunning="0"  Interlock="0"  NextStep="12">
+                <Conditions>
+                    <Group>
+                        <Bit PortNo="0x8800" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8801" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8804"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8805"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8806" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8807"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8808"  BitIndex="1" Value="0" Compare="0"/> 
+						<Bit PortNo="0x8811"  BitIndex="1" Value="0" Compare="0"/> 
+                    </Group>
+                </Conditions>
+                <Actions>
+					<StopTimeout Id="200"/>
+                </Actions>
+            </Step>
+            <Step Id="12" Name="WaitLoadRbPutCommand" TriggerOnRunning="0"  Interlock="1"  NextStep="16">
+                <Conditions>
+                    <Group>
+                        <Bit PortNo="0x8800" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8801" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8804"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8805"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8806" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8807"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8808"  BitIndex="1" Value="0" Compare="0"/> 
+						<Bit PortNo="0x8811"  BitIndex="1" Value="0" Compare="0"/> 
+                    </Group>
+                </Conditions>
+                <Actions>
+					<SetPort PortNo="0x8065" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8069" BitIndex="1" Value="1"/>				
+                </Actions>
+            </Step>
+            <Step Id="13" Name="WaitLoadRbFinish" TriggerOnRunning="1"  Interlock="0"  NextStep="14">
+                <Conditions>
+                    <Group>
+                        <Bit PortNo="0x8800" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8801" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8804"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8805"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8806" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8807"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8808"  BitIndex="1" Value="0" Compare="0"/> 
+                    </Group>
+                </Conditions>
+                <Actions>					
+					<SetPort PortNo="0x8064" BitIndex="1" Value="1"/>
+                </Actions>
+            </Step>
+            <Step Id="14" Name="WaitLoadEqCompleteOn" TriggerOnRunning="0"  Interlock="0"  NextStep="15">
+                <Conditions>
+                    <Group>
+                        <Bit PortNo="0x8800" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8801" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8804"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8805"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8806" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8807"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8808"  BitIndex="1" Value="0" Compare="0"/> 
+                    </Group>
+                </Conditions>
+                <Actions>					
+					<StopTimeout Id="201"/>
+					<SetPort PortNo="0x8064" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8061" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8065" BitIndex="1" Value="1"/>					
+                </Actions>
+            </Step>
+            <Step Id="15" Name="WaitLoadEqCompleteOFF" TriggerOnRunning="0"  Interlock="0"  NextStep="1">
+                <Conditions>
+                    <Group>
+                        <Bit PortNo="0x8800" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8801" BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8804"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8805"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8806" BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8807"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8808"  BitIndex="1" Value="0" Compare="0"/> 
+                    </Group>
+                </Conditions>
+                <Actions>
+					<SetPort PortNo="0x8061" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8064" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8065" BitIndex="1" Value="1"/>
+					<StopTimeout Id="201"/>
+                </Actions>
+            </Step>
+            <Step Id="16" Name="WaitEqDevilerOn" TriggerOnRunning="0"  Interlock="0"  NextStep="17">
+                <Conditions>
+                    <Group>
+                        <Bit PortNo="0x8800" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8801" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8804"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8805"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8806" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8807"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8808"  BitIndex="1" Value="0" Compare="0"/> 
+						<Bit PortNo="0x880B"  BitIndex="1" Value="1" Compare="0"/> 
+                    </Group>
+                </Conditions>
+                <Actions>
+					<SetPort PortNo="0x8069" BitIndex="1" Value="0"/>				
+                </Actions>
+            </Step>
+            <Step Id="17" Name="WaitEqDevilerOff" TriggerOnRunning="0"  Interlock="1"  NextStep="13">
+                <Conditions>
+                    <Group>
+                        <Bit PortNo="0x8800" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8801" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8804"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8805"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8806" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8807"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8808"  BitIndex="1" Value="0" Compare="0"/> 
+						<Bit PortNo="0x880B"  BitIndex="1" Value="0" Compare="0"/> 
+                    </Group>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>
+            <Step Id="20" Name="WaitLoadEqPauseResume" TriggerOnRunning="0"  Interlock="0"  NextStep="20">
+                <Conditions>
+                    <Group>
+                    </Group>
+                </Conditions>
+                <Actions>
+					<JumpToStep Id="26">
+						<Conditions>
+							<Group>
+								<Bit PortNo="0x8800" BitIndex="1" Value="1" Compare="0"/> 
+								<Bit PortNo="0x8801" BitIndex="1" Value="1" Compare="0"/> 
+								<Bit PortNo="0x8804"  BitIndex="1" Value="0" Compare="0"/> 
+								<Bit PortNo="0x8805"  BitIndex="1" Value="1" Compare="0"/> 
+								<Bit PortNo="0x8806" BitIndex="1" Value="1" Compare="0"/> 
+								<Bit PortNo="0x8807"  BitIndex="1" Value="0" Compare="0"/> 
+								<Bit PortNo="0x8808"  BitIndex="1" Value="0" Compare="0"/> 								
+							</Group>
+						</Conditions>
+					</JumpToStep>
+					<JumpToStep Id="21">
+						<Conditions>
+							<Group>
+								<Bit PortNo="0x8800" BitIndex="1" Value="0" Compare="0"/> 
+								<Bit PortNo="0x8805"  BitIndex="1" Value="0" Compare="0"/> 
+							</Group>
+						</Conditions>
+					</JumpToStep>
+					<SetPort PortNo="0x8065" BitIndex="1" Value="1"/>
+                </Actions>
+            </Step>						
+            <Step Id="21" Name="WaitLoadUseForceFeature" TriggerOnRunning="0"  Interlock="0"  NextStep="21">
+                <Conditions>
+                    <Group>
+                    </Group>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>						
+            <Step Id="22" Name="RbSetForceCompleteOn" TriggerOnRunning="0"  Interlock="0"  NextStep="23">
+                <Conditions>
+                    <Group>
+                    </Group>
+                </Conditions>
+                <Actions>
+					<SetPort PortNo="0x806C" BitIndex="1" Value="1"/>
+                </Actions>
+            </Step>						
+            <Step Id="23" Name="WaitEqForceCompleteOn" TriggerOnRunning="0"  Interlock="0"  NextStep="1">
+                <Conditions>
+                    <Group>
+						<Bit PortNo="0x8804" BitIndex="1" Value="1" Compare="0"/> 
+                    </Group>
+                </Conditions>
+                <Actions>
+					<StopTimeout Id="202"/>
+					<SetPort PortNo="0x8061" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8062" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8063" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8064" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8065" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8066" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8067" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8068" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8069" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x806A" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x806B" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x806C" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x806D" BitIndex="1" Value="0"/>
+                </Actions>
+            </Step>						
+            <Step Id="24" Name="RbSetForceIniOn" TriggerOnRunning="0"  Interlock=""  NextStep="25">
+                <Conditions>
+                    <Group>
+                    </Group>
+                </Conditions>
+                <Actions>
+					<SetPort PortNo="0x806D" BitIndex="1" Value="1"/>
+                </Actions>
+            </Step>						
+            <Step Id="25" Name="WaitEqForceIniOn" TriggerOnRunning="0"  Interlock="0"  NextStep="1">
+                <Conditions>
+                    <Group>
+						<Bit PortNo="0x8808" BitIndex="1" Value="1" Compare="0"/> 
+                    </Group>
+                </Conditions>
+                <Actions>
+					<StopTimeout Id="202"/>
+					<SetPort PortNo="0x8061" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8062" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8063" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8064" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8065" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8066" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8067" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8068" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8069" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x806A" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x806B" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x806C" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x806D" BitIndex="1" Value="0"/>
+                </Actions>
+            </Step>						
+            <Step Id="26" Name="WaitRobotRestart" TriggerOnRunning="0"  Interlock="0"  NextStep="13">
+                <Conditions>
+                    <Group>
+                    </Group>
+                </Conditions>
+                <Actions>
+					<SetPort PortNo="0x8065" BitIndex="1" Value="0"/>
+                </Actions>
+            </Step>												
+        </Sequence>
+    </TimeChartSequence>
+	<TimeChartSequence Id="5" Name="VAS_DOWN" InitialStep="1"  ScanInterval="200">
+        <Initial>
+			<SetPort PortNo="0x8080" BitIndex="1" Value="0"/>
+			<SetPort PortNo="0x8081" BitIndex="1" Value="0"/>
+			<SetPort PortNo="0x8082" BitIndex="1" Value="0"/>
+			<SetPort PortNo="0x8083" BitIndex="1" Value="0"/>
+			<SetPort PortNo="0x8084" BitIndex="1" Value="0"/>
+			<SetPort PortNo="0x8085" BitIndex="1" Value="0"/>
+			<SetPort PortNo="0x8086" BitIndex="1" Value="0"/>
+			<SetPort PortNo="0x8087" BitIndex="1" Value="0"/>
+			<SetPort PortNo="0x8088" BitIndex="1" Value="0"/>
+			<SetPort PortNo="0x8089" BitIndex="1" Value="0"/>
+			<SetPort PortNo="0x808A" BitIndex="1" Value="0"/>
+			<SetPort PortNo="0x808B" BitIndex="1" Value="0"/>
+			<SetPort PortNo="0x808C" BitIndex="1" Value="0"/>
+			<SetPort PortNo="0x808D" BitIndex="1" Value="0"/>
+			<SetPort PortNo="0x808E" BitIndex="1" Value="0"/>
+			<SetPort PortNo="0x808F" BitIndex="1" Value="0"/>
+        </Initial>
+        <Sequence>
+            <Step Id="1" Name="CheckStatusOK" TriggerOnRunning="1"  Interlock="0"  NextStep="2">
+                <Conditions>
+                    <Group>
+                        <Bit PortNo="0x8820" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8824"  BitIndex="1" Value="0" Compare="0"/>
+                        <Bit PortNo="0x8825"  BitIndex="1" Value="1" Compare="0"/>
+                        <Bit PortNo="0x8826" BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8827"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8828"  BitIndex="1" Value="0" Compare="0"/> 
+                    </Group>
+                </Conditions>
+                <Actions>
+					<StopTimeout Id="200"/>
+					<StopTimeout Id="201"/>
+					<StopTimeout Id="202"/>
+					<StopTimeout Id="203"/>
+                </Actions>
+            </Step>
+            <Step Id="2" Name="SelectMode" TriggerOnRunning="1"  Interlock="0"  NextStep="2">
+                <Conditions>
+                        <Bit PortNo="0x8820" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8824"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8825"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8826" BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8827"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8828"  BitIndex="1" Value="0" Compare="0"/> 
+                </Conditions>
+                <Actions>
+						<JumpToStep Id="3">
+							<Conditions>
+								<Group>
+									<Bit PortNo="0x8820" BitIndex="1" Value="1" Compare="0"/>
+									<Bit PortNo="0x8821" BitIndex="1" Value="1" Compare="0"/>
+									<Bit PortNo="0x8825"  BitIndex="1" Value="1" Compare="0"/>
+								</Group>
+							</Conditions>
+						</JumpToStep>
+						<JumpToStep Id="4">
+							<Conditions>
+								<Group>
+									<Bit PortNo="0x8820" BitIndex="1" Value="1" Compare="0"/>
+									<Bit PortNo="0x8822" BitIndex="1" Value="1" Compare="0"/>
+									<Bit PortNo="0x8825"  BitIndex="1" Value="1" Compare="0"/>
+								</Group>
+							</Conditions>
+						</JumpToStep>
+                </Actions>
+            </Step>
+            <Step Id="3" Name="EqLoadReqOn" TriggerOnRunning="1"  Interlock="0"  NextStep="3">
+                <Conditions>
+                        <Bit PortNo="0x8820" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8821" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8825"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8824"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8826" BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8827"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8828"  BitIndex="1" Value="0" Compare="0"/> 
+                </Conditions>
+                <Actions>
+						<JumpToStep Id="1">
+							<Conditions>
+								<Group>
+									<Bit PortNo="0x8820"  BitIndex="1" Value="0" Compare="0"/>
+								</Group>
+								<Group>
+									<Bit PortNo="0x8821" BitIndex="1" Value="0" Compare="0"/>
+								</Group>
+								<Group>
+									<Bit PortNo="0x8825" BitIndex="1" Value="0" Compare="0"/>
+								</Group>
+							</Conditions>
+						</JumpToStep>
+                </Actions>
+            </Step>
+            <Step Id="4" Name="EqUnloadOn" TriggerOnRunning="1"  Interlock="0"  NextStep="4">
+                <Conditions>
+                        <Bit PortNo="0x8820" BitIndex="1" Value="1" Compare="0"/>                         
+                        <Bit PortNo="0x8822"  BitIndex="1" Value="1" Compare="0"/>                         
+                        <Bit PortNo="0x8824"  BitIndex="1" Value="0" Compare="0"/>                         
+                        <Bit PortNo="0x8825"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8826" BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8827"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8828"  BitIndex="1" Value="0" Compare="0"/>                         
+                </Conditions>
+                <Actions>
+						<JumpToStep Id="1">
+							<Conditions>
+								<Group>
+									<Bit PortNo="0x8820"  BitIndex="1" Value="0" Compare="0"/>
+								</Group>
+								<Group>
+									<Bit PortNo="0x8822" BitIndex="1" Value="0" Compare="0"/>
+								</Group>
+								<Group>
+									<Bit PortNo="0x8825" BitIndex="1" Value="0" Compare="0"/>
+								</Group>
+							</Conditions>
+						</JumpToStep>
+                </Actions>
+            </Step>
+            <Step Id="10" Name="RBLoadReplyOn" TriggerOnRunning="1"  Interlock="1"  NextStep="11">
+                <Conditions>
+                    <Group>
+                        <Bit PortNo="0x8820" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8821" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8824"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8825"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8826" BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8827"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8828"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8829"  BitIndex="1" Value="0" Compare="0"/> 
+                    </Group>						
+                </Conditions>
+                <Actions>
+					<SetPort PortNo="0x8081" BitIndex="1" Value="1"/>					
+                </Actions>
+            </Step>
+            <Step Id="11" Name="WaitLoadEqTransferStartOn" TriggerOnRunning="0"  Interlock="0"  NextStep="12">
+                <Conditions>
+                    <Group>
+                        <Bit PortNo="0x8820" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8821" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8824"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8825"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8826" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8827"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8828"  BitIndex="1" Value="0" Compare="0"/> 
+                    </Group>
+                </Conditions>
+                <Actions>
+					<StopTimeout Id="200"/>
+                </Actions>
+            </Step>
+            <Step Id="12" Name="WaitLoadRbPutCommand" TriggerOnRunning="0"  Interlock="1"  NextStep="16">
+                <Conditions>
+                    <Group>
+                        <Bit PortNo="0x8820" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8821" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8824"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8825"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8826" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8827"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8828"  BitIndex="1" Value="0" Compare="0"/> 
+                    </Group>
+                </Conditions>
+                <Actions>
+					<SetPort PortNo="0x8085" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8089" BitIndex="1" Value="1"/>
+                </Actions>
+            </Step>
+            <Step Id="13" Name="WaitLoadRbFinish" TriggerOnRunning="1"  Interlock="0"  NextStep="14">
+                <Conditions>
+                    <Group>
+                        <Bit PortNo="0x8820" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8821" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8824"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8825"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8826" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8827"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8828"  BitIndex="1" Value="0" Compare="0"/> 
+                    </Group>
+                </Conditions>
+                <Actions>					
+					<SetPort PortNo="0x8084" BitIndex="1" Value="1"/>
+					<SetPort PortNo="0x8089" BitIndex="1" Value="1"/>
+                </Actions>
+            </Step>
+            <Step Id="14" Name="WaitLoadEqCompleteOn" TriggerOnRunning="0"  Interlock="0"  NextStep="15">
+                <Conditions>
+                    <Group>
+                        <Bit PortNo="0x8820" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8821" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8824"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8825"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8826" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8827"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8828"  BitIndex="1" Value="0" Compare="0"/> 
+                    </Group>
+                </Conditions>
+                <Actions>					
+					<StopTimeout Id="201"/>
+					<SetPort PortNo="0x8084" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8081" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8085" BitIndex="1" Value="1"/>					
+                </Actions>
+            </Step>
+            <Step Id="15" Name="WaitLoadEqCompleteOFF" TriggerOnRunning="0"  Interlock="0"  NextStep="1">
+                <Conditions>
+                    <Group>
+                        <Bit PortNo="0x8820" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8824"  BitIndex="1" Value="0" Compare="0"/> 
+                    </Group>
+                </Conditions>
+                <Actions>
+					<SetPort PortNo="0x8081" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8084" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8085" BitIndex="1" Value="1"/>
+					<StopTimeout Id="201"/>
+                </Actions>
+            </Step>
+			<Step Id="16" Name="WaitEqDevilerOn" TriggerOnRunning="0"  Interlock="0"  NextStep="17">
+                <Conditions>
+                    <Group>
+                        <Bit PortNo="0x8820" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8821" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8824"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8825"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8826" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8827"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8828"  BitIndex="1" Value="0" Compare="0"/> 
+						<Bit PortNo="0x882B"  BitIndex="1" Value="1" Compare="0"/> 
+                    </Group>
+                </Conditions>
+                <Actions>
+					<SetPort PortNo="0x8089" BitIndex="1" Value="0"/>				
+                </Actions>
+            </Step>
+            <Step Id="17" Name="WaitEqDevilerOff" TriggerOnRunning="0"  Interlock="0"  NextStep="13">
+                <Conditions>
+                    <Group>
+                        <Bit PortNo="0x8820" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8821" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8824"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8825"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8826" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8827"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8828"  BitIndex="1" Value="0" Compare="0"/> 
+						<Bit PortNo="0x882B"  BitIndex="1" Value="0" Compare="0"/> 
+                    </Group>
+                </Conditions>
+                <Actions>
+					<SetPort PortNo="0x8089" BitIndex="1" Value="0"/>
+                </Actions>
+            </Step>
+            <Step Id="20" Name="WaitLoadEqPauseResume" TriggerOnRunning="0"  Interlock="0"  NextStep="20">
+                <Conditions>
+                    <Group>
+                    </Group>
+                </Conditions>
+                <Actions>
+					<JumpToStep Id="26">
+						<Conditions>
+							<Group>
+								<Bit PortNo="0x8820" BitIndex="1" Value="1" Compare="0"/> 
+								<Bit PortNo="0x8821" BitIndex="1" Value="1" Compare="0"/> 
+								<Bit PortNo="0x8824"  BitIndex="1" Value="0" Compare="0"/> 
+								<Bit PortNo="0x8825"  BitIndex="1" Value="1" Compare="0"/> 
+								<Bit PortNo="0x8826" BitIndex="1" Value="1" Compare="0"/> 
+								<Bit PortNo="0x8827"  BitIndex="1" Value="0" Compare="0"/> 
+								<Bit PortNo="0x8828"  BitIndex="1" Value="0" Compare="0"/> 								
+							</Group>
+						</Conditions>
+					</JumpToStep>
+					<JumpToStep Id="21">
+						<Conditions>
+							<Group>
+								<Bit PortNo="0x8820" BitIndex="1" Value="0" Compare="0"/> 
+								<Bit PortNo="0x8825"  BitIndex="1" Value="0" Compare="0"/> 
+							</Group>
+						</Conditions>
+					</JumpToStep>
+					<SetPort PortNo="0x8085" BitIndex="1" Value="1"/>
+                </Actions>
+            </Step>						
+            <Step Id="21" Name="WaitLoadUseForceFeature" TriggerOnRunning="0"  Interlock="0"  NextStep="21">
+                <Conditions>
+                    <Group>
+                    </Group>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>						
+            <Step Id="22" Name="RbSetForceCompleteOn" TriggerOnRunning="0"  Interlock="0"  NextStep="23">
+                <Conditions>
+                    <Group>
+                    </Group>
+                </Conditions>
+                <Actions>
+					<SetPort PortNo="0x808C" BitIndex="1" Value="1"/>
+                </Actions>
+            </Step>						
+            <Step Id="23" Name="WaitEqForceCompleteOn" TriggerOnRunning="0"  Interlock="0"  NextStep="1">
+                <Conditions>
+                    <Group>
+						<Bit PortNo="0x8824" BitIndex="1" Value="1" Compare="0"/> 
+                    </Group>
+                </Conditions>
+                <Actions>
+					<StopTimeout Id="202"/>
+					<SetPort PortNo="0x8081" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8082" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8083" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8084" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8085" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8086" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8087" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8088" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8089" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x808A" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x808C" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x808D" BitIndex="1" Value="0"/>					
+                </Actions>
+            </Step>						
+            <Step Id="24" Name="RbSetForceIniOn" TriggerOnRunning="0"  Interlock="0"  NextStep="25">
+                <Conditions>
+                    <Group>
+                    </Group>
+                </Conditions>
+                <Actions>
+					<SetPort PortNo="0x808D" BitIndex="1" Value="1"/>
+                </Actions>
+            </Step>						
+            <Step Id="25" Name="WaitEqForceIniOn" TriggerOnRunning="0"  Interlock="0"  NextStep="1">
+                <Conditions>
+                    <Group>
+						<Bit PortNo="0x8828" BitIndex="1" Value="1" Compare="0"/> 
+                    </Group>
+                </Conditions>
+                <Actions>
+					<StopTimeout Id="202"/>
+					<SetPort PortNo="0x8081" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8082" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8083" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8084" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8085" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8086" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8087" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8088" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8089" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x808A" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x808C" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x808D" BitIndex="1" Value="0"/>
+                </Actions>
+            </Step>						
+            <Step Id="26" Name="WaitRobotRestart" TriggerOnRunning="0"  Interlock="0"  NextStep="13">
+                <Conditions>
+                    <Group>
+                    </Group>
+                </Conditions>
+                <Actions>
+					<SetPort PortNo="0x8085" BitIndex="1" Value="0"/>
+                </Actions>
+            </Step>						
+            <Step Id="30" Name="EqUnLoadReqOn" TriggerOnRunning="0"  Interlock="1"  NextStep="31">
+                <Conditions>
+                    <Group>
+                        <Bit PortNo="0x8820" BitIndex="1" Value="1" Compare="0"/>                         
+                        <Bit PortNo="0x8822"  BitIndex="1" Value="1" Compare="0"/>                         
+                        <Bit PortNo="0x8824"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8825"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8826" BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8827"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8828"  BitIndex="1" Value="0" Compare="0"/> 
+                    </Group>						
+                </Conditions>
+                <Actions>					
+					<SetPort PortNo="0x8082" BitIndex="1" Value="1"/>
+                </Actions>
+            </Step>
+            <Step Id="31" Name="WaitEqUnloadTransferStartOn" TriggerOnRunning="0"  Interlock="0"  NextStep="32">
+                <Conditions>
+                    <Group>
+                        <Bit PortNo="0x8820" BitIndex="1" Value="1" Compare="0"/>                         
+                        <Bit PortNo="0x8822"  BitIndex="1" Value="1" Compare="0"/>                        
+                        <Bit PortNo="0x8824"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8825"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8826" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8827"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8828"  BitIndex="1" Value="0" Compare="0"/> 
+                    </Group>
+                </Conditions>
+                <Actions>
+					<StopTimeout Id="200"/>				
+                </Actions>
+            </Step>
+            <Step Id="32" Name="WaitRbGetCommand" TriggerOnRunning="0"  Interlock="1"  NextStep="36">
+                <Conditions>
+                    <Group>
+                        <Bit PortNo="0x8820" BitIndex="1" Value="1" Compare="0"/>                         
+                        <Bit PortNo="0x8822"  BitIndex="1" Value="1" Compare="0"/>                        
+                        <Bit PortNo="0x8824"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8825"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8826" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8827"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8828"  BitIndex="1" Value="0" Compare="0"/> 
+                    </Group>
+                </Conditions>
+                <Actions>
+					<SetPort PortNo="0x8085" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8089" BitIndex="1" Value="1"/>				
+                </Actions>
+            </Step>
+            <Step Id="33" Name="WaitRbFinish" TriggerOnRunning="1"  Interlock="1"  NextStep="34">
+                <Conditions>
+                    <Group>
+                        <Bit PortNo="0x8820" BitIndex="1" Value="1" Compare="0"/>                         
+                        <Bit PortNo="0x8822"  BitIndex="1" Value="1" Compare="0"/>                        
+                        <Bit PortNo="0x8824"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8825"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8826" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8827"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8828"  BitIndex="1" Value="0" Compare="0"/>                         
+                    </Group>
+                </Conditions>
+                <Actions>
+					<SetPort PortNo="0x8084" BitIndex="1" Value="1"/>
+                </Actions>
+            </Step>
+            <Step Id="34" Name="WaitEqCompleteOn" TriggerOnRunning="0"  Interlock="0"  NextStep="35">
+                <Conditions>
+                    <Group>
+                        <Bit PortNo="0x8820" BitIndex="1" Value="1" Compare="0"/>                         
+                        <Bit PortNo="0x8822"  BitIndex="1" Value="1" Compare="0"/>                        
+                        <Bit PortNo="0x8824"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8825"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8826" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8827"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8828"  BitIndex="1" Value="0" Compare="0"/> 
+                    </Group>
+                </Conditions>
+                <Actions>					
+					<StopTimeout Id="201"/>
+					<SetPort PortNo="0x8084" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8082" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8085" BitIndex="1" Value="1"/>					               
+					<SetPort PortNo="0x8083" BitIndex="1" Value="0"/>
+			   </Actions>
+            </Step>
+            <Step Id="35" Name="WaitEqCompleteOFF" TriggerOnRunning="0"  Interlock="0"  NextStep="1">
+                <Conditions>
+                    <Group>
+                        <Bit PortNo="0x8820" BitIndex="1" Value="1" Compare="0"/>                         
+                        <Bit PortNo="0x8824"  BitIndex="1" Value="0" Compare="0"/> 
+                    </Group>
+                </Conditions>
+                <Actions>					
+					<SetPort PortNo="0x8082" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8084" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8085" BitIndex="1" Value="1"/>                
+				</Actions>
+            </Step>
+			<Step Id="36" Name="WaitEqDevilerOn" TriggerOnRunning="0"  Interlock="0"  NextStep="37">
+                <Conditions>
+                    <Group>
+                        <Bit PortNo="0x8820" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8822" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8824"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8825"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8826" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8827"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8828"  BitIndex="1" Value="0" Compare="0"/> 
+						<Bit PortNo="0x882B"  BitIndex="1" Value="1" Compare="0"/> 
+                    </Group>
+                </Conditions>
+                <Actions>
+					<SetPort PortNo="0x8089" BitIndex="1" Value="0"/>				
+                </Actions>
+            </Step>
+            <Step Id="37" Name="WaitEqDevilerOff" TriggerOnRunning="0"  Interlock="0"  NextStep="33">
+                <Conditions>
+                    <Group>
+                        <Bit PortNo="0x8820" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8822" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8824"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8825"  BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8826" BitIndex="1" Value="1" Compare="0"/> 
+                        <Bit PortNo="0x8827"  BitIndex="1" Value="0" Compare="0"/> 
+                        <Bit PortNo="0x8828"  BitIndex="1" Value="0" Compare="0"/> 
+						<Bit PortNo="0x882B"  BitIndex="1" Value="0" Compare="0"/> 
+                    </Group>
+                </Conditions>
+                <Actions>
+					<SetPort PortNo="0x8089" BitIndex="1" Value="0"/>
+                </Actions>
+            </Step>
+
+            <Step Id="40" Name="WaitUnLoadResume" TriggerOnRunning="0"  Interlock="0"  NextStep="40">
+                <Conditions>
+                    <Group>
+                    </Group>
+                </Conditions>
+                <Actions>
+					<JumpToStep Id="46">
+						<Conditions>
+							<Group>
+								<Bit PortNo="0x8820" BitIndex="1" Value="1" Compare="0"/> 								
+								<Bit PortNo="0x8822"  BitIndex="1" Value="1" Compare="0"/>								
+								<Bit PortNo="0x8824"  BitIndex="1" Value="0" Compare="0"/> 
+								<Bit PortNo="0x8825"  BitIndex="1" Value="1" Compare="0"/> 
+								<Bit PortNo="0x8826" BitIndex="1" Value="1" Compare="0"/> 
+								<Bit PortNo="0x8827"  BitIndex="1" Value="0" Compare="0"/> 
+								<Bit PortNo="0x8828"  BitIndex="1" Value="0" Compare="0"/> 								
+							</Group>
+						</Conditions>
+					</JumpToStep>
+					<JumpToStep Id="41">
+						<Conditions>
+							<Group>
+								<Bit PortNo="0x8820" BitIndex="1" Value="0" Compare="0"/> 
+								<Bit PortNo="0x8825"  BitIndex="1" Value="0" Compare="0"/> 
+							</Group>
+						</Conditions>
+					</JumpToStep>
+					<SetPort PortNo="0x8085" BitIndex="1" Value="1"/>					
+                </Actions>
+            </Step>						
+            <Step Id="41" Name="WaitUseForceFeature" TriggerOnRunning="0"  Interlock="0"  NextStep="41">
+                <Conditions>
+                    <Group>
+                    </Group>
+                </Conditions>
+                <Actions>
+                </Actions>
+            </Step>						
+            <Step Id="42" Name="RbSetForceCompleteOn" TriggerOnRunning="0"  Interlock="0"  NextStep="43">
+                <Conditions>
+                    <Group>
+                    </Group>
+                </Conditions>
+                <Actions>
+					<SetPort PortNo="0x808C" BitIndex="1" Value="1"/>					
+                </Actions>
+            </Step>						
+            <Step Id="43" Name="WaitEqForceCompleteOn" TriggerOnRunning="0"  Interlock="0"  NextStep="1">
+                <Conditions>
+                    <Group>
+						<Bit PortNo="0x8824" BitIndex="1" Value="1" Compare="0"/>                     
+					</Group>
+                </Conditions>
+                <Actions>
+					<StopTimeout Id="202"/>		
+					<SetPort PortNo="0x8081" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8082" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8083" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8084" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8085" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8086" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8087" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8088" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8089" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x808A" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x808C" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x808D" BitIndex="1" Value="0"/>
+                </Actions>
+            </Step>						
+            <Step Id="44" Name="RbSetForceIniOn" TriggerOnRunning="0"  Interlock="1"  NextStep="45">
+                <Conditions>
+                    <Group>
+                    </Group>
+                </Conditions>
+                <Actions>					
+					<SetPort PortNo="0x808D" BitIndex="1" Value="1"/>
+                </Actions>
+            </Step>						
+            <Step Id="45" Name="WaitEqForceIniOn" TriggerOnRunning="0"  Interlock="0"  NextStep="1">
+                <Conditions>
+                    <Group>
+						<Bit PortNo="0x8828" BitIndex="1" Value="1" Compare="0"/> 
+                    </Group>
+                </Conditions>
+                <Actions>
+					<StopTimeout Id="202"/>
+					<SetPort PortNo="0x8081" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8082" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8083" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8084" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8085" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8086" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8087" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8088" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x8089" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x808A" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x808C" BitIndex="1" Value="0"/>
+					<SetPort PortNo="0x808D" BitIndex="1" Value="0"/>
+                </Actions>
+            </Step>						
+            <Step Id="46" Name="WaitEqForceIniOn" TriggerOnRunning="0"  Interlock="0"  NextStep="33">
+                <Conditions>
+                    <Group>
+                    </Group>
+                </Conditions>
+                <Actions>
+					<SetPort PortNo="0x8085" BitIndex="1" Value="0"/>
+                </Actions>
+            </Step>												
+        </Sequence>
+    </TimeChartSequence>
+	-->
+</TimeCharts>

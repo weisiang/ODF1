@@ -1,0 +1,364 @@
+<PLCVIEW>
+    <BITS>
+      <GROUP Name="SDP1">
+            <PORT1 Name="Robot">
+                <Item Index="1"     Port="32768"   BitIndex="1"    Caption="ActiveStandby"            />  
+                <Item Index="2"     Port="32769"   BitIndex="1"    Caption="LoadReply"                />  
+                <Item Index="3"     Port="32770"   BitIndex="1"    Caption="UnloadReply"              />  
+                <Item Index="4"     Port="32771"   BitIndex="1"    Caption="ExchangeReply"            />  
+                <Item Index="5"     Port="32772"   BitIndex="1"    Caption="ReceiptComplete"          />  
+                <Item Index="6"     Port="32773"   BitIndex="1"    Caption="Interlock 2"              />  
+                <Item Index="7"     Port="32774"   BitIndex="1"    Caption="Upper Arm"                />
+                <Item Index="8"     Port="32775"   BitIndex="1"    Caption="Low Arm"                  />
+                <Item Index="9"     Port="32776"   BitIndex="1"    Caption="Spare"                    />
+                <Item Index="10"    Port="32777"   BitIndex="1"    Caption="Delivery"                 />
+                <Item Index="11"    Port="32778"   BitIndex="1"    Caption="Spare"                    />
+                <Item Index="12"    Port="32779"   BitIndex="1"    Caption="Stop Supply"              />
+                <Item Index="13"    Port="32780"   BitIndex="1"    Caption="ForceComplReq"            />
+                <Item Index="14"    Port="32781"   BitIndex="1"    Caption="ForceInitReq"             />
+                <Item Index="15"    Port="32782"   BitIndex="1"    Caption="Spare"            		/>
+                <Item Index="16"    Port="32783"   BitIndex="1"    Caption="Spare"            		/>
+            </PORT1>                                                       
+            <PORT2 Name="EQ">                                              
+                <Item Index="1"     Port="33280"   BitIndex="1"    Caption="Eq Ready "            	/>
+                <Item Index="2"     Port="33281"   BitIndex="1"    Caption="LoadReq"         		/>
+                <Item Index="3"     Port="33282"   BitIndex="1"    Caption="UnloadReq"           		/>
+                <Item Index="4"     Port="33283"   BitIndex="1"    Caption="ExchangeReq"      		/>
+                <Item Index="5"     Port="33284"   BitIndex="1"    Caption="Tr Complete"          	/>
+                <Item Index="6"     Port="33285"   BitIndex="1"    Caption="Interlock 1"      		/>
+                <Item Index="7"     Port="33286"   BitIndex="1"    Caption="Tr Start"      				/>
+                <Item Index="8"     Port="33287"   BitIndex="1"    Caption="StopSupply"       		/>
+                <Item Index="9"     Port="33288"   BitIndex="1"    Caption="ForceInitCom"             />
+                <Item Index="10"    Port="33289"   BitIndex="1"    Caption="Work Presence"    		/>
+                <Item Index="11"    Port="33290"   BitIndex="1"    Caption="Spare"        				/>
+                <Item Index="12"    Port="33291"   BitIndex="1"    Caption="Delivery"        		/>
+                <Item Index="13"    Port="33292"   BitIndex="1"    Caption=""         					/>
+                <Item Index="14"    Port="33293"   BitIndex="1"    Caption=""                 		/>
+                <Item Index="15"    Port="33294"   BitIndex="1"    Caption=""                 		/>
+                <Item Index="16"    Port="33295"   BitIndex="1"    Caption=""                 		/>
+            </PORT2>
+			<WORDS>
+						<Item Port="23000" Caption="EqEPPID"                                           />
+        				<Item Port="23001" Caption="EqMaskMode"                                        />
+        				<Item Port="23002" Caption="EqGlassMode"                                       />
+        				<Item Port="23003" Caption="EqPortNo"                                          />
+        				<Item Port="23004" Caption="EqSlotNo"                                          />
+        				<Item Port="23048" Caption="EqInspectionResult"                                /> 
+								<Item Port="20384" Caption="RobotEPPID"                                        />                 
+        				<Item Port="20385" Caption="RobotMaskMode"                                     />                 
+        				<Item Port="20386" Caption="RobotGlassMode"                                    />                 
+        				<Item Port="20387" Caption="RobotPortNo"                                       />                 
+        				<Item Port="20388" Caption="RobotSlotNo"                                       />                 
+        				<Item Port="20432" Caption="RobotInspectionResult"                             />                      				
+			</WORDS>
+			<STRING>
+            	 <Item Port="20390"     Caption="RobotPpid"     WordLength="16"   WordSwap="0"   />
+            	 <Item Port="20411"     Caption="RobotCstId"    WordLength="3"    WordSwap="0"   />
+            	 <Item Port="20416"     Caption="RobotGlassId"  WordLength="7"    WordSwap="0"   />
+            	 <Item Port="23006"     Caption="EqPpid"        WordLength="16"   WordSwap="0"   />
+            	 <Item Port="23027"     Caption="EqCstId"       WordLength="3"    WordSwap="0"   />
+            	 <Item Port="23032"     Caption="EqGlassId"     WordLength="7"    WordSwap="0"   />
+			</STRING>
+      </GROUP>
+      <GROUP Name="SDP2">
+            <PORT1 Name="Robot">
+                <Item Index="1"     Port="32800"   BitIndex="1"    Caption="ActiveStandby"            />  
+                <Item Index="2"     Port="32801"   BitIndex="1"    Caption="LoadReply"                />  
+                <Item Index="3"     Port="32802"   BitIndex="1"    Caption="UnloadReply"              />  
+                <Item Index="4"     Port="32803"   BitIndex="1"    Caption="ExchangeReply"            />  
+                <Item Index="5"     Port="32804"   BitIndex="1"    Caption="ReceiptComplete"          />  
+                <Item Index="6"     Port="32805"   BitIndex="1"    Caption="Interlock 2"              />  
+                <Item Index="7"     Port="32806"   BitIndex="1"    Caption="Upper Arm"                />
+                <Item Index="8"     Port="32807"   BitIndex="1"    Caption="Low Arm"                  />
+                <Item Index="9"     Port="32808"   BitIndex="1"    Caption="Spare"                    />
+                <Item Index="10"    Port="32809"   BitIndex="1"    Caption="Delivery"                 />
+                <Item Index="11"    Port="32810"   BitIndex="1"    Caption="Spare"                    />
+                <Item Index="12"    Port="32811"   BitIndex="1"    Caption="Stop Supply"              />
+                <Item Index="13"    Port="32812"   BitIndex="1"    Caption="ForceComplReq"            />
+                <Item Index="14"    Port="32813"   BitIndex="1"    Caption="ForceInitReq"             />
+                <Item Index="15"    Port="32814"   BitIndex="1"    Caption="Spare"            		/>
+                <Item Index="16"    Port="32815"   BitIndex="1"    Caption="Spare"            		/>
+            </PORT1>                                                       
+            <PORT2 Name="EQ">                                              
+                <Item Index="1"     Port="33792"   BitIndex="1"    Caption="Eq Ready "            	/>
+                <Item Index="2"     Port="33793"   BitIndex="1"    Caption="LoadReq"         		/>
+                <Item Index="3"     Port="33794"   BitIndex="1"    Caption="UnloadReq"           		/>
+                <Item Index="4"     Port="33795"   BitIndex="1"    Caption="ExchangeReq"      		/>
+                <Item Index="5"     Port="33796"   BitIndex="1"    Caption="Tr Complete"          	/>
+                <Item Index="6"     Port="33797"   BitIndex="1"    Caption="Interlock 1"      		/>
+                <Item Index="7"     Port="33798"   BitIndex="1"    Caption="Tr Start"      				/>
+                <Item Index="8"     Port="33799"   BitIndex="1"    Caption="StopSupply"       		/>
+                <Item Index="9"     Port="33800"   BitIndex="1"    Caption="ForceInitCom"             />
+                <Item Index="10"    Port="33801"   BitIndex="1"    Caption="Work Presence"    		/>
+                <Item Index="11"    Port="33802"   BitIndex="1"    Caption="Spare"        				/>
+                <Item Index="12"    Port="33803"   BitIndex="1"    Caption="Delivery"        		/>
+                <Item Index="13"    Port="33804"   BitIndex="1"    Caption=""         					/>
+                <Item Index="14"    Port="33805"   BitIndex="1"    Caption=""                 		/>
+                <Item Index="15"    Port="33806"   BitIndex="1"    Caption=""                 		/>
+                <Item Index="16"    Port="33807"   BitIndex="1"    Caption=""                 		/>
+            </PORT2>
+			<WORDS>
+						<Item Port="23000" Caption="EqEPPID"                                           />
+        				<Item Port="23001" Caption="EqMaskMode"                                        />
+        				<Item Port="23002" Caption="EqGlassMode"                                       />
+        				<Item Port="23003" Caption="EqPortNo"                                          />
+        				<Item Port="23004" Caption="EqSlotNo"                                          />
+        				<Item Port="23048" Caption="EqInspectionResult"                                /> 
+								<Item Port="20384" Caption="RobotEPPID"                                        />                 
+        				<Item Port="20385" Caption="RobotMaskMode"                                     />                 
+        				<Item Port="20386" Caption="RobotGlassMode"                                    />                 
+        				<Item Port="20387" Caption="RobotPortNo"                                       />                 
+        				<Item Port="20388" Caption="RobotSlotNo"                                       />                 
+        				<Item Port="20432" Caption="RobotInspectionResult"                             />                      				
+			</WORDS>
+			<STRING>
+            	 <Item Port="20390"     Caption="RobotPpid"     WordLength="16"   WordSwap="0"   />
+            	 <Item Port="20411"     Caption="RobotCstId"    WordLength="3"    WordSwap="0"   />
+            	 <Item Port="20416"     Caption="RobotGlassId"  WordLength="7"    WordSwap="0"   />
+            	 <Item Port="23006"     Caption="EqPpid"        WordLength="16"   WordSwap="0"   />
+            	 <Item Port="23027"     Caption="EqCstId"       WordLength="3"    WordSwap="0"   />
+            	 <Item Port="23032"     Caption="EqGlassId"     WordLength="7"    WordSwap="0"   />
+			</STRING>
+      </GROUP>
+      <GROUP Name="IJP">
+            <PORT1 Name="Robot">
+                <Item Index="1"     Port="32832"   BitIndex="1"    Caption="ActiveStandby"            />  
+                <Item Index="2"     Port="32833"   BitIndex="1"    Caption="LoadReply"                />  
+                <Item Index="3"     Port="32834"   BitIndex="1"    Caption="UnloadReply"              />  
+                <Item Index="4"     Port="32835"   BitIndex="1"    Caption="ExchangeReply"            />  
+                <Item Index="5"     Port="32836"   BitIndex="1"    Caption="ReceiptComplete"          />  
+                <Item Index="6"     Port="32837"   BitIndex="1"    Caption="Interlock 2"              />  
+                <Item Index="7"     Port="32838"   BitIndex="1"    Caption="Upper Arm"                />
+                <Item Index="8"     Port="32839"   BitIndex="1"    Caption="Low Arm"                  />
+                <Item Index="9"     Port="32840"   BitIndex="1"    Caption="Spare"                    />
+                <Item Index="10"    Port="32841"   BitIndex="1"    Caption="Delivery"                 />
+                <Item Index="11"    Port="32842"   BitIndex="1"    Caption="Spare"                    />
+                <Item Index="12"    Port="32843"   BitIndex="1"    Caption="Stop Supply"              />
+                <Item Index="13"    Port="32844"   BitIndex="1"    Caption="ForceComplReq"            />
+                <Item Index="14"    Port="32845"   BitIndex="1"    Caption="ForceInitReq"             />
+                <Item Index="15"    Port="32846"   BitIndex="1"    Caption="Spare"            		/>
+                <Item Index="16"    Port="32847"   BitIndex="1"    Caption="Spare"            		/>
+            </PORT1>                                                       
+            <PORT2 Name="EQ">                                              
+                <Item Index="1"     Port="34304"   BitIndex="1"    Caption="Eq Ready "            	/>
+                <Item Index="2"     Port="34305"   BitIndex="1"    Caption="LoadReq"         		/>
+                <Item Index="3"     Port="34306"   BitIndex="1"    Caption="UnloadReq"           		/>
+                <Item Index="4"     Port="34307"   BitIndex="1"    Caption="ExchangeReq"      		/>
+                <Item Index="5"     Port="34308"   BitIndex="1"    Caption="Tr Complete"          	/>
+                <Item Index="6"     Port="34309"   BitIndex="1"    Caption="Interlock 1"      		/>
+                <Item Index="7"     Port="34310"   BitIndex="1"    Caption="Tr Start"      				/>
+                <Item Index="8"     Port="34311"   BitIndex="1"    Caption="StopSupply"       		/>
+                <Item Index="9"     Port="34312"   BitIndex="1"    Caption="ForceInitCom"             />
+                <Item Index="10"    Port="34313"   BitIndex="1"    Caption="Work Presence"    		/>
+                <Item Index="11"    Port="34314"   BitIndex="1"    Caption="Spare"        				/>
+                <Item Index="12"    Port="34315"   BitIndex="1"    Caption="Delivery"        		/>
+                <Item Index="13"    Port="34316"   BitIndex="1"    Caption=""         					/>
+                <Item Index="14"    Port="34317"   BitIndex="1"    Caption=""                 		/>
+                <Item Index="15"    Port="34318"   BitIndex="1"    Caption=""                 		/>
+                <Item Index="16"    Port="34319"   BitIndex="1"    Caption=""                 		/>
+            </PORT2>
+			<WORDS>
+						<Item Port="23000" Caption="EqEPPID"                                           />
+        				<Item Port="23001" Caption="EqMaskMode"                                        />
+        				<Item Port="23002" Caption="EqGlassMode"                                       />
+        				<Item Port="23003" Caption="EqPortNo"                                          />
+        				<Item Port="23004" Caption="EqSlotNo"                                          />
+        				<Item Port="23048" Caption="EqInspectionResult"                                /> 
+								<Item Port="20384" Caption="RobotEPPID"                                        />                 
+        				<Item Port="20385" Caption="RobotMaskMode"                                     />                 
+        				<Item Port="20386" Caption="RobotGlassMode"                                    />                 
+        				<Item Port="20387" Caption="RobotPortNo"                                       />                 
+        				<Item Port="20388" Caption="RobotSlotNo"                                       />                 
+        				<Item Port="20432" Caption="RobotInspectionResult"                             />                      				
+			</WORDS>
+			<STRING>
+            	 <Item Port="20390"     Caption="RobotPpid"     WordLength="16"   WordSwap="0"   />
+            	 <Item Port="20411"     Caption="RobotCstId"    WordLength="3"    WordSwap="0"   />
+            	 <Item Port="20416"     Caption="RobotGlassId"  WordLength="7"    WordSwap="0"   />
+            	 <Item Port="23006"     Caption="EqPpid"        WordLength="16"   WordSwap="0"   />
+            	 <Item Port="23027"     Caption="EqCstId"       WordLength="3"    WordSwap="0"   />
+            	 <Item Port="23032"     Caption="EqGlassId"     WordLength="7"    WordSwap="0"   />
+			</STRING>
+      </GROUP>
+      <GROUP Name="VAS_Up">
+            <PORT1 Name="Robot">
+                <Item Index="1"     Port="32864"   BitIndex="1"    Caption="ActiveStandby"                 />  
+                <Item Index="2"     Port="32865"   BitIndex="1"    Caption="LoadReply"                />  
+                <Item Index="3"     Port="32866"   BitIndex="1"    Caption="UnloadReply"              />  
+                <Item Index="4"     Port="32867"   BitIndex="1"    Caption="ExchangeReply"                 />  
+                <Item Index="5"     Port="32868"   BitIndex="1"    Caption="ReceiptComplete"               />  
+                <Item Index="6"     Port="32869"   BitIndex="1"    Caption="Interlock 2"                    />  
+                <Item Index="7"     Port="32870"   BitIndex="1"    Caption="Upper Arm"        />
+                <Item Index="8"     Port="32871"   BitIndex="1"    Caption="Low Arm"          />
+                <Item Index="9"     Port="32872"   BitIndex="1"    Caption="Spare"                          />
+                <Item Index="10"    Port="32873"   BitIndex="1"    Caption="Delivery"                          />
+                <Item Index="11"    Port="32874"   BitIndex="1"    Caption="Spare"                          />
+                <Item Index="12"    Port="32875"   BitIndex="1"    Caption="Stop Supply"                    />
+                <Item Index="13"    Port="32876"   BitIndex="1"    Caption="ForceComplReq"         />
+                <Item Index="14"    Port="32877"   BitIndex="1"    Caption="ForceInitReq"          />
+                <Item Index="15"    Port="32878"   BitIndex="1"    Caption="Spare"                  		/>
+                <Item Index="16"    Port="32879"   BitIndex="1"    Caption="Spare"                  		/>
+            </PORT1>
+            <PORT2 Name="EQ">
+                <Item Index="1"     Port="34816"   BitIndex="1"    Caption="Eq Ready "           	/>
+                <Item Index="2"     Port="34817"   BitIndex="1"    Caption="LoadReq"         			/>
+                <Item Index="3"     Port="34818"   BitIndex="1"    Caption="UnloadReq"           		/>
+                <Item Index="4"     Port="34819"   BitIndex="1"    Caption="ExchangeReq"         			/>
+                <Item Index="5"     Port="34820"   BitIndex="1"    Caption="Tr Complete"          	/>
+                <Item Index="6"     Port="34821"   BitIndex="1"    Caption="Interlock 1"       				/>
+                <Item Index="7"     Port="34822"   BitIndex="1"    Caption="Tr Start"      			/>
+                <Item Index="8"     Port="34823"   BitIndex="1"    Caption="StopSupply"           			/>
+                <Item Index="9"     Port="34824"   BitIndex="1"    Caption="ForceInitCom"         />
+                <Item Index="10"    Port="34825"   BitIndex="1"    Caption="Work Presence"       			/>
+                <Item Index="11"    Port="34826"   BitIndex="1"    Caption="Spare"        					/>
+                <Item Index="12"    Port="34827"   BitIndex="1"    Caption="Delivery"        						/>
+                <Item Index="13"    Port="34828"   BitIndex="1"    Caption=""         						/>
+                <Item Index="14"    Port="34829"   BitIndex="1"    Caption=""                  				/>
+                <Item Index="15"    Port="34830"   BitIndex="1"    Caption=""                  				/>
+                <Item Index="16"    Port="34831"   BitIndex="1"    Caption=""                  				/>
+            </PORT2>
+			<WORDS>
+						<Item Port="23000" Caption="EqEPPID"                                           />
+        				<Item Port="23001" Caption="EqMaskMode"                                        />
+        				<Item Port="23002" Caption="EqGlassMode"                                       />
+        				<Item Port="23003" Caption="EqPortNo"                                          />
+        				<Item Port="23004" Caption="EqSlotNo"                                          />
+        				<Item Port="23048" Caption="EqInspectionResult"                                /> 
+								<Item Port="20384" Caption="RobotEPPID"                                        />                 
+        				<Item Port="20385" Caption="RobotMaskMode"                                     />                 
+        				<Item Port="20386" Caption="RobotGlassMode"                                    />                 
+        				<Item Port="20387" Caption="RobotPortNo"                                       />                 
+        				<Item Port="20388" Caption="RobotSlotNo"                                       />                 
+        				<Item Port="20432" Caption="RobotInspectionResult"                             />                      				
+			</WORDS>
+			<STRING>
+            	 <Item Port="20390"     Caption="RobotPpid"     WordLength="16"   WordSwap="0"   />
+            	 <Item Port="20411"     Caption="RobotCstId"    WordLength="3"    WordSwap="0"   />
+            	 <Item Port="20416"     Caption="RobotGlassId"  WordLength="7"    WordSwap="0"   />
+            	 <Item Port="23006"     Caption="EqPpid"        WordLength="16"   WordSwap="0"   />
+            	 <Item Port="23027"     Caption="EqCstId"       WordLength="3"    WordSwap="0"   />
+            	 <Item Port="23032"     Caption="EqGlassId"     WordLength="7"    WordSwap="0"   />
+			</STRING>
+      </GROUP>
+      <GROUP Name="VAS_DOWN">
+            <PORT1 Name="Robot">
+                <Item Index="1"     Port="32896"   BitIndex="1"    Caption="ActiveStandby"            />  
+                <Item Index="2"     Port="32897"   BitIndex="1"    Caption="LoadReply"                />  
+                <Item Index="3"     Port="32898"   BitIndex="1"    Caption="UnloadReply"              />  
+                <Item Index="4"     Port="32899"   BitIndex="1"    Caption="ExchangeReply"            />  
+                <Item Index="5"     Port="32900"   BitIndex="1"    Caption="ReceiptComplete"          />  
+                <Item Index="6"     Port="32901"   BitIndex="1"    Caption="Interlock 2"              />  
+                <Item Index="7"     Port="32902"   BitIndex="1"    Caption="Upper Arm"                />
+                <Item Index="8"     Port="32903"   BitIndex="1"    Caption="Low Arm"                  />
+                <Item Index="9"     Port="32904"   BitIndex="1"    Caption="Spare"                    />
+                <Item Index="10"    Port="32905"   BitIndex="1"    Caption="Delivery"                 />
+                <Item Index="11"    Port="32906"   BitIndex="1"    Caption="Spare"                    />
+                <Item Index="12"    Port="32907"   BitIndex="1"    Caption="Stop Supply"              />
+                <Item Index="13"    Port="32908"   BitIndex="1"    Caption="ForceComplReq"            />
+                <Item Index="14"    Port="32909"   BitIndex="1"    Caption="ForceInitReq"             />
+                <Item Index="15"    Port="32910"   BitIndex="1"    Caption="Spare"            		/>
+                <Item Index="16"    Port="32911"   BitIndex="1"    Caption="Spare"            		/>
+            </PORT1>                                                       
+            <PORT2 Name="EQ">                                              
+                <Item Index="1"     Port="34848"   BitIndex="1"    Caption="Eq Ready "            	/>
+                <Item Index="2"     Port="34849"   BitIndex="1"    Caption="LoadReq"         		/>
+                <Item Index="3"     Port="34850"   BitIndex="1"    Caption="UnloadReq"           		/>
+                <Item Index="4"     Port="34851"   BitIndex="1"    Caption="ExchangeReq"      		/>
+                <Item Index="5"     Port="34852"   BitIndex="1"    Caption="Tr Complete"          	/>
+                <Item Index="6"     Port="34853"   BitIndex="1"    Caption="Interlock 1"      		/>
+                <Item Index="7"     Port="34854"   BitIndex="1"    Caption="Tr Start"      				/>
+                <Item Index="8"     Port="34855"   BitIndex="1"    Caption="StopSupply"       		/>
+                <Item Index="9"     Port="34856"   BitIndex="1"    Caption="ForceInitCom"             />
+                <Item Index="10"    Port="34857"   BitIndex="1"    Caption="Work Presence"    		/>
+                <Item Index="11"    Port="34858"   BitIndex="1"    Caption="Spare"        				/>
+                <Item Index="12"    Port="34859"   BitIndex="1"    Caption="Delivery"        		/>
+                <Item Index="13"    Port="34860"   BitIndex="1"    Caption=""         					/>
+                <Item Index="14"    Port="34861"   BitIndex="1"    Caption=""                 		/>
+                <Item Index="15"    Port="34862"   BitIndex="1"    Caption=""                 		/>
+                <Item Index="16"    Port="34863"   BitIndex="1"    Caption=""                 		/>
+            </PORT2>
+			<WORDS>
+						<Item Port="23000" Caption="EqEPPID"                                           />
+        				<Item Port="23001" Caption="EqMaskMode"                                        />
+        				<Item Port="23002" Caption="EqGlassMode"                                       />
+        				<Item Port="23003" Caption="EqPortNo"                                          />
+        				<Item Port="23004" Caption="EqSlotNo"                                          />
+        				<Item Port="23048" Caption="EqInspectionResult"                                /> 
+								<Item Port="20384" Caption="RobotEPPID"                                        />                 
+        				<Item Port="20385" Caption="RobotMaskMode"                                     />                 
+        				<Item Port="20386" Caption="RobotGlassMode"                                    />                 
+        				<Item Port="20387" Caption="RobotPortNo"                                       />                 
+        				<Item Port="20388" Caption="RobotSlotNo"                                       />                 
+        				<Item Port="20432" Caption="RobotInspectionResult"                             />                      				
+			</WORDS>
+			<STRING>
+            	 <Item Port="20390"     Caption="RobotPpid"     WordLength="16"   WordSwap="0"   />
+            	 <Item Port="20411"     Caption="RobotCstId"    WordLength="3"    WordSwap="0"   />
+            	 <Item Port="20416"     Caption="RobotGlassId"  WordLength="7"    WordSwap="0"   />
+            	 <Item Port="23006"     Caption="EqPpid"        WordLength="16"   WordSwap="0"   />
+            	 <Item Port="23027"     Caption="EqCstId"       WordLength="3"    WordSwap="0"   />
+            	 <Item Port="23032"     Caption="EqGlassId"     WordLength="7"    WordSwap="0"   />
+			</STRING>
+      </GROUP>
+      <GROUP Name="UV1">
+            <PORT1 Name="Robot">
+                <Item Index="1"     Port="32928"   BitIndex="1"    Caption="ActiveStandby"            />  
+                <Item Index="2"     Port="32929"   BitIndex="1"    Caption="LoadReply"                />  
+                <Item Index="3"     Port="32930"   BitIndex="1"    Caption="UnloadReply"              />  
+                <Item Index="4"     Port="32931"   BitIndex="1"    Caption="ExchangeReply"            />  
+                <Item Index="5"     Port="32932"   BitIndex="1"    Caption="ReceiptComplete"          />  
+                <Item Index="6"     Port="32933"   BitIndex="1"    Caption="Interlock 2"              />  
+                <Item Index="7"     Port="32934"   BitIndex="1"    Caption="Upper Arm"                />
+                <Item Index="8"     Port="32935"   BitIndex="1"    Caption="Low Arm"                  />
+                <Item Index="9"     Port="32936"   BitIndex="1"    Caption="Spare"                    />
+                <Item Index="10"    Port="32937"   BitIndex="1"    Caption="Delivery"                 />
+                <Item Index="11"    Port="32938"   BitIndex="1"    Caption="Spare"                    />
+                <Item Index="12"    Port="32939"   BitIndex="1"    Caption="Stop Supply"              />
+                <Item Index="13"    Port="32940"   BitIndex="1"    Caption="ForceComplReq"            />
+                <Item Index="14"    Port="32941"   BitIndex="1"    Caption="ForceInitReq"             />
+                <Item Index="15"    Port="32942"   BitIndex="1"    Caption="Spare"            		/>
+                <Item Index="16"    Port="32943"   BitIndex="1"    Caption="Spare"            		/>
+            </PORT1>                                                       
+            <PORT2 Name="EQ">                                              
+                <Item Index="1"     Port="35328"   BitIndex="1"    Caption="Eq Ready "            	/>
+                <Item Index="2"     Port="35329"   BitIndex="1"    Caption="LoadReq"         		/>
+                <Item Index="3"     Port="35330"   BitIndex="1"    Caption="UnloadReq"           		/>
+                <Item Index="4"     Port="35331"   BitIndex="1"    Caption="ExchangeReq"      		/>
+                <Item Index="5"     Port="35332"   BitIndex="1"    Caption="Tr Complete"          	/>
+                <Item Index="6"     Port="35333"   BitIndex="1"    Caption="Interlock 1"      		/>
+                <Item Index="7"     Port="35334"   BitIndex="1"    Caption="Tr Start"      				/>
+                <Item Index="8"     Port="35335"   BitIndex="1"    Caption="StopSupply"       		/>
+                <Item Index="9"     Port="35336"   BitIndex="1"    Caption="ForceInitCom"             />
+                <Item Index="10"    Port="35337"   BitIndex="1"    Caption="Work Presence"    		/>
+                <Item Index="11"    Port="35338"   BitIndex="1"    Caption="Spare"        				/>
+                <Item Index="12"    Port="35339"   BitIndex="1"    Caption="Delivery"        		/>
+                <Item Index="13"    Port="35340"   BitIndex="1"    Caption=""         					/>
+                <Item Index="14"    Port="35341"   BitIndex="1"    Caption=""                 		/>
+                <Item Index="15"    Port="35342"   BitIndex="1"    Caption=""                 		/>
+                <Item Index="16"    Port="35343"   BitIndex="1"    Caption=""                 		/>
+            </PORT2>
+			<WORDS>
+						<Item Port="23000" Caption="EqEPPID"                                           />
+        				<Item Port="23001" Caption="EqMaskMode"                                        />
+        				<Item Port="23002" Caption="EqGlassMode"                                       />
+        				<Item Port="23003" Caption="EqPortNo"                                          />
+        				<Item Port="23004" Caption="EqSlotNo"                                          />
+        				<Item Port="23048" Caption="EqInspectionResult"                                /> 
+								<Item Port="20384" Caption="RobotEPPID"                                        />                 
+        				<Item Port="20385" Caption="RobotMaskMode"                                     />                 
+        				<Item Port="20386" Caption="RobotGlassMode"                                    />                 
+        				<Item Port="20387" Caption="RobotPortNo"                                       />                 
+        				<Item Port="20388" Caption="RobotSlotNo"                                       />                 
+        				<Item Port="20432" Caption="RobotInspectionResult"                             />                      				
+			</WORDS>
+			<STRING>
+            	 <Item Port="20390"     Caption="RobotPpid"     WordLength="16"   WordSwap="0"   />
+            	 <Item Port="20411"     Caption="RobotCstId"    WordLength="3"    WordSwap="0"   />
+            	 <Item Port="20416"     Caption="RobotGlassId"  WordLength="7"    WordSwap="0"   />
+            	 <Item Port="23006"     Caption="EqPpid"        WordLength="16"   WordSwap="0"   />
+            	 <Item Port="23027"     Caption="EqCstId"       WordLength="3"    WordSwap="0"   />
+            	 <Item Port="23032"     Caption="EqGlassId"     WordLength="7"    WordSwap="0"   />
+			</STRING>
+      </GROUP>
+    </BITS>
+</PLCVIEW>
