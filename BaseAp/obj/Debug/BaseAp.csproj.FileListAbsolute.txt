@@ -11,3 +11,16 @@ F:\T450\ODF_exit_20190413\Code - 20190413_1.0.2.6\BaseAp\obj\Debug\BaseAp.Proper
 F:\T450\ODF_exit_20190413\Code - 20190413_1.0.2.6\BaseAp\obj\Debug\BaseAp.csproj.GenerateResource.Cache
 F:\T450\ODF_exit_20190413\Code - 20190413_1.0.2.6\BaseAp\obj\Debug\BaseAp.exe
 F:\T450\ODF_exit_20190413\Code - 20190413_1.0.2.6\BaseAp\obj\Debug\BaseAp.pdb
+D:\ODF_UPdate\Code - 20190413_1.0.2.7\BaseAp\bin\Debug\BaseAp.exe
+D:\ODF_UPdate\Code - 20190413_1.0.2.7\BaseAp\bin\Debug\BaseAp.pdb
+D:\ODF_UPdate\Code - 20190413_1.0.2.7\BaseAp\bin\Debug\CommonData.dll
+D:\ODF_UPdate\Code - 20190413_1.0.2.7\BaseAp\bin\Debug\KgsCommonX64.dll
+D:\ODF_UPdate\Code - 20190413_1.0.2.7\BaseAp\bin\Debug\KgsMmfEventCenter.dll
+D:\ODF_UPdate\Code - 20190413_1.0.2.7\BaseAp\bin\Debug\CommonData.pdb
+D:\ODF_UPdate\Code - 20190413_1.0.2.7\BaseAp\bin\Debug\KgsMmfEventCenter.pdb
+D:\ODF_UPdate\Code - 20190413_1.0.2.7\BaseAp\obj\Debug\BaseAp.csprojResolveAssemblyReference.cache
+D:\ODF_UPdate\Code - 20190413_1.0.2.7\BaseAp\obj\Debug\BaseAp.BaseForm.resources
+D:\ODF_UPdate\Code - 20190413_1.0.2.7\BaseAp\obj\Debug\BaseAp.Properties.Resources.resources
+D:\ODF_UPdate\Code - 20190413_1.0.2.7\BaseAp\obj\Debug\BaseAp.csproj.GenerateResource.Cache
+D:\ODF_UPdate\Code - 20190413_1.0.2.7\BaseAp\obj\Debug\BaseAp.exe
+D:\ODF_UPdate\Code - 20190413_1.0.2.7\BaseAp\obj\Debug\BaseAp.pdb

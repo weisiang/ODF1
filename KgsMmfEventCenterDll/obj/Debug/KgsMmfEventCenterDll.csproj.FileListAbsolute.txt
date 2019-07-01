@@ -4,3 +4,9 @@ F:\T450\ODF_exit_20190413\Code - 20190413_1.0.2.6\KgsMmfEventCenterDll\Debug\Kgs
 F:\T450\ODF_exit_20190413\Code - 20190413_1.0.2.6\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenterDll.csprojResolveAssemblyReference.cache
 F:\T450\ODF_exit_20190413\Code - 20190413_1.0.2.6\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenter.dll
 F:\T450\ODF_exit_20190413\Code - 20190413_1.0.2.6\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenter.pdb
+D:\ODF_UPdate\Code - 20190413_1.0.2.7\KgsMmfEventCenterDll\Debug\KgsMmfEventCenter.dll
+D:\ODF_UPdate\Code - 20190413_1.0.2.7\KgsMmfEventCenterDll\Debug\KgsMmfEventCenter.pdb
+D:\ODF_UPdate\Code - 20190413_1.0.2.7\KgsMmfEventCenterDll\Debug\KgsCommonX64.dll
+D:\ODF_UPdate\Code - 20190413_1.0.2.7\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenterDll.csprojResolveAssemblyReference.cache
+D:\ODF_UPdate\Code - 20190413_1.0.2.7\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenter.dll
+D:\ODF_UPdate\Code - 20190413_1.0.2.7\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenter.pdb

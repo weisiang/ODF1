@@ -264,6 +264,10 @@ namespace CIM
             {
                 cv_TimechartController.TeTime = CimForm.cv_TimeoutData.PTeTime;
             }
+            if (CimForm.cv_TimeoutData.PTmTime != cv_TimechartController.TmTime)
+            {
+                cv_TimechartController.TmTime = CimForm.cv_TimeoutData.PTmTime;
+            }
 
             WriteLog(LogLevelType.NormalFunctionInOut, this.GetType().Name + "." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Leave);
         }
