@@ -3,7 +3,7 @@
     <RobotData>
         <cv_Id>1</cv_Id>
         <cv_SlotCount>2</cv_SlotCount>
-        <cv_FilePath>D:\KGS\ODF\Code\bat\..\config\LGC\Work\RobotData1</cv_FilePath>
+        <cv_FilePath>D:\Code_10028_modify_multippid\bat\\..\config\LGC\Work\RobotData1</cv_FilePath>
         <cv_GlassDataList>
             <GlassData>
                 <cv_EnterBufferTime/>

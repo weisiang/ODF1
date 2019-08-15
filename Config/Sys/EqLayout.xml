@@ -25,7 +25,7 @@
         <Equipment KGS_TYPE="A" KGS_ITEM_NUMBER="0" Name="EQ8" ID="8" Node="10" ToolId="UV2" Capacity="1" TimeChat="9" Show="0" Stage="1" GetArm="Up" PutArm="Low"/>
     </EquipmentList>
     <RobotList KGS_TYPE="L" KGS_ITEM_NUMBER="1">
-        <Robot KGS_TYPE="L" KGS_ITEM_NUMBER="2" Name="KgsPlc" ID="1" PreparatoryPosition="14" Capacity="2" Show="1" IP="192.168.0.1" Port="48879">
+        <Robot KGS_TYPE="L" KGS_ITEM_NUMBER="2" Name="KgsPlc" ID="1" PreparatoryPosition="14" Capacity="2" Show="1" IP="127.0.0.1" Port="5000">
             <EquipmentInterfaceList KGS_TYPE="L" KGS_ITEM_NUMBER="7">
                 <EquipmentInterface KGS_TYPE="A" KGS_ITEM_NUMBER="0" ID="1" Position="7" EqType="0"/>
                 <EquipmentInterface KGS_TYPE="A" KGS_ITEM_NUMBER="0" ID="2" Position="7" EqType="0"/>

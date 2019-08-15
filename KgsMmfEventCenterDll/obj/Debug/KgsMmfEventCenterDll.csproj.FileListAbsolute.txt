@@ -10,3 +10,9 @@ D:\ODF_UPdate\Code - 20190413_1.0.2.7\KgsMmfEventCenterDll\Debug\KgsCommonX64.dl
 D:\ODF_UPdate\Code - 20190413_1.0.2.7\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenterDll.csprojResolveAssemblyReference.cache
 D:\ODF_UPdate\Code - 20190413_1.0.2.7\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenter.dll
 D:\ODF_UPdate\Code - 20190413_1.0.2.7\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenter.pdb
+D:\Code_10028_modify_multippid\KgsMmfEventCenterDll\Debug\KgsMmfEventCenter.dll
+D:\Code_10028_modify_multippid\KgsMmfEventCenterDll\Debug\KgsMmfEventCenter.pdb
+D:\Code_10028_modify_multippid\KgsMmfEventCenterDll\Debug\KgsCommonX64.dll
+D:\Code_10028_modify_multippid\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenterDll.csprojResolveAssemblyReference.cache
+D:\Code_10028_modify_multippid\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenter.dll
+D:\Code_10028_modify_multippid\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenter.pdb

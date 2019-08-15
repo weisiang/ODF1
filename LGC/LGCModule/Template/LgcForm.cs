@@ -4723,7 +4723,7 @@ namespace LGC
             for (int slot = 1; slot <= port.cv_Data.cv_SlotCount; slot++)
             {
                 GlassData glass = port.cv_Data.GlassDataMap[slot];
-                if (glass.PHasData && glass.PHasSensor)
+                if (glass.PHasData && glass.PHasSensor && glass.PProcessFlag == ProcessFlag.Need)
                 {
                     if (!ppid_sort.ContainsKey((int)glass.PPriority))
                     {

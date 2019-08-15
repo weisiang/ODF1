@@ -10,8 +10,8 @@
         <cv_PortEnable>1</cv_PortEnable>
         <cv_PortType>3</cv_PortType>
         <cv_PortMode>2</cv_PortMode>
-        <cv_LotStatus>1</cv_LotStatus>
-        <cv_PortStatus>1</cv_PortStatus>
+        <cv_LotStatus>8</cv_LotStatus>
+        <cv_PortStatus>3</cv_PortStatus>
         <cv_WorkCount>0</cv_WorkCount>
         <cv_WaitUnload>False</cv_WaitUnload>
         <cv_ProductionType>1</cv_ProductionType>
@@ -20,7 +20,7 @@
         <cv_IsWaitAbort>False</cv_IsWaitAbort>
         <cv_Id>5</cv_Id>
         <cv_SlotCount>25</cv_SlotCount>
-        <cv_FilePath>D:\KGS\ODF\Code\bat\..\config\LGC\Work\PortData5</cv_FilePath>
+        <cv_FilePath>D:\Code_10028_modify_multippid\bat\\..\config\LGC\Work\PortData5</cv_FilePath>
         <cv_GlassDataList>
             <GlassData>
                 <cv_EnterBufferTime/>

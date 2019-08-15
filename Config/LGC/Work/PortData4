@@ -20,7 +20,7 @@
         <cv_IsWaitAbort>False</cv_IsWaitAbort>
         <cv_Id>4</cv_Id>
         <cv_SlotCount>25</cv_SlotCount>
-        <cv_FilePath>D:\KGS\ODF\Code\bat\..\config\LGC\Work\PortData4</cv_FilePath>
+        <cv_FilePath>D:\Code_10028_modify_multippid\bat\\..\config\LGC\Work\PortData4</cv_FilePath>
         <cv_GlassDataList>
             <GlassData>
                 <cv_EnterBufferTime/>
