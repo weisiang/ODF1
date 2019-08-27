@@ -37,3 +37,16 @@ D:\Code_10028_modify_multippid\BaseAp\obj\Debug\BaseAp.Properties.Resources.reso
 D:\Code_10028_modify_multippid\BaseAp\obj\Debug\BaseAp.csproj.GenerateResource.Cache
 D:\Code_10028_modify_multippid\BaseAp\obj\Debug\BaseAp.exe
 D:\Code_10028_modify_multippid\BaseAp\obj\Debug\BaseAp.pdb
+D:\TODO\Code_1038_modify_multippid\BaseAp\bin\Debug\BaseAp.exe
+D:\TODO\Code_1038_modify_multippid\BaseAp\bin\Debug\BaseAp.pdb
+D:\TODO\Code_1038_modify_multippid\BaseAp\bin\Debug\CommonData.dll
+D:\TODO\Code_1038_modify_multippid\BaseAp\bin\Debug\KgsCommonX64.dll
+D:\TODO\Code_1038_modify_multippid\BaseAp\bin\Debug\KgsMmfEventCenter.dll
+D:\TODO\Code_1038_modify_multippid\BaseAp\bin\Debug\CommonData.pdb
+D:\TODO\Code_1038_modify_multippid\BaseAp\bin\Debug\KgsMmfEventCenter.pdb
+D:\TODO\Code_1038_modify_multippid\BaseAp\obj\Debug\BaseAp.csprojResolveAssemblyReference.cache
+D:\TODO\Code_1038_modify_multippid\BaseAp\obj\Debug\BaseAp.BaseForm.resources
+D:\TODO\Code_1038_modify_multippid\BaseAp\obj\Debug\BaseAp.Properties.Resources.resources
+D:\TODO\Code_1038_modify_multippid\BaseAp\obj\Debug\BaseAp.csproj.GenerateResource.Cache
+D:\TODO\Code_1038_modify_multippid\BaseAp\obj\Debug\BaseAp.exe
+D:\TODO\Code_1038_modify_multippid\BaseAp\obj\Debug\BaseAp.pdb

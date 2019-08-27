@@ -4712,7 +4712,26 @@ namespace LGC
 
         private void button1_Click(object sender, EventArgs e)
         {
-            GetRobotById(1).CurJob = null;
+            /*
+            for (int i = 3 , j=1; i < 7; i++,  j++)
+            {
+                GlassData tmp = new GlassData();
+                tmp.PCimMode = OnlineMode.Control;
+                tmp.PFoupSeq = 1;
+                tmp.PWorkOrderNo = 1;
+                tmp.PWorkSlot = 3;
+                tmp.PId = "RSI1M145RX" ;
+
+                CommonData.HIRATA.MDBCWorkTransferReport obj = new MDBCWorkTransferReport();
+                obj.PAction = DataFlowAction.Store;
+                obj.PGlassData = tmp;
+                obj.PPortNo = 2;
+                obj.PSlotNo = 3;
+                obj.PUnitNo = 0;
+                obj.PType = MmfEventClientEventType.etNotify;
+                cv_MmfController.SendMmfNotifyObject(typeof(CommonData.HIRATA.MDBCWorkTransferReport).Name, obj, KParseObjToXmlPropertyType.Field);
+            }
+            */
         }
         public static string FindHightestPriorityPPID(int m_PortId)
         {

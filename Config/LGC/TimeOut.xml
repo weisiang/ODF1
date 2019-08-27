@@ -5,7 +5,7 @@
         <cv_IntervalTime>3000</cv_IntervalTime>
         <cv_TsTime>10000</cv_TsTime>
         <cv_TeTime>10000</cv_TeTime>
-        <cv_TmTime>200</cv_TmTime>
+        <cv_TmTime>2000</cv_TmTime>
         <cv_T0Time>30000</cv_T0Time>
         <cv_T1Time>30000</cv_T1Time>
         <cv_T3Time>30000</cv_T3Time>

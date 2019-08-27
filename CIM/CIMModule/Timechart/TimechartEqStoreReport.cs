@@ -38,15 +38,17 @@ namespace CIM
         public static string StoreIndex = "StoreIndex";
 
         public TimechartEqStoreReport(TimechartControllerBase m_TimechartController, int m_TimechartId, Dictionary<string, int> m_VarPortMap)
-            : base(m_TimechartController, m_TimechartId, m_VarPortMap) {
+            : base(m_TimechartController, m_TimechartId, m_VarPortMap)
+        {
 
             AssignEnterStepEventFunction(STEP_ID_TriggerStoreIndex, OnEnter_TriggerStoreIndex);
             AssignEnterStepEventFunction(STEP_ID_WaitInterval, OnEnter_WaitInterval);
             AssignEnterStepEventFunction(STEP_ID_WaitTm, OnEnter_WaitTm);
         }
-        protected override void ProcessJob(object m_obj)
+        protected override bool ProcessJob(object m_obj)
         {
             CimForm.WriteLog(CommonData.HIRATA.LogLevelType.NormalFunctionInOut, this.GetType().Name + "." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Enter);
+            bool rtn = true;
             try
             {
                 string log = "[Process][TimechartEqStoreReport ProcessJob]\n";
@@ -82,14 +84,39 @@ namespace CIM
                 CimForm.WriteLog(CommonData.HIRATA.LogLevelType.Detail, log);
 
                 cv_MemoryIoClient.SetBinaryLengthData(0x346D, tmp, 13, false);
-                cv_Timechart.SetTimeLock(this.cv_TimechartId, STEP_ID_WaitTm, cv_Tm);
-                JumpToStep(cv_TimechartId, STEP_ID_WaitTm);
+
+                int tmp_slot = cv_MemoryIoClient.GetPortValue(0x346D) & 0xff;
+                int tmp_port = cv_MemoryIoClient.GetPortValue(0x346D) >> 8 & 0xf;
+                string tmp2 = cv_MemoryIoClient.GetBinaryLengthData(0x3470, 10, false);
+                log += "PLC id : " + tmp2 + " PLC Port : " + tmp_port + " PLC slot : " + tmp_slot;
+                if ( (tmp2.Trim() != id.Trim()) || (tmp_port != obj.PPortNo) || (tmp_slot != obj.PSlotNo) )
+                {
+                    Queue<object> tmp_q = new Queue<object>();
+                    while (cv_Jobs.Count > 0)
+                    {
+                        tmp_q.Enqueue(cv_Jobs.Dequeue());
+                    }
+                    cv_Jobs.Clear();
+                    cv_Jobs.Enqueue(obj);
+                    while (tmp_q.Count > 0)
+                    {
+                        cv_Jobs.Enqueue(tmp_q.Dequeue());
+                    }
+                    log += "PLC id unmatch , Add Job";
+                    rtn = false;
+                }
+                else
+                {
+                    cv_Timechart.SetTimeLock(this.cv_TimechartId, STEP_ID_WaitTm, cv_Tm);
+                    JumpToStep(cv_TimechartId, STEP_ID_WaitTm);
+                }
             }
             catch (Exception ex)
             {
                 CimForm.WriteLog(CommonData.HIRATA.LogLevelType.Error, ex.ToString());
             }
             CimForm.WriteLog(CommonData.HIRATA.LogLevelType.NormalFunctionInOut, this.GetType().Name + "." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Leave);
+            return rtn;
         }
 
         void OnEnter_WaitTm(int m_StepId)

@@ -1,4 +1,4 @@
-<MemoryIO Name="KGSMEMORYIODEMO" Mode="Passive" Ignore="NO">
+<MemoryIO Name="KGSMEMORYIODEMO" Mode="Passive" Ignore="YES">
     <!-- Mode="PASSIVE/ACTIVE"
         Set Mode="ACTIVE" to activate client mode. Default: PASSIVE
         Ignore ("YES"/"NO") tag will be activated simulation for input. Default: NO

@@ -40,8 +40,9 @@ namespace CIM
             AssignEnterStepEventFunction(STEP_ID_WaitInterval, OnEnter_WaitInterval);
             AssignEnterStepEventFunction(STEP_ID_WaitTm, OnEnter_WaitTm);
         }
-        protected override void ProcessJob(object m_obj)
+        protected override bool ProcessJob(object m_obj)
         {
+            bool rtn = true;
             CimForm.WriteLog(CommonData.HIRATA.LogLevelType.NormalFunctionInOut, this.GetType().Name + "." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Enter);
             try
             {
@@ -105,6 +106,7 @@ namespace CIM
                 CimForm.WriteLog(CommonData.HIRATA.LogLevelType.Error, ex.ToString());
             }
             CimForm.WriteLog(CommonData.HIRATA.LogLevelType.NormalFunctionInOut, this.GetType().Name + "." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Leave);
+            return rtn;
         }
         void OnEnter_WaitTm(int m_StepId)
         {

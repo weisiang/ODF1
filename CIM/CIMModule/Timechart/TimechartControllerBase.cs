@@ -47,8 +47,10 @@ namespace CIM
                 {
                     try
                     {
-                        ProcessJob(cv_Jobs.Dequeue());
-                        SetTrigger(cv_TimechartId);
+                        if (ProcessJob(cv_Jobs.Dequeue()))
+                        {
+                            SetTrigger(cv_TimechartId);
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -60,8 +62,9 @@ namespace CIM
             {
                 cv_Jobs.Enqueue(m_Obj);
             }
-            protected virtual void ProcessJob(object m_obj)
+            protected virtual bool ProcessJob(object m_obj)
             {
+                return true;
             }
 
             public delegate void TimechartEventHandler(int m_StepId);
