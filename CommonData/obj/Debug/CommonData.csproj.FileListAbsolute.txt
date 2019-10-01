@@ -30,3 +30,11 @@ D:\TODO\Code_1038_modify_multippid\CommonData\bin\Debug\KgsMmfEventCenter.pdb
 D:\TODO\Code_1038_modify_multippid\CommonData\obj\Debug\CommonData.csprojResolveAssemblyReference.cache
 D:\TODO\Code_1038_modify_multippid\CommonData\obj\Debug\CommonData.dll
 D:\TODO\Code_1038_modify_multippid\CommonData\obj\Debug\CommonData.pdb
+D:\TODO\ODF\Code_1039_modify_store_report\CommonData\bin\Debug\CommonData.dll
+D:\TODO\ODF\Code_1039_modify_store_report\CommonData\bin\Debug\CommonData.pdb
+D:\TODO\ODF\Code_1039_modify_store_report\CommonData\bin\Debug\KgsCommonX64.dll
+D:\TODO\ODF\Code_1039_modify_store_report\CommonData\bin\Debug\KgsMmfEventCenter.dll
+D:\TODO\ODF\Code_1039_modify_store_report\CommonData\bin\Debug\KgsMmfEventCenter.pdb
+D:\TODO\ODF\Code_1039_modify_store_report\CommonData\obj\Debug\CommonData.csprojResolveAssemblyReference.cache
+D:\TODO\ODF\Code_1039_modify_store_report\CommonData\obj\Debug\CommonData.dll
+D:\TODO\ODF\Code_1039_modify_store_report\CommonData\obj\Debug\CommonData.pdb

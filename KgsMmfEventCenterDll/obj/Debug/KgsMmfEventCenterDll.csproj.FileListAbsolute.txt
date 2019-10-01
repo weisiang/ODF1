@@ -22,3 +22,9 @@ D:\TODO\Code_1038_modify_multippid\KgsMmfEventCenterDll\Debug\KgsCommonX64.dll
 D:\TODO\Code_1038_modify_multippid\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenter.dll
 D:\TODO\Code_1038_modify_multippid\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenter.pdb
 D:\TODO\Code_1038_modify_multippid\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenterDll.csprojResolveAssemblyReference.cache
+D:\TODO\ODF\Code_1039_modify_store_report\KgsMmfEventCenterDll\Debug\KgsMmfEventCenter.dll
+D:\TODO\ODF\Code_1039_modify_store_report\KgsMmfEventCenterDll\Debug\KgsMmfEventCenter.pdb
+D:\TODO\ODF\Code_1039_modify_store_report\KgsMmfEventCenterDll\Debug\KgsCommonX64.dll
+D:\TODO\ODF\Code_1039_modify_store_report\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenterDll.csprojResolveAssemblyReference.cache
+D:\TODO\ODF\Code_1039_modify_store_report\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenter.dll
+D:\TODO\ODF\Code_1039_modify_store_report\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenter.pdb
