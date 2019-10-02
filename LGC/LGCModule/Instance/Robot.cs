@@ -2085,7 +2085,7 @@ namespace LGC
                     {
                         if (port.PPortStatus == PortStaus.UDRQ)
                         {
-                            port.PLotStatus = LotStatus.Cancel;
+                            //port.PLotStatus = LotStatus.Cancel;
                             //port.PClamp = PortClamp.Unclamp;
                             //port.cv_Data.PPortHasCst = PortHasCst.Has;
                         }
