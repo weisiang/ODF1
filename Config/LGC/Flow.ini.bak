@@ -42,10 +42,9 @@ Step1=Buffer
 Step2=EQ1,EQ2
 Step3=EQ7
 Step4=EQ3
-Step5=Aligner
-Step6=EQ4
-Step7=EQ5,EQ8
-Step8=UP
+Step5=EQ4
+Step6=EQ5,EQ8
+Step7=UP
 First=2
 [4_2]
 Step1=Buffer
@@ -53,9 +52,8 @@ Step2=EQ1,EQ2
 Step3=EQ7
 Step4=Aligner
 Step5=EQ3
-Step6=Aligner
-Step7=EQ4
-Step8=EQ5,EQ8
-Step9=UP
+Step6=EQ4
+Step7=EQ5,EQ8
+Step8=UP
 First=2
 
