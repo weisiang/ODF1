@@ -1093,137 +1093,239 @@ namespace LGC
         }
         void ProcessPortData(string m_SourceModule, int m_Type, string m_MessageId, string m_RequestNotifyMessageId, uint m_Ticket, Object m_Object)
         {
-            WriteLog(CommonData.HIRATA.LogLevelType.TimerFunction, this.GetType().Name + "." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Enter);
-            string log = "";
-            if (m_SourceModule == "UI")
+            try
             {
-                log = "[Recv Port data form UI]\n";
-                CommonData.HIRATA.PortData obj = m_Object as CommonData.HIRATA.PortData;
-                CommonData.HIRATA.PortData tmp = LgcForm.cv_PortContainer[(int)obj.PId].cv_Data;
-                tmp.GlassDataMap = tmp.GlassDataMap;
-                Global.Controller.SendMmfNotifyObject(typeof(CommonData.HIRATA.PortData).Name, tmp, KParseObjToXmlPropertyType.Field);
-            }
-            else if (m_SourceModule == "CIM")
-            {
-                log = "[Recv Port data form CIM]\n";
-                CommonData.HIRATA.PortData obj = m_Object as CommonData.HIRATA.PortData;
-                Port job_port = LgcForm.GetPortById((int)obj.PId);
-                if (job_port != null)
+                WriteLog(CommonData.HIRATA.LogLevelType.TimerFunction, this.GetType().Name + "." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Enter);
+                string log = "";
+                if (m_SourceModule == "UI")
                 {
-                    log += job_port.cv_Data.GetPortStatusStringForLogUse() + "\n";
-                    if (job_port.PLotStatus == LotStatus.MappingEnd)
+                    log = "[Recv Port data form UI]\n";
+                    CommonData.HIRATA.PortData obj = m_Object as CommonData.HIRATA.PortData;
+                    CommonData.HIRATA.PortData tmp = LgcForm.cv_PortContainer[(int)obj.PId].cv_Data;
+                    tmp.GlassDataMap = tmp.GlassDataMap;
+                    Global.Controller.SendMmfNotifyObject(typeof(CommonData.HIRATA.PortData).Name, tmp, KParseObjToXmlPropertyType.Field);
+                }
+                else if (m_SourceModule == "CIM")
+                {
+                    log = "[Recv Port data form CIM]\n";
+                    CommonData.HIRATA.PortData obj = m_Object as CommonData.HIRATA.PortData;
+                    Port job_port = LgcForm.GetPortById((int)obj.PId);
+                    if (job_port != null)
                     {
-                        job_port.cv_Data.PWorkCount = obj.PWorkCount;
-                        job_port.cv_Data.PFoupSeq = obj.PFoupSeq;
-                        job_port.cv_Data.PLotId = obj.PLotId;
-                        log += "recv PWorkCount : " + obj.PWorkCount + "\n";
-                        log += "recv PFoupSeq : " + obj.PFoupSeq + "\n";
-                        log += "recv PLotId : " + obj.PLotId + "\n";
-                        Dictionary<int, GlassData> recv_glass = new Dictionary<int, GlassData>();
-                        foreach (GlassData data in obj.cv_GlassDataList)
+                        log += job_port.cv_Data.GetPortStatusStringForLogUse() + "\n";
+                        if (job_port.PLotStatus == LotStatus.MappingEnd)
                         {
-                            recv_glass[Convert.ToInt16(data.PSlotInEq)] = data;
-                            log += "Recv Slot : " + data.PSlotInEq + "\n";
-                        }
-
-                        bool error = false;
-                        int sum = 0;
-                        for (int i = 1; i <= job_port.cv_SlotCount; i++)
-                        {
-                            if (job_port.cv_Data.GlassDataMap[i].PHasSensor)
+                            job_port.cv_Data.PWorkCount = obj.PWorkCount;
+                            job_port.cv_Data.PFoupSeq = obj.PFoupSeq;
+                            job_port.cv_Data.PLotId = obj.PLotId;
+                            log += "recv PWorkCount : " + obj.PWorkCount + "\n";
+                            log += "recv PFoupSeq : " + obj.PFoupSeq + "\n";
+                            log += "recv PLotId : " + obj.PLotId + "\n";
+                            Dictionary<int, GlassData> recv_glass = new Dictionary<int, GlassData>();
+                            foreach (GlassData data in obj.cv_GlassDataList)
                             {
-                                if (!recv_glass[i].PHasData)
+                                recv_glass[Convert.ToInt16(data.PSlotInEq)] = data;
+                                log += "Recv Slot : " + data.PSlotInEq + "\n";
+                            }
+
+                            bool error = false;
+                            int sum = 0;
+                            for (int i = 1; i <= job_port.cv_SlotCount; i++)
+                            {
+                                if (job_port.cv_Data.GlassDataMap[i].PHasSensor)
                                 {
-                                    LgcForm.ShowMsg("[Foup Data ERROR] : Slot " + i.ToString() + "hasn't data , but has sensor", false , false);
-                                    log += "Data unmatch : Slot " + i.ToString() + "hasn't data , but has sensor\n";
-                                    error = true;
-                                    break;
-                                }
-                                else
-                                {
-                                    recv_glass[i].POcrResult = OCRResult.None;
-                                    recv_glass[i].PPortProductionCategory = job_port
-                                        .cv_Data.PProductionType;
-                                    recv_glass[i].PSourcePort =(uint)job_port.cv_Id;
-                                    if(recv_glass[i].PProductionCategory != ProductCategory.Glass && recv_glass[i].PProductionCategory != ProductCategory.Wafer)
+                                    if (!recv_glass[i].PHasData)
                                     {
-                                        LgcForm.ShowMsg("[Foup Data ERROR] : BC data  but Production Category errro : " + recv_glass[i].PProductionCategory.ToString(), false, false);
-                                        log += "BC data  but Production Category errro : Slot : " + i.ToString() +" ," + recv_glass[i].PProductionCategory.ToString() +  "\n";
+                                        LgcForm.ShowMsg("[Foup Data ERROR] : Slot " + i.ToString() + "hasn't data , but has sensor", false, false);
+                                        log += "Data unmatch : Slot " + i.ToString() + "hasn't data , but has sensor\n";
                                         error = true;
                                         break;
                                     }
-                                    sum++;
+                                    else
+                                    {
+                                        recv_glass[i].POcrResult = OCRResult.None;
+                                        recv_glass[i].PPortProductionCategory = job_port
+                                            .cv_Data.PProductionType;
+                                        recv_glass[i].PSourcePort = (uint)job_port.cv_Id;
+                                        if (recv_glass[i].PProductionCategory != ProductCategory.Glass && recv_glass[i].PProductionCategory != ProductCategory.Wafer)
+                                        {
+                                            LgcForm.ShowMsg("[Foup Data ERROR] : BC data  but Production Category errro : " + recv_glass[i].PProductionCategory.ToString(), false, false);
+                                            log += "BC data  but Production Category errro : Slot : " + i.ToString() + " ," + recv_glass[i].PProductionCategory.ToString() + "\n";
+                                            error = true;
+                                            break;
+                                        }
+                                        sum++;
+                                    }
                                 }
+                                else
+                                {
+                                    if (recv_glass[i].PHasData)
+                                    {
+                                        LgcForm.ShowMsg("[Foup Data ERROR] : Slot " + i.ToString() + "hasn't sensor , but has data", false, false);
+                                        log += "Slot " + i.ToString() + "hasn't sensor , but has data\n";
+                                        error = true;
+                                        break;
+                                    }
+                                }
+                            }
+
+                            if (!error)
+                            {
+                                LgcForm.cv_GlassCountData.PHistoryCount += sum;
+                                job_port.cv_Data.GlassDataList = obj.cv_GlassDataList;
+                                Global.Controller.SendMmfNotifyObject(typeof(CommonData.HIRATA.PortData).Name, job_port.cv_Data, KParseObjToXmlPropertyType.Field);
                             }
                             else
                             {
-                                if (recv_glass[i].PHasData)
+                                AlarmItem alarm = new AlarmItem();
+                                alarm.PCode = Alarmtable.BcFoupDataError.ToString();
+                                alarm.PLevel = AlarmLevele.Light;
+                                alarm.PMainDescription = "Bc Foup Data Error";
+                                alarm.PStatus = AlarmStatus.Occur;
+                                LgcForm.EditAlarm(alarm);
+                                job_port.cv_Data.cv_IsWaitCancel = true;
+                                return;
+                            }
+                            for (int i = 2; i <= job_port.cv_Data.cv_SlotCount; i++)
+                            {
+                                if (job_port.cv_Data.GlassDataMap[i].PHasSensor)
                                 {
-                                    LgcForm.ShowMsg("[Foup Data ERROR] : Slot " + i.ToString() + "hasn't sensor , but has data", false, false);
-                                    log += "Slot " + i.ToString() + "hasn't sensor , but has data\n";
-                                    error = true;
-                                    break;
+                                    int node = job_port.cv_Data.GlassDataMap[i].cv_Nods.FindIndex(x => x.cv_NodeId == 2);
+                                    int node_last = job_port.cv_Data.GlassDataMap[i - 1].cv_Nods.FindIndex(x => x.cv_NodeId == 2);
+                                    if (node != -1 && node_last != -1)
+                                    {
+                                        GlassDataNodeItem item = job_port.cv_Data.GlassDataMap[i].cv_Nods[node];
+                                        GlassDataNodeItem item_last = job_port.cv_Data.GlassDataMap[i - 1].cv_Nods[node];
+                                        if (item.cv_Recipe != item_last.cv_Recipe)
+                                        {
+                                            error = true;
+                                            break;
+                                        }
+                                    }
                                 }
                             }
-                        }
-
-                        if (!error)
-                        {
-                            LgcForm.cv_GlassCountData.PHistoryCount += sum;
-                            job_port.cv_Data.GlassDataList = obj.cv_GlassDataList;
-                            Global.Controller.SendMmfNotifyObject(typeof(CommonData.HIRATA.PortData).Name, job_port.cv_Data, KParseObjToXmlPropertyType.Field);
-                        }
-                        else
-                        {
-                            AlarmItem alarm = new AlarmItem();
-                            alarm.PCode = Alarmtable.BcFoupDataError.ToString();
-                            alarm.PLevel = AlarmLevele.Light;
-                            alarm.PMainDescription = "Bc Foup Data Error";
-                            alarm.PStatus = AlarmStatus.Occur;
-                            LgcForm.EditAlarm(alarm);
-                        }
-
-                        /* EFEM can't check glass data node recipes.
-                        for (int i = 1; i <= job_port.cv_Data.cv_SlotCount; i++)
-                        {
-                            if (job_port.cv_Data.GlassDataMap[i].PHasSensor)
+                            if (error)
                             {
-                                int node = job_port.cv_Data.GlassDataMap[i].cv_Nods.FindIndex(x => x.cv_NodeId == 2);
-                                if (node != -1)
+
+                                AlarmItem alarm = new AlarmItem();
+                                alarm.PCode = Alarmtable.FoupDataContainsOverOneRecipe.ToString();
+                                alarm.PLevel = AlarmLevele.Light;
+                                alarm.PMainDescription = "Foup Data Contains Over One Recipe";
+                                alarm.PStatus = AlarmStatus.Occur;
+                                LgcForm.EditAlarm(alarm);
+                                LgcForm.ShowMsg(alarm.PMainDescription, false, false);
+                                job_port.cv_Data.cv_IsWaitCancel = true;
+                                return;
+                            }
+
+                            bool need_change_recipe = false;
+                            int want_change_recipe = -1;
+                            for (int i = 1; i <= job_port.cv_Data.cv_SlotCount; i++)
+                            {
+                                if (job_port.cv_Data.GlassDataMap[i].PHasSensor)
                                 {
-                                    GlassDataNodeItem item = job_port.cv_Data.GlassDataMap[i].cv_Nods[node];
-                                    if (item.cv_Recipe != Convert.ToInt32(LgcForm.cv_Recipes.PCurRecipeId))
+                                    int node = job_port.cv_Data.GlassDataMap[i].cv_Nods.FindIndex(x => x.cv_NodeId == 2);
+                                    if (node != -1)
                                     {
-                                        job_port.PPortStatus = PortStaus.UDRQ;
-                                        job_port.PClamp = PortClamp.Unclamp;
-                                        job_port.PLotStatus = LotStatus.Cancel;
+                                        GlassDataNodeItem item = job_port.cv_Data.GlassDataMap[i].cv_Nods[node];
+                                        if (item.cv_Recipe != Convert.ToInt32(LgcForm.cv_Recipes.PCurRecipeId))
+                                        {
+                                            need_change_recipe = true;
+                                            want_change_recipe = item.cv_Recipe;
+                                            bool is_recipe_match = true;
+                                            Robot rb = LgcForm.GetRobotById(1);
+                                            Aligner aligner = LgcForm.GetAlignerById(1);
+                                            Buffer buffer = LgcForm.GetBufferById(1);
+                                            for (int j = 1; j <= CommonData.HIRATA.CommonStaticData.g_PortNumber; j++)
+                                            {
+                                                Port port = LgcForm.GetPortById(j);
+                                                if (port.PPortStatus != PortStaus.LDRQ && port.PPortStatus != PortStaus.UDCM && port.PPortStatus != PortStaus.UDRQ &&
+                                                    port.cv_Data.PPortMode != PortMode.Unloader)
+                                                {
+                                                    if (port.IsHasAnyDataAndSensor())
+                                                    {
+                                                        is_recipe_match = false;
+                                                        break;
+                                                    }
+                                                }
+                                            }
+                                            if (is_recipe_match)
+                                            {
+                                                if (!rb.IsBusy && aligner.IsHasAnyDataAndSensor() && buffer.IsHasAnyDataAndSensor() && rb.IsHasAnyDataAndSensor())
+                                                {
+                                                    is_recipe_match = false;
+                                                }
+                                            }
+                                            if (!is_recipe_match)
+                                            {
+                                                AlarmItem alarm = new AlarmItem();
+                                                alarm.PCode = Alarmtable.BcDataDownLoadRecipeERROR.ToString();
+                                                alarm.PLevel = AlarmLevele.Light;
+                                                alarm.PMainDescription = "Bc DataDownLoad Recipe ERROR";
+                                                alarm.PStatus = AlarmStatus.Occur;
+                                                LgcForm.EditAlarm(alarm);
+                                                LgcForm.ShowMsg("Data download : Recipe unmatch : Cur is " + LgcForm.cv_Recipes.PCurRecipeId.ToString() +
+                                                    " Recv : " + item.cv_Recipe.ToString(), true, false);
+                                                job_port.cv_Data.cv_IsWaitCancel = true;
+                                                error = true;
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
                                         AlarmItem alarm = new AlarmItem();
                                         alarm.PCode = Alarmtable.BcDataDownLoadRecipeERROR.ToString();
                                         alarm.PLevel = AlarmLevele.Light;
                                         alarm.PMainDescription = "Bc DataDownLoad Recipe ERROR";
                                         alarm.PStatus = AlarmStatus.Occur;
                                         LgcForm.EditAlarm(alarm);
-                                        LgcForm.ShowMsg("Data download : Recipe unmatch : Cur is " + LgcForm.cv_Recipes.PCurRecipeId.ToString() +
-                                            " Recv : " + item.cv_Recipe.ToString(), true, false);
+                                        LgcForm.ShowMsg("Data download : Recipe unmatch : Cur is " + LgcForm.cv_Recipes.PCurRecipeId.ToString(), false, false);
+                                        job_port.cv_Data.cv_IsWaitCancel = true;
+                                        error = true;
+                                    }
+                                    break;
+                                }
+                            }
+                            if (!error)
+                            {
+                                if (need_change_recipe)
+                                {
+                                    if (LgcForm.cv_Recipes.IsRecipeExist(want_change_recipe.ToString()))
+                                    {
+                                        LgcForm.cv_Recipes.SetCurRecipe(want_change_recipe.ToString());
+                                        job_port.cv_Data.PCurPPID = LgcForm.FindHightestPriorityPPID(job_port.cv_Id);
+                                        job_port.PLotStatus = LotStatus.WaitReserve;
+                                        log += "Set Port : " + job_port.cv_Id + " WaitReserve\n";
+                                    }
+                                    else
+                                    {
+                                        AlarmItem alarm = new AlarmItem();
+                                        alarm.PCode = Alarmtable.FoupDataRecipeEFEMNotHas.ToString();
+                                        alarm.PLevel = AlarmLevele.Light;
+                                        alarm.PMainDescription = "Foup Data Recipe EFEM Not Has";
+                                        alarm.PStatus = AlarmStatus.Occur;
+                                        LgcForm.EditAlarm(alarm);
+                                        LgcForm.ShowMsg("Data download : Recipe unmatch : Cur is " + LgcForm.cv_Recipes.PCurRecipeId.ToString(), false, false);
+                                        job_port.cv_Data.cv_IsWaitCancel = true;
+                                        error = true;
                                     }
                                 }
                             }
                         }
-                         * */
-                        job_port.cv_Data.PCurPPID = LgcForm.FindHightestPriorityPPID(job_port.cv_Id);
-                        job_port.PLotStatus = LotStatus.WaitReserve;
-                        log += "Set Port : " + job_port.cv_Id + " WaitReserve\n" ;
-
-                    }
-                    else
-                    {
-                        LgcForm.ShowMsg("Recv BC Foup Data Download , But Port Status not in Mapping End", true, false);
-                        log += "Recv BC Foup Data Download , But Port Status not in Mapping End\n";
+                        else
+                        {
+                            LgcForm.ShowMsg("Recv BC Foup Data Download , But Port Status not in Mapping End", true, false);
+                            log += "Recv BC Foup Data Download , But Port Status not in Mapping End\n";
+                        }
                     }
                 }
+                WriteLog(LogLevelType.Detail, log);
+                WriteLog(CommonData.HIRATA.LogLevelType.TimerFunction, this.GetType().Name + "." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Leave);
             }
-            WriteLog(LogLevelType.Detail, log);
-            WriteLog(CommonData.HIRATA.LogLevelType.TimerFunction, this.GetType().Name + "." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Leave);
+            catch (Exception e)
+            {
+                WriteLog(LogLevelType.Error, e.StackTrace.ToString());
+            }
         }
         void ProcessEqData(string m_SourceModule, int m_Type, string m_MessageId, string m_RequestNotifyMessageId, uint m_Ticket, Object m_Object)
         {

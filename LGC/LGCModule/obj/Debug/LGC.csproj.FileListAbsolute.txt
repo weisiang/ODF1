@@ -1,2 +1,0 @@
-D:\Code_10311_modify_store_report\LGC\LGCModule\Debug\FDLGC.exe.config
-D:\TODO\ODF\LGC\LGCModule\Debug\FDLGC.exe.config

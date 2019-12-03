@@ -46,3 +46,11 @@ D:\Code_10310_modify_store_report\CommonData\bin\Debug\KgsMmfEventCenter.pdb
 D:\Code_10310_modify_store_report\CommonData\obj\Debug\CommonData.csprojResolveAssemblyReference.cache
 D:\Code_10310_modify_store_report\CommonData\obj\Debug\CommonData.dll
 D:\Code_10310_modify_store_report\CommonData\obj\Debug\CommonData.pdb
+D:\TODO\ODF\CommonData\bin\Debug\CommonData.dll
+D:\TODO\ODF\CommonData\bin\Debug\CommonData.pdb
+D:\TODO\ODF\CommonData\bin\Debug\KgsCommonX64.dll
+D:\TODO\ODF\CommonData\bin\Debug\KgsMmfEventCenter.dll
+D:\TODO\ODF\CommonData\bin\Debug\KgsMmfEventCenter.pdb
+D:\TODO\ODF\CommonData\obj\Debug\CommonData.csprojResolveAssemblyReference.cache
+D:\TODO\ODF\CommonData\obj\Debug\CommonData.dll
+D:\TODO\ODF\CommonData\obj\Debug\CommonData.pdb

@@ -165,5 +165,17 @@ namespace LGC
             this.PLotStatus = LotStatus.Process;
             this.cv_Data.SaveToFile();
         }
+        public bool IsHasAnyDataAndSensor()
+        {
+            bool rtn = false;
+            for (int i = 1; i <= cv_SlotCount; i++)
+            {
+                if (cv_Data.GlassDataMap[1].PHasData || cv_Data.GlassDataMap[1].PHasSensor)
+                {
+                    rtn = true;
+                }
+            }
+            return rtn;
+        }
     }
 }

@@ -34,3 +34,9 @@ D:\Code_10310_modify_store_report\KgsMmfEventCenterDll\Debug\KgsCommonX64.dll
 D:\Code_10310_modify_store_report\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenterDll.csprojResolveAssemblyReference.cache
 D:\Code_10310_modify_store_report\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenter.dll
 D:\Code_10310_modify_store_report\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenter.pdb
+D:\TODO\ODF\KgsMmfEventCenterDll\Debug\KgsMmfEventCenter.dll
+D:\TODO\ODF\KgsMmfEventCenterDll\Debug\KgsMmfEventCenter.pdb
+D:\TODO\ODF\KgsMmfEventCenterDll\Debug\KgsCommonX64.dll
+D:\TODO\ODF\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenterDll.csprojResolveAssemblyReference.cache
+D:\TODO\ODF\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenter.dll
+D:\TODO\ODF\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenter.pdb

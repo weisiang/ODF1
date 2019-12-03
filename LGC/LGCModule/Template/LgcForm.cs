@@ -4707,6 +4707,23 @@ namespace LGC
                     rtn = false;
                 }
             }
+            int node_index = data.cv_Nods.FindIndex(x => x.PNodeId == 2);
+            if (node_index != -1)
+            {
+                int recipe = data.cv_Nods[node_index].cv_Recipe;
+                if (recipe != Convert.ToInt32(cv_Recipes.PCurRecipeId.Trim()))
+                {
+                    AlarmItem alarm = new AlarmItem();
+                    alarm.PCode = Alarmtable.InterfaceErrorGlassDataRecipeUnmatch.ToString();
+                    alarm.PLevel = AlarmLevele.Light;
+                    alarm.PMainDescription = "Interface GlassData Error Recipe Unmatch with EFEM!!!";
+                    alarm.PStatus = AlarmStatus.Occur;
+                    EditAlarm(alarm);
+                    ShowMsg(alarm.PMainDescription + "\nRecipe from EQ : " + recipe + "EFEM Cur. recipe : " + cv_Recipes.PCurRecipeId.Trim(), false, false);
+                    WriteLog(LogLevelType.Warning, alarm.PMainDescription + "\nRecipe from EQ : " + recipe + "EFEM Cur. recipe : " + cv_Recipes.PCurRecipeId.Trim());
+                    rtn = false;
+                }
+            }
             return rtn;
         }
 

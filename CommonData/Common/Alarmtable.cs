@@ -59,6 +59,8 @@ namespace CommonData.HIRATA
         public const int GlassInterfaceForceComTimeOut = 2050;
         public const int RobotApiErrorEvent = 2051;
         public const int RobotApiReplyParseError = 2052;
-
+        public const int InterfaceErrorGlassDataRecipeUnmatch = 2053;
+        public const int FoupDataContainsOverOneRecipe = 2054;
+        public const int FoupDataRecipeEFEMNotHas = 2055;
     }
 }
