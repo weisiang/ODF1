@@ -1,42 +1,5 @@
-F:\T450\ODF_exit_20190413\Code - 20190413_1.0.2.6\KgsMmfEventCenterDll\Debug\KgsMmfEventCenter.dll
-F:\T450\ODF_exit_20190413\Code - 20190413_1.0.2.6\KgsMmfEventCenterDll\Debug\KgsMmfEventCenter.pdb
-F:\T450\ODF_exit_20190413\Code - 20190413_1.0.2.6\KgsMmfEventCenterDll\Debug\KgsCommonX64.dll
-F:\T450\ODF_exit_20190413\Code - 20190413_1.0.2.6\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenterDll.csprojResolveAssemblyReference.cache
-F:\T450\ODF_exit_20190413\Code - 20190413_1.0.2.6\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenter.dll
-F:\T450\ODF_exit_20190413\Code - 20190413_1.0.2.6\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenter.pdb
-D:\ODF_UPdate\Code - 20190413_1.0.2.7\KgsMmfEventCenterDll\Debug\KgsMmfEventCenter.dll
-D:\ODF_UPdate\Code - 20190413_1.0.2.7\KgsMmfEventCenterDll\Debug\KgsMmfEventCenter.pdb
-D:\ODF_UPdate\Code - 20190413_1.0.2.7\KgsMmfEventCenterDll\Debug\KgsCommonX64.dll
-D:\ODF_UPdate\Code - 20190413_1.0.2.7\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenterDll.csprojResolveAssemblyReference.cache
-D:\ODF_UPdate\Code - 20190413_1.0.2.7\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenter.dll
-D:\ODF_UPdate\Code - 20190413_1.0.2.7\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenter.pdb
-D:\Code_10028_modify_multippid\KgsMmfEventCenterDll\Debug\KgsMmfEventCenter.dll
-D:\Code_10028_modify_multippid\KgsMmfEventCenterDll\Debug\KgsMmfEventCenter.pdb
-D:\Code_10028_modify_multippid\KgsMmfEventCenterDll\Debug\KgsCommonX64.dll
-D:\Code_10028_modify_multippid\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenterDll.csprojResolveAssemblyReference.cache
-D:\Code_10028_modify_multippid\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenter.dll
-D:\Code_10028_modify_multippid\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenter.pdb
-D:\TODO\Code_1038_modify_multippid\KgsMmfEventCenterDll\Debug\KgsMmfEventCenter.dll
-D:\TODO\Code_1038_modify_multippid\KgsMmfEventCenterDll\Debug\KgsMmfEventCenter.pdb
-D:\TODO\Code_1038_modify_multippid\KgsMmfEventCenterDll\Debug\KgsCommonX64.dll
-D:\TODO\Code_1038_modify_multippid\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenter.dll
-D:\TODO\Code_1038_modify_multippid\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenter.pdb
-D:\TODO\Code_1038_modify_multippid\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenterDll.csprojResolveAssemblyReference.cache
-D:\TODO\ODF\Code_1039_modify_store_report\KgsMmfEventCenterDll\Debug\KgsMmfEventCenter.dll
-D:\TODO\ODF\Code_1039_modify_store_report\KgsMmfEventCenterDll\Debug\KgsMmfEventCenter.pdb
-D:\TODO\ODF\Code_1039_modify_store_report\KgsMmfEventCenterDll\Debug\KgsCommonX64.dll
-D:\TODO\ODF\Code_1039_modify_store_report\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenterDll.csprojResolveAssemblyReference.cache
-D:\TODO\ODF\Code_1039_modify_store_report\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenter.dll
-D:\TODO\ODF\Code_1039_modify_store_report\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenter.pdb
-D:\Code_10310_modify_store_report\KgsMmfEventCenterDll\Debug\KgsMmfEventCenter.dll
-D:\Code_10310_modify_store_report\KgsMmfEventCenterDll\Debug\KgsMmfEventCenter.pdb
-D:\Code_10310_modify_store_report\KgsMmfEventCenterDll\Debug\KgsCommonX64.dll
-D:\Code_10310_modify_store_report\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenterDll.csprojResolveAssemblyReference.cache
-D:\Code_10310_modify_store_report\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenter.dll
-D:\Code_10310_modify_store_report\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenter.pdb
 D:\TODO\ODF\KgsMmfEventCenterDll\Debug\KgsMmfEventCenter.dll
 D:\TODO\ODF\KgsMmfEventCenterDll\Debug\KgsMmfEventCenter.pdb
-D:\TODO\ODF\KgsMmfEventCenterDll\Debug\KgsCommonX64.dll
-D:\TODO\ODF\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenterDll.csprojResolveAssemblyReference.cache
+D:\TODO\ODF\KgsMmfEventCenterDll\Debug\KgsCommon.dll
 D:\TODO\ODF\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenter.dll
 D:\TODO\ODF\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenter.pdb

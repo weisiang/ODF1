@@ -79,6 +79,10 @@ namespace UI
             this.cv_AlarmDataView.AutoGenerateColumns = false;
             this.cv_AlarmDataView.AutoGenerateColumns = false;
 
+            this.cv_AlarmHView.AutoGenerateColumns = false;
+            this.cv_AlarmHView.AutoGenerateColumns = false;
+
+
             // add ui to control check permission.
             AddUiObjToEnableList(lbl_RobotStatus, UserPermission.Root);
             //AddUiObjToEnableList(cv_OntMode, UserPermission.Root);
@@ -3062,6 +3066,62 @@ cb_IoFfu
                 {
                     WriteLog(LogLevelType.Error, "[cb_RobotActionName_SelectedIndexChanged] can find cur. reicpe", FunInOut.None);
                 }
+            }
+        }
+
+        private void btn_search_Click(object sender, EventArgs e)
+        {
+            List<AlarmItem> a_datalist = new List<AlarmItem>();
+            DateTime a_time = dateTimePicker1.Value;
+            string CONFIG_PATH = CommonData.HIRATA.CommonStaticData.g_RootLogsFolderPath + "LGC\\" + a_time.ToString("yyyy") + "\\" + a_time.ToString("MM") + "\\" + a_time.ToString("dd") + "\\";
+            //string CONFIG_PATH = SysUtils.ExtractFilePath(SysUtils.GetExeName()) + "..\\..\\..\\Log\\" + a_time.ToString("yyyy") + "\\" + a_time.ToString("MM") + "\\" + a_time.ToString("dd") + "\\";
+            string File_Name = "Alarmlog_" + a_time.ToString("yyyyMMdd") + ".log";
+            string File_PATH = CONFIG_PATH + File_Name;
+            if (SysUtils.FileExists(File_PATH))
+            {
+                List<string> a_temp = new List<string>();
+                SysUtils.LoadFromFile(File_PATH, a_temp);
+                foreach (string a_str in a_temp)
+                {
+                    List<string> a_list = new List<string>();
+                    SysUtils.StringSplit(a_str, ",", a_list, true);
+                    if (a_list.Count == 5)
+                    {
+                        AlarmItem a_data = new AlarmItem();
+                        a_data.PTime = a_list[0];
+                        a_data.PCode = a_list[1];
+                        if (a_list[2].Trim() == "Serious")
+                            a_data.PLevel = AlarmLevele.Serious;
+                        else if (a_list[2].Trim() == "Light")
+                            a_data.PLevel = AlarmLevele.Light;
+
+                        a_data.PUnit = Convert.ToInt32(a_list[3].Trim());
+
+                        List<string> a_msg = new List<string>();
+                        SysUtils.StringSplit(a_list[4].Trim(), ":", a_msg, true);
+                        if(a_msg.Count == 2)
+                        {
+                            a_data.PMainDescription = a_list[0].Trim();
+                            a_data.PSubDescription = a_list[1].Trim();
+                        }
+                        else if(a_msg.Count == 1)
+                        {
+                            a_data.PMainDescription = a_list[0].Trim();
+                        }
+                        a_datalist.Add(a_data);
+                    }
+                }
+                cv_AlarmHView.DataSource = a_datalist;
+                if(a_datalist.Count <1)
+                {
+                    CommonStaticData.PopForm("The date alarm file hasn't any alarm item!", true, false);
+                    WriteLog(LogLevelType.General, "[UI] Alarm history : user choose the date : " + File_PATH + " The date alarm file hasn't any alarm item");
+                }
+            }
+            else
+            {
+                CommonStaticData.PopForm("The date alarm file not found!", true, false);
+                WriteLog(LogLevelType.General, "[UI] Alarm history : user choose the date : " + File_PATH + " not found!");
             }
         }
     }

@@ -1,54 +1,6 @@
-F:\T450\ODF_exit_20190413\Code - 20190413_1.0.2.6\CommonData\bin\Debug\CommonData.dll
-F:\T450\ODF_exit_20190413\Code - 20190413_1.0.2.6\CommonData\bin\Debug\CommonData.pdb
-F:\T450\ODF_exit_20190413\Code - 20190413_1.0.2.6\CommonData\bin\Debug\KgsCommonX64.dll
-F:\T450\ODF_exit_20190413\Code - 20190413_1.0.2.6\CommonData\bin\Debug\KgsMmfEventCenter.dll
-F:\T450\ODF_exit_20190413\Code - 20190413_1.0.2.6\CommonData\bin\Debug\KgsMmfEventCenter.pdb
-F:\T450\ODF_exit_20190413\Code - 20190413_1.0.2.6\CommonData\obj\Debug\CommonData.csprojResolveAssemblyReference.cache
-F:\T450\ODF_exit_20190413\Code - 20190413_1.0.2.6\CommonData\obj\Debug\CommonData.dll
-F:\T450\ODF_exit_20190413\Code - 20190413_1.0.2.6\CommonData\obj\Debug\CommonData.pdb
-D:\ODF_UPdate\Code - 20190413_1.0.2.7\CommonData\bin\Debug\CommonData.dll
-D:\ODF_UPdate\Code - 20190413_1.0.2.7\CommonData\bin\Debug\CommonData.pdb
-D:\ODF_UPdate\Code - 20190413_1.0.2.7\CommonData\bin\Debug\KgsCommonX64.dll
-D:\ODF_UPdate\Code - 20190413_1.0.2.7\CommonData\bin\Debug\KgsMmfEventCenter.dll
-D:\ODF_UPdate\Code - 20190413_1.0.2.7\CommonData\bin\Debug\KgsMmfEventCenter.pdb
-D:\ODF_UPdate\Code - 20190413_1.0.2.7\CommonData\obj\Debug\CommonData.csprojResolveAssemblyReference.cache
-D:\ODF_UPdate\Code - 20190413_1.0.2.7\CommonData\obj\Debug\CommonData.dll
-D:\ODF_UPdate\Code - 20190413_1.0.2.7\CommonData\obj\Debug\CommonData.pdb
-D:\Code_10028_modify_multippid\CommonData\bin\Debug\CommonData.dll
-D:\Code_10028_modify_multippid\CommonData\bin\Debug\CommonData.pdb
-D:\Code_10028_modify_multippid\CommonData\bin\Debug\KgsCommonX64.dll
-D:\Code_10028_modify_multippid\CommonData\bin\Debug\KgsMmfEventCenter.dll
-D:\Code_10028_modify_multippid\CommonData\bin\Debug\KgsMmfEventCenter.pdb
-D:\Code_10028_modify_multippid\CommonData\obj\Debug\CommonData.csprojResolveAssemblyReference.cache
-D:\Code_10028_modify_multippid\CommonData\obj\Debug\CommonData.dll
-D:\Code_10028_modify_multippid\CommonData\obj\Debug\CommonData.pdb
-D:\TODO\Code_1038_modify_multippid\CommonData\bin\Debug\CommonData.dll
-D:\TODO\Code_1038_modify_multippid\CommonData\bin\Debug\CommonData.pdb
-D:\TODO\Code_1038_modify_multippid\CommonData\bin\Debug\KgsCommonX64.dll
-D:\TODO\Code_1038_modify_multippid\CommonData\bin\Debug\KgsMmfEventCenter.dll
-D:\TODO\Code_1038_modify_multippid\CommonData\bin\Debug\KgsMmfEventCenter.pdb
-D:\TODO\Code_1038_modify_multippid\CommonData\obj\Debug\CommonData.csprojResolveAssemblyReference.cache
-D:\TODO\Code_1038_modify_multippid\CommonData\obj\Debug\CommonData.dll
-D:\TODO\Code_1038_modify_multippid\CommonData\obj\Debug\CommonData.pdb
-D:\TODO\ODF\Code_1039_modify_store_report\CommonData\bin\Debug\CommonData.dll
-D:\TODO\ODF\Code_1039_modify_store_report\CommonData\bin\Debug\CommonData.pdb
-D:\TODO\ODF\Code_1039_modify_store_report\CommonData\bin\Debug\KgsCommonX64.dll
-D:\TODO\ODF\Code_1039_modify_store_report\CommonData\bin\Debug\KgsMmfEventCenter.dll
-D:\TODO\ODF\Code_1039_modify_store_report\CommonData\bin\Debug\KgsMmfEventCenter.pdb
-D:\TODO\ODF\Code_1039_modify_store_report\CommonData\obj\Debug\CommonData.csprojResolveAssemblyReference.cache
-D:\TODO\ODF\Code_1039_modify_store_report\CommonData\obj\Debug\CommonData.dll
-D:\TODO\ODF\Code_1039_modify_store_report\CommonData\obj\Debug\CommonData.pdb
-D:\Code_10310_modify_store_report\CommonData\bin\Debug\CommonData.dll
-D:\Code_10310_modify_store_report\CommonData\bin\Debug\CommonData.pdb
-D:\Code_10310_modify_store_report\CommonData\bin\Debug\KgsCommonX64.dll
-D:\Code_10310_modify_store_report\CommonData\bin\Debug\KgsMmfEventCenter.dll
-D:\Code_10310_modify_store_report\CommonData\bin\Debug\KgsMmfEventCenter.pdb
-D:\Code_10310_modify_store_report\CommonData\obj\Debug\CommonData.csprojResolveAssemblyReference.cache
-D:\Code_10310_modify_store_report\CommonData\obj\Debug\CommonData.dll
-D:\Code_10310_modify_store_report\CommonData\obj\Debug\CommonData.pdb
 D:\TODO\ODF\CommonData\bin\Debug\CommonData.dll
 D:\TODO\ODF\CommonData\bin\Debug\CommonData.pdb
-D:\TODO\ODF\CommonData\bin\Debug\KgsCommonX64.dll
+D:\TODO\ODF\CommonData\bin\Debug\KgsCommon.dll
 D:\TODO\ODF\CommonData\bin\Debug\KgsMmfEventCenter.dll
 D:\TODO\ODF\CommonData\bin\Debug\KgsMmfEventCenter.pdb
 D:\TODO\ODF\CommonData\obj\Debug\CommonData.csprojResolveAssemblyReference.cache

@@ -19,6 +19,7 @@ namespace LGC
     public partial class LgcForm : BaseForm
     {
         //Wait test_form = new Wait();
+        private KMemoLog cv_AlarmLog;
         public static Dictionary<string, List<AlarmItem>> cv_ApiAlarm = new Dictionary<string, List<AlarmItem>>();
         public static Dictionary<int, List<AllDevice>> cv_CurRecipeFlowStepSetting = new Dictionary<int, List<AllDevice>>();
         public static Queue<RobotJob> cv_RobotJobPath = new Queue<RobotJob>();
@@ -75,6 +76,44 @@ namespace LGC
             //test_form.Show();
             cv_Timer.Start();
         }
+        protected override void initLog()
+        {
+            base.initLog();
+            if (cv_AlarmLog == null)
+            {
+                string enviPath = CommonData.HIRATA.CommonStaticData.g_RootLogsFolderPath + CommonData.HIRATA.CommonStaticData.g_FDModuleName;
+                cv_AlarmLog = new KMemoLog();
+                cv_AlarmLog.LoadFromIni(CommonData.HIRATA.CommonStaticData.g_ModuleLogsIniFile, "AlarmLog");
+                cv_AlarmLog.LogFileName = enviPath + "\\AlarmLog.log";
+                cv_AlarmLog.SaveToIni(CommonData.HIRATA.CommonStaticData.g_ModuleLogsIniFile, "AlarmLog");
+                for(int i=1 ; i<10000 ; i++)
+                {
+                    AlarmItem tmp = new AlarmItem();
+                    tmp.PTime = DateTime.Now.ToString("yyyyMMddHHmmss");
+                    tmp.cv_Code = i.ToString();
+                    if(i%2 == 0)
+                    tmp.PLevel = AlarmLevele.Light;
+                    else
+                    tmp.PLevel = AlarmLevele.Serious;
+                    tmp.PMainDescription = "test";
+                    tmp.PSubDescription = i.ToString();
+                    WriteAlarmLog(tmp);
+                }
+            }
+        }
+        private void WriteAlarmLog(CommonData.HIRATA.AlarmItem m_AlarmItem)
+        {
+            if(cv_AlarmLog != null)
+            {
+                string log = m_AlarmItem.PTime + ",";
+                log += m_AlarmItem.PCode + ",";
+                log += m_AlarmItem.PLevel + ",";
+                log += m_AlarmItem.PUnit + ",";
+                log += m_AlarmItem.PMsg;
+                cv_AlarmLog.WriteLog(log);
+            }
+        }
+
         public static void SendRobotJobPath()
         {
             //WriteLog(LogLevelType.NormalFunctionInOut, this.GetType().Name + "." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Enter);
