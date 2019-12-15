@@ -2115,7 +2115,7 @@ namespace LGC
                         //tmp mark for uv no data case.
                         if (glass.PHasData)
                         {
-                            if (!CheckEqSideData(glass))
+                            if (!CheckEqSideData(glass, eq_id))
                             {
                                 return;
                             }
@@ -2580,7 +2580,7 @@ namespace LGC
                                 }
                                 if (glass.PHasData)
                                 {
-                                    if (!CheckEqSideData(glass))
+                                    if (!CheckEqSideData(glass, eq_id))
                                     {
                                         return;
                                     }
@@ -4685,7 +4685,7 @@ namespace LGC
             WriteLog(CommonData.HIRATA.LogLevelType.Detail, log);
             WriteLog(CommonData.HIRATA.LogLevelType.NormalFunctionInOut, "WritePortToPlc", CommonData.HIRATA.FunInOut.Leave);
         }
-        private bool CheckEqSideData(GlassData data)
+        private bool CheckEqSideData(GlassData data , EqId m_Eq)
         {
             bool rtn = true;
             if (PSystemData.IsCheckRecipe)
@@ -4700,6 +4700,7 @@ namespace LGC
                     alarm.PLevel = AlarmLevele.Light;
                     alarm.PCode = CommonData.HIRATA.Alarmtable.RecieUnmatch.ToString();
                     alarm.PMainDescription = "Recv From upstream recipe unmatch";
+                    alarm.PSubDescription = "EQ : " + m_Eq;
                     EditAlarm(alarm);
                     //ShowMsg("Recv form upstream recipe un-match", true, false);
                     rtn = false;
@@ -4715,6 +4716,7 @@ namespace LGC
                     alarm.PLevel = AlarmLevele.Light;
                     alarm.PCode = CommonData.HIRATA.Alarmtable.FoupSeqError.ToString();
                     alarm.PMainDescription = "FoupSeq Error";
+                    alarm.PSubDescription = "EQ : " + m_Eq;
                     EditAlarm(alarm);
                     // ShowMsg("Recv form upstream Foup Seq 0", true, false);
                     rtn = false;
@@ -4730,6 +4732,7 @@ namespace LGC
                     alarm.PLevel = AlarmLevele.Light;
                     alarm.PCode = CommonData.HIRATA.Alarmtable.WorkSlotError.ToString();
                     alarm.PMainDescription = "Work slot Error";
+                    alarm.PSubDescription = "EQ : " + m_Eq;
                     EditAlarm(alarm);
                     // ShowMsg("Recv form upstream slot 0", true, false);
                     rtn = false;
@@ -4745,6 +4748,7 @@ namespace LGC
                     alarm.PLevel = AlarmLevele.Light;
                     alarm.PCode = CommonData.HIRATA.Alarmtable.WorkIdError.ToString();
                     alarm.PMainDescription = "Work Id Error";
+                    alarm.PSubDescription = "EQ : " + m_Eq;
                     EditAlarm(alarm);
                     // ShowMsg("Recv form upstream Id empty", true, false);
                     rtn = false;
@@ -4760,6 +4764,7 @@ namespace LGC
                     alarm.PCode = Alarmtable.InterfaceErrorGlassDataRecipeUnmatch.ToString();
                     alarm.PLevel = AlarmLevele.Light;
                     alarm.PMainDescription = "Interface GlassData Error Recipe Unmatch with EFEM!!!";
+                    alarm.PSubDescription = "EQ : " + m_Eq;
                     alarm.PStatus = AlarmStatus.Occur;
                     EditAlarm(alarm);
                     ShowMsg(alarm.PMainDescription + "\nRecipe from EQ : " + recipe + "EFEM Cur. recipe : " + cv_Recipes.PCurRecipeId.Trim(), false, false);

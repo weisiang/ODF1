@@ -1,7 +1,7 @@
 D:\TODO\ODF\BaseAp\bin\Debug\BaseAp.exe
 D:\TODO\ODF\BaseAp\bin\Debug\BaseAp.pdb
 D:\TODO\ODF\BaseAp\bin\Debug\CommonData.dll
-D:\TODO\ODF\BaseAp\bin\Debug\KgsCommon.dll
+D:\TODO\ODF\BaseAp\bin\Debug\KgsCommonX64.dll
 D:\TODO\ODF\BaseAp\bin\Debug\KgsMmfEventCenter.dll
 D:\TODO\ODF\BaseAp\bin\Debug\CommonData.pdb
 D:\TODO\ODF\BaseAp\bin\Debug\KgsMmfEventCenter.pdb

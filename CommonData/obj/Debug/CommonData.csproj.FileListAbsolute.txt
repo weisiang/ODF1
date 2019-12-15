@@ -1,6 +1,6 @@
 D:\TODO\ODF\CommonData\bin\Debug\CommonData.dll
 D:\TODO\ODF\CommonData\bin\Debug\CommonData.pdb
-D:\TODO\ODF\CommonData\bin\Debug\KgsCommon.dll
+D:\TODO\ODF\CommonData\bin\Debug\KgsCommonX64.dll
 D:\TODO\ODF\CommonData\bin\Debug\KgsMmfEventCenter.dll
 D:\TODO\ODF\CommonData\bin\Debug\KgsMmfEventCenter.pdb
 D:\TODO\ODF\CommonData\obj\Debug\CommonData.csprojResolveAssemblyReference.cache

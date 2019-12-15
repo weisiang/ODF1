@@ -1186,18 +1186,23 @@ namespace LGC
                                 job_port.cv_Data.cv_IsWaitCancel = true;
                                 return;
                             }
-                            for (int i = 2; i <= job_port.cv_Data.cv_SlotCount; i++)
+                            //check every slot recipe is the same for node 2.
+                            int tmp_recipe = -1;
+                            for (int i = 1; i <= job_port.cv_Data.cv_SlotCount; i++)
                             {
-                                if (job_port.cv_Data.GlassDataMap[i].PHasSensor)
+                                if (job_port.cv_Data.GlassDataMap[i].PHasSensor && job_port.cv_Data.GlassDataMap[i].PProcessFlag == ProcessFlag.Need)
                                 {
                                     int node = job_port.cv_Data.GlassDataMap[i].cv_Nods.FindIndex(x => x.cv_NodeId == 2);
-                                    int node_last = job_port.cv_Data.GlassDataMap[i - 1].cv_Nods.FindIndex(x => x.cv_NodeId == 2);
-                                    if (node != -1 && node_last != -1)
+                                    GlassDataNodeItem item = job_port.cv_Data.GlassDataMap[i].cv_Nods[node];
+                                    if(tmp_recipe == -1)
                                     {
-                                        GlassDataNodeItem item = job_port.cv_Data.GlassDataMap[i].cv_Nods[node];
-                                        GlassDataNodeItem item_last = job_port.cv_Data.GlassDataMap[i - 1].cv_Nods[node];
-                                        if (item.cv_Recipe != item_last.cv_Recipe)
+                                        tmp_recipe = item.cv_Recipe;
+                                    }
+                                    else
+                                    {
+                                        if(tmp_recipe != item.cv_Recipe)
                                         {
+                                            log += "Slot " + i.ToString() + ". Recipe No. not the same\n";
                                             error = true;
                                             break;
                                         }
@@ -1206,7 +1211,6 @@ namespace LGC
                             }
                             if (error)
                             {
-
                                 AlarmItem alarm = new AlarmItem();
                                 alarm.PCode = Alarmtable.FoupDataContainsOverOneRecipe.ToString();
                                 alarm.PLevel = AlarmLevele.Light;
@@ -1220,70 +1224,47 @@ namespace LGC
 
                             bool need_change_recipe = false;
                             int want_change_recipe = -1;
-                            for (int i = 1; i <= job_port.cv_Data.cv_SlotCount; i++)
+                            if (tmp_recipe != Convert.ToInt32(LgcForm.cv_Recipes.PCurRecipeId))
                             {
-                                if (job_port.cv_Data.GlassDataMap[i].PHasSensor)
+                                need_change_recipe = true;
+                                want_change_recipe = tmp_recipe;
+                                bool can_change_recipe = true;
+                                Robot rb = LgcForm.GetRobotById(1);
+                                Aligner aligner = LgcForm.GetAlignerById(1);
+                                Buffer buffer = LgcForm.GetBufferById(1);
+                                for (int j = 1; j <= CommonData.HIRATA.CommonStaticData.g_PortNumber; j++)
                                 {
-                                    int node = job_port.cv_Data.GlassDataMap[i].cv_Nods.FindIndex(x => x.cv_NodeId == 2);
-                                    if (node != -1)
+                                    Port port = LgcForm.GetPortById(j);
+                                    if (port.PPortStatus != PortStaus.LDRQ && port.PPortStatus != PortStaus.UDCM && port.PPortStatus != PortStaus.UDRQ &&
+                                        port.cv_Data.PPortMode != PortMode.Unloader)
                                     {
-                                        GlassDataNodeItem item = job_port.cv_Data.GlassDataMap[i].cv_Nods[node];
-                                        if (item.cv_Recipe != Convert.ToInt32(LgcForm.cv_Recipes.PCurRecipeId))
+                                        if (port.IsHasAnyDataAndSensor())
                                         {
-                                            need_change_recipe = true;
-                                            want_change_recipe = item.cv_Recipe;
-                                            bool is_recipe_match = true;
-                                            Robot rb = LgcForm.GetRobotById(1);
-                                            Aligner aligner = LgcForm.GetAlignerById(1);
-                                            Buffer buffer = LgcForm.GetBufferById(1);
-                                            for (int j = 1; j <= CommonData.HIRATA.CommonStaticData.g_PortNumber; j++)
-                                            {
-                                                Port port = LgcForm.GetPortById(j);
-                                                if (port.PPortStatus != PortStaus.LDRQ && port.PPortStatus != PortStaus.UDCM && port.PPortStatus != PortStaus.UDRQ &&
-                                                    port.cv_Data.PPortMode != PortMode.Unloader)
-                                                {
-                                                    if (port.IsHasAnyDataAndSensor())
-                                                    {
-                                                        is_recipe_match = false;
-                                                        break;
-                                                    }
-                                                }
-                                            }
-                                            if (is_recipe_match)
-                                            {
-                                                if (!rb.IsBusy && aligner.IsHasAnyDataAndSensor() && buffer.IsHasAnyDataAndSensor() && rb.IsHasAnyDataAndSensor())
-                                                {
-                                                    is_recipe_match = false;
-                                                }
-                                            }
-                                            if (!is_recipe_match)
-                                            {
-                                                AlarmItem alarm = new AlarmItem();
-                                                alarm.PCode = Alarmtable.BcDataDownLoadRecipeERROR.ToString();
-                                                alarm.PLevel = AlarmLevele.Light;
-                                                alarm.PMainDescription = "Bc DataDownLoad Recipe ERROR";
-                                                alarm.PStatus = AlarmStatus.Occur;
-                                                LgcForm.EditAlarm(alarm);
-                                                LgcForm.ShowMsg("Data download : Recipe unmatch : Cur is " + LgcForm.cv_Recipes.PCurRecipeId.ToString() +
-                                                    " Recv : " + item.cv_Recipe.ToString(), true, false);
-                                                job_port.cv_Data.cv_IsWaitCancel = true;
-                                                error = true;
-                                            }
+                                            can_change_recipe = false;
+                                            break;
                                         }
                                     }
-                                    else
+                                }
+                                if (can_change_recipe)
+                                {
+                                    if (rb.IsBusy || aligner.IsHasAnyDataAndSensor() || buffer.IsHasAnyDataAndSensor() || rb.IsHasAnyDataAndSensor())
                                     {
-                                        AlarmItem alarm = new AlarmItem();
-                                        alarm.PCode = Alarmtable.BcDataDownLoadRecipeERROR.ToString();
-                                        alarm.PLevel = AlarmLevele.Light;
-                                        alarm.PMainDescription = "Bc DataDownLoad Recipe ERROR";
-                                        alarm.PStatus = AlarmStatus.Occur;
-                                        LgcForm.EditAlarm(alarm);
-                                        LgcForm.ShowMsg("Data download : Recipe unmatch : Cur is " + LgcForm.cv_Recipes.PCurRecipeId.ToString(), false, false);
-                                        job_port.cv_Data.cv_IsWaitCancel = true;
-                                        error = true;
+                                        can_change_recipe = false;
                                     }
-                                    break;
+                                }
+                                if (!can_change_recipe)
+                                {
+                                    AlarmItem alarm = new AlarmItem();
+                                    alarm.PCode = Alarmtable.BcDataDownLoadRecipeERROR.ToString();
+                                    alarm.PLevel = AlarmLevele.Light;
+                                    alarm.PMainDescription = "Bc DataDownLoad Recipe ERROR";
+                                    alarm.PSubDescription = "Main S/W has substrate data or robot is busy.";
+                                    alarm.PStatus = AlarmStatus.Occur;
+                                    LgcForm.EditAlarm(alarm);
+                                    LgcForm.ShowMsg("Data download : Recipe unmatch : Cur is " + LgcForm.cv_Recipes.PCurRecipeId.ToString() +
+                                        " Recv : " + tmp_recipe.ToString(), true, false);
+                                    job_port.cv_Data.cv_IsWaitCancel = true;
+                                    error = true;
                                 }
                             }
                             if (!error)

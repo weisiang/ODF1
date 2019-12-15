@@ -10,8 +10,8 @@
         <cv_PortEnable>1</cv_PortEnable>
         <cv_PortType>3</cv_PortType>
         <cv_PortMode>2</cv_PortMode>
-        <cv_LotStatus>6</cv_LotStatus>
-        <cv_PortStatus>2</cv_PortStatus>
+        <cv_LotStatus>9</cv_LotStatus>
+        <cv_PortStatus>3</cv_PortStatus>
         <cv_WorkCount>5</cv_WorkCount>
         <cv_WaitUnload>False</cv_WaitUnload>
         <cv_ProductionType>1</cv_ProductionType>

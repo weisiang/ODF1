@@ -403,6 +403,11 @@ namespace CommonData.HIRATA
             data += "cv_IsWaitAlignerVaccumOn : " + cv_IsWaitAlignerVaccumOn.ToString() + "\n";
             data += "cv_IsWaitAlignerVaccumOff : " + cv_IsWaitAlignerVaccumOff.ToString() + "\n";
             data += "cv_IsWaitOcr : " + cv_IsWaitOcr.ToString() + "\n";
+            int node_index = cv_Nods.FindIndex(x => x.PNodeId == 2);
+            if(node_index != -1)
+            {
+                data += "Node 2 recipe : " + cv_Nods[node_index].PRecipe + "\n";
+            }
             return data;
         }
     }
