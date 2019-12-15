@@ -36,6 +36,13 @@ namespace UI.GUI
                 tmp.Click += dELETEToolStripMenuItem_Click;
                 (cv_menuDataEdit.Items[0] as ToolStripMenuItem).DropDownItems.Add(tmp);
             }
+            AddObjToPermissionList(button1, UiForm.enumGroup.Group2);
+            AddObjToPermissionList(cv_13slot, UiForm.enumGroup.Group2);
+            AddObjToPermissionList(cv_25slot, UiForm.enumGroup.Group2);
+        }
+        private void AddObjToPermissionList(Control m_Control , UiForm.enumGroup m_Group)
+        {
+            UiForm.AddUiObjToEnableList(m_Control, m_Group);
         }
         public void SetSlotButton(bool m_Is25Slot)
         {

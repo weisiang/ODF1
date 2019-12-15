@@ -19,6 +19,7 @@ namespace CommonData.HIRATA
         public const int LGC_GIFTimeChartPortAddressFile = -15;
         public const int Sys_AccountNotDefined = -16;
         public const int Module_SystemIniNotDefined = -17;
+        public const int Sys_PermissionGroupNotDefined = -18;
 
         //UI
         public const int UI_LayoutPosNotDefined = -20;
@@ -56,6 +57,7 @@ namespace CommonData.HIRATA
         public static string g_SysMemoryIoClientFile;
         public static string g_SysGifPortAddrFileFile = "";
         public static string g_SysAccountFile = "";
+        public static string g_SysPermissionGroupFile = "";
         public static string g_ModuleLogsIniFile = "";
         public static string g_ModuleSystemIniFile = "";
 
@@ -112,6 +114,7 @@ namespace CommonData.HIRATA
             g_ModuleSystemIniFile = g_RootConfigFolderPath + g_FDModuleName + "\\system.ini";
             g_SysGifPortAddrFileFile = g_RootConfigFolderPath + "Sys\\timechartAdd.xml";
             g_SysAccountFile = g_RootConfigFolderPath + "Sys\\Account.xml";
+            g_SysPermissionGroupFile = g_RootConfigFolderPath + "Sys\\PermissionGroup.xml";
             g_WorkFolder = CommonData.HIRATA.CommonStaticData.g_RootConfigFolderPath + CommonData.HIRATA.CommonStaticData.g_FDModuleName + "\\Work";
 
 
@@ -122,6 +125,7 @@ namespace CommonData.HIRATA
             if (!File.Exists(g_ModuleLogsIniFile)) Environment.Exit(ReturnCodeDefine.Module_LogIniNotDefined);
             if (!File.Exists(g_SysGifPortAddrFileFile)) Environment.Exit(ReturnCodeDefine.LGC_GIFTimeChartPortAddressFile);
             if (!File.Exists(g_SysAccountFile)) Environment.Exit(ReturnCodeDefine.Sys_AccountNotDefined);
+            if (!File.Exists(g_SysPermissionGroupFile)) Environment.Exit(ReturnCodeDefine.Sys_PermissionGroupNotDefined);
             if (!File.Exists(g_ModuleSystemIniFile)) Environment.Exit(ReturnCodeDefine.Module_SystemIniNotDefined);
 
             if (!System.IO.Directory.Exists(g_WorkFolder))

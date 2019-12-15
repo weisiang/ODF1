@@ -18,8 +18,8 @@ namespace UI.GUI
         {
             InitializeComponent();
             this.gdv_PathData.AutoGenerateColumns = false;
-            UiForm.AddUiObjToEnableList(button2 , UserPermission.Engineer);
-            UiForm.AddUiObjToEnableList(btn_DropTop, UserPermission.Engineer);
+            UiForm.AddUiObjToEnableList(button2, UiForm.enumGroup.Group2);
+            UiForm.AddUiObjToEnableList(btn_DropTop, UiForm.enumGroup.Group2);
         }
         public void Refresh(List<RobotJob> m_DataQueue)
         {

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PermissionGroup>
+    <Root Group1="1" Group2="1" Group3="1" Group4="1" Group5="1" Group6="1"/>
+    <Engineer Group1="1" Group2="1" Group3="1" Group4="1" Group5="1" Group6="0"/>
+    <OP1 Group1="1" Group2="0" Group3="0" Group4="0" Group5="0" Group6="0"/>
+    <OP2 Group1="1" Group2="1" Group3="0" Group4="0" Group5="0" Group6="0"/>
+    <OP3 Group1="1" Group2="1" Group3="1" Group4="0" Group5="0" Group6="0"/>
+</PermissionGroup>

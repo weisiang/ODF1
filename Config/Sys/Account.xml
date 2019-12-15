@@ -13,7 +13,7 @@
     <AccountItem>
         <cv_Id>Mike</cv_Id>
         <cv_Pw>Mike</cv_Pw>
-        <cv_Permission>3</cv_Permission>
+        <cv_Permission>1</cv_Permission>
     </AccountItem>
     <AccountItem>
         <cv_Id>ranshao</cv_Id>
@@ -28,6 +28,21 @@
     <AccountItem>
         <cv_Id>Wayne</cv_Id>
         <cv_Pw>Wayne</cv_Pw>
-        <cv_Permission>3</cv_Permission>
+        <cv_Permission>5</cv_Permission>
+    </AccountItem>
+    <AccountItem>
+        <cv_Id>TestOP1</cv_Id>
+        <cv_Pw>11</cv_Pw>
+        <cv_Permission>1</cv_Permission>
+    </AccountItem>
+    <AccountItem>
+        <cv_Id>TestOP2</cv_Id>
+        <cv_Pw>11</cv_Pw>
+        <cv_Permission>4</cv_Permission>
+    </AccountItem>
+    <AccountItem>
+        <cv_Id>TestOP3</cv_Id>
+        <cv_Pw>11</cv_Pw>
+        <cv_Permission>5</cv_Permission>
     </AccountItem>
 </Account>

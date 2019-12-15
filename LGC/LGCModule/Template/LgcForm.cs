@@ -19,7 +19,7 @@ namespace LGC
     public partial class LgcForm : BaseForm
     {
         //Wait test_form = new Wait();
-        private KMemoLog cv_AlarmLog;
+        public static KMemoLog cv_AlarmLog;
         public static Dictionary<string, List<AlarmItem>> cv_ApiAlarm = new Dictionary<string, List<AlarmItem>>();
         public static Dictionary<int, List<AllDevice>> cv_CurRecipeFlowStepSetting = new Dictionary<int, List<AllDevice>>();
         public static Queue<RobotJob> cv_RobotJobPath = new Queue<RobotJob>();
@@ -86,6 +86,7 @@ namespace LGC
                 cv_AlarmLog.LoadFromIni(CommonData.HIRATA.CommonStaticData.g_ModuleLogsIniFile, "AlarmLog");
                 cv_AlarmLog.LogFileName = enviPath + "\\AlarmLog.log";
                 cv_AlarmLog.SaveToIni(CommonData.HIRATA.CommonStaticData.g_ModuleLogsIniFile, "AlarmLog");
+                /*
                 for(int i=1 ; i<10000 ; i++)
                 {
                     AlarmItem tmp = new AlarmItem();
@@ -99,9 +100,10 @@ namespace LGC
                     tmp.PSubDescription = i.ToString();
                     WriteAlarmLog(tmp);
                 }
+                */
             }
         }
-        private void WriteAlarmLog(CommonData.HIRATA.AlarmItem m_AlarmItem)
+        public static void WriteAlarmLog(CommonData.HIRATA.AlarmItem m_AlarmItem)
         {
             if(cv_AlarmLog != null)
             {
@@ -129,7 +131,7 @@ namespace LGC
             else
             {
                 obj.RobotJob = new List<RobotJob>();
-            cv_MmfController.SendMmfNotifyObject(typeof(MDRobotjobPath).Name, obj, KParseObjToXmlPropertyType.Field);
+                cv_MmfController.SendMmfNotifyObject(typeof(MDRobotjobPath).Name, obj, KParseObjToXmlPropertyType.Field);
             }
             //WriteLog(LogLevelType.NormalFunctionInOut, this.GetType().Name + "." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Leave);
         }
@@ -4351,6 +4353,7 @@ namespace LGC
                 {
                     m_Alarm.PTime = DateTime.Now.ToString("yyyyMMddHHmmss");
                     cv_Alarms.AddAlarm(m_Alarm);
+                    WriteAlarmLog(m_Alarm);
                     if (m_Alarm.PLevel == AlarmLevele.Serious)
                     {
                         AddBuzzerCommand(true);
@@ -4377,6 +4380,7 @@ namespace LGC
                     {
                         m_Alarm.PTime = DateTime.Now.ToString("yyyyMMddHHmmss");
                         LgcForm.cv_Alarms.AddAlarm(m_Alarm);
+                        WriteAlarmLog(m_Alarm);
                     }
                 }
                 else if (m_Alarm.PStatus == AlarmStatus.Clean)

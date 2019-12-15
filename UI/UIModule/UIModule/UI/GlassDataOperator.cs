@@ -81,6 +81,10 @@ namespace UI
                 AddNoContion(i);
             }
             SetCombox();
+            UiForm.AddUiObjToEnableList(btn_Add, UiForm.enumGroup.Group3);
+            UiForm.AddUiObjToEnableList(btn_modify, UiForm.enumGroup.Group3);
+            UiForm.AddUiObjToEnableList(btn_remove, UiForm.enumGroup.Group3);
+            UiForm.AddUiObjToEnableList(btn_Request, UiForm.enumGroup.Group3);
         }
         private void SetCombox()
         {

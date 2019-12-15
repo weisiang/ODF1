@@ -225,6 +225,12 @@
     <Compile Include="UI\palette.designer.cs">
       <DependentUpon>palette.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\PermissionSetting.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\PermissionSetting.Designer.cs">
+      <DependentUpon>PermissionSetting.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Port\PortUI.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -358,6 +364,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\palette.resx">
       <DependentUpon>palette.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\PermissionSetting.resx">
+      <DependentUpon>PermissionSetting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Port\PortUI.resx">
       <DependentUpon>PortUI.cs</DependentUpon>

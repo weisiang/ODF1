@@ -73,17 +73,17 @@
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.cb_RbVacArm = new System.Windows.Forms.ComboBox();
             this.cb_RbVac = new System.Windows.Forms.ComboBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btn_ExtRobotVac = new System.Windows.Forms.Button();
             this.label46 = new System.Windows.Forms.Label();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.cb_FfuSpeed = new System.Windows.Forms.ComboBox();
             this.lbl_FFUSpeed = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_ExtFFu = new System.Windows.Forms.Button();
             this.label45 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.cb_Speed = new System.Windows.Forms.ComboBox();
             this.lbl_RobotSpeed = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btn_ExtRobotSpeed = new System.Windows.Forms.Button();
             this.label36 = new System.Windows.Forms.Label();
             this.panel32 = new System.Windows.Forms.Panel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -173,6 +173,9 @@
             this.cv_dataViewAccount = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Permission = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cv_tpPermissionSetLog = new System.Windows.Forms.TabPage();
+            this.panel42 = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -321,6 +324,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.cv_dataViewIo)).BeginInit();
             this.cv_tpAccount.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cv_dataViewAccount)).BeginInit();
+            this.cv_tpPermissionSetLog.SuspendLayout();
+            this.panel42.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -400,6 +405,7 @@
             this.cv_tcBar.Controls.Add(this.cv_tpLog);
             this.cv_tcBar.Controls.Add(this.cv_tpIo);
             this.cv_tcBar.Controls.Add(this.cv_tpAccount);
+            this.cv_tcBar.Controls.Add(this.cv_tpPermissionSetLog);
             this.cv_tcBar.Depth = 0;
             this.cv_tcBar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cv_tcBar.Location = new System.Drawing.Point(0, 0);
@@ -409,6 +415,7 @@
             this.cv_tcBar.SelectedIndex = 0;
             this.cv_tcBar.Size = new System.Drawing.Size(1637, 765);
             this.cv_tcBar.TabIndex = 1;
+            this.cv_tcBar.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.cv_tcBar_Selecting);
             // 
             // cv_tpLayout
             // 
@@ -816,7 +823,7 @@
             this.groupBox8.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.groupBox8.Controls.Add(this.cb_RbVacArm);
             this.groupBox8.Controls.Add(this.cb_RbVac);
-            this.groupBox8.Controls.Add(this.button3);
+            this.groupBox8.Controls.Add(this.btn_ExtRobotVac);
             this.groupBox8.Controls.Add(this.label46);
             this.groupBox8.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox8.Location = new System.Drawing.Point(0, 250);
@@ -851,16 +858,16 @@
             this.cb_RbVac.Size = new System.Drawing.Size(64, 23);
             this.cb_RbVac.TabIndex = 15;
             // 
-            // button3
+            // btn_ExtRobotVac
             // 
-            this.button3.Location = new System.Drawing.Point(251, 24);
-            this.button3.Margin = new System.Windows.Forms.Padding(4);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(100, 29);
-            this.button3.TabIndex = 11;
-            this.button3.Text = "Execute";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btn_ExtRobotVac.Location = new System.Drawing.Point(251, 24);
+            this.btn_ExtRobotVac.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_ExtRobotVac.Name = "btn_ExtRobotVac";
+            this.btn_ExtRobotVac.Size = new System.Drawing.Size(100, 29);
+            this.btn_ExtRobotVac.TabIndex = 11;
+            this.btn_ExtRobotVac.Text = "Execute";
+            this.btn_ExtRobotVac.UseVisualStyleBackColor = true;
+            this.btn_ExtRobotVac.Click += new System.EventHandler(this.button3_Click);
             // 
             // label46
             // 
@@ -879,7 +886,7 @@
             this.groupBox7.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.groupBox7.Controls.Add(this.cb_FfuSpeed);
             this.groupBox7.Controls.Add(this.lbl_FFUSpeed);
-            this.groupBox7.Controls.Add(this.button1);
+            this.groupBox7.Controls.Add(this.btn_ExtFFu);
             this.groupBox7.Controls.Add(this.label45);
             this.groupBox7.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox7.Location = new System.Drawing.Point(0, 119);
@@ -920,16 +927,16 @@
             this.lbl_FFUSpeed.TabIndex = 13;
             this.lbl_FFUSpeed.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button1
+            // btn_ExtFFu
             // 
-            this.button1.Location = new System.Drawing.Point(251, 19);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 29);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "Execute";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btn_ExtFFu.Location = new System.Drawing.Point(251, 19);
+            this.btn_ExtFFu.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_ExtFFu.Name = "btn_ExtFFu";
+            this.btn_ExtFFu.Size = new System.Drawing.Size(100, 29);
+            this.btn_ExtFFu.TabIndex = 11;
+            this.btn_ExtFFu.Text = "Execute";
+            this.btn_ExtFFu.UseVisualStyleBackColor = true;
+            this.btn_ExtFFu.Click += new System.EventHandler(this.button1_Click);
             // 
             // label45
             // 
@@ -948,7 +955,7 @@
             this.groupBox5.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.groupBox5.Controls.Add(this.cb_Speed);
             this.groupBox5.Controls.Add(this.lbl_RobotSpeed);
-            this.groupBox5.Controls.Add(this.button2);
+            this.groupBox5.Controls.Add(this.btn_ExtRobotSpeed);
             this.groupBox5.Controls.Add(this.label36);
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox5.Location = new System.Drawing.Point(0, 0);
@@ -990,16 +997,16 @@
             this.lbl_RobotSpeed.TabIndex = 13;
             this.lbl_RobotSpeed.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button2
+            // btn_ExtRobotSpeed
             // 
-            this.button2.Location = new System.Drawing.Point(251, 24);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 29);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "Execute";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btn_ExtRobotSpeed.Location = new System.Drawing.Point(251, 24);
+            this.btn_ExtRobotSpeed.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_ExtRobotSpeed.Name = "btn_ExtRobotSpeed";
+            this.btn_ExtRobotSpeed.Size = new System.Drawing.Size(100, 29);
+            this.btn_ExtRobotSpeed.TabIndex = 11;
+            this.btn_ExtRobotSpeed.Text = "Execute";
+            this.btn_ExtRobotSpeed.UseVisualStyleBackColor = true;
+            this.btn_ExtRobotSpeed.Click += new System.EventHandler(this.button2_Click);
             // 
             // label36
             // 
@@ -2051,6 +2058,36 @@
             this.Permission.DataPropertyName = "PPermission";
             this.Permission.HeaderText = "Permission";
             this.Permission.Name = "Permission";
+            // 
+            // cv_tpPermissionSetLog
+            // 
+            this.cv_tpPermissionSetLog.Controls.Add(this.panel42);
+            this.cv_tpPermissionSetLog.Location = new System.Drawing.Point(4, 25);
+            this.cv_tpPermissionSetLog.Name = "cv_tpPermissionSetLog";
+            this.cv_tpPermissionSetLog.Size = new System.Drawing.Size(1629, 736);
+            this.cv_tpPermissionSetLog.TabIndex = 8;
+            this.cv_tpPermissionSetLog.Text = "Permission set";
+            this.cv_tpPermissionSetLog.UseVisualStyleBackColor = true;
+            // 
+            // panel42
+            // 
+            this.panel42.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.panel42.Controls.Add(this.button4);
+            this.panel42.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel42.Location = new System.Drawing.Point(0, 690);
+            this.panel42.Name = "panel42";
+            this.panel42.Size = new System.Drawing.Size(1629, 46);
+            this.panel42.TabIndex = 0;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(1279, 3);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(86, 40);
+            this.button4.TabIndex = 0;
+            this.button4.Text = "Set";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // panel6
             // 
@@ -3444,6 +3481,7 @@
             // 
             this.cv_btnSelectMode.ContextMenuStrip = this.menu_systemMode;
             this.cv_btnSelectMode.Dock = System.Windows.Forms.DockStyle.Top;
+            this.cv_btnSelectMode.Enabled = false;
             this.cv_btnSelectMode.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(75)))), ((int)(((byte)(81)))));
             this.cv_btnSelectMode.FlatAppearance.BorderSize = 3;
             this.cv_btnSelectMode.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -3609,6 +3647,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.cv_dataViewIo)).EndInit();
             this.cv_tpAccount.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.cv_dataViewAccount)).EndInit();
+            this.cv_tpPermissionSetLog.ResumeLayout(false);
+            this.panel42.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
@@ -3781,7 +3821,7 @@
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Panel panel36;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btn_ExtRobotSpeed;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
@@ -3874,14 +3914,14 @@
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.ComboBox cb_FfuSpeed;
         private System.Windows.Forms.Label lbl_FFUSpeed;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_ExtFFu;
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.ComboBox cb_IoFfu;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.ComboBox cb_IoDoor;
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btn_ExtRobotVac;
         private System.Windows.Forms.Label label46;
         private System.Windows.Forms.ComboBox cb_RbVac;
         private System.Windows.Forms.ComboBox cb_RbVacArm;
@@ -3903,6 +3943,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private System.Windows.Forms.TabPage cv_tpPermissionSetLog;
+        private System.Windows.Forms.Panel panel42;
+        private System.Windows.Forms.Button button4;
     }
 }
 

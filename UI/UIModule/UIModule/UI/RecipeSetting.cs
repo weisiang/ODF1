@@ -23,11 +23,11 @@ namespace UI
             cv_RecipeDataView.AutoGenerateColumns = false;
             LoadFlowName();
             InitFlowDescription();
-            UiForm.AddUiObjToEnableList(btn_Add, UserPermission.Engineer);
-            UiForm.AddUiObjToEnableList(btn_Modify, UserPermission.Engineer);
-            UiForm.AddUiObjToEnableList(btn_Del, UserPermission.Engineer);
-            UiForm.AddUiObjToEnableList(btn_CurRecipe, UserPermission.Engineer);
-            UiForm.AddUiObjToEnableList(cb_NeedGlass, UserPermission.Root);
+            UiForm.AddUiObjToEnableList(btn_Add , UiForm.enumGroup.Group4 );
+            UiForm.AddUiObjToEnableList(btn_Modify, UiForm.enumGroup.Group4);
+            UiForm.AddUiObjToEnableList(btn_Del, UiForm.enumGroup.Group4);
+            UiForm.AddUiObjToEnableList(btn_CurRecipe, UiForm.enumGroup.Group4);
+            UiForm.AddUiObjToEnableList(cb_NeedGlass, UiForm.enumGroup.Group4);
         }
         private void InitFlowDescription()
         {

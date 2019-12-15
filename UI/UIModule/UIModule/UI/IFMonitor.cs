@@ -39,6 +39,9 @@ namespace UI
             InitSinglaLabel();
             AddEqNameToComboBox();
             InitTimer();
+            UiForm.AddUiObjToEnableList(cv_BtUpForceCom, UiForm.enumGroup.Group4);
+            UiForm.AddUiObjToEnableList(cv_BtUpForceIni, UiForm.enumGroup.Group4);
+            UiForm.AddUiObjToEnableList(cv_btnReset, UiForm.enumGroup.Group4);
         }
         private void InitAddKxml()
         {

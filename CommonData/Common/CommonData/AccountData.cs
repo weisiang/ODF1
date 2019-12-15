@@ -6,7 +6,7 @@ using KgsCommon;
 
 namespace CommonData.HIRATA
 {
-    public enum UserPermission { None, OP = 1, Engineer, Root };
+    public enum UserPermission { None, OP1 = 1, Engineer, Root , OP2 , OP3 };
     public enum LoginResult { None, Successful, IdError, PwError, AlreadyLogin };
     public enum LogInOut { None, Login, LogOut, };
     public class AccountItem

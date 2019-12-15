@@ -26,8 +26,8 @@ namespace UI
 
             IniPermissionCombox();
             EnablePerssmionObj(false);
-            UiForm.AddUiObjToEnableList(cv_BtnSignUp, CommonData.HIRATA.UserPermission.Root);
-            UiForm.AddUiObjToEnableList(cv_BtnDel, CommonData.HIRATA.UserPermission.Root);
+            UiForm.AddUiObjToEnableList(cv_BtnSignUp, UiForm.enumGroup.Group6);
+            UiForm.AddUiObjToEnableList(cv_BtnDel, UiForm.enumGroup.Group6); 
         }
         private void EnablePerssmionObj(bool m_IsEnable)
         {
