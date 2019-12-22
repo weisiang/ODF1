@@ -3,3 +3,4 @@ D:\TODO\ODF\KgsMmfEventCenterDll\Debug\KgsMmfEventCenter.pdb
 D:\TODO\ODF\KgsMmfEventCenterDll\Debug\KgsCommonX64.dll
 D:\TODO\ODF\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenter.dll
 D:\TODO\ODF\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenter.pdb
+D:\TODO\ODF\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenterDll.csprojResolveAssemblyReference.cache

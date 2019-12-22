@@ -32,11 +32,11 @@ namespace UI
         private void InitFlowDescription()
         {
             UiForm.WriteLog(LogLevelType.NormalFunctionInOut, this.GetType().Name + "." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Enter);
-            cv_FlowDescription.Add(CommonData.HIRATA.OdfFlow.Flow1_1, "Wafer :  Port(LP5/LP6) -> Aligner -> Buffer -> SDP -> IJP -> VAS(Low)\n\n");
+            cv_FlowDescription.Add(CommonData.HIRATA.OdfFlow.Flow1_1, "Wafer :  Port(LP5/LP6) -> Aligner -> Buffer -> SDP -> IJP -> Aligner -> VAS(Low)\n\n");
             cv_FlowDescription[CommonData.HIRATA.OdfFlow.Flow1_1] += "Glass : Port(LP3/LP4) -> Aligner -> Buffer -> Flip -> VAS(Up)\n\n";
             cv_FlowDescription[CommonData.HIRATA.OdfFlow.Flow1_1] += "Combination : VAS(Low) -> UV -> Unload Port(ULD1/ULD2)";
 
-            cv_FlowDescription.Add(CommonData.HIRATA.OdfFlow.Flow1_2, "Wafer :  Port -> Aligner -> Buffer -> SDP -> Aligner -> IJP -> VAS(Low)\n\n");
+            cv_FlowDescription.Add(CommonData.HIRATA.OdfFlow.Flow1_2, "Wafer :  Port -> Aligner -> Buffer -> SDP -> Aligner -> IJP -> Aligner -> VAS(Low)\n\n");
             cv_FlowDescription[CommonData.HIRATA.OdfFlow.Flow1_2] += "Glass : Port -> Aligner -> Buffer -> Flip -> VAS(Up)\n\n";
             cv_FlowDescription[CommonData.HIRATA.OdfFlow.Flow1_2] += "Combination : VAS(Low) -> UV -> Unload Port";
 
@@ -47,16 +47,16 @@ namespace UI
             cv_FlowDescription.Add(CommonData.HIRATA.OdfFlow.Flow3, "Wafer :  Port(LP5/LP6) -> UV -> ULD");
 
             cv_FlowDescription.Add(CommonData.HIRATA.OdfFlow.FLow4_1, "Wafer :  Port(LP5/LP6) -> Aligner -> Buffer -> SDP ->\n");
-            cv_FlowDescription[CommonData.HIRATA.OdfFlow.FLow4_1] += "1: AOI(RP) -> SDP -> IJP -> VAS ->(Low)\n";
-            cv_FlowDescription[CommonData.HIRATA.OdfFlow.FLow4_1] += "2: AOI(OK) -> IJP -> VAS ->(Low)\n";
+            cv_FlowDescription[CommonData.HIRATA.OdfFlow.FLow4_1] += "1: AOI(RP) -> SDP -> IJP -> AlignerVAS ->(Low)\n";
+            cv_FlowDescription[CommonData.HIRATA.OdfFlow.FLow4_1] += "2: AOI(OK) -> IJP -> Aligner VAS ->(Low)\n";
             cv_FlowDescription[CommonData.HIRATA.OdfFlow.FLow4_1] += "3: IJP -> VAS ->(Low)\n\n";
             cv_FlowDescription[CommonData.HIRATA.OdfFlow.FLow4_1] += "Glass : Port(LP3/LP4) -> Aligner -> Buffer -> Flip -> VAS(Up)\n\n";
             cv_FlowDescription[CommonData.HIRATA.OdfFlow.FLow4_1] += "Combination : VAS(Low) -> UV -> Unload Port";
 
             cv_FlowDescription.Add(CommonData.HIRATA.OdfFlow.Flow4_2, "Wafer :  Port(LP5/LP6) -> Aligner -> Buffer -> SDP ->\n");
-            cv_FlowDescription[CommonData.HIRATA.OdfFlow.Flow4_2] += "1: AOI(RP) -> SDP -> Aligner -> IJP -> VAS ->(Low)\n";
+            cv_FlowDescription[CommonData.HIRATA.OdfFlow.Flow4_2] += "1: AOI(RP) -> SDP -> Aligner -> IJP -> Aligner -> VAS ->(Low)\n";
             cv_FlowDescription[CommonData.HIRATA.OdfFlow.Flow4_2] += "2: AOI(OK) -> IJP -> Aligner -> VAS ->(Low)\n";
-            cv_FlowDescription[CommonData.HIRATA.OdfFlow.Flow4_2] += "3: Aligner -> IJP -> VAS ->(Low)\n\n";
+            cv_FlowDescription[CommonData.HIRATA.OdfFlow.Flow4_2] += "3: Aligner -> IJP -> Aligner -> VAS ->(Low)\n\n";
             cv_FlowDescription[CommonData.HIRATA.OdfFlow.Flow4_2] += "Glass : Port(LP3/LP4) -> Aligner -> Buffer -> Flip -> VAS(Up)\n";
             cv_FlowDescription[CommonData.HIRATA.OdfFlow.Flow4_2] += "Combination : VAS(Low) -> UV -> Unload Port";
             UiForm.WriteLog(LogLevelType.NormalFunctionInOut, this.GetType().Name + "." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Leave);

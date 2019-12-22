@@ -1224,6 +1224,7 @@ namespace LGC
 
                             bool need_change_recipe = false;
                             int want_change_recipe = -1;
+                            log += "change recipe : " + tmp_recipe + " Cur recipe : " + LgcForm.cv_Recipes.PCurRecipeId + "\n";
                             if (tmp_recipe != Convert.ToInt32(LgcForm.cv_Recipes.PCurRecipeId))
                             {
                                 need_change_recipe = true;
@@ -1234,13 +1235,18 @@ namespace LGC
                                 Buffer buffer = LgcForm.GetBufferById(1);
                                 for (int j = 1; j <= CommonData.HIRATA.CommonStaticData.g_PortNumber; j++)
                                 {
+                                    if (j == job_port.cv_Data.PId) continue;
                                     Port port = LgcForm.GetPortById(j);
+                                    log += "port : " + port.cv_Data.PId + " status : " + port.PPortStatus + " foup status : " + port.PLotStatus + "\n";
                                     if (port.PPortStatus != PortStaus.LDRQ && port.PPortStatus != PortStaus.UDCM && port.PPortStatus != PortStaus.UDRQ &&
                                         port.cv_Data.PPortMode != PortMode.Unloader)
                                     {
                                         if (port.IsHasAnyDataAndSensor())
                                         {
                                             can_change_recipe = false;
+                                            string tmp3 = "Port : " + port.cv_Data.PId + " has data or sensor set can_change_recipe false\n";
+                                            LgcForm.ShowMsg(tmp3, true, false);
+                                            log += tmp3;
                                             break;
                                         }
                                     }
@@ -1250,6 +1256,14 @@ namespace LGC
                                     if (rb.IsBusy || aligner.IsHasAnyDataAndSensor() || buffer.IsHasAnyDataAndSensor() || rb.IsHasAnyDataAndSensor())
                                     {
                                         can_change_recipe = false;
+                                        string tmp4 = "Robot busy : " + rb.IsBusy + "\n";
+                                        tmp4 += "Robot busy : " + rb.IsBusy + "\n";
+                                        tmp4 += "aligner IsHasAnyDataAndSensor : " + aligner.IsHasAnyDataAndSensor() + "\n";
+                                        tmp4 += "buffer IsHasAnyDataAndSensor : " + buffer.IsHasAnyDataAndSensor() + "\n";
+                                        tmp4 += "rb IsHasAnyDataAndSensor : " + rb.IsHasAnyDataAndSensor() + "\n";
+                                        tmp4 += "set can_change_recipe false\n";
+                                        LgcForm.ShowMsg(tmp4, true, false);
+                                        log += tmp4;
                                     }
                                 }
                                 if (!can_change_recipe)
@@ -1290,6 +1304,12 @@ namespace LGC
                                         job_port.cv_Data.cv_IsWaitCancel = true;
                                         error = true;
                                     }
+                                }
+                                else
+                                {
+                                    job_port.cv_Data.PCurPPID = LgcForm.FindHightestPriorityPPID(job_port.cv_Id);
+                                    job_port.PLotStatus = LotStatus.WaitReserve;
+                                    log += "Set Port : " + job_port.cv_Id + " WaitReserve\n";
                                 }
                             }
                         }

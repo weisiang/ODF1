@@ -37,6 +37,7 @@ namespace LGC
         internal bool cv_VasLoadGlassBeforeUnload = false;
         internal bool cv_CheckFirstStepWhenPutGlass = false;
         internal bool cv_GetPutStandbyExceptVas = false;
+        internal bool cv_CheckEqDataLocalMode = false;
         //MMF
         internal static LGCController cv_MmfController = null;
 
@@ -2036,7 +2037,7 @@ namespace LGC
                 job = cv_RobotJobPath.Peek();
                 if (cv_RobotJobPath.Count >= 2)
                 {
-                    if (cv_RobotJobPath.ElementAt(1).PTarget == ActionTarget.Aligner)
+                    if( (cv_RobotJobPath.ElementAt(1).PTarget == ActionTarget.Aligner ) && (job.PTargetId != (int)EqId.IJP) )
                     {
                         Aligner aligner = GetAlignerById(1);
                         if (aligner.cv_Data.PPreAction != AlignerPreAction.WaitHome && aligner.cv_Data.PPreAction != AlignerPreAction.SetToAngle)
@@ -3263,7 +3264,17 @@ namespace LGC
                 cv_GetPutStandbyExceptVas = false;
                 WriteLog(LogLevelType.Detail, "Set cv_GetPutStandbyExceptVas : 0");
             }
-
+            //check eq data at local mode.
+            if (ini.ReadString("Config", "CheckEqDataLocalMode", "1").Trim() == "1")
+            {
+                cv_CheckEqDataLocalMode = true;
+                WriteLog(LogLevelType.Detail, "Set cv_CheckEqDataLocalMode : 1");
+            }
+            else
+            {
+                cv_CheckEqDataLocalMode = false;
+                WriteLog(LogLevelType.Detail, "Set cv_CheckEqDataLocalMode : 0");
+            }
 
         }
         //when the port can start process , use this this AddPortToProcessList function.
@@ -4754,22 +4765,27 @@ namespace LGC
                     rtn = false;
                 }
             }
-            int node_index = data.cv_Nods.FindIndex(x => x.PNodeId == 2);
-            if (node_index != -1)
+            if ((PSystemData.PSystemOnlineMode == OnlineMode.Control) ||
+                ((PSystemData.PSystemOnlineMode == OnlineMode.Offline) && cv_CheckEqDataLocalMode)
+                )
             {
-                int recipe = data.cv_Nods[node_index].cv_Recipe;
-                if (recipe != Convert.ToInt32(cv_Recipes.PCurRecipeId.Trim()))
+                int node_index = data.cv_Nods.FindIndex(x => x.PNodeId == 2);
+                if (node_index != -1)
                 {
-                    AlarmItem alarm = new AlarmItem();
-                    alarm.PCode = Alarmtable.InterfaceErrorGlassDataRecipeUnmatch.ToString();
-                    alarm.PLevel = AlarmLevele.Light;
-                    alarm.PMainDescription = "Interface GlassData Error Recipe Unmatch with EFEM!!!";
-                    alarm.PSubDescription = "EQ : " + m_Eq;
-                    alarm.PStatus = AlarmStatus.Occur;
-                    EditAlarm(alarm);
-                    ShowMsg(alarm.PMainDescription + "\nRecipe from EQ : " + recipe + "EFEM Cur. recipe : " + cv_Recipes.PCurRecipeId.Trim(), false, false);
-                    WriteLog(LogLevelType.Warning, alarm.PMainDescription + "\nRecipe from EQ : " + recipe + "EFEM Cur. recipe : " + cv_Recipes.PCurRecipeId.Trim());
-                    rtn = false;
+                    int recipe = data.cv_Nods[node_index].cv_Recipe;
+                    if (recipe != Convert.ToInt32(cv_Recipes.PCurRecipeId.Trim()))
+                    {
+                        AlarmItem alarm = new AlarmItem();
+                        alarm.PCode = Alarmtable.InterfaceErrorGlassDataRecipeUnmatch.ToString();
+                        alarm.PLevel = AlarmLevele.Light;
+                        alarm.PMainDescription = "Interface GlassData Error Recipe Unmatch with EFEM!!!";
+                        alarm.PSubDescription = "EQ : " + m_Eq;
+                        alarm.PStatus = AlarmStatus.Occur;
+                        EditAlarm(alarm);
+                        //ShowMsg(alarm.PMainDescription + "\nRecipe from EQ : " + recipe + "EFEM Cur. recipe : " + cv_Recipes.PCurRecipeId.Trim(), false, false);
+                        WriteLog(LogLevelType.Warning, alarm.PMainDescription + "\nRecipe from EQ : " + recipe + " EFEM Cur. recipe : " + cv_Recipes.PCurRecipeId.Trim());
+                        rtn = false;
+                    }
                 }
             }
             return rtn;
