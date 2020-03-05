@@ -1726,8 +1726,15 @@ namespace LGC
                     }
                     else if (aligner.cv_Data.PPreAction == AlignerPreAction.ReadOcr)
                     {
-                        robot.cv_Comm.SetOcrRead();
-                        aligner.cv_Data.PPreAction = AlignerPreAction.WaitReadOct;
+                        if (PSystemData.POcrMode == OCRMode.SkipRead)
+                        {
+                            aligner.cv_Data.PPreAction = AlignerPreAction.ToAngle;
+                        }
+                        else
+                        {
+                            robot.cv_Comm.SetOcrRead();
+                            aligner.cv_Data.PPreAction = AlignerPreAction.WaitReadOct;
+                        }
                     }
                     else if (aligner.cv_Data.PPreAction == AlignerPreAction.ToAngle)
                     {
