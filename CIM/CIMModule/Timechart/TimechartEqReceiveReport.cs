@@ -85,8 +85,31 @@ namespace CIM
                 CimForm.WriteLog(CommonData.HIRATA.LogLevelType.Detail, log);
 
                 cv_MemoryIoClient.SetBinaryLengthData(0x347B, tmp, 13, false);
-                cv_Timechart.SetTimeLock(this.cv_TimechartId, STEP_ID_WaitTm, cv_Tm);
-                JumpToStep(cv_TimechartId, STEP_ID_WaitTm);
+
+                int tmp_slot = cv_MemoryIoClient.GetPortValue(0x347B) & 0xff;
+                string tmp2 = cv_MemoryIoClient.GetBinaryLengthData(0x347E, 10, false);
+                log += "PLC id : " + tmp2 +  " PLC slot : " + tmp_slot;
+                if ((tmp2.Trim() != id.Trim()) || (tmp_slot != obj.PSlotNo))
+                {
+                    Queue<object> tmp_q = new Queue<object>();
+                    while (cv_Jobs.Count > 0)
+                    {
+                        tmp_q.Enqueue(cv_Jobs.Dequeue());
+                    }
+                    cv_Jobs.Clear();
+                    cv_Jobs.Enqueue(obj);
+                    while (tmp_q.Count > 0)
+                    {
+                        cv_Jobs.Enqueue(tmp_q.Dequeue());
+                    }
+                    log += "PLC id unmatch , Add Job";
+                    rtn = false;
+                }
+                else
+                {
+                    cv_Timechart.SetTimeLock(this.cv_TimechartId, STEP_ID_WaitTm, cv_Tm);
+                    JumpToStep(cv_TimechartId, STEP_ID_WaitTm);
+                }
             }
             catch (Exception ex)
             {

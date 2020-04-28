@@ -14,3 +14,11 @@ D:\TODO\ODF_Commond1001_UI2001_LGC2004_CIM2001\CommonData\bin\Debug\KgsMmfEventC
 D:\TODO\ODF_Commond1001_UI2001_LGC2004_CIM2001\CommonData\obj\Debug\CommonData.csprojResolveAssemblyReference.cache
 D:\TODO\ODF_Commond1001_UI2001_LGC2004_CIM2001\CommonData\obj\Debug\CommonData.dll
 D:\TODO\ODF_Commond1001_UI2001_LGC2004_CIM2001\CommonData\obj\Debug\CommonData.pdb
+D:\ODF_Commond1001_UI2002_LGC2005\CommonData\bin\Debug\CommonData.dll
+D:\ODF_Commond1001_UI2002_LGC2005\CommonData\bin\Debug\CommonData.pdb
+D:\ODF_Commond1001_UI2002_LGC2005\CommonData\bin\Debug\KgsCommonX64.dll
+D:\ODF_Commond1001_UI2002_LGC2005\CommonData\bin\Debug\KgsMmfEventCenter.dll
+D:\ODF_Commond1001_UI2002_LGC2005\CommonData\bin\Debug\KgsMmfEventCenter.pdb
+D:\ODF_Commond1001_UI2002_LGC2005\CommonData\obj\Debug\CommonData.csprojResolveAssemblyReference.cache
+D:\ODF_Commond1001_UI2002_LGC2005\CommonData\obj\Debug\CommonData.dll
+D:\ODF_Commond1001_UI2002_LGC2005\CommonData\obj\Debug\CommonData.pdb

@@ -9,3 +9,8 @@ D:\TODO\ODF_Commond1001_UI2001_LGC2004_CIM2001\KgsMmfEventCenterDll\Debug\KgsMmf
 D:\TODO\ODF_Commond1001_UI2001_LGC2004_CIM2001\KgsMmfEventCenterDll\Debug\KgsCommonX64.dll
 D:\TODO\ODF_Commond1001_UI2001_LGC2004_CIM2001\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenter.dll
 D:\TODO\ODF_Commond1001_UI2001_LGC2004_CIM2001\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenter.pdb
+D:\ODF_Commond1001_UI2002_LGC2005\KgsMmfEventCenterDll\Debug\KgsMmfEventCenter.dll
+D:\ODF_Commond1001_UI2002_LGC2005\KgsMmfEventCenterDll\Debug\KgsMmfEventCenter.pdb
+D:\ODF_Commond1001_UI2002_LGC2005\KgsMmfEventCenterDll\Debug\KgsCommonX64.dll
+D:\ODF_Commond1001_UI2002_LGC2005\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenter.dll
+D:\ODF_Commond1001_UI2002_LGC2005\KgsMmfEventCenterDll\obj\Debug\KgsMmfEventCenter.pdb
