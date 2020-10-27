@@ -1375,7 +1375,8 @@ namespace LGC
                 job_port.PLDRQTime = SysUtils.Now();
                 job_port.cv_Data.PPortHasCst = PortHasCst.Empty;
                 //SysUtils.Sleep(1000);
-                job_port.cv_Data.Clear();
+                job_port.cv_Data.ClearNotIncludeFoupId();
+                //job_port.cv_Data.Clear();
                 //job_port.cv_Data.PPortStatus = PortStaus.LDRQ;
                 job_port.SendDataViaMmf();
                 cv_Comm.SetLoadUnloadLed(false, SignalTowerControl.Off, m_Command.cv_DeviceId);

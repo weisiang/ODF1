@@ -36,7 +36,7 @@ namespace UI
             cv_FlowDescription[CommonData.HIRATA.OdfFlow.Flow1_1] += "Glass : Port(LP3/LP4) -> Aligner -> Buffer -> Flip -> VAS(Up)\n\n";
             cv_FlowDescription[CommonData.HIRATA.OdfFlow.Flow1_1] += "Combination : VAS(Low) -> UV -> Unload Port(ULD1/ULD2)";
 
-            cv_FlowDescription.Add(CommonData.HIRATA.OdfFlow.Flow1_2, "Wafer :  Port -> Aligner -> Buffer -> SDP -> Aligner -> IJP -> Aligner -> VAS(Low)\n\n");
+            cv_FlowDescription.Add(CommonData.HIRATA.OdfFlow.Flow1_2, "Wafer :  Port -> Aligner -> Buffer -> SDP -> Aligner -> IJP -> VAS(Low)\n\n");
             cv_FlowDescription[CommonData.HIRATA.OdfFlow.Flow1_2] += "Glass : Port -> Aligner -> Buffer -> Flip -> VAS(Up)\n\n";
             cv_FlowDescription[CommonData.HIRATA.OdfFlow.Flow1_2] += "Combination : VAS(Low) -> UV -> Unload Port";
 

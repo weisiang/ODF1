@@ -265,6 +265,17 @@ namespace CommonData.HIRATA
             cv_IsWaitAbort = false;
             cv_IsWaitCancel = false;
         }
+        public void ClearNotIncludeFoupId()
+        {
+            ClearAllGlassData();
+            //PLotId = "";
+            PFoupSeq = 0;
+            PWorkCount = 0;
+            PWaitUnload = false;
+            cv_IsWaitAbort = false;
+            cv_IsWaitCancel = false;
+        }
+
         public bool HasDataAndSensor(int m_Slot)
         {
             bool rtn = false;

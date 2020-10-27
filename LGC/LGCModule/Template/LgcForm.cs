@@ -3543,6 +3543,7 @@ namespace LGC
                     if (diff > 2000)
                     {
                         job_port.PPortStatus = PortStaus.LDRQ;
+                        job_port.cv_Data.Clear();
                         job_port.PLDRQTime = SysUtils.Now();
                     }
                     else if (diff < 0)
