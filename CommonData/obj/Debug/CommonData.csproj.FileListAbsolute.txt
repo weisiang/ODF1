@@ -30,3 +30,11 @@ D:\TODO\ODF_Modify_BC_Fetch_miss_CIM_2.0.0.2\CommonData\bin\Debug\KgsMmfEventCen
 D:\TODO\ODF_Modify_BC_Fetch_miss_CIM_2.0.0.2\CommonData\obj\Debug\CommonData.csprojResolveAssemblyReference.cache
 D:\TODO\ODF_Modify_BC_Fetch_miss_CIM_2.0.0.2\CommonData\obj\Debug\CommonData.dll
 D:\TODO\ODF_Modify_BC_Fetch_miss_CIM_2.0.0.2\CommonData\obj\Debug\CommonData.pdb
+C:\Users\Allen\Desktop\ODF\ODF_Modify_CleanFoupWhenLdrqAndFlowDescription\CommonData\bin\Debug\CommonData.dll
+C:\Users\Allen\Desktop\ODF\ODF_Modify_CleanFoupWhenLdrqAndFlowDescription\CommonData\bin\Debug\CommonData.pdb
+C:\Users\Allen\Desktop\ODF\ODF_Modify_CleanFoupWhenLdrqAndFlowDescription\CommonData\bin\Debug\KgsCommonX64.dll
+C:\Users\Allen\Desktop\ODF\ODF_Modify_CleanFoupWhenLdrqAndFlowDescription\CommonData\bin\Debug\KgsMmfEventCenter.dll
+C:\Users\Allen\Desktop\ODF\ODF_Modify_CleanFoupWhenLdrqAndFlowDescription\CommonData\bin\Debug\KgsMmfEventCenter.pdb
+C:\Users\Allen\Desktop\ODF\ODF_Modify_CleanFoupWhenLdrqAndFlowDescription\CommonData\obj\Debug\CommonData.csprojResolveAssemblyReference.cache
+C:\Users\Allen\Desktop\ODF\ODF_Modify_CleanFoupWhenLdrqAndFlowDescription\CommonData\obj\Debug\CommonData.dll
+C:\Users\Allen\Desktop\ODF\ODF_Modify_CleanFoupWhenLdrqAndFlowDescription\CommonData\obj\Debug\CommonData.pdb

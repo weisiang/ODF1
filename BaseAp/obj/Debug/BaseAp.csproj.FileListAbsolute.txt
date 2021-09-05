@@ -50,3 +50,16 @@ D:\TODO\ODF_Modify_BC_Fetch_miss_CIM_2.0.0.2\BaseAp\obj\Debug\BaseAp.Properties.
 D:\TODO\ODF_Modify_BC_Fetch_miss_CIM_2.0.0.2\BaseAp\obj\Debug\BaseAp.csproj.GenerateResource.Cache
 D:\TODO\ODF_Modify_BC_Fetch_miss_CIM_2.0.0.2\BaseAp\obj\Debug\BaseAp.exe
 D:\TODO\ODF_Modify_BC_Fetch_miss_CIM_2.0.0.2\BaseAp\obj\Debug\BaseAp.pdb
+C:\Users\Allen\Desktop\ODF\ODF_Modify_CleanFoupWhenLdrqAndFlowDescription\BaseAp\bin\Debug\BaseAp.exe
+C:\Users\Allen\Desktop\ODF\ODF_Modify_CleanFoupWhenLdrqAndFlowDescription\BaseAp\bin\Debug\BaseAp.pdb
+C:\Users\Allen\Desktop\ODF\ODF_Modify_CleanFoupWhenLdrqAndFlowDescription\BaseAp\bin\Debug\CommonData.dll
+C:\Users\Allen\Desktop\ODF\ODF_Modify_CleanFoupWhenLdrqAndFlowDescription\BaseAp\bin\Debug\KgsCommonX64.dll
+C:\Users\Allen\Desktop\ODF\ODF_Modify_CleanFoupWhenLdrqAndFlowDescription\BaseAp\bin\Debug\KgsMmfEventCenter.dll
+C:\Users\Allen\Desktop\ODF\ODF_Modify_CleanFoupWhenLdrqAndFlowDescription\BaseAp\bin\Debug\CommonData.pdb
+C:\Users\Allen\Desktop\ODF\ODF_Modify_CleanFoupWhenLdrqAndFlowDescription\BaseAp\bin\Debug\KgsMmfEventCenter.pdb
+C:\Users\Allen\Desktop\ODF\ODF_Modify_CleanFoupWhenLdrqAndFlowDescription\BaseAp\obj\Debug\BaseAp.csprojResolveAssemblyReference.cache
+C:\Users\Allen\Desktop\ODF\ODF_Modify_CleanFoupWhenLdrqAndFlowDescription\BaseAp\obj\Debug\BaseAp.BaseForm.resources
+C:\Users\Allen\Desktop\ODF\ODF_Modify_CleanFoupWhenLdrqAndFlowDescription\BaseAp\obj\Debug\BaseAp.Properties.Resources.resources
+C:\Users\Allen\Desktop\ODF\ODF_Modify_CleanFoupWhenLdrqAndFlowDescription\BaseAp\obj\Debug\BaseAp.csproj.GenerateResource.Cache
+C:\Users\Allen\Desktop\ODF\ODF_Modify_CleanFoupWhenLdrqAndFlowDescription\BaseAp\obj\Debug\BaseAp.exe
+C:\Users\Allen\Desktop\ODF\ODF_Modify_CleanFoupWhenLdrqAndFlowDescription\BaseAp\obj\Debug\BaseAp.pdb
