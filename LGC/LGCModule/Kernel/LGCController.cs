@@ -208,6 +208,11 @@ namespace LGC
                     LgcForm.cv_Alarms.DelAlarm(obj.cv_AlarmList[i]);
                 }
             }
+
+            if (!LgcForm.cv_Alarms.cv_AlarmList.Any())
+            {
+                LgcForm.AddBuzzerCommand(false);
+            }
             WriteLog(LogLevelType.NormalFunctionInOut, this.GetType().Name + "." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Leave);
         }
         protected override void ProcessAlarmAction(string m_SourceModule, int m_Type, string m_MessageId, string m_RequestNotifyMessageId, uint m_Ticket, Object m_Object)
@@ -527,6 +532,7 @@ namespace LGC
                     APIEnum.RobotCommand robot_command = APIEnum.RobotCommand.None;
                     if (obj.PAction == CommonData.HIRATA.RobotAction.Put) robot_command = APIEnum.RobotCommand.WaferPut;
                     else if (obj.PAction == CommonData.HIRATA.RobotAction.Get) robot_command = APIEnum.RobotCommand.WaferGet;
+                    else if (obj.PAction == CommonData.HIRATA.RobotAction.TopPut) robot_command = APIEnum.RobotCommand.TopWaferPut;
                     /*
                 else if (obj.PAction == CommonData.HIRATA.RobotAction.PutWait) robot_command = APIEnum.RobotCommand.PutStandby;
                 else if (obj.PAction == CommonData.HIRATA.RobotAction.GetWait) robot_command = APIEnum.RobotCommand.GetStandby;
@@ -563,7 +569,7 @@ namespace LGC
                     {
                         tmp_job = new RobotJob(obj.RobotId, CommonData.HIRATA.RobotArm.rabNone, obj.Source.PArm, obj.PAction, obj.Source.PTarget, obj.Source.Id, obj.Source.Slot);
                     }
-                    else if (obj.PAction == CommonData.HIRATA.RobotAction.Put)// || obj.PAction == CommonData.HIRATA.RobotAction.PutWait || obj.PAction == CommonData.HIRATA.RobotAction.TopPutWait
+                    else if (obj.PAction == CommonData.HIRATA.RobotAction.Put || obj.PAction == CommonData.HIRATA.RobotAction.TopPut)// || obj.PAction == CommonData.HIRATA.RobotAction.PutWait || obj.PAction == CommonData.HIRATA.RobotAction.TopPutWait
                     //|| obj.PAction == CommonData.HIRATA.RobotAction.TopPut)
                     {
                         tmp_job = new RobotJob(obj.RobotId, obj.Source.PArm, CommonData.HIRATA.RobotArm.rabNone, obj.PAction, obj.Source.PTarget, obj.Source.Id, obj.Source.Slot);
@@ -1018,10 +1024,10 @@ namespace LGC
             Global.Controller.SendMmfReplyObject(typeof(CommonData.HIRATA.MDApiCommand).Name, obj, m_Ticket, typeof(CommonData.HIRATA.MDApiCommand).Name, KParseObjToXmlPropertyType.Field);
             int port_id = obj.CommandData.cv_DeviceId;
             Port port = LgcForm.GetPortById(port_id);
-            if(obj.CommandData.PCommandType == APIEnum.CommandType.Common && obj.CommandData.PCommonCommand == APIEnum.CommonCommand.Home &&
+            if (obj.CommandData.PCommandType == APIEnum.CommandType.Common && obj.CommandData.PCommonCommand == APIEnum.CommonCommand.Home &&
                 obj.CommandData.PCommandDevice == APIEnum.CommnadDevice.P) //sForce)
             {
-                if(LgcForm.PSystemData.PSystemOnlineMode == OnlineMode.Control)
+                if (LgcForm.PSystemData.PSystemOnlineMode == OnlineMode.Control)
                 {
                     if (port.PLotStatus == LotStatus.Process)
                     {
@@ -1033,7 +1039,7 @@ namespace LGC
                         port.cv_Data.cv_IsWaitAbort = true;
                         //port.PLotStatus = LotStatus.Cancel;
                     }
-                    LgcForm.ShowMsg("[CIM ON] Chnage to auto after manual unload!!!" , false , false);
+                    LgcForm.ShowMsg("[CIM ON] Chnage to auto after manual unload!!!", false, false);
                     return;
                 }
                 else
@@ -1057,7 +1063,7 @@ namespace LGC
                     port.PPortStatus = PortStaus.UDRQ;
                 }
             }
-            else if(obj.CommandData.PCommandType == APIEnum.CommandType.Robot && obj.CommandData.PRobotCommand == APIEnum.RobotCommand.SetRobotSpeed )
+            else if (obj.CommandData.PCommandType == APIEnum.CommandType.Robot && obj.CommandData.PRobotCommand == APIEnum.RobotCommand.SetRobotSpeed)
             {
                 if (LgcForm.PSystemData.POperationMode != OperationMode.Manual)
                 {
@@ -1066,7 +1072,7 @@ namespace LGC
                 }
                 LgcForm.GetRobotById(1).cv_WaitRobotSpeed = Convert.ToInt16(obj.CommandData.cv_ParaList[0]);
             }
-            else if(obj.CommandData.PCommandType == APIEnum.CommandType.IO && obj.CommandData.PIoCommand == APIEnum.IoCommand.SetFFUVoltage )
+            else if (obj.CommandData.PCommandType == APIEnum.CommandType.IO && obj.CommandData.PIoCommand == APIEnum.IoCommand.SetFFUVoltage)
             {
                 if (LgcForm.PSystemData.POperationMode != OperationMode.Manual)
                 {
@@ -1074,6 +1080,15 @@ namespace LGC
                     return;
                 }
                 LgcForm.GetRobotById(1).cv_WaitFfuSpeed = Convert.ToInt16(obj.CommandData.cv_ParaList[0]);
+            }
+            else if (obj.CommandData.PCommandType == APIEnum.CommandType.IO && obj.CommandData.PIoCommand == APIEnum.IoCommand.Buzzer)  //Ref20230421 Tommy Add
+            {
+                //LgcForm.GetRobotById(1).cv_Comm.SetRobotCommonAction(obj.CommandData);
+                if (obj.CommandData.cv_ParaList[0] == "0")
+                {
+                    LgcForm.AddBuzzerCommand(false);
+                }
+                return;
             }
             if (LgcForm.PSystemData.POperationMode != OperationMode.Manual)
             {
@@ -1784,7 +1799,7 @@ namespace LGC
                     LgcForm.ShowMsg("Robot has data or sensor , please check", true, false);
                 }
             }
-            else if ((m_Action == CommonData.HIRATA.RobotAction.Put))// || (m_Action == CommonData.HIRATA.RobotAction.PutGetAligner))
+            else if ((m_Action == CommonData.HIRATA.RobotAction.Put || m_Action == CommonData.HIRATA.RobotAction.TopPut))// || (m_Action == CommonData.HIRATA.RobotAction.PutGetAligner))
             {
                 if (robot.cv_Data.GlassDataMap[(int)m_Arm].PHasSensor && robot.cv_Data.GlassDataMap[(int)m_Arm].PHasData)
                 {
@@ -1845,7 +1860,7 @@ namespace LGC
         bool CheckTargetCanAccess(CommonData.HIRATA.ActionTarget m_Target, CommonData.HIRATA.RobotAction m_Action, int m_Id, int m_Slot)
         {
             bool rtn = false;
-            if ((m_Action == CommonData.HIRATA.RobotAction.Put))// || (m_Action == CommonData.HIRATA.RobotAction.PutGetAligner))// || m_Action == CommonData.HIRATA.RobotAction.TopPut)
+            if ((m_Action == CommonData.HIRATA.RobotAction.Put || m_Action == CommonData.HIRATA.RobotAction.TopPut))// || (m_Action == CommonData.HIRATA.RobotAction.PutGetAligner))// || m_Action == CommonData.HIRATA.RobotAction.TopPut)
             {
                 switch (m_Target)
                 {

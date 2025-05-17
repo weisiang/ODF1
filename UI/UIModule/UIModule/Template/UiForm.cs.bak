@@ -22,8 +22,13 @@ namespace UI
 {
     public partial class UiForm : BaseForm
     {
+        public enum enumGroup { All = -1 , Group1 = 0, Group2, Group3, Group4, Group5, Group6 };
+        public static KXmlItem cv_PermissionGroupsXml = null;
+        PermissionSetting cv_PermissionSetting = new PermissionSetting();
         KDateTime cv_FlashTime = SysUtils.Now();
-        public static Dictionary<Control, UserPermission> cv_AllUiObj = new Dictionary<Control, UserPermission>();
+        public static Dictionary<CommonData.HIRATA.UserPermission, List<int>> cv_PermissionGroups = new Dictionary<UserPermission, List<int>>();
+        public static Dictionary<enumGroup, List<Control>> cv_GroupObjs = new Dictionary<enumGroup, List<Control>>();
+        //public static Dictionary<Control, UserPermission> cv_AllUiObj = new Dictionary<Control, UserPermission>();
         public static Dictionary<EqGifTimeChartId, KeyValuePair<int, string>> cv_TimeChartStep = new Dictionary<EqGifTimeChartId, KeyValuePair<int, string>>();
         //UI
         public static UiGlassDataOperator cv_GlassDataForm = new UiGlassDataOperator(15);
@@ -79,13 +84,40 @@ namespace UI
             this.cv_AlarmDataView.AutoGenerateColumns = false;
             this.cv_AlarmDataView.AutoGenerateColumns = false;
 
-            // add ui to control check permission.
-            AddUiObjToEnableList(lbl_RobotStatus, UserPermission.Root);
-            //AddUiObjToEnableList(cv_OntMode, UserPermission.Root);
-            AddUiObjToEnableList(btn_pos, UserPermission.Engineer);
-            AddUiObjToEnableList(btn_Exit, UserPermission.Engineer);
+            this.cv_AlarmHView.AutoGenerateColumns = false;
+            this.cv_AlarmHView.AutoGenerateColumns = false;
 
+            AddUiObjToEnableList(cv_btnSelectMode, enumGroup.Group2);
+            AddUiObjToEnableList(btn_ReIni, enumGroup.Group1);
+            AddUiObjToEnableList(btn_TimeOut, enumGroup.Group4);
+            AddUiObjToEnableList(btn_CopyLogs, enumGroup.Group3);
+            AddUiObjToEnableList(btn_RecipeCheck, enumGroup.Group3);
+            AddUiObjToEnableList(btn_OcrMode, enumGroup.Group3);
+            AddUiObjToEnableList(btn_Exit, enumGroup.Group3);
+            AddUiObjToEnableList(lbl_RobotStatus, enumGroup.Group2);
+            AddUiObjToEnableList(cv_SystemAuto, enumGroup.Group2);
+            //AddUiObjToEnableList(cv_AutoJob, enumGroup.Group2);
+            AddUiObjToEnableList(btn_resetAllAlarm, enumGroup.Group1);
+            AddUiObjToEnableList(btn_buzzerOff, enumGroup.Group1);
 
+            AddUiObjToEnableList(bt_RobotExe, enumGroup.Group5);
+            AddUiObjToEnableList(bt_PortExe, enumGroup.Group5);
+            AddUiObjToEnableList(bt_AlignerExe, enumGroup.Group5);
+            AddUiObjToEnableList(bt_IoExe, enumGroup.Group5);
+            AddUiObjToEnableList(btn_ExeApiCommand, enumGroup.Group5);
+            AddUiObjToEnableList(btn_ExeCommonCommand, enumGroup.Group5);
+            AddUiObjToEnableList(btn_ExeOcrCommand, enumGroup.Group5);
+            AddUiObjToEnableList(btn_ExtRobotSpeed, enumGroup.Group5);
+            AddUiObjToEnableList(btn_ExtFFu, enumGroup.Group5);
+            AddUiObjToEnableList(btn_ExtRobotVac, enumGroup.Group5);
+            AddUiObjToEnableList(btn_pos, enumGroup.Group6);
+
+            cv_PermissionSetting.Dock = DockStyle.Fill;
+            cv_PermissionGroupsXml = new KXmlItem();
+            cv_PermissionGroupsXml.LoadFromFile(CommonData.HIRATA.CommonStaticData.g_SysPermissionGroupFile);
+            InitPermissionGroups();
+            cv_PermissionSetting.LoadFromSetting();
+            cv_tpPermissionSetLog.Controls.Add(cv_PermissionSetting);
 
             ModuleInit();
             InitLogPage();
@@ -129,7 +161,30 @@ namespace UI
             CallOtherModule();
             initTimer();
             cv_Timer.Start();
+        }
+        private void AddPermissionGroupObj()
+        {
 
+        }
+        private void InitPermissionGroups()
+        {
+            AddListToPermissionGroup("Root", UserPermission.Root);
+            AddListToPermissionGroup("Engineer", UserPermission.Engineer);
+            AddListToPermissionGroup("OP1", UserPermission.OP1);
+            AddListToPermissionGroup("OP2", UserPermission.OP2);
+            AddListToPermissionGroup("OP3", UserPermission.OP3);
+        }
+        private void AddListToPermissionGroup(string m_Group , CommonData.HIRATA.UserPermission m_Permission)
+        {
+            List<int> tmp = new List<int>();
+            for (int i = 1; i <= 6; i++)
+            {
+                if (UiForm.cv_PermissionGroupsXml.ItemsByName[m_Group].Attributes["Group" + i.ToString()].Trim() == "1")
+                {
+                    tmp.Add(i);
+                }
+            }
+            cv_PermissionGroups[m_Permission] = tmp;
         }
         private void initTimer()
         {
@@ -173,6 +228,7 @@ namespace UI
             {
                 lbl_AccountPm.Text = "";
                 lbl_AccountId.Text = "";
+                cv_tcBar.SelectedIndex = 0;
             }
             WriteLog(LogLevelType.NormalFunctionInOut, CommonData.HIRATA.CommonStaticData.__FUN(), CommonData.HIRATA.FunInOut.Enter);
         }
@@ -191,12 +247,52 @@ namespace UI
         }
         #endregion
 
-        public static void AddUiObjToEnableList(Control m_Control, UserPermission m_Permission)
+        //public static void AddUiObjToEnableList(Control m_Control, UserPermission m_Permission)
+        public static void AddUiObjToEnableList(Control m_Control, enumGroup m_GroupId)
         {
+            if (cv_GroupObjs.Count == 0)
+            {
+                cv_GroupObjs.Add(enumGroup.Group1, new List<Control>());
+                cv_GroupObjs.Add(enumGroup.Group2, new List<Control>());
+                cv_GroupObjs.Add(enumGroup.Group3, new List<Control>());
+                cv_GroupObjs.Add(enumGroup.Group4, new List<Control>());
+                cv_GroupObjs.Add(enumGroup.Group5, new List<Control>());
+                cv_GroupObjs.Add(enumGroup.Group6, new List<Control>());
+                cv_GroupObjs.Add(enumGroup.All, new List<Control>());
+            }
+            switch (m_GroupId)
+            {
+                case enumGroup.Group1:
+                    cv_GroupObjs[enumGroup.Group1].Add(m_Control);
+                    cv_GroupObjs[enumGroup.All].Add(m_Control);
+                    break;
+                case enumGroup.Group2:
+                    cv_GroupObjs[enumGroup.Group2].Add(m_Control);
+                    cv_GroupObjs[enumGroup.All].Add(m_Control);
+                    break;
+                case enumGroup.Group3:
+                    cv_GroupObjs[enumGroup.Group3].Add(m_Control);
+                    cv_GroupObjs[enumGroup.All].Add(m_Control);
+                    break;
+                case enumGroup.Group4:
+                    cv_GroupObjs[enumGroup.Group4].Add(m_Control);
+                    cv_GroupObjs[enumGroup.All].Add(m_Control);
+                    break;
+                case enumGroup.Group5:
+                    cv_GroupObjs[enumGroup.Group5].Add(m_Control);
+                    cv_GroupObjs[enumGroup.All].Add(m_Control);
+                    break;
+                case enumGroup.Group6:
+                    cv_GroupObjs[enumGroup.Group6].Add(m_Control);
+                    cv_GroupObjs[enumGroup.All].Add(m_Control);
+                    break;
+            }
+            /*
             if (!cv_AllUiObj.ContainsKey(m_Control))
             {
                 cv_AllUiObj.Add(m_Control, m_Permission);
             }
+            */
         }
         private void OnControllerEvent(string m_Id, object obj)
         {
@@ -331,8 +427,8 @@ namespace UI
 
             foreach (var item in target_list)
             {
-                if (!Regex.Match(item.ToString(), @"none|both" , RegexOptions.IgnoreCase).Success)
-                cb_RobotActionArm.Items.Add(item.ToString());
+                if (!Regex.Match(item.ToString(), @"none|both", RegexOptions.IgnoreCase).Success)
+                    cb_RobotActionArm.Items.Add(item.ToString());
             }
 
             for (int i = 1; i <= CommonData.HIRATA.CommonStaticData.g_PortNumber; i++)
@@ -430,6 +526,23 @@ namespace UI
                     cb_RobotActionTargetSlot.Items.Add(i.ToString());
                 }
             }
+
+            if (Regex.Match(id, @"UV", RegexOptions.IgnoreCase).Success && Regex.Match(cb_RobotActionArm.Text, @"Down", RegexOptions.IgnoreCase).Success)
+            {
+                if (!cb_RobotActionName.Items.Contains(RobotAction.TopPut.ToString()))
+                {
+                    cb_RobotActionName.Items.Add(RobotAction.TopPut.ToString());
+                }
+            }
+            else
+            {
+                if (cb_RobotActionName.Items.Contains(RobotAction.TopPut.ToString()))
+                {
+                    cb_RobotActionName.Items.Remove(RobotAction.TopPut.ToString());
+                }
+            }
+
+
         }
         private void bt_RobotExe_Click(object sender, EventArgs e)
         {
@@ -460,7 +573,7 @@ namespace UI
                     return;
                 }
                 Double tmp_deg = 0.0;
-                if( (string.IsNullOrEmpty(cb_robotActionDeg.Text)) || (!Double.TryParse(cb_robotActionDeg.Text , out tmp_deg )))
+                if ((string.IsNullOrEmpty(cb_robotActionDeg.Text)) || (!Double.TryParse(cb_robotActionDeg.Text, out tmp_deg)))
                 {
                     CommonStaticData.PopForm("Use Get Put Aligner function please select correct Degreen.", true, false);
                     return;
@@ -511,24 +624,33 @@ namespace UI
             }
             if (arg_action == RobotAction.Exchange)
             {
-                if(arg_tar != ActionTarget.Eq)
+                if (arg_tar != ActionTarget.Eq)
                 {
                     CommonStaticData.PopForm("Exchange only EQ can use.", true, false);
                     return;
                 }
             }
+            if (arg_action == RobotAction.TopPut)
+            {
+                if (id != (int)EqId.UV_1|| id != (int)EqId.UV_2)
+                {
+                    CommonStaticData.PopForm("TopPut only UV can use.", true, false);
+                    return;
+                }
+            }
+
 
             log += "Action : " + arg_action.ToString() + "Robot id : " + robot_id + " Arm : " + arg_arm.ToString()
                 + " Target : " + arg_tar.ToString() + " Target Id : " + id + " Slot : " + slot + Environment.NewLine;
 
             if ((arg_tar == ActionTarget.Eq) || (arg_tar == ActionTarget.Aligner && arg_action == RobotAction.PutGetAligner))
             {
-                if(arg_tar == ActionTarget.Aligner && arg_action == RobotAction.PutGetAligner)
+                if (arg_tar == ActionTarget.Aligner && arg_action == RobotAction.PutGetAligner)
                 {
-                    UIController.g_Controller.SendRobotActionReq(robot_id, arg_action, arg_arm, arg_tar, id, slot, true , true , cb_robotActionDeg.Text.Trim());
+                    UIController.g_Controller.SendRobotActionReq(robot_id, arg_action, arg_arm, arg_tar, id, slot, true, true, cb_robotActionDeg.Text.Trim());
                 }
                 else
-                UIController.g_Controller.SendRobotActionReq(robot_id, arg_action, arg_arm, arg_tar, id, slot, true);
+                    UIController.g_Controller.SendRobotActionReq(robot_id, arg_action, arg_arm, arg_tar, id, slot, true);
             }
             else
             {
@@ -932,32 +1054,32 @@ cb_PortActionSlotType
                                 }
                                 Process process = new Process();
                                 bool find = false;
-                                    if (item_pair.Key == "CIM")
+                                if (item_pair.Key == "CIM")
+                                {
+                                    Process[] processes = Process.GetProcesses();
+                                    for (int i = 0; i < processes.Length; i++)
                                     {
-                                        Process[] processes = Process.GetProcesses();
-                                        for (int i = 0; i < processes.Length; i++)
+                                        if (processes[i].ProcessName == "FDCIM")
                                         {
-                                            if (processes[i].ProcessName == "FDCIM")
-                                            {
-                                                find = true;
-                                                return;
-                                            }
-                                        }
-                                        if(!find)
-                                        {
-                                            process.StartInfo.FileName = cur_path3 + @"\..\..\..\..\CIM\\CIMModule\Debug\FDCIM.exe";
-                                            process.Start();
-                                            WriteLog(LogLevelType.Error, "Re-open CIM module");
-                                            CommonStaticData.PopForm("Re-open CIM module", false, false);
+                                            find = true;
+                                            return;
                                         }
                                     }
-                                    /*
-                                else if(item_pair.Key == "LGC")
-                                {
-                                    process.StartInfo.FileName = @"C:\Program Files\7-zip\7z.exe";
-
+                                    if (!find)
+                                    {
+                                        process.StartInfo.FileName = cur_path3 + @"\..\..\..\..\CIM\\CIMModule\Debug\FDCIM.exe";
+                                        process.Start();
+                                        WriteLog(LogLevelType.Error, "Re-open CIM module");
+                                        CommonStaticData.PopForm("Re-open CIM module", false, false);
+                                    }
                                 }
-                                     * */
+                                /*
+                            else if(item_pair.Key == "LGC")
+                            {
+                                process.StartInfo.FileName = @"C:\Program Files\7-zip\7z.exe";
+
+                            }
+                                 * */
                             }
                         }
                         else
@@ -1049,8 +1171,13 @@ cb_PortActionSlotType
             string log = "User press Change to CIM OFF mode" + Environment.NewLine;
             if (UiForm.PSystemData.PSystemOnlineMode == OnlineMode.Control)
             {
+                log += "Send change to CIM off msg";
                 UIController.g_Controller.SendOnlineReq(MmfEventClientEventType.etRequest, OnlineMode.Offline, false);
                 LockOnlineButton(true);
+            }
+            else
+            {
+                log += "Cur CIM mode : " + UiForm.PSystemData.PSystemOnlineMode.ToString() + " reject user ask.";
             }
             WriteLog(LogLevelType.General, log);
             //WriteNormalOut
@@ -1061,8 +1188,13 @@ cb_PortActionSlotType
             string log = "User press Change to CIM ON mode" + Environment.NewLine;
             if (UiForm.PSystemData.PSystemOnlineMode == OnlineMode.Offline)
             {
+                log += "Send change to CIM ON msg";
                 UIController.g_Controller.SendOnlineReq(MmfEventClientEventType.etRequest, OnlineMode.Control, false);
                 LockOnlineButton(true);
+            }
+            else
+            {
+                log += "Cur CIM mode : " + UiForm.PSystemData.PSystemOnlineMode.ToString() + " reject user ask.";
             }
             WriteLog(LogLevelType.General, log);
             //WriteNormalOut
@@ -1083,7 +1215,7 @@ cb_PortActionSlotType
                 CommonStaticData.PopForm("Can't initialize buz Robot disconnect!!!", false, false);
                 return;
             }
-            if(PSystemData.PRobotInline != EquipmentInlineMode.Remote && PSystemData.PRobotInline != EquipmentInlineMode.Local)
+            if (PSystemData.PRobotInline != EquipmentInlineMode.Remote && PSystemData.PRobotInline != EquipmentInlineMode.Local)
             {
                 CommonStaticData.PopForm("Can't initialize buz Robot inline mode Error , maybe re-start program can solve!!!", false, false);
                 return;
@@ -1785,7 +1917,7 @@ cb_PortActionSlotType
             log += "Initialize OK  : " + obj.PInitaiizeOk.ToString() + Environment.NewLine;
             log += CommonData.HIRATA.CommonStaticData.g_SplitLine + Environment.NewLine;
 
-            cv_btnSelectMode.Enabled = true;
+            //cv_btnSelectMode.Enabled = true;
             Color tmp_color = Color.Gray;
             switch (obj.PSystemStatus)
             {
@@ -2350,7 +2482,7 @@ cb_PortActionSlotType
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            cv_AccountData.Login("KGS", "!@#");
+            //cv_AccountData.Login("KGS", "!@#");
             //WriteNormalIn
             /*
             if (cv_PaletteForm == null)
@@ -2416,7 +2548,7 @@ cb_PortActionSlotType
                     is_force = true;
                 }
 
-                cv_MmfController.SendOperationMode(is_force , OperationMode.Manual, MmfEventClientEventType.etRequest, true);
+                cv_MmfController.SendOperationMode(is_force, OperationMode.Manual, MmfEventClientEventType.etRequest, true);
                 LockOperationButton(true);
                 log += "Change to Manual";
             }
@@ -2447,7 +2579,7 @@ cb_PortActionSlotType
                             if (MessageBox.Show("Do you want change to Auto mode ?", "Warning", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
                             {
                                 LockOperationButton(true);
-                                if (cv_MmfController.SendOperationMode(false , OperationMode.Auto, MmfEventClientEventType.etRequest, true))
+                                if (cv_MmfController.SendOperationMode(false, OperationMode.Auto, MmfEventClientEventType.etRequest, true))
                                 {
                                     log += "Change to Auto";
                                     //LockOperationButton(false);
@@ -2880,6 +3012,24 @@ cb_IoFfu
             {
                 permission = UserPermission.None;
             }
+
+            foreach(Control control in cv_GroupObjs[enumGroup.All])
+            {
+                control.Enabled = false;
+            }
+
+            if(cv_PermissionGroups.ContainsKey(permission))
+            {
+                foreach(int group in cv_PermissionGroups[permission])
+                {
+                    foreach (Control control2 in cv_GroupObjs[(enumGroup)(group - 1)])
+                    {
+                        control2.Enabled = true;
+                    }
+                }
+            }
+
+            /*
             for (int i = 0; i < cv_AllUiObj.Count; i++)
             {
                 if ((int)cv_AllUiObj.ElementAt(i).Value <= (int)permission)
@@ -2891,6 +3041,7 @@ cb_IoFfu
                     cv_AllUiObj.ElementAt(i).Key.Enabled = false;
                 }
             }
+            */
             WriteLog(LogLevelType.NormalFunctionInOut, CommonData.HIRATA.CommonStaticData.__FUN(), CommonData.HIRATA.FunInOut.Enter);
         }
         #endregion
@@ -3039,10 +3190,10 @@ cb_IoFfu
         {
             cb_robotActionDeg.SelectedIndex = -1;
             cb_robotActionDeg.Items.Clear();
-            if (Regex.Match( cb_RobotActionName.Text.Trim() , @"aligner" , RegexOptions.IgnoreCase).Success)
+            if (Regex.Match(cb_RobotActionName.Text.Trim(), @"aligner", RegexOptions.IgnoreCase).Success)
             {
                 RecipeItem recipe = null;
-                if(UiForm.cv_Recipes.GetCurRecipe(out recipe))
+                if (UiForm.cv_Recipes.GetCurRecipe(out recipe))
                 {
                     cb_robotActionDeg.Items.Add(recipe.PWaferIJPDegree.ToString());
                     cb_robotActionDeg.Items.Add(recipe.PWaferVASDegree.ToString());
@@ -3051,6 +3202,229 @@ cb_IoFfu
                 else
                 {
                     WriteLog(LogLevelType.Error, "[cb_RobotActionName_SelectedIndexChanged] can find cur. reicpe", FunInOut.None);
+                }
+            }
+        }
+
+        private void btn_search_Click(object sender, EventArgs e)
+        {
+            List<AlarmItem> a_datalist = new List<AlarmItem>();
+            DateTime a_time = dateTimePicker1.Value;
+            string CONFIG_PATH = CommonData.HIRATA.CommonStaticData.g_RootLogsFolderPath + "LGC\\" + a_time.ToString("yyyy") + "\\" + a_time.ToString("MM") + "\\" + a_time.ToString("dd") + "\\";
+            //string CONFIG_PATH = SysUtils.ExtractFilePath(SysUtils.GetExeName()) + "..\\..\\..\\Log\\" + a_time.ToString("yyyy") + "\\" + a_time.ToString("MM") + "\\" + a_time.ToString("dd") + "\\";
+            string File_Name = "Alarmlog_" + a_time.ToString("yyyyMMdd") + ".log";
+            string File_PATH = CONFIG_PATH + File_Name;
+            if (SysUtils.FileExists(File_PATH))
+            {
+                List<string> a_temp = new List<string>();
+                SysUtils.LoadFromFile(File_PATH, a_temp);
+                foreach (string a_str in a_temp)
+                {
+                    List<string> a_list = new List<string>();
+                    SysUtils.StringSplit(a_str, ",", a_list, true);
+                    if (a_list.Count == 5)
+                    {
+                        AlarmItem a_data = new AlarmItem();
+                        a_data.PTime = a_list[0];
+                        a_data.PCode = a_list[1];
+                        if (a_list[2].Trim() == "Serious")
+                            a_data.PLevel = AlarmLevele.Serious;
+                        else if (a_list[2].Trim() == "Light")
+                            a_data.PLevel = AlarmLevele.Light;
+
+                        a_data.PUnit = Convert.ToInt32(a_list[3].Trim());
+
+                        List<string> a_msg = new List<string>();
+                        SysUtils.StringSplit(a_list[4].Trim(), ":", a_msg, true);
+                        if (a_msg.Count == 2)
+                        {
+                            a_data.PMainDescription = a_msg[0].Trim();
+                            a_data.PSubDescription = a_msg[1].Trim();
+                        }
+                        else if (a_msg.Count == 1)
+                        {
+                            a_data.PMainDescription = a_msg[0].Trim();
+                        }
+                        a_datalist.Add(a_data);
+                    }
+                }
+                cv_AlarmHView.DataSource = a_datalist;
+                if (a_datalist.Count < 1)
+                {
+                    CommonStaticData.PopForm("The date alarm file hasn't any alarm item!", true, false);
+                    WriteLog(LogLevelType.General, "[UI] Alarm history : user choose the date : " + File_PATH + " The date alarm file hasn't any alarm item");
+                }
+            }
+            else
+            {
+                CommonStaticData.PopForm("The date alarm file not found!", true, false);
+                WriteLog(LogLevelType.General, "[UI] Alarm history : user choose the date : " + File_PATH + " not found!");
+            }
+        }
+
+        private void cv_tcBar_Selecting(object sender, TabControlCancelEventArgs e)
+        {
+            CheckPermission(sender, e);
+        }
+        private void CheckPermission(object sender, TabControlCancelEventArgs e)
+        {
+            AccountItem tmp = null;
+            CommonData.HIRATA.UserPermission permission = UserPermission.None;
+            if (cv_AccountData.GetCurAccount(out tmp))
+            {
+                permission = tmp.PPermission;
+            }
+            else
+            {
+                permission = UserPermission.None;
+            }
+
+            if (e.TabPage.Name == "cv_tpIo" || e.TabPage.Name == "cv_tpLog")
+            {
+                if (cv_PermissionGroups.ContainsKey(permission))
+                {
+                    if(!cv_PermissionGroups[permission].Contains(4))
+                    {
+                        e.Cancel = true;
+                    }
+                }
+                else
+                {
+                    e.Cancel = true;
+                }
+            }
+            //cv_tpAccount , cv_tpPermissionSetLog
+            if (e.TabPage.Name == "cv_tpAccount" || e.TabPage.Name == "cv_tpPermissionSetLog")
+            {
+                if (cv_PermissionGroups.ContainsKey(permission))
+                {
+                    if (!cv_PermissionGroups[permission].Contains(6))
+                    {
+                        e.Cancel = true;
+                    }
+                }
+                else
+                {
+                    e.Cancel = true;
+                }
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            int row_count = cv_PermissionSetting.dataGridView1.RowCount;
+            bool g1 = false;
+            bool g2 = false;
+            bool g3 = false;
+            bool g4 = false;
+            bool g5 = false;
+            bool g6 = false;
+            for (int i = 0; i < row_count; i++)
+            {
+                g1 = false;
+                g2 = false;
+                g3 = false;
+                g4 = false;
+                g5 = false;
+                g6 = false;
+                if (cv_PermissionSetting.dataGridView1.Rows[i].Cells[0].Value.ToString().ToUpper() == "ROOT")
+                {
+                    SetGroupsToList(i, CommonData.HIRATA.UserPermission.Root );
+                }
+                else if (cv_PermissionSetting.dataGridView1.Rows[i].Cells[0].Value.ToString().ToUpper() == "ENGINEER")
+                {
+                    SetGroupsToList(i, CommonData.HIRATA.UserPermission.Engineer );
+                }
+                else if (cv_PermissionSetting.dataGridView1.Rows[i].Cells[0].Value.ToString().ToUpper() == "OP1")
+                {
+                    SetGroupsToList(i, CommonData.HIRATA.UserPermission.OP1 );
+                }
+                else if (cv_PermissionSetting.dataGridView1.Rows[i].Cells[0].Value.ToString().ToUpper() == "OP2")
+                {
+                    SetGroupsToList(i, CommonData.HIRATA.UserPermission.OP2 );
+                }
+                else if (cv_PermissionSetting.dataGridView1.Rows[i].Cells[0].Value.ToString().ToUpper() == "OP3")
+                {
+                    SetGroupsToList(i, CommonData.HIRATA.UserPermission.OP3 );
+                }
+            }
+            cv_PermissionGroupsXml.SaveToFile(CommonData.HIRATA.CommonStaticData.g_SysPermissionGroupFile, true);
+        }
+
+        private void SetGroupsToList(int i , CommonData.HIRATA.UserPermission m_Permission)
+        {
+            List<int> tmp = new List<int>();
+            if ((cv_PermissionSetting.dataGridView1.Rows[i].Cells[1] as DataGridViewCheckBoxCell).Value == "T")
+            {
+                tmp.Add(1);
+                cv_PermissionGroupsXml.ItemsByName[m_Permission.ToString()].Attributes["Group1"] = "1";
+            }
+            else
+            {
+                cv_PermissionGroupsXml.ItemsByName[m_Permission.ToString()].Attributes["Group1"] = "0";
+            }
+            if ((cv_PermissionSetting.dataGridView1.Rows[i].Cells[2] as DataGridViewCheckBoxCell).Value == "T")
+            {
+                tmp.Add(2);
+                cv_PermissionGroupsXml.ItemsByName[m_Permission.ToString()].Attributes["Group2"] = "1";
+            }
+            else
+            {
+                cv_PermissionGroupsXml.ItemsByName[m_Permission.ToString()].Attributes["Group2"] = "0";
+            }
+            if ((cv_PermissionSetting.dataGridView1.Rows[i].Cells[3] as DataGridViewCheckBoxCell).Value == "T")
+            {
+                tmp.Add(3);
+                cv_PermissionGroupsXml.ItemsByName[m_Permission.ToString()].Attributes["Group3"] = "1";
+            }
+            else
+            {
+                cv_PermissionGroupsXml.ItemsByName[m_Permission.ToString()].Attributes["Group3"] = "0";
+            }
+            if ((cv_PermissionSetting.dataGridView1.Rows[i].Cells[4] as DataGridViewCheckBoxCell).Value == "T")
+            {
+                tmp.Add(4);
+                cv_PermissionGroupsXml.ItemsByName[m_Permission.ToString()].Attributes["Group4"] = "1";
+            }
+            else
+            {
+                cv_PermissionGroupsXml.ItemsByName[m_Permission.ToString()].Attributes["Group4"] = "0";
+            }
+            if ((cv_PermissionSetting.dataGridView1.Rows[i].Cells[5] as DataGridViewCheckBoxCell).Value == "T")
+            {
+                tmp.Add(5);
+                cv_PermissionGroupsXml.ItemsByName[m_Permission.ToString()].Attributes["Group5"] = "1";
+            }
+            else
+            {
+                cv_PermissionGroupsXml.ItemsByName[m_Permission.ToString()].Attributes["Group5"] = "0";
+            }
+            if ((cv_PermissionSetting.dataGridView1.Rows[i].Cells[6] as DataGridViewCheckBoxCell).Value == "T")
+            {
+                tmp.Add(6);
+                cv_PermissionGroupsXml.ItemsByName[m_Permission.ToString()].Attributes["Group6"] = "1";
+            }
+            else
+            {
+                cv_PermissionGroupsXml.ItemsByName[m_Permission.ToString()].Attributes["Group6"] = "0";
+            }
+            cv_PermissionGroups[m_Permission] = tmp;
+        }
+
+        private void cb_RobotActionArm_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (Regex.Match(cb_RobotActionTargetId.Text, @"UV", RegexOptions.IgnoreCase).Success && Regex.Match(cb_RobotActionArm.Text, @"Down", RegexOptions.IgnoreCase).Success)
+            {
+                if (!cb_RobotActionName.Items.Contains(RobotAction.TopPut.ToString()))
+                {
+                    cb_RobotActionName.Items.Add(RobotAction.TopPut.ToString());
+                }
+            }
+            else
+            {
+                if (cb_RobotActionName.Items.Contains(RobotAction.TopPut.ToString()))
+                {
+                    cb_RobotActionName.Items.Remove(RobotAction.TopPut.ToString());
                 }
             }
         }

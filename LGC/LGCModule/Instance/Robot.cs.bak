@@ -213,7 +213,7 @@ namespace LGC
         private void OnReplyParseError(string m_Txt)
         {
             CommonData.HIRATA.AlarmItem alarm = new AlarmItem();
-            alarm.PCode = "1000";
+            alarm.PCode = Alarmtable.RobotApiReplyParseError.ToString();
             alarm.PMainDescription = "API Event/Reply parse error : " + m_Txt;
             alarm.PSubDescription = m_Txt;
             alarm.PUnit = 0;
@@ -610,11 +610,11 @@ namespace LGC
         {
             Robot robot = LgcForm.GetRobotById(job.PRobotId);
             bool robot_sensor = robot.cv_Data.GlassDataMap[(int)job.PPutArm].PHasSensor;
-            if (m_Command.PRobotCommand == APIEnum.RobotCommand.TopWaferPut)
+            if (m_Command.PRobotCommand == APIEnum.RobotCommand.TopWaferPut )
             {
-                if (job.PAction == RobotAction.TopPut)
+                if (job.PAction == RobotAction.TopPut || job.PAction == RobotAction.Put)
                 {
-                    if (job.PTarget == ActionTarget.Eq && job.PTargetId == (int)EqId.VAS && 
+                    if (job.PTarget == ActionTarget.Eq && job.PTargetId == (int)EqId.VAS &&
                         job.PTargetSlot == 2)
                     {
                         LgcForm.cv_MmfController.SendBcTreansferReport(DataFlowAction.Send, robot.cv_Data.GlassDataMap[(int)job.PPutArm]);
@@ -625,6 +625,17 @@ namespace LGC
                         robot.SendDataViaMmf();
                         robot.cv_Data.SaveToFile();
                     }
+                    else if (job.PTarget == ActionTarget.Eq)
+                    {
+                        LgcForm.cv_MmfController.SendBcTreansferReport(DataFlowAction.Send, robot.cv_Data.GlassDataMap[(int)job.PPutArm]);
+
+                        robot.cv_Data.GlassDataMap[(int)job.PPutArm] = new GlassData();
+                        robot.cv_Data.GlassDataMap[(int)job.PPutArm].PSlotInEq = (uint)job.PPutArm;
+                        robot.cv_Data.GlassDataMap[(int)job.PPutArm].PHasSensor = robot_sensor;
+                        robot.SendDataViaMmf();
+                        robot.cv_Data.SaveToFile();
+                    }
+
                     CurJob = null;
                     if(LgcForm.PSystemData.PRobotStatus == EquipmentStatus.Run)
                     {
@@ -1135,7 +1146,7 @@ namespace LGC
             }
             else if (m_Command.PRobotCommand == APIEnum.RobotCommand.TopWaferPut)
             {
-                if (job.PAction == RobotAction.TopPut)
+                if (job.PAction == RobotAction.TopPut || job.PAction == RobotAction.Put)
                 {
                     ProcessRobotTopPut(m_Command, job);
                 }
@@ -1375,7 +1386,8 @@ namespace LGC
                 job_port.PLDRQTime = SysUtils.Now();
                 job_port.cv_Data.PPortHasCst = PortHasCst.Empty;
                 //SysUtils.Sleep(1000);
-                job_port.cv_Data.Clear();
+                job_port.cv_Data.ClearNotIncludeFoupId();
+                //job_port.cv_Data.Clear();
                 //job_port.cv_Data.PPortStatus = PortStaus.LDRQ;
                 job_port.SendDataViaMmf();
                 cv_Comm.SetLoadUnloadLed(false, SignalTowerControl.Off, m_Command.cv_DeviceId);
@@ -1383,7 +1395,7 @@ namespace LGC
             else if (m_Command.PEventCommand == APIEnum.EventCommand.ERROR)
             {
                 CommonData.HIRATA.AlarmItem alarm = new AlarmItem();
-                alarm.PCode = "1001";
+                alarm.PCode = Alarmtable.RobotApiErrorEvent.ToString();
                 alarm.PMainDescription = "Robot_API_ERROR_EVENT";
                 alarm.PSubDescription = string.Join(",", m_Command.cv_ReplyParaList);//m_Command.cv_ReplyParaList.ToString();
                 alarm.PUnit = 0;
@@ -1478,7 +1490,7 @@ namespace LGC
                 {
                     CommonData.HIRATA.AlarmItem alarm = new AlarmItem();
                     alarm.PCode = CommonData.HIRATA.Alarmtable.RobotApiBufferStatusError.ToString();
-                    alarm.PMainDescription = "Robot API EFEM Status Error";
+                    alarm.PMainDescription = "Robot API EFEM Status Error : " +  m_Command.PEventCommand.ToString();
                     alarm.PUnit = 0;
                     alarm.PLevel = AlarmLevele.Serious;
                     alarm.PStatus = AlarmStatus.Occur;
@@ -1539,7 +1551,7 @@ namespace LGC
             {
                 port.PLotStatus = LotStatus.Abort;
             }
-            else if ( (port.PLotStatus != LotStatus.Cancel) && (port.PLotStatus != LotStatus.Abort) )
+            else if ((port.PLotStatus != LotStatus.Cancel) && (port.PLotStatus != LotStatus.Abort) && (port.PLotStatus != LotStatus.ProcessEnd))
             {
                 port.PLotStatus = LotStatus.Cancel;
             }

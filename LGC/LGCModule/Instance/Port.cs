@@ -30,6 +30,17 @@ namespace LGC
                 {
                     cv_Data.cv_PortStatus = (UInt16)value;
                     SendDataViaMmf();
+                    if (value == PortStaus.UDRQ && this.cv_Data.PPortMode == PortMode.Unloader && LgcForm.PSystemData.PSystemOnlineMode == OnlineMode.Control)
+                    {
+                        CommonData.HIRATA.AlarmItem alarm = new AlarmItem();
+                        alarm.PCode = Alarmtable.UnloadPortIsUDRQWhenOnlineMode.ToString();
+                        alarm.PMainDescription = "Unload Port Is UDRQ When OnlineMode";
+                        alarm.PUnit = 0;
+                        alarm.PLevel = AlarmLevele.Light;
+                        alarm.PStatus = AlarmStatus.Occur;
+                        alarm.PTime = DateTime.Now.ToString("yyyyMMDDHHmmss");
+                        LgcForm.EditAlarm(alarm);
+                    }
                 }
             }
         }

@@ -64,7 +64,7 @@
     <Item RepCode="1062" DeviceCode="16" Unit="0" Level="S" Msg="ROBOT_Arm is Extend , Could Not do Command" Device="Robot" Type="03"/>
     <Item RepCode="1063" DeviceCode="17" Unit="0" Level="S" Msg="ROBOT_Lower Arm is Turn , Could Not do Command" Device="Robot" Type="03"/>
     <Item RepCode="1064" DeviceCode="30" Unit="0" Level="S" Msg="PORT_is Load . Could Not do Command" Device="P" Type="03"/>
-    <Item RepCode="1046" DeviceCode="1" Unit="0" Level="S" Msg="PORT_is Busy . Could Not do Command" Device="P" Type="03"/>
+    <Item RepCode="1046" DeviceCode="1" Unit="0" Level="L" Msg="PORT_is Busy . Could Not do Command" Device="P" Type="03"/>
     <Item RepCode="1065" DeviceCode="40" Unit="0" Level="S" Msg="ALIGNER_is Busy . Could Not do Command" Device="Aligner" Type="03"/>
     <Item RepCode="1066" DeviceCode="50" Unit="0" Level="S" Msg="ALIGNMENT_is Busy , Could Not do Command" Device="Alignment" Type="03"/>
     <Item RepCode="1067" DeviceCode="51" Unit="0" Level="S" Msg="ALIGNMENT_Could Not do Command . because not 0158_CSUN" Device="Alignment" Type="03"/>
@@ -156,7 +156,7 @@
     <Item RepCode="1153" DeviceCode="DA" Unit="0" Level="S" Msg="ALIGNER_offset addr error" Device="Aligner" Type="05"/>
     <Item RepCode="1154" DeviceCode="DB" Unit="0" Level="S" Msg="ALIGNER_motor direction error" Device="Aligner" Type="05"/>
     <Item RepCode="1155" DeviceCode="DC" Unit="0" Level="S" Msg="ALIGNER_parameter error" Device="Aligner" Type="05"/>
-    <Item RepCode="1156" DeviceCode="05" Unit="0" Level="S" Msg="OCR_Read Error : XXXX" Device="OCRReader" Type="05"/>
+    <Item RepCode="1156" DeviceCode="05" Unit="0" Level="L" Msg="OCR_Read Error : XXXX" Device="OCRReader" Type="05"/>
     <Item RepCode="1157" DeviceCode="01" Unit="0" Level="S" Msg="ALIGNMENT_Alignment Set Clamp Fail" Device="Alignment" Type="05"/>
     <Item RepCode="1158" DeviceCode="02" Unit="0" Level="S" Msg="ALIGNMENT_Alignment Set UnClamp Fail" Device="Alignment" Type="05"/>
     <Item RepCode="1159" DeviceCode="09" Unit="0" Level="S" Msg="ROBOT_positioning error refer to error axis information" Device="Robot" Type="05"/>

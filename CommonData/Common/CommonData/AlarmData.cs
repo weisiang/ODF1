@@ -114,6 +114,11 @@ namespace CommonData.HIRATA
         {
             return cv_AlarmList.Exists(x => x.PLevel == AlarmLevele.Light);
         }
+        public bool IsHasSpecialWarning()
+        {
+            return cv_AlarmList.Exists(x => x.PCode == Alarmtable.UnloadPortIsUDRQWhenOnlineMode.ToString());
+        }
+
         public bool IsAlarmWarningExist(string m_Code)
         {
             return cv_AlarmList.Exists(x => x.PCode == m_Code);

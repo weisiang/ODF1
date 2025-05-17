@@ -166,7 +166,8 @@ namespace CommonData.HIRATA
                     if (!IsRecipeExist(m_RecipeItem))
                     {
                         if(m_RecipeItem.PFlow == OdfFlow.Flow1_1 || m_RecipeItem.PFlow == OdfFlow.Flow1_2 ||
-                            m_RecipeItem.PFlow == OdfFlow.FLow4_1 || m_RecipeItem.PFlow == OdfFlow.Flow4_2)
+                            m_RecipeItem.PFlow == OdfFlow.FLow4_1 || m_RecipeItem.PFlow == OdfFlow.Flow4_2 ||
+                            m_RecipeItem.PFlow == OdfFlow.Flow5_1 || m_RecipeItem.PFlow == OdfFlow.Flow5_2)
                         {
                             m_RecipeItem.PVasNeedGlass = true;
                         }

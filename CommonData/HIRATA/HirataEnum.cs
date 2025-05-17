@@ -41,7 +41,7 @@ namespace CommonData.HIRATA
     public enum RecipeBodyReportType { New = 1, Delete, Modity, Query, }
     public enum EqInterFaceType { None, Load, Unload, Exchange, };
     public enum ApiFoupStatus { None, FoupPlace, FoupRemove, };
-    public enum OdfFlow { Flow1_1=1, Flow1_2, Flow2_1, Flow2_2, Flow3 ,  FLow4_1, Flow4_2 };
+    public enum OdfFlow { Flow1_1=1, Flow1_2, Flow2_1, Flow2_2, Flow3 ,  FLow4_1, Flow4_2 ,Flow5_1,Flow5_2};
     public enum EqNode { SDP1 = 3  , SDP2 =4  , IJP =5 , VAS =6 ,UV1 = 7 , SDP3 =8  , AOI =9 ,  UV2 = 10};
     public enum EqGifTimeChartId
     {

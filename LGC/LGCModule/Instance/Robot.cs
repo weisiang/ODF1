@@ -610,11 +610,11 @@ namespace LGC
         {
             Robot robot = LgcForm.GetRobotById(job.PRobotId);
             bool robot_sensor = robot.cv_Data.GlassDataMap[(int)job.PPutArm].PHasSensor;
-            if (m_Command.PRobotCommand == APIEnum.RobotCommand.TopWaferPut)
+            if (m_Command.PRobotCommand == APIEnum.RobotCommand.TopWaferPut )
             {
-                if (job.PAction == RobotAction.TopPut)
+                if (job.PAction == RobotAction.TopPut || job.PAction == RobotAction.Put)
                 {
-                    if (job.PTarget == ActionTarget.Eq && job.PTargetId == (int)EqId.VAS && 
+                    if (job.PTarget == ActionTarget.Eq && job.PTargetId == (int)EqId.VAS &&
                         job.PTargetSlot == 2)
                     {
                         LgcForm.cv_MmfController.SendBcTreansferReport(DataFlowAction.Send, robot.cv_Data.GlassDataMap[(int)job.PPutArm]);
@@ -625,6 +625,17 @@ namespace LGC
                         robot.SendDataViaMmf();
                         robot.cv_Data.SaveToFile();
                     }
+                    else if (job.PTarget == ActionTarget.Eq)
+                    {
+                        LgcForm.cv_MmfController.SendBcTreansferReport(DataFlowAction.Send, robot.cv_Data.GlassDataMap[(int)job.PPutArm]);
+
+                        robot.cv_Data.GlassDataMap[(int)job.PPutArm] = new GlassData();
+                        robot.cv_Data.GlassDataMap[(int)job.PPutArm].PSlotInEq = (uint)job.PPutArm;
+                        robot.cv_Data.GlassDataMap[(int)job.PPutArm].PHasSensor = robot_sensor;
+                        robot.SendDataViaMmf();
+                        robot.cv_Data.SaveToFile();
+                    }
+
                     CurJob = null;
                     if(LgcForm.PSystemData.PRobotStatus == EquipmentStatus.Run)
                     {
@@ -1135,7 +1146,7 @@ namespace LGC
             }
             else if (m_Command.PRobotCommand == APIEnum.RobotCommand.TopWaferPut)
             {
-                if (job.PAction == RobotAction.TopPut)
+                if (job.PAction == RobotAction.TopPut || job.PAction == RobotAction.Put)
                 {
                     ProcessRobotTopPut(m_Command, job);
                 }
@@ -1364,7 +1375,7 @@ namespace LGC
                     job_port.PPortStatus = PortStaus.LDRQ;
                 }
                 job_port.PLotStatus = LotStatus.FoupSensorOn;
-                job_port.cv_Data.PPortHasCst = PortHasCst.Has ;
+                job_port.cv_Data.PPortHasCst = PortHasCst.Has;
                 job_port.SendDataViaMmf();
             }
             else if (m_Command.PEventCommand == APIEnum.EventCommand.FoupRemove)
@@ -1417,6 +1428,10 @@ namespace LGC
             {
                 ProcessRobotOutVas(m_Command);
             }
+            else if (m_Command.PEventCommand == APIEnum.EventCommand.UVTopPutEnd)
+            {
+                //ProcessRobotOutUV(m_Command);
+            }
             else if (m_Command.PEventCommand == APIEnum.EventCommand.GetStatus)
             {
                 Robot robot = LgcForm.GetRobotById(1);
@@ -1424,12 +1439,12 @@ namespace LGC
                 if (m_Command.cv_ReplyParaList[1].Trim() == "1")
                 {
                     cv_Data.GlassDataMap[(int)RobotArm.rbaDown].PHasSensor = true;
-//                    LgcForm.WriteLog(LogLevelType.General, "[Recv] Robot Sensor event", FunInOut.None);
+                    //                    LgcForm.WriteLog(LogLevelType.General, "[Recv] Robot Sensor event", FunInOut.None);
                 }
                 else if (m_Command.cv_ReplyParaList[1].Trim() == "0")
                 {
                     cv_Data.GlassDataMap[(int)RobotArm.rbaDown].PHasSensor = false;
-  //                  LgcForm.WriteLog(LogLevelType.General, "[Recv] Robot Sensor event", FunInOut.None);
+                    //                  LgcForm.WriteLog(LogLevelType.General, "[Recv] Robot Sensor event", FunInOut.None);
                 }
                 else
                 {
@@ -1446,13 +1461,13 @@ namespace LGC
                 if (m_Command.cv_ReplyParaList[2].Trim() == "1")
                 {
                     cv_Data.GlassDataMap[(int)RobotArm.rbaUp].PHasSensor = true;
-    //                LgcForm.WriteLog(LogLevelType.General, "[Recv] Robot Sensor event", FunInOut.None);
+                    //                LgcForm.WriteLog(LogLevelType.General, "[Recv] Robot Sensor event", FunInOut.None);
                 }
 
                 else if (m_Command.cv_ReplyParaList[2].Trim() == "0")
                 {
                     cv_Data.GlassDataMap[(int)RobotArm.rbaUp].PHasSensor = false;
-      //              LgcForm.WriteLog(LogLevelType.General, "[Recv] Robot Sensor event", FunInOut.None);
+                    //              LgcForm.WriteLog(LogLevelType.General, "[Recv] Robot Sensor event", FunInOut.None);
                 }
                 else
                 {
@@ -1469,17 +1484,17 @@ namespace LGC
                 robot.cv_Data.SaveToFile();
                 LgcForm.WriteLog(LogLevelType.General, "[Recv] Robot Sensor event E", FunInOut.None);
             }
-            else if ( (int)m_Command.PEventCommand >= (int)APIEnum.EventCommand.Pressure &&
+            else if ((int)m_Command.PEventCommand >= (int)APIEnum.EventCommand.Pressure &&
                  (int)m_Command.PEventCommand <= (int)APIEnum.EventCommand.GetStatus)
             {
                 CommonData.HIRATA.MDEfemStatusSingle obj = new MDEfemStatusSingle();
                 obj.PStatusType = m_Command.PEventCommand;
                 obj.PValue = Convert.ToInt16(m_Command.cv_ReplyParaList[1].Trim());
-                if(obj.PStatusType != APIEnum.EventCommand.RobotEnable)
+                if (obj.PStatusType != APIEnum.EventCommand.RobotEnable)
                 {
                     CommonData.HIRATA.AlarmItem alarm = new AlarmItem();
                     alarm.PCode = CommonData.HIRATA.Alarmtable.RobotApiBufferStatusError.ToString();
-                    alarm.PMainDescription = "Robot API EFEM Status Error : " +  m_Command.PEventCommand.ToString();
+                    alarm.PMainDescription = "Robot API EFEM Status Error : " + m_Command.PEventCommand.ToString();
                     alarm.PUnit = 0;
                     alarm.PLevel = AlarmLevele.Serious;
                     alarm.PStatus = AlarmStatus.Occur;
@@ -1632,6 +1647,40 @@ namespace LGC
             }
             return ok;
         }
+
+        private bool ProcessRobotOutUV(CommandData m_Command)
+        {
+            bool ok = false;
+            EqId eq_id = EqId.UV_1;
+            int slot = 1;
+            int eq_time_chart_cur_step = 0;
+            int time_chart_id = -1;
+            TimechartNormal time_chart_instance = null;
+
+            if (eq_id == EqId.UV_1)
+            {
+                if (slot == 1)
+                {
+                    eq_time_chart_cur_step = LgcForm.GetEqById((int)eq_id).GetTimeChatCurStep(1);
+                    time_chart_id = (int)EqGifTimeChartId.TIMECHART_ID_UV_1;
+                    time_chart_instance = (TimechartNormal)LgcForm.cv_MmfController.cv_TimechartController.GetTimeChartInstance(time_chart_id);
+
+                    if (eq_time_chart_cur_step == TimechartNormal.STEP_ID_WaitRobotCompleteOn ||
+                        eq_time_chart_cur_step == TimechartNormal.STEP_ID_WaitRobotPutEnd)
+                    {
+                        time_chart_instance.SetSignal(RobotSideBitAddressOffset.Receipt_Complete, true);
+                        time_chart_instance.SetSignal(RobotSideBitAddressOffset.Interlock_2, true);
+                        ok = true;
+                    }
+                    else
+                    {
+                        LgcForm.ShowMsg("UV time chart not at STEP_ID_WaitRobotCommandFinish", true, false);
+                    }
+                }
+            }
+            return ok;
+        }
+
         private bool ProcessRobotStatus(CommandData m_Command)
         {
             //00,GetStatus,Robot,StatusCode, Lower EE Wafer Presence, Upper EE Wafe Presence 

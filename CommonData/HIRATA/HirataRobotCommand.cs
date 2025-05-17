@@ -15,7 +15,7 @@ namespace CommonData.HIRATA
             None, FoupPlace, FoupRemove, OperatorAccessButtonClick, OperatorAccessButton2Click, LPPowerOn, AirDropped, FoupPresence,
             Pressure, Vacuum, Ionizer1, Ionizer2, Ionizer3, Ionizer4, Ionizer5 ,Ionizer6, Ionizer7, Ionizer8 ,
             FFU1, FFU2, FFU3, FFU4, FFU5, FFU6, FFU7, FFU8, FFU9, FFU10, FFU11, RobotMode, RobotEnable, Door, EMO, Power,
-            CheckBernoulliIOStatus, ERROR, GetStatus, VasTopPutEnd
+            CheckBernoulliIOStatus, ERROR, GetStatus, VasTopPutEnd, UVTopPutEnd
         };
 
         public enum APICommand { None, Version, Remote, Local, CurrentMode, Hide, Show, };

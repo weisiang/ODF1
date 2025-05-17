@@ -37,8 +37,8 @@ namespace UI.GUI
                 (cv_menuDataEdit.Items[0] as ToolStripMenuItem).DropDownItems.Add(tmp);
             }
             AddObjToPermissionList(button1, UiForm.enumGroup.Group2);
-            AddObjToPermissionList(cv_13slot, UiForm.enumGroup.Group2);
-            AddObjToPermissionList(cv_25slot, UiForm.enumGroup.Group2);
+            AddObjToPermissionList(cv_13slot, UiForm.enumGroup.Group6);
+            AddObjToPermissionList(cv_25slot, UiForm.enumGroup.Group6);
         }
         private void AddObjToPermissionList(Control m_Control , UiForm.enumGroup m_Group)
         {

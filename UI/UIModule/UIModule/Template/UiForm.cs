@@ -526,6 +526,23 @@ namespace UI
                     cb_RobotActionTargetSlot.Items.Add(i.ToString());
                 }
             }
+
+            if (Regex.Match(id, @"UV", RegexOptions.IgnoreCase).Success && Regex.Match(cb_RobotActionArm.Text, @"Down", RegexOptions.IgnoreCase).Success)
+            {
+                if (!cb_RobotActionName.Items.Contains(RobotAction.TopPut.ToString()))
+                {
+                    cb_RobotActionName.Items.Add(RobotAction.TopPut.ToString());
+                }
+            }
+            else
+            {
+                if (cb_RobotActionName.Items.Contains(RobotAction.TopPut.ToString()))
+                {
+                    cb_RobotActionName.Items.Remove(RobotAction.TopPut.ToString());
+                }
+            }
+
+
         }
         private void bt_RobotExe_Click(object sender, EventArgs e)
         {
@@ -613,6 +630,15 @@ namespace UI
                     return;
                 }
             }
+            if (arg_action == RobotAction.TopPut)
+            {
+                if (id != (int)EqId.UV_1 && id != (int)EqId.UV_2)
+                {
+                    CommonStaticData.PopForm("TopPut only UV can use.", true, false);
+                    return;
+                }
+            }
+
 
             log += "Action : " + arg_action.ToString() + "Robot id : " + robot_id + " Arm : " + arg_arm.ToString()
                 + " Target : " + arg_tar.ToString() + " Target Id : " + id + " Slot : " + slot + Environment.NewLine;
@@ -3383,6 +3409,44 @@ cb_IoFfu
                 cv_PermissionGroupsXml.ItemsByName[m_Permission.ToString()].Attributes["Group6"] = "0";
             }
             cv_PermissionGroups[m_Permission] = tmp;
+        }
+
+        private void cb_RobotActionArm_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (Regex.Match(cb_RobotActionTargetId.Text, @"UV", RegexOptions.IgnoreCase).Success && Regex.Match(cb_RobotActionArm.Text, @"Down", RegexOptions.IgnoreCase).Success)
+            {
+                if (!cb_RobotActionName.Items.Contains(RobotAction.TopPut.ToString()))
+                {
+                    cb_RobotActionName.Items.Add(RobotAction.TopPut.ToString());
+                }
+            }
+            else
+            {
+                if (cb_RobotActionName.Items.Contains(RobotAction.TopPut.ToString()))
+                {
+                    cb_RobotActionName.Items.Remove(RobotAction.TopPut.ToString());
+                }
+            }
+        }
+
+        private void btn_ResetUPWarring_Click(object sender, EventArgs e)
+        {
+            if (cv_Alarms.cv_AlarmList.Exists(x => x.PCode == Alarmtable.UnloadPortIsUDRQWhenOnlineMode.ToString()))
+            {
+                AlarmData obj = new AlarmData();
+                //obj.cv_AlarmList.AddRange(new List<AlarmItem>(cv_Alarms.cv_AlarmList.Where(v=>v.PCode == Alarmtable.UnloadPortIsUDRQWhenOnlineMode.ToString())));
+                obj.cv_AlarmList.Add(new List<AlarmItem>(cv_Alarms.cv_AlarmList.Where(v => v.PCode == Alarmtable.UnloadPortIsUDRQWhenOnlineMode.ToString())).First());
+                for (int i = 0; i < obj.cv_AlarmList.Count; i++)
+                {
+                    obj.cv_AlarmList[i].PStatus = AlarmStatus.Clean;
+                }
+                Global.Controller.SendMmfNotifyObject(typeof(CommonData.HIRATA.AlarmData).Name, cv_Alarms, KParseObjToXmlPropertyType.Field);
+            }
+            else
+            {
+                CommonStaticData.PopForm("There is No Unload Port Warring !!", true, false);
+            }
+            
         }
     }
 }
