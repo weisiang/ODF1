@@ -221,6 +221,43 @@ namespace LGC
             base.ProcessAlarmAction(m_SourceModule, m_Type, m_MessageId, m_RequestNotifyMessageId, m_Ticket, m_Object);
             WriteLog(LogLevelType.NormalFunctionInOut, this.GetType().Name + "." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Leave);
         }
+        protected override void ProcessSamplingDataAction(string m_SourceModule, int m_Type, string m_MessageId, string m_RequestNotifyMessageId, uint m_Ticket, Object m_Object)
+        {
+            WriteLog(LogLevelType.NormalFunctionInOut, this.GetType().Name + "." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Enter);
+            base.ProcessSamplingDataAction(m_SourceModule, m_Type, m_MessageId, m_RequestNotifyMessageId, m_Ticket, m_Object);
+            string log = "";
+            CommonData.HIRATA.MDSamplingDataAction obj = m_Object as CommonData.HIRATA.MDSamplingDataAction;
+            switch(obj.PAction)
+            {
+                case DataEidtAction.Add:
+                    foreach (CommonData.HIRATA.SamplingIem recipe in obj.SamplingDatas)
+                    {
+                        if (LgcForm.cv_SamplingData.AddSamplingItem(recipe))
+                        {
+                        }
+                    }
+                    break;
+                case DataEidtAction.Del:
+                    foreach (CommonData.HIRATA.SamplingIem recipe in obj.SamplingDatas)
+                    {
+                        if (LgcForm.cv_SamplingData.DelSamplingItem(recipe))
+                        {
+                        }
+                    }
+                    break;
+                case DataEidtAction.Edit:
+                    foreach (CommonData.HIRATA.SamplingIem recipe in obj.SamplingDatas)
+                    {
+                        if (LgcForm.cv_SamplingData.ModifySamplingItem(recipe))
+                        {
+                        }
+                    }
+                    break;
+            };
+
+            WriteLog(LogLevelType.General, log);
+            WriteLog(LogLevelType.NormalFunctionInOut, this.GetType().Name + "." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Leave);
+        }
         protected override void ProcessRecipeAction(string m_SourceModule, int m_Type, string m_MessageId, string m_RequestNotifyMessageId, uint m_Ticket, Object m_Object)
         {
             WriteLog(LogLevelType.NormalFunctionInOut, this.GetType().Name + "." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Enter);
@@ -300,6 +337,14 @@ namespace LGC
         {
             WriteLog(LogLevelType.NormalFunctionInOut, this.GetType().Name + "." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Enter);
             base.ProcessRecipeChange(m_SourceModule, m_Type, m_MessageId, m_RequestNotifyMessageId, m_Ticket, m_Object);
+            WriteLog(LogLevelType.NormalFunctionInOut, this.GetType().Name + "." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Leave);
+        }
+        
+        protected override void ProcessSamplingDataReq(string m_SourceModule, int m_Type, string m_MessageId, string m_RequestNotifyMessageId, uint m_Ticket, Object m_Object)
+        {
+            WriteLog(LogLevelType.NormalFunctionInOut, this.GetType().Name + "." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Enter);
+            base.ProcessSamplingDataReq(m_SourceModule, m_Type, m_MessageId, m_RequestNotifyMessageId, m_Ticket, m_Object);
+            SendMmfReplyObject(typeof(CommonData.HIRATA.SamplingData).Name, LgcForm.cv_SamplingData, m_Ticket, typeof(CommonData.HIRATA.MDSamplingDataReq).Name, KParseObjToXmlPropertyType.Field);
             WriteLog(LogLevelType.NormalFunctionInOut, this.GetType().Name + "." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Leave);
         }
         protected override void ProcessRecipeReq(string m_SourceModule, int m_Type, string m_MessageId, string m_RequestNotifyMessageId, uint m_Ticket, Object m_Object)

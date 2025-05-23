@@ -40,6 +40,7 @@ namespace UI
         TimrOutForm cv_TimeOutForm = new TimrOutForm();
         CopyLogForm cv_CopyLogsForm = new CopyLogForm();
         RecipeSetting cv_RecipeSetting = new RecipeSetting();
+        user_SamplingSlot cv_SamplingForm = new user_SamplingSlot();
         MonitorForm cv_MonitorForm = new MonitorForm();
         RecipeCheckForm cv_RecipeCheckForm = new RecipeCheckForm();
         private Dictionary<string, Label> cv_ModuleLbl = new Dictionary<string, Label>();
@@ -138,6 +139,7 @@ namespace UI
             reFreshAccountGrid();
             setVetsion();
             setManualPage();
+            InitialSamplingSlotPage();
             InitIcon();
             cv_PaletteForm = new palette();
             LinkControllerEvent();
@@ -357,6 +359,15 @@ namespace UI
             cb_ManualApi.Items.Add("Hide,API");
         }
 
+        private void InitialSamplingSlotPage()
+        {
+            if(cv_SamplingForm == null)
+            {
+                cv_SamplingForm = new user_SamplingSlot();
+            }
+            cv_SamplingForm.Dock = DockStyle.Fill;
+            cv_AoiSlot.Controls.Add(cv_SamplingForm);
+        }
         #region Manual page
         private void CleanManualPage()
         {
@@ -1734,6 +1745,7 @@ cb_PortActionSlotType
             cv_AppEventMap.Add(typeof(CommonData.HIRATA.AlignerData).Name, ProcessAlignerData);
             cv_AppEventMap.Add(typeof(CommonData.HIRATA.EqData).Name, ProcessEqData);
             cv_AppEventMap.Add(typeof(CommonData.HIRATA.RecipeData).Name, ProcessRecipeData);
+            cv_AppEventMap.Add(typeof(CommonData.HIRATA.SamplingData).Name, ProcessSamplingData);
             cv_AppEventMap.Add(typeof(CommonData.HIRATA.AlarmData).Name, ProcessAlarmNoti);
             cv_AppEventMap.Add(typeof(CommonData.HIRATA.MDInitial).Name, ProcessInit);
             cv_AppEventMap.Add(typeof(CommonData.HIRATA.MDPopOpidForm).Name, ProcessPopOpidFormReq);
@@ -2150,6 +2162,28 @@ cb_PortActionSlotType
             WriteLog(LogLevelType.General, log);
             //WriteNormalOut
         }
+        
+        void ProcessSamplingData(string m_MessageId, object m_Object)
+        {
+            //WriteNormalIn
+            CommonData.HIRATA.SamplingData obj = m_Object as CommonData.HIRATA.SamplingData;
+            cv_SamplingData = obj;
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new Action(() =>
+                {
+                    cv_SamplingForm.dataGridView2.DataSource = cv_SamplingData.cv_SamplingList;
+                    cv_RecipeSetting.UpdateSamplingDataCombobox();
+
+                }));
+            }
+            else
+            {
+                cv_SamplingForm.dataGridView2.DataSource = cv_SamplingData.cv_SamplingList;
+                cv_RecipeSetting.UpdateSamplingDataCombobox();
+            }
+            //WriteNormalOut
+        }
         void ProcessRecipeData(string m_MessageId, object m_Object)
         {
             //WriteNormalIn
@@ -2172,6 +2206,10 @@ cb_PortActionSlotType
                         {
                             lbl_CurFlow.Text = recipe.PFlow.ToString();
                         }
+                        if (lbl_samplingRate.Text != recipe.PSampling.ToString())
+                        {
+                            lbl_samplingRate.Text = recipe.PSampling.ToString();
+                        }
                     }
                 }));
             }
@@ -2189,6 +2227,10 @@ cb_PortActionSlotType
                     if (lbl_CurFlow.Text != recipe.PFlow.ToString())
                     {
                         lbl_CurFlow.Text = recipe.PFlow.ToString();
+                    }
+                    if (lbl_samplingRate.Text != recipe.PSampling.ToString())
+                    {
+                        lbl_samplingRate.Text = recipe.PSampling.ToString();
                     }
                 }
             }
@@ -3447,6 +3489,16 @@ cb_IoFfu
                 CommonStaticData.PopForm("There is No Unload Port Warring !!", true, false);
             }
             
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

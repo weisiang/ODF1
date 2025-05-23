@@ -180,6 +180,7 @@ namespace LGC
             RecipeItem recipe = null;
             if (cv_Recipes.GetCurRecipe(out recipe))
             {
+                initialEqGetPutArm();
                 if (recipe.PFlow == OdfFlow.Flow2_1 || recipe.PFlow == OdfFlow.Flow2_2)
                 {
                     WriteLog(LogLevelType.General, "Set Flow2. Change UV get arm : " + RobotArm.rbaDown.ToString() +
@@ -187,6 +188,7 @@ namespace LGC
                     GetEqById((int)EqId.UV_1).PGetArm = RobotArm.rbaDown;
                     GetEqById((int)EqId.UV_1).PPutArm = RobotArm.rbaUp;
                 }
+                /*
                 else
                 {
                     WriteLog(LogLevelType.General, "Set Not Flow2. Set UV get arm : " + RobotArm.rbaUp.ToString() +
@@ -194,13 +196,70 @@ namespace LGC
                     GetEqById((int)EqId.UV_1).PGetArm = RobotArm.rbaUp;
                     GetEqById((int)EqId.UV_1).PPutArm = RobotArm.rbaDown;
                 }
-                if (recipe.PFlow == OdfFlow.Flow5_1 || recipe.PFlow == OdfFlow.Flow5_2)
+                */
+                else if (recipe.PFlow == OdfFlow.Flow5_1 || recipe.PFlow == OdfFlow.Flow5_2)
                 {
                     WriteLog(LogLevelType.General, "Set Flow5. Set VAS get arm : " + RobotArm.rbaDown.ToString() +
                         " put arm : " + RobotArm.rbaDown.ToString());
                     GetEqById((int)EqId.VAS).PGetArm = RobotArm.rbaDown;
                     GetEqById((int)EqId.VAS).PPutArm = RobotArm.rbaDown;
                 }
+                else if (recipe.PFlow == OdfFlow.Flow6_1 || recipe.PFlow == OdfFlow.Flow6_2 || recipe.PFlow == OdfFlow.Flow2_3)
+                {
+                    /*
+                    WriteLog(LogLevelType.General, "Set Flow :" + recipe.PFlow.ToString() + "  Set  all eq arm : ");
+
+                    GetEqById((int)EqId.SDP1).PGetArm = RobotArm.rbaUp;
+                    GetEqById((int)EqId.SDP1).PPutArm = RobotArm.rbaDown ;
+                    GetEqById((int)EqId.SDP2).PGetArm = RobotArm.rbaUp;
+                    GetEqById((int)EqId.SDP2).PPutArm = RobotArm.rbaDown ;
+                    GetEqById((int)EqId.SDP3).PGetArm = RobotArm.rbaUp;
+                    GetEqById((int)EqId.SDP3).PPutArm = RobotArm.rbaDown ;
+
+                    GetEqById((int)EqId.AOI).PGetArm = RobotArm.rbaDown;
+                    GetEqById((int)EqId.AOI).PPutArm = RobotArm.rbaUp ;
+
+                    GetEqById((int)EqId.IJP).PGetArm = RobotArm.rbaUp;
+                    GetEqById((int)EqId.IJP).PPutArm = RobotArm.rbaDown ;
+
+                    GetEqById((int)EqId.VAS).PGetArm = RobotArm.rbaDown;
+                    GetEqById((int)EqId.VAS).PPutArm = RobotArm.rbaUp ;
+
+                    GetEqById((int)EqId.UV_1).PGetArm = RobotArm.rbaUp;
+                    GetEqById((int)EqId.UV_1).PPutArm = RobotArm.rbaDown ;
+                    GetEqById((int)EqId.UV_2).PGetArm = RobotArm.rbaUp;
+                    GetEqById((int)EqId.UV_2).PPutArm = RobotArm.rbaDown ;
+                    */
+                }
+                else if (recipe.PFlow == OdfFlow.Flow7_2 || recipe.PFlow == OdfFlow.Flow7_3)
+                {
+                    /*
+                    WriteLog(LogLevelType.General, "Set Flow :" + recipe.PFlow.ToString() + "  Set  all eq arm : ");
+                    
+                    GetEqById((int)EqId.SDP1).PGetArm = RobotArm.rbaDown;
+                    GetEqById((int)EqId.SDP1).PPutArm = RobotArm.rbaUp ;
+                    GetEqById((int)EqId.SDP2).PGetArm = RobotArm.rbaDown;
+                    GetEqById((int)EqId.SDP2).PPutArm = RobotArm.rbaUp ;
+                    GetEqById((int)EqId.SDP3).PGetArm = RobotArm.rbaDown;
+                    GetEqById((int)EqId.SDP3).PPutArm = RobotArm.rbaUp ;
+
+                    GetEqById((int)EqId.AOI).PGetArm = RobotArm.rbaUp;
+                    GetEqById((int)EqId.AOI).PPutArm = RobotArm.rbaDown ;
+
+                    GetEqById((int)EqId.IJP).PGetArm = RobotArm.rbaDown;
+                    GetEqById((int)EqId.IJP).PPutArm = RobotArm.rbaUp ;
+
+                    GetEqById((int)EqId.VAS).PGetArm = RobotArm.rbaUp;
+                    GetEqById((int)EqId.VAS).PPutArm = RobotArm.rbaDown ;
+
+                    GetEqById((int)EqId.UV_1).PGetArm = RobotArm.rbaDown;
+                    GetEqById((int)EqId.UV_1).PPutArm = RobotArm.rbaUp ;
+                    GetEqById((int)EqId.UV_2).PGetArm = RobotArm.rbaDown;
+                    GetEqById((int)EqId.UV_2).PPutArm = RobotArm.rbaUp ;
+                    */
+                }
+
+                /*
                 else
                 {
                     WriteLog(LogLevelType.General, "Set Not Flow5. Set VAS get arm : " + RobotArm.rbaDown.ToString() +
@@ -208,6 +267,7 @@ namespace LGC
                     GetEqById((int)EqId.VAS).PGetArm = RobotArm.rbaDown;
                     GetEqById((int)EqId.VAS).PPutArm = RobotArm.rbaUp;
                 }
+                */
 
 
                 string section = recipe.PFlow.ToString().Substring(4);
@@ -264,6 +324,10 @@ namespace LGC
             WriteLog(LogLevelType.General, log);
             WriteLog(LogLevelType.NormalFunctionInOut, this.GetType().Name + "." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Leave);
         }
+        private void initialEqGetPutArm()
+        {
+
+        }
 
         #region Calculate Robot Job Path
 
@@ -285,6 +349,8 @@ namespace LGC
             }
             return rtn;
         }
+        //this function only check VAS unload for ODF1
+        //because actions.FindIndex( x=> (x.PAction == RobotAction.Get) && (x.PTarget == ActionTarget.Eq) && (x.PTargetId == (int)EqId.VAS) ) ;
         private void CalculateRobotJobPathForVasUnload()
         {
             if (!GetVasIsUnload()) return;
@@ -821,6 +887,28 @@ namespace LGC
                         }
                     }// stop point.
                     else if (device == AllDevice.UP)
+                    {
+                        int port = 0;
+                        int slot = 0;
+                        if (FindUnloadPortToPutSubstrate(out port, out slot , m_JobMap[pre_step]))
+                        {
+                            if (m_JobMap[pre_step].PGetArm != RobotArm.rabNone)
+                            {
+                                m_JobMap[now_step] = new RobotJob(1, m_JobMap[pre_step].PGetArm, RobotArm.rabNone, RobotAction.Put,
+                                    ActionTarget.Port, port, slot, false);
+                                rtn = true;
+                                m_EndPos = now_step;
+                                break;
+                            }
+                        }
+                        else
+                        {
+                            m_JobMap.Remove(now_step);
+                            rtn = false;
+                        }
+                    }
+                    //R20250521. Allen add return to load port. (uncomplete)
+                    else if (device == AllDevice.LP)
                     {
                         int port = 0;
                         int slot = 0;
@@ -2478,7 +2566,7 @@ namespace LGC
             int time_chart_id = -1;
             TimechartNormal time_chart_instance = null;
 
-            for (int eq_index = 1; eq_index <= (int)EqId.UV_1; eq_index++)
+            for (int eq_index = 1; eq_index <= (int)EqId.UV_2; eq_index++)
             {
                 EqId eq_id = (EqId)eq_index;
                 if (eq_id == EqId.VAS)
@@ -3681,6 +3769,17 @@ namespace LGC
         }
         #endregion
 
+        #region Sampling data change
+        
+        protected override void OnSamplingDataChange()
+        {
+            if (cv_MmfController != null)
+            {
+                cv_MmfController.SendSamplingData();
+                SysUtils.Sleep(10);
+            }
+        }
+        #endregion
         #region Recipe Event function
         //Trigger this event When RecipeData add/del/Modify successful.(LGC must override)
         protected override void OnRecipeActionEvent(DataEidtAction m_Action, List<RecipeItem> m_Recipes)
@@ -3831,6 +3930,11 @@ namespace LGC
         }
         protected override void ModuleInit()
         {
+            cv_SamplingData.SetFilePath(CommonData.HIRATA.CommonStaticData.g_RootConfigFolderPath + CommonData.HIRATA.CommonStaticData.g_FDModuleName + "\\Sampling.xml");
+            cv_SamplingData.PIsAutoSave = true;
+            cv_SamplingData.LoadFromFile();
+            cv_SamplingData.SaveToFile();
+
             cv_Recipes.SetFilePath(CommonData.HIRATA.CommonStaticData.g_RootConfigFolderPath + CommonData.HIRATA.CommonStaticData.g_FDModuleName + "\\PPID.xml");
             cv_Recipes.PIsAutoSave = true;
             cv_Recipes.LoadFromFile();
@@ -4583,7 +4687,7 @@ namespace LGC
                     }
                     else
                     {
-                    robot_command = APIEnum.RobotCommand.WaferPut;
+                        robot_command = APIEnum.RobotCommand.WaferPut;
                     }
                 }
                 List<string> para = new List<string>();

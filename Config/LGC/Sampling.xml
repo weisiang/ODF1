@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SAMPLING>
+    <SamplingData>
+        <cv_SamplingList>
+            <SamplingIem>
+                <cv_No>232</cv_No>
+                <cv_hitSlot>
+                    <Item>2</Item>
+                    <Item>4</Item>
+                    <Item>6</Item>
+                    <Item>8</Item>
+                    <Item>24</Item>
+                </cv_hitSlot>
+                <cv_Desription>222</cv_Desription>
+                <cv_Time>20250521020259</cv_Time>
+            </SamplingIem>
+            <SamplingIem>
+                <cv_No>1</cv_No>
+                <cv_hitSlot>
+                    <Item>14</Item>
+                </cv_hitSlot>
+                <cv_Desription>12345</cv_Desription>
+                <cv_Time>20250521020316</cv_Time>
+            </SamplingIem>
+        </cv_SamplingList>
+    </SamplingData>
+</SAMPLING>

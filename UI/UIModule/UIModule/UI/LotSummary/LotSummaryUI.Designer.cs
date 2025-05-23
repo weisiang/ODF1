@@ -31,6 +31,9 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGrid_LotSummary = new System.Windows.Forms.DataGridView();
+            this.ContextMenuStrip_changePortType = new MaterialSkin.Controls.MaterialContextMenuStrip();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,6 +46,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_LotSummary)).BeginInit();
+            this.ContextMenuStrip_changePortType.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -80,8 +84,36 @@
             this.dataGrid_LotSummary.Location = new System.Drawing.Point(0, 0);
             this.dataGrid_LotSummary.Name = "dataGrid_LotSummary";
             this.dataGrid_LotSummary.RowTemplate.Height = 24;
+            this.dataGrid_LotSummary.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGrid_LotSummary.Size = new System.Drawing.Size(833, 74);
             this.dataGrid_LotSummary.TabIndex = 2;
+            this.dataGrid_LotSummary.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_LotSummary_CellClick);
+            // 
+            // ContextMenuStrip_changePortType
+            // 
+            this.ContextMenuStrip_changePortType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.ContextMenuStrip_changePortType.Depth = 0;
+            this.ContextMenuStrip_changePortType.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.ContextMenuStrip_changePortType.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1,
+            this.toolStripMenuItem2});
+            this.ContextMenuStrip_changePortType.MouseState = MaterialSkin.MouseState.HOVER;
+            this.ContextMenuStrip_changePortType.Name = "menu_RbInline";
+            this.ContextMenuStrip_changePortType.Size = new System.Drawing.Size(128, 48);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem1.Text = "Loader";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem2.Text = "Unloader";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // Column1
             // 
@@ -136,6 +168,7 @@
             // Column8
             // 
             this.Column8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column8.ContextMenuStrip = this.ContextMenuStrip_changePortType;
             this.Column8.DataPropertyName = "PPortMode";
             this.Column8.HeaderText = "Mode";
             this.Column8.Name = "Column8";
@@ -158,6 +191,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_LotSummary)).EndInit();
+            this.ContextMenuStrip_changePortType.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -167,6 +201,9 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dataGrid_LotSummary;
+        private MaterialSkin.Controls.MaterialContextMenuStrip ContextMenuStrip_changePortType;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;

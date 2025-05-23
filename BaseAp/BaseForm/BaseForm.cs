@@ -37,6 +37,7 @@ namespace BaseAp
         public static RecipeData cv_Recipes = new RecipeData();
         public static TimeOutData cv_TimeoutData = new TimeOutData();
         public static GlassCountData cv_GlassCountData = new GlassCountData();
+        public static SamplingData cv_SamplingData = new SamplingData();
 
         public BaseForm()
         {
@@ -276,6 +277,10 @@ namespace BaseAp
                 cv_SystemData.OnRobotStatusChange += OnRobotStatusChange;
                 cv_SystemData.OnSystemStatusChange += OnSystemStatusChange;
             }
+            if(cv_SamplingData != null)
+            {
+                cv_SamplingData.EventSamplingDatahange += OnSamplingDataChange;
+            }
         }
 
         #region Link log in/out Event & Event function;
@@ -305,6 +310,9 @@ namespace BaseAp
         #region Link Recipe Event & Event function
         //Trigger this event When RecipeData add/del/Modify successful.(LGC must override)
         protected virtual void OnRecipeActionEvent(DataEidtAction m_Action, List<RecipeItem> m_Recipes)
+        {
+        }
+        protected virtual void OnSamplingDataChange()
         {
         }
         //Trigger this event When RecipeData change.(LGC must override)

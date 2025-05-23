@@ -87,6 +87,14 @@ namespace UI
             base.ProcessRecipeAction(m_SourceModule, m_Type, m_MessageId, m_RequestNotifyMessageId, m_Ticket, m_Object);
             WriteLog(LogLevelType.NormalFunctionInOut, this.GetType().Name + "." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Leave);
         }
+        
+        protected override void ProcessSamplingDataChange(string m_SourceModule, int m_Type, string m_MessageId, string m_RequestNotifyMessageId, uint m_Ticket, Object m_Object)
+        {
+            WriteLog(LogLevelType.NormalFunctionInOut, this.GetType().Name + "." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Enter);
+            base.ProcessSamplingDataChange(m_SourceModule, m_Type, m_MessageId, m_RequestNotifyMessageId, m_Ticket, m_Object);
+            ProcessMmfEvent(m_SourceModule, m_Type, m_MessageId, m_RequestNotifyMessageId, m_Ticket, m_Object);
+            WriteLog(LogLevelType.NormalFunctionInOut, this.GetType().Name + "." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Leave);
+        }
         protected override void ProcessRecipeChange(string m_SourceModule, int m_Type, string m_MessageId, string m_RequestNotifyMessageId, uint m_Ticket, Object m_Object)
         {
             WriteLog(LogLevelType.NormalFunctionInOut, this.GetType().Name + "." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Enter);
@@ -359,7 +367,11 @@ namespace UI
             {
                 WriteLog(LogLevelType.Warning, "SendRecipeReq time out");
             }
-            if(!SendAlarmReq(MmfEventClientEventType.etRequest, true))
+            if(!SendSamplingDataReq(MmfEventClientEventType.etRequest, true))
+            {
+                WriteLog(LogLevelType.Warning, "SendSamplingDataReq time out");
+            }
+            if (!SendAlarmReq(MmfEventClientEventType.etRequest, true))
             {
                 WriteLog(LogLevelType.Warning, "SendAlarmReq time out");
             }

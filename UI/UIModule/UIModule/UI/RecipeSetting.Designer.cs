@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
             this.cb_NeedGlass = new System.Windows.Forms.CheckBox();
             this.btn_CurRecipe = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -59,8 +60,10 @@
             this.cv_WidthColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cv_HeightColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sampling = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cv_TimeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cb_samplingRate = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cv_RecipeDataView)).BeginInit();
@@ -69,6 +72,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(252)))), ((int)(((byte)(254)))));
+            this.panel1.Controls.Add(this.cb_samplingRate);
+            this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.cb_NeedGlass);
             this.panel1.Controls.Add(this.btn_CurRecipe);
             this.panel1.Controls.Add(this.label4);
@@ -91,19 +96,28 @@
             this.panel1.Controls.Add(this.btn_Add);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(2012, 324);
+            this.panel1.Size = new System.Drawing.Size(1509, 259);
             this.panel1.TabIndex = 22;
+            // 
+            // label5
+            // 
+            this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label5.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label5.Location = new System.Drawing.Point(699, 181);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(117, 23);
+            this.label5.TabIndex = 45;
+            this.label5.Text = "AOI  Sampling";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // cb_NeedGlass
             // 
             this.cb_NeedGlass.AutoSize = true;
             this.cb_NeedGlass.Enabled = false;
-            this.cb_NeedGlass.Location = new System.Drawing.Point(1291, 136);
-            this.cb_NeedGlass.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cb_NeedGlass.Location = new System.Drawing.Point(968, 109);
             this.cb_NeedGlass.Name = "cb_NeedGlass";
-            this.cb_NeedGlass.Size = new System.Drawing.Size(59, 19);
+            this.cb_NeedGlass.Size = new System.Drawing.Size(48, 16);
             this.cb_NeedGlass.TabIndex = 44;
             this.cb_NeedGlass.Text = "Glass";
             this.cb_NeedGlass.UseVisualStyleBackColor = true;
@@ -111,10 +125,9 @@
             // 
             // btn_CurRecipe
             // 
-            this.btn_CurRecipe.Location = new System.Drawing.Point(1433, 79);
-            this.btn_CurRecipe.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_CurRecipe.Location = new System.Drawing.Point(1075, 63);
             this.btn_CurRecipe.Name = "btn_CurRecipe";
-            this.btn_CurRecipe.Size = new System.Drawing.Size(119, 28);
+            this.btn_CurRecipe.Size = new System.Drawing.Size(89, 22);
             this.btn_CurRecipe.TabIndex = 43;
             this.btn_CurRecipe.Text = "SET";
             this.btn_CurRecipe.UseVisualStyleBackColor = true;
@@ -124,10 +137,9 @@
             // 
             this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label4.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label4.Location = new System.Drawing.Point(1269, 46);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(952, 37);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(155, 28);
+            this.label4.Size = new System.Drawing.Size(117, 23);
             this.label4.TabIndex = 42;
             this.label4.Text = "Set Cur. Recipe";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -135,29 +147,26 @@
             // cb_CurRecipe
             // 
             this.cb_CurRecipe.FormattingEnabled = true;
-            this.cb_CurRecipe.Location = new System.Drawing.Point(1433, 46);
-            this.cb_CurRecipe.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cb_CurRecipe.Location = new System.Drawing.Point(1075, 37);
             this.cb_CurRecipe.Name = "cb_CurRecipe";
-            this.cb_CurRecipe.Size = new System.Drawing.Size(160, 23);
+            this.cb_CurRecipe.Size = new System.Drawing.Size(121, 20);
             this.cb_CurRecipe.TabIndex = 41;
             // 
             // lbl_RecipeDescription
             // 
-            this.lbl_RecipeDescription.Location = new System.Drawing.Point(647, 175);
-            this.lbl_RecipeDescription.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lbl_RecipeDescription.Location = new System.Drawing.Point(485, 140);
             this.lbl_RecipeDescription.MaxLength = 30;
             this.lbl_RecipeDescription.Name = "lbl_RecipeDescription";
-            this.lbl_RecipeDescription.Size = new System.Drawing.Size(247, 25);
+            this.lbl_RecipeDescription.Size = new System.Drawing.Size(186, 22);
             this.lbl_RecipeDescription.TabIndex = 40;
             // 
             // label2
             // 
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label2.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label2.Location = new System.Drawing.Point(483, 175);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(362, 140);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(155, 28);
+            this.label2.Size = new System.Drawing.Size(117, 23);
             this.label2.TabIndex = 39;
             this.label2.Text = "Description";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -167,10 +176,9 @@
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.panel2.Controls.Add(this.txt_FlowDescription);
             this.panel2.Controls.Add(this.label3);
-            this.panel2.Location = new System.Drawing.Point(119, 44);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Location = new System.Drawing.Point(89, 35);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(303, 259);
+            this.panel2.Size = new System.Drawing.Size(227, 207);
             this.panel2.TabIndex = 38;
             // 
             // txt_FlowDescription
@@ -178,10 +186,9 @@
             this.txt_FlowDescription.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.txt_FlowDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_FlowDescription.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt_FlowDescription.Location = new System.Drawing.Point(0, 32);
-            this.txt_FlowDescription.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_FlowDescription.Location = new System.Drawing.Point(0, 26);
             this.txt_FlowDescription.Name = "txt_FlowDescription";
-            this.txt_FlowDescription.Size = new System.Drawing.Size(303, 227);
+            this.txt_FlowDescription.Size = new System.Drawing.Size(227, 181);
             this.txt_FlowDescription.TabIndex = 40;
             this.txt_FlowDescription.Text = "";
             // 
@@ -191,40 +198,36 @@
             this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label3.Dock = System.Windows.Forms.DockStyle.Top;
             this.label3.Location = new System.Drawing.Point(0, 0);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(303, 32);
+            this.label3.Size = new System.Drawing.Size(227, 26);
             this.label3.TabIndex = 39;
             this.label3.Text = "Flow contents";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // cv_TxGlassVas
             // 
-            this.cv_TxGlassVas.Location = new System.Drawing.Point(1096, 176);
-            this.cv_TxGlassVas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cv_TxGlassVas.Location = new System.Drawing.Point(822, 141);
             this.cv_TxGlassVas.MaxLength = 16;
             this.cv_TxGlassVas.Name = "cv_TxGlassVas";
-            this.cv_TxGlassVas.Size = new System.Drawing.Size(140, 25);
+            this.cv_TxGlassVas.Size = new System.Drawing.Size(106, 22);
             this.cv_TxGlassVas.TabIndex = 35;
             // 
             // label1
             // 
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label1.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label1.Location = new System.Drawing.Point(932, 175);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(699, 140);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(155, 28);
+            this.label1.Size = new System.Drawing.Size(117, 23);
             this.label1.TabIndex = 34;
             this.label1.Text = "Glass VAS";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btn_Modify
             // 
-            this.btn_Modify.Location = new System.Drawing.Point(608, 250);
-            this.btn_Modify.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_Modify.Location = new System.Drawing.Point(456, 200);
             this.btn_Modify.Name = "btn_Modify";
-            this.btn_Modify.Size = new System.Drawing.Size(119, 28);
+            this.btn_Modify.Size = new System.Drawing.Size(89, 22);
             this.btn_Modify.TabIndex = 33;
             this.btn_Modify.Text = "MODIFY";
             this.btn_Modify.UseVisualStyleBackColor = true;
@@ -232,10 +235,9 @@
             // 
             // btn_Del
             // 
-            this.btn_Del.Location = new System.Drawing.Point(735, 250);
-            this.btn_Del.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_Del.Location = new System.Drawing.Point(551, 200);
             this.btn_Del.Name = "btn_Del";
-            this.btn_Del.Size = new System.Drawing.Size(119, 28);
+            this.btn_Del.Size = new System.Drawing.Size(89, 22);
             this.btn_Del.TabIndex = 32;
             this.btn_Del.Text = "DEL";
             this.btn_Del.UseVisualStyleBackColor = true;
@@ -244,30 +246,27 @@
             // cb_Flow
             // 
             this.cb_Flow.FormattingEnabled = true;
-            this.cb_Flow.Location = new System.Drawing.Point(649, 112);
-            this.cb_Flow.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cb_Flow.Location = new System.Drawing.Point(487, 90);
             this.cb_Flow.Name = "cb_Flow";
-            this.cb_Flow.Size = new System.Drawing.Size(244, 23);
+            this.cb_Flow.Size = new System.Drawing.Size(184, 20);
             this.cb_Flow.TabIndex = 31;
             this.cb_Flow.SelectedIndexChanged += new System.EventHandler(this.cb_Flow_SelectedIndexChanged);
             // 
             // cv_TxWaferVas
             // 
-            this.cv_TxWaferVas.Location = new System.Drawing.Point(1095, 51);
-            this.cv_TxWaferVas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cv_TxWaferVas.Location = new System.Drawing.Point(821, 41);
             this.cv_TxWaferVas.MaxLength = 16;
             this.cv_TxWaferVas.Name = "cv_TxWaferVas";
-            this.cv_TxWaferVas.Size = new System.Drawing.Size(140, 25);
+            this.cv_TxWaferVas.Size = new System.Drawing.Size(106, 22);
             this.cv_TxWaferVas.TabIndex = 30;
             // 
             // cv_LbRecipeWidth
             // 
             this.cv_LbRecipeWidth.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.cv_LbRecipeWidth.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.cv_LbRecipeWidth.Location = new System.Drawing.Point(932, 111);
-            this.cv_LbRecipeWidth.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.cv_LbRecipeWidth.Location = new System.Drawing.Point(699, 89);
             this.cv_LbRecipeWidth.Name = "cv_LbRecipeWidth";
-            this.cv_LbRecipeWidth.Size = new System.Drawing.Size(155, 28);
+            this.cv_LbRecipeWidth.Size = new System.Drawing.Size(117, 23);
             this.cv_LbRecipeWidth.TabIndex = 29;
             this.cv_LbRecipeWidth.Text = "Wafer IJP";
             this.cv_LbRecipeWidth.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -276,30 +275,27 @@
             // 
             this.cv_LbRecipeHeight.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.cv_LbRecipeHeight.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.cv_LbRecipeHeight.Location = new System.Drawing.Point(484, 111);
-            this.cv_LbRecipeHeight.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.cv_LbRecipeHeight.Location = new System.Drawing.Point(363, 89);
             this.cv_LbRecipeHeight.Name = "cv_LbRecipeHeight";
-            this.cv_LbRecipeHeight.Size = new System.Drawing.Size(155, 28);
+            this.cv_LbRecipeHeight.Size = new System.Drawing.Size(117, 23);
             this.cv_LbRecipeHeight.TabIndex = 27;
             this.cv_LbRecipeHeight.Text = "Flow";
             this.cv_LbRecipeHeight.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // cv_TxWaferOCR
             // 
-            this.cv_TxWaferOCR.Location = new System.Drawing.Point(1096, 112);
-            this.cv_TxWaferOCR.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cv_TxWaferOCR.Location = new System.Drawing.Point(822, 90);
             this.cv_TxWaferOCR.MaxLength = 16;
             this.cv_TxWaferOCR.Name = "cv_TxWaferOCR";
-            this.cv_TxWaferOCR.Size = new System.Drawing.Size(140, 25);
+            this.cv_TxWaferOCR.Size = new System.Drawing.Size(106, 22);
             this.cv_TxWaferOCR.TabIndex = 26;
             // 
             // cv_TxRecipeId
             // 
-            this.cv_TxRecipeId.Location = new System.Drawing.Point(647, 48);
-            this.cv_TxRecipeId.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cv_TxRecipeId.Location = new System.Drawing.Point(485, 38);
             this.cv_TxRecipeId.MaxLength = 3;
             this.cv_TxRecipeId.Name = "cv_TxRecipeId";
-            this.cv_TxRecipeId.Size = new System.Drawing.Size(247, 25);
+            this.cv_TxRecipeId.Size = new System.Drawing.Size(186, 22);
             this.cv_TxRecipeId.TabIndex = 25;
             this.cv_TxRecipeId.TextChanged += new System.EventHandler(this.cv_TxRecipeId_TextChanged);
             // 
@@ -307,10 +303,9 @@
             // 
             this.cv_LbRecipeSize.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.cv_LbRecipeSize.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.cv_LbRecipeSize.Location = new System.Drawing.Point(932, 48);
-            this.cv_LbRecipeSize.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.cv_LbRecipeSize.Location = new System.Drawing.Point(699, 38);
             this.cv_LbRecipeSize.Name = "cv_LbRecipeSize";
-            this.cv_LbRecipeSize.Size = new System.Drawing.Size(155, 28);
+            this.cv_LbRecipeSize.Size = new System.Drawing.Size(117, 23);
             this.cv_LbRecipeSize.TabIndex = 24;
             this.cv_LbRecipeSize.Text = "Wafer SDP";
             this.cv_LbRecipeSize.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -319,20 +314,18 @@
             // 
             this.cv_LbRecipeNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.cv_LbRecipeNumber.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.cv_LbRecipeNumber.Location = new System.Drawing.Point(483, 48);
-            this.cv_LbRecipeNumber.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.cv_LbRecipeNumber.Location = new System.Drawing.Point(362, 38);
             this.cv_LbRecipeNumber.Name = "cv_LbRecipeNumber";
-            this.cv_LbRecipeNumber.Size = new System.Drawing.Size(155, 28);
+            this.cv_LbRecipeNumber.Size = new System.Drawing.Size(117, 23);
             this.cv_LbRecipeNumber.TabIndex = 23;
             this.cv_LbRecipeNumber.Text = "Recipe No";
             this.cv_LbRecipeNumber.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btn_Add
             // 
-            this.btn_Add.Location = new System.Drawing.Point(482, 250);
-            this.btn_Add.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_Add.Location = new System.Drawing.Point(362, 200);
             this.btn_Add.Name = "btn_Add";
-            this.btn_Add.Size = new System.Drawing.Size(119, 28);
+            this.btn_Add.Size = new System.Drawing.Size(89, 22);
             this.btn_Add.TabIndex = 22;
             this.btn_Add.Text = "ADD";
             this.btn_Add.UseVisualStyleBackColor = true;
@@ -354,17 +347,17 @@
             this.cv_WidthColumn,
             this.cv_HeightColumn,
             this.Column1,
+            this.Sampling,
             this.cv_TimeColumn,
             this.Column2});
             this.cv_RecipeDataView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cv_RecipeDataView.Location = new System.Drawing.Point(0, 324);
-            this.cv_RecipeDataView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cv_RecipeDataView.Location = new System.Drawing.Point(0, 259);
             this.cv_RecipeDataView.MultiSelect = false;
             this.cv_RecipeDataView.Name = "cv_RecipeDataView";
             this.cv_RecipeDataView.ReadOnly = true;
             this.cv_RecipeDataView.RowTemplate.Height = 24;
             this.cv_RecipeDataView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.cv_RecipeDataView.Size = new System.Drawing.Size(2012, 328);
+            this.cv_RecipeDataView.Size = new System.Drawing.Size(1509, 263);
             this.cv_RecipeDataView.TabIndex = 1;
             this.cv_RecipeDataView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cv_RecipeDataView_CellDoubleClick);
             // 
@@ -405,6 +398,13 @@
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
             // 
+            // Sampling
+            // 
+            this.Sampling.DataPropertyName = "PSampling";
+            this.Sampling.HeaderText = "AOI Sampling";
+            this.Sampling.Name = "Sampling";
+            this.Sampling.ReadOnly = true;
+            // 
             // cv_TimeColumn
             // 
             this.cv_TimeColumn.DataPropertyName = "PTime";
@@ -421,15 +421,22 @@
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
             // 
+            // cb_samplingRate
+            // 
+            this.cb_samplingRate.FormattingEnabled = true;
+            this.cb_samplingRate.Location = new System.Drawing.Point(822, 184);
+            this.cb_samplingRate.Name = "cb_samplingRate";
+            this.cb_samplingRate.Size = new System.Drawing.Size(106, 20);
+            this.cb_samplingRate.TabIndex = 46;
+            // 
             // RecipeSetting
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.cv_RecipeDataView);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "RecipeSetting";
-            this.Size = new System.Drawing.Size(2012, 652);
+            this.Size = new System.Drawing.Size(1509, 522);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -465,13 +472,15 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cb_CurRecipe;
         private System.Windows.Forms.CheckBox cb_NeedGlass;
+        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridViewTextBoxColumn cv_NumberColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cv_SizeColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cv_WidthColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cv_HeightColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Sampling;
         private System.Windows.Forms.DataGridViewTextBoxColumn cv_TimeColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-
+        private System.Windows.Forms.ComboBox cb_samplingRate;
     }
 }

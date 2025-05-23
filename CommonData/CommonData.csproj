@@ -55,6 +55,7 @@
     <Compile Include="Common\CommonData\CommonDatabase.cs" />
     <Compile Include="Common\CommonData\GlassCountData.cs" />
     <Compile Include="Common\CommonData\RobotAction.cs" />
+    <Compile Include="Common\CommonData\SamplingData.cs" />
     <Compile Include="Common\CommonData\TimeOutData.cs" />
     <Compile Include="Common\EnumData.cs" />
     <Compile Include="Common\EqData.cs" />

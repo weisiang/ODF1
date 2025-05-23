@@ -61,6 +61,8 @@ isContinueCheck
     <Entry Source="" Target="" MessageId="RecipeData" isRexpSource="true" isRexpTarget="true" isRexpMessageId="true" isAllow="true" isContinueCheck="false" />
     <Entry Source="" Target="" MessageId="MDRecipeAction" isRexpSource="true" isRexpTarget="true" isRexpMessageId="true" isAllow="true" isContinueCheck="false" />
     <Entry Source="" Target="" MessageId="MDRecipeReq" isRexpSource="true" isRexpTarget="true" isRexpMessageId="true" isAllow="true" isContinueCheck="false" />
+    <Entry Source="" Target="" MessageId="MDSamplingDataReq" isRexpSource="true" isRexpTarget="true" isRexpMessageId="true" isAllow="true" isContinueCheck="false" />
+    <Entry Source="" Target="" MessageId="MDSamplingDataAction" isRexpSource="true" isRexpTarget="true" isRexpMessageId="true" isAllow="true" isContinueCheck="false" />
     <Entry Source="" Target="" MessageId="TimeOutData" isRexpSource="true" isRexpTarget="true" isRexpMessageId="true" isAllow="true" isContinueCheck="false" />
     <Entry Source="LGC" Target="UI" MessageId="MDTimeChartChange" isRexpSource="true" isRexpTarget="true" isRexpMessageId="true" isAllow="true" isContinueCheck="false" />
     <Entry Source="LGC" Target="CIM" MessageId="GlassCountData" isRexpSource="false" isRexpTarget="false" isRexpMessageId="true" isAllow="true" isContinueCheck="true" />
@@ -78,5 +80,6 @@ isContinueCheck
     <Entry Source="CIM" Target="UI" MessageId="FAKE" isRexpSource="false" isRexpTarget="false" isRexpMessageId="true" isAllow="true" isContinueCheck="true" />
     <Entry Source="LGC" Target="CIM" MessageId="RecipeData" isRexpSource="false" isRexpTarget="false" isRexpMessageId="true" isAllow="true" isContinueCheck="true" />
     <Entry Source="LGC" Target="CIM" MessageId="SystemData" isRexpSource="false" isRexpTarget="false" isRexpMessageId="true" isAllow="true" isContinueCheck="true" />
+    <Entry Source="" Target="" MessageId="SamplingData" isRexpSource="true" isRexpTarget="true" isRexpMessageId="true" isAllow="true" isContinueCheck="true" />
 </Routings>
 </Settings>

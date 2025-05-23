@@ -48,6 +48,22 @@ namespace CommonData.HIRATA
     }
     #endregion
 
+    public class MDSamplingDataAction : MessageBase
+    {
+        public int Action;
+        public List<SamplingIem> SamplingDatas = new List<SamplingIem>();
+        public DataEidtAction PAction
+        {
+            get { return (DataEidtAction)Action; }
+            set { Action = (int)value; }
+        }
+    }
+
+    #region Sampling data Req
+    public class MDSamplingDataReq : MessageBase
+    {
+    }
+    #endregion
     #region Recipe Req
     public class MDRecipeReq : MessageBase
     {

@@ -18,6 +18,12 @@ namespace CommonData.HIRATA
         public float cv_WaferIJPDegree;
         public float cv_WaferVASDegree;
         public bool cv_VasNeedGlass;
+        public int cv_Sampling;
+        public int PSampling
+        {
+            get { return cv_Sampling; }
+            set { cv_Sampling = value; }
+        }
         public bool PVasNeedGlass
         {
             get { return cv_VasNeedGlass; }

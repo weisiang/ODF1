@@ -137,6 +137,13 @@ namespace BaseAp
             AssignMmfEventObjectFunction(typeof(CommonData.HIRATA.MDShowOcrDecide).Name, ProcessShowOcrDecide);
             AssignMmfEventObjectFunction(typeof(CommonData.HIRATA.MDShowOcrDecideReply).Name, ProcessOcrDecideReply);
             AssignMmfEventObjectFunction(typeof(CommonData.HIRATA.MDRobotJobAction).Name, ProcessRobotJobAction);
+            AssignMmfEventObjectFunction(typeof(CommonData.HIRATA.SamplingData).Name, ProcessSamplingDataChange);
+
+            AssignMmfEventObjectFunction(typeof(CommonData.HIRATA.MDSamplingDataReq).Name, ProcessSamplingDataReq);
+            AssignMmfEventObjectFunction(typeof(CommonData.HIRATA.MDSamplingDataAction).Name, ProcessSamplingDataAction);
+            
+
+
         }
 
         #region base receive
@@ -222,11 +229,40 @@ namespace BaseAp
             }
             WriteLog(LogLevelType.NormalFunctionInOut, "BaseMmfController." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Leave);
         }
+        protected virtual void ProcessSamplingDataAction(string m_SourceModule, int m_Type, string m_MessageId, string m_RequestNotifyMessageId, uint m_Ticket, Object m_Object)
+        {
+            WriteLog(LogLevelType.NormalFunctionInOut, "BaseMmfController." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Enter);
+            MDSamplingDataAction obj = m_Object as MDSamplingDataAction;
+            string log = "Sampling data Action : " + obj.PAction.ToString(); 
+            if (!string.IsNullOrEmpty(log))
+            {
+                WriteLog(LogLevelType.Detail, log);
+            }
+            WriteLog(LogLevelType.NormalFunctionInOut, "BaseMmfController." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Leave);
+        }
         protected virtual void ProcessRecipeAction(string m_SourceModule, int m_Type, string m_MessageId, string m_RequestNotifyMessageId, uint m_Ticket, Object m_Object)
         {
             WriteLog(LogLevelType.NormalFunctionInOut, "BaseMmfController." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Enter);
             MDRecipeAction obj = m_Object as MDRecipeAction;
             string log = "Recipe Action : " + obj.PAction.ToString(); 
+            if (!string.IsNullOrEmpty(log))
+            {
+                WriteLog(LogLevelType.Detail, log);
+            }
+            WriteLog(LogLevelType.NormalFunctionInOut, "BaseMmfController." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Leave);
+        }
+        protected virtual void ProcessSamplingDataChange(string m_SourceModule, int m_Type, string m_MessageId, string m_RequestNotifyMessageId, uint m_Ticket, Object m_Object)
+        {
+            WriteLog(LogLevelType.NormalFunctionInOut, "BaseMmfController." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Enter);
+            SamplingData obj = m_Object as SamplingData;
+            BaseForm.cv_SamplingData.Clone(obj);
+            string log = "";
+            log += "Sampling data list : " + Environment.NewLine;
+            for (int i = 0; i < BaseForm.cv_SamplingData.cv_SamplingList.Count; i++)
+            {
+                log += "Id : " + BaseForm.cv_SamplingData.cv_SamplingList[i].PNo.ToString();
+                log += ". hit slot : " + string.Join("," , BaseForm.cv_SamplingData.cv_SamplingList[i].cv_hitSlot) + Environment.NewLine;
+            }
             if (!string.IsNullOrEmpty(log))
             {
                 WriteLog(LogLevelType.Detail, log);
@@ -250,6 +286,12 @@ namespace BaseAp
             {
                 WriteLog(LogLevelType.Detail, log);
             }
+            WriteLog(LogLevelType.NormalFunctionInOut, "BaseMmfController." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Leave);
+        }
+        
+        protected virtual void ProcessSamplingDataReq(string m_SourceModule, int m_Type, string m_MessageId, string m_RequestNotifyMessageId, uint m_Ticket, Object m_Object)
+        {
+            WriteLog(LogLevelType.NormalFunctionInOut, "BaseMmfController." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Enter);
             WriteLog(LogLevelType.NormalFunctionInOut, "BaseMmfController." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Leave);
         }
         protected virtual void ProcessRecipeReq(string m_SourceModule, int m_Type, string m_MessageId, string m_RequestNotifyMessageId, uint m_Ticket, Object m_Object)
@@ -444,6 +486,14 @@ namespace BaseAp
             WriteLog(LogLevelType.NormalFunctionInOut, "BaseMmfController." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Leave);
             return result;
         }
+        public virtual bool SendSamplingData()
+        {
+            WriteLog(LogLevelType.NormalFunctionInOut, "BaseMmfController." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Enter);
+            bool rtn = true ;
+            SendMmfNotifyObject(typeof(SamplingData).Name, BaseForm.cv_SamplingData, KParseObjToXmlPropertyType.Field);
+            WriteLog(LogLevelType.NormalFunctionInOut, "BaseMmfController." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Leave);
+            return rtn;
+        }
         public virtual bool SendRecipeData()
         {
             WriteLog(LogLevelType.NormalFunctionInOut, "BaseMmfController." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Enter);
@@ -461,6 +511,37 @@ namespace BaseAp
             obj.PAction = m_Action;
             obj.Recipes = m_Recipes;
             SendMmfNotifyObject(typeof(MDRecipeAction).Name, obj , KParseObjToXmlPropertyType.Field);
+            WriteLog(LogLevelType.NormalFunctionInOut, "BaseMmfController." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Leave);
+            return result;
+        } //MDSamplingDataReq
+
+        public virtual bool SendSamplingDataReq(MmfEventClientEventType m_Type , bool m_IsTimeoutType)
+        {
+            WriteLog(LogLevelType.NormalFunctionInOut, "BaseMmfController." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Enter);
+            bool result = false;
+            MDSamplingDataReq obj = new MDSamplingDataReq();
+            obj.PType = m_Type;
+
+            if (!m_IsTimeoutType)
+            {
+                SendMmfNotifyObject(typeof(MDSamplingDataReq).Name, obj, KParseObjToXmlPropertyType.Field);
+                result = true;
+            }
+            else
+            {
+                string rtn;
+                object rtn_tmp = null;
+                uint ticket;
+
+                if (!Global.Controller.SendMmfRequestObjectTimeout(typeof(CommonData.HIRATA.MDSamplingDataReq).Name, obj, out ticket, out rtn, out rtn_tmp, 3000, KParseObjToXmlPropertyType.Field))
+                {
+                    WriteLog(LogLevelType.Warning, "[Time out] Wait : " + typeof(CommonData.HIRATA.MDSamplingDataReq).Name, FunInOut.None);
+                }
+                else
+                {
+                    result = true ;
+                }
+            }
             WriteLog(LogLevelType.NormalFunctionInOut, "BaseMmfController." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Leave);
             return result;
         }

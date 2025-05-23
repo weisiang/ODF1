@@ -3,26 +3,6 @@
     <RecipeData>
         <cv_RecipeList>
             <RecipeItem>
-                <cv_Id>1</cv_Id>
-                <cv_Time>20190323100224</cv_Time>
-                <cv_Decription>flow 3 no glass</cv_Decription>
-                <cv_Flow>1</cv_Flow>
-                <cv_GlassVasDegree>270</cv_GlassVasDegree>
-                <cv_WaferIJPDegree>90</cv_WaferIJPDegree>
-                <cv_WaferVASDegree>90</cv_WaferVASDegree>
-                <cv_VasNeedGlass>True</cv_VasNeedGlass>
-            </RecipeItem>
-            <RecipeItem>
-                <cv_Id>5</cv_Id>
-                <cv_Time>20190323100746</cv_Time>
-                <cv_Decription>flow 3 no glass</cv_Decription>
-                <cv_Flow>5</cv_Flow>
-                <cv_GlassVasDegree>360</cv_GlassVasDegree>
-                <cv_WaferIJPDegree>150</cv_WaferIJPDegree>
-                <cv_WaferVASDegree>0</cv_WaferVASDegree>
-                <cv_VasNeedGlass>False</cv_VasNeedGlass>
-            </RecipeItem>
-            <RecipeItem>
                 <cv_Id>4</cv_Id>
                 <cv_Time>20190323100801</cv_Time>
                 <cv_Decription>flow 3 no glass</cv_Decription>
@@ -31,6 +11,7 @@
                 <cv_WaferIJPDegree>150</cv_WaferIJPDegree>
                 <cv_WaferVASDegree>0</cv_WaferVASDegree>
                 <cv_VasNeedGlass>False</cv_VasNeedGlass>
+                <cv_Sampling>0</cv_Sampling>
             </RecipeItem>
             <RecipeItem>
                 <cv_Id>3</cv_Id>
@@ -41,16 +22,40 @@
                 <cv_WaferIJPDegree>150</cv_WaferIJPDegree>
                 <cv_WaferVASDegree>0</cv_WaferVASDegree>
                 <cv_VasNeedGlass>False</cv_VasNeedGlass>
+                <cv_Sampling>0</cv_Sampling>
             </RecipeItem>
             <RecipeItem>
                 <cv_Id>2</cv_Id>
-                <cv_Time>20191219103441</cv_Time>
+                <cv_Time>20250517104258</cv_Time>
                 <cv_Decription>flow 3 no glass</cv_Decription>
                 <cv_Flow>2</cv_Flow>
                 <cv_GlassVasDegree>270</cv_GlassVasDegree>
                 <cv_WaferIJPDegree>180</cv_WaferIJPDegree>
                 <cv_WaferVASDegree>90</cv_WaferVASDegree>
                 <cv_VasNeedGlass>True</cv_VasNeedGlass>
+                <cv_Sampling>4</cv_Sampling>
+            </RecipeItem>
+            <RecipeItem>
+                <cv_Id>1</cv_Id>
+                <cv_Time>20250521034334</cv_Time>
+                <cv_Decription>flow 3 no glass</cv_Decription>
+                <cv_Flow>1</cv_Flow>
+                <cv_GlassVasDegree>270</cv_GlassVasDegree>
+                <cv_WaferIJPDegree>90</cv_WaferIJPDegree>
+                <cv_WaferVASDegree>90</cv_WaferVASDegree>
+                <cv_VasNeedGlass>True</cv_VasNeedGlass>
+                <cv_Sampling>232</cv_Sampling>
+            </RecipeItem>
+            <RecipeItem>
+                <cv_Id>5</cv_Id>
+                <cv_Time>20250521034356</cv_Time>
+                <cv_Decription>flow 3 no glass</cv_Decription>
+                <cv_Flow>5</cv_Flow>
+                <cv_GlassVasDegree>360</cv_GlassVasDegree>
+                <cv_WaferIJPDegree>150</cv_WaferIJPDegree>
+                <cv_WaferVASDegree>0</cv_WaferVASDegree>
+                <cv_VasNeedGlass>False</cv_VasNeedGlass>
+                <cv_Sampling>1</cv_Sampling>
             </RecipeItem>
         </cv_RecipeList>
         <cv_CurRecipeId>1</cv_CurRecipeId>

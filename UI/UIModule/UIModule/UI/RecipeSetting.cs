@@ -44,8 +44,11 @@ namespace UI
 
             cv_FlowDescription.Add(CommonData.HIRATA.OdfFlow.Flow2_2, "Wafer :  Port(LP5/LP6) -> Aligner -> Buffer -> SDP -> Aligner -> IJP -> UV -> ULD");
 
+            cv_FlowDescription.Add(CommonData.HIRATA.OdfFlow.Flow2_3, "Wafer :  Port(LP5/LP6) -> Aligner -> Buffer -> SDP -> AOI -> Aligner -> IJP -> UV -> LD");
+
             cv_FlowDescription.Add(CommonData.HIRATA.OdfFlow.Flow3, "Wafer :  Port(LP5/LP6) -> UV -> ULD");
 
+            /*
             cv_FlowDescription.Add(CommonData.HIRATA.OdfFlow.FLow4_1, "Wafer :  Port(LP5/LP6) -> Aligner -> Buffer -> SDP ->\n");
             cv_FlowDescription[CommonData.HIRATA.OdfFlow.FLow4_1] += "1: AOI(RP) -> SDP -> IJP -> AlignerVAS ->(Low)\n";
             cv_FlowDescription[CommonData.HIRATA.OdfFlow.FLow4_1] += "2: AOI(OK) -> IJP -> Aligner VAS ->(Low)\n";
@@ -59,6 +62,7 @@ namespace UI
             cv_FlowDescription[CommonData.HIRATA.OdfFlow.Flow4_2] += "3: Aligner -> IJP -> Aligner -> VAS ->(Low)\n\n";
             cv_FlowDescription[CommonData.HIRATA.OdfFlow.Flow4_2] += "Glass : Port(LP3/LP4) -> Aligner -> Buffer -> Flip(TopWaferPut) -> VAS(Up)\n";
             cv_FlowDescription[CommonData.HIRATA.OdfFlow.Flow4_2] += "Combination : VAS(Low) -> UV -> Unload Port";
+            */
 
             cv_FlowDescription.Add(CommonData.HIRATA.OdfFlow.Flow5_1, "Wafer :  Port(LP5/LP6) -> Aligner -> Buffer -> SDP -> IJP -> Aligner -> Flip(TopWaferPut)-> VAS(Up)\n\n");
             cv_FlowDescription[CommonData.HIRATA.OdfFlow.Flow5_1] += "Glass : Port(LP3/LP4) -> Aligner -> Buffer -> VAS(Low)\n\n";
@@ -67,6 +71,30 @@ namespace UI
             cv_FlowDescription.Add(CommonData.HIRATA.OdfFlow.Flow5_2, "Wafer :  Port(LP5/LP6) -> Aligner -> Buffer -> SDP -> IJP -> Aligner -> Flip(TopWaferPut)-> VAS(Up)\n\n");
             cv_FlowDescription[CommonData.HIRATA.OdfFlow.Flow5_2] += "Glass : Port(LP3/LP4) -> Aligner -> Buffer -> VAS(Low)\n\n";
             cv_FlowDescription[CommonData.HIRATA.OdfFlow.Flow5_2] += "Combination : VAS(Low) -> Flip(TopWaferPut) -> UV -> Unload Port(ULD1/ULD2)";
+
+            cv_FlowDescription.Add(CommonData.HIRATA.OdfFlow.Flow6_1, "Wafer :  Port(LP5/LP6) -> Aligner -> Buffer -> SDP -> AOI -> IJP -> Aligner -> VAS(Low)\n\n");
+            cv_FlowDescription[CommonData.HIRATA.OdfFlow.Flow6_1] += "Glass : Port(LP3/LP4) -> Aligner -> Buffer -> VAS(Up)\n\n";
+            cv_FlowDescription[CommonData.HIRATA.OdfFlow.Flow6_1] += "Combination : VAS(Low) -> UV -> Unload Port(ULD1/ULD2)";
+
+            cv_FlowDescription.Add(CommonData.HIRATA.OdfFlow.Flow6_2, "Wafer :  Port(LP5/LP6) -> Aligner -> Buffer -> SDP -> AOI -> Aligner -> IJP -> VAS(Low)\n\n");
+            cv_FlowDescription[CommonData.HIRATA.OdfFlow.Flow6_2] += "Glass : Port(LP3/LP4) -> Aligner -> Buffer -> VAS(Up)\n\n";
+            cv_FlowDescription[CommonData.HIRATA.OdfFlow.Flow6_2] += "Combination : VAS(Low) -> UV -> Unload Port(ULD1/ULD2)";
+
+            cv_FlowDescription.Add(CommonData.HIRATA.OdfFlow.Flow6_3, "Wafer :  Port(LP5/LP6) -> Aligner -> Buffer -> SDP -> AOI -> IJP -> VAS(Low)\n\n");
+            cv_FlowDescription[CommonData.HIRATA.OdfFlow.Flow6_3] += "Glass : Port(LP3/LP4) -> Aligner -> Buffer -> VAS(Up)\n\n";
+            cv_FlowDescription[CommonData.HIRATA.OdfFlow.Flow6_3] += "Combination : VAS(Low) -> UV -> Unload Port(ULD1/ULD2)";
+
+            cv_FlowDescription.Add(CommonData.HIRATA.OdfFlow.Flow7_2, "Wafer :  Port(LP5/LP6) -> Aligner -> Buffer -> SDP -> AOI -> IJP -> Aligner -> VAS(Up)\n\n");
+            cv_FlowDescription[CommonData.HIRATA.OdfFlow.Flow7_2] += "Glass : Port(LP3/LP4) -> Aligner -> Buffer -> VAS(Low)\n\n";
+            cv_FlowDescription[CommonData.HIRATA.OdfFlow.Flow7_2] += "Combination : VAS(Low) -> UV (UV Flip) -> Unload Port(ULD1/ULD2)";
+
+            cv_FlowDescription.Add(CommonData.HIRATA.OdfFlow.Flow7_3, "Wafer :  Port(LP5/LP6) -> Aligner -> Buffer -> SDP -> AOI -> Aligner -> IJP -> VAS(Up)\n\n");
+            cv_FlowDescription[CommonData.HIRATA.OdfFlow.Flow7_3] += "Glass : Port(LP3/LP4) -> Aligner -> Buffer -> VAS(Low)\n\n";
+            cv_FlowDescription[CommonData.HIRATA.OdfFlow.Flow7_3] += "Combination : VAS(Low) -> UV (UV Flip) -> Unload Port(ULD1/ULD2)";
+
+            cv_FlowDescription.Add(CommonData.HIRATA.OdfFlow.Flow7_4, "Wafer :  Port(LP5/LP6) -> Aligner -> Buffer -> SDP -> AOI -> IJP -> VAS(Up)\n\n");
+            cv_FlowDescription[CommonData.HIRATA.OdfFlow.Flow7_4] += "Glass : Port(LP3/LP4) -> Aligner -> Buffer -> VAS(Low)\n\n";
+            cv_FlowDescription[CommonData.HIRATA.OdfFlow.Flow7_4] += "Combination : VAS(Low) -> UV -> Unload Port(ULD1/ULD2)";
             UiForm.WriteLog(LogLevelType.NormalFunctionInOut, this.GetType().Name + "." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Leave);
         }
         private void LoadFlowName()
@@ -96,6 +124,7 @@ namespace UI
                 cv_TxWaferVas.Text = UiForm.cv_Recipes.cv_RecipeList[index].PWaferIJPDegree.ToString();
                 cv_TxGlassVas.Text = UiForm.cv_Recipes.cv_RecipeList[index].PGlassVASDegree.ToString();
                 lbl_RecipeDescription.Text = UiForm.cv_Recipes.cv_RecipeList[index].PDecription;
+                cb_samplingRate.Text = UiForm.cv_Recipes.cv_RecipeList[index].PSampling.ToString();
             }
             UiForm.WriteLog(LogLevelType.NormalFunctionInOut, this.GetType().Name + "." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Leave);
         }
@@ -240,7 +269,8 @@ namespace UI
             tmp.PId = cv_TxRecipeId.Text.Trim();
             tmp.PFlow = (CommonData.HIRATA.OdfFlow)Enum.Parse(typeof(CommonData.HIRATA.OdfFlow), cb_Flow.Text.Trim());
 
-            if (tmp.PFlow == OdfFlow.Flow1_1 || tmp.PFlow == OdfFlow.Flow1_2 || tmp.PFlow == OdfFlow.FLow4_1 || tmp.PFlow == OdfFlow.Flow4_2 || tmp.PFlow == OdfFlow.Flow5_1 || tmp.PFlow == OdfFlow.Flow5_2)
+            if (tmp.PFlow == OdfFlow.Flow1_1 || tmp.PFlow == OdfFlow.Flow1_2 || tmp.PFlow == OdfFlow.FLow4_1 || tmp.PFlow == OdfFlow.Flow4_2 || tmp.PFlow == OdfFlow.Flow5_1 || tmp.PFlow == OdfFlow.Flow5_2 ||
+                tmp.PFlow == OdfFlow.Flow6_1 || tmp.PFlow == OdfFlow.Flow6_2 || tmp.PFlow == OdfFlow.Flow7_2 || tmp.PFlow == OdfFlow.Flow7_3)
             {
                 tmp.PVasNeedGlass = true;
             }
@@ -253,6 +283,7 @@ namespace UI
             tmp.PGlassVASDegree = float.Parse(cv_TxGlassVas.Text.Trim(), System.Globalization.CultureInfo.InvariantCulture);
             tmp.PTime = DateTime.Now.ToString("yyyyMMddhhmmss");
             tmp.PDecription = lbl_RecipeDescription.Text.Trim();
+            tmp.PSampling = int.Parse(cb_samplingRate.Text.Trim(), System.Globalization.CultureInfo.InvariantCulture);
 
             obj.Recipes.Add(tmp);
             Global.Controller.SendMmfNotifyObject(typeof(CommonData.HIRATA.MDRecipeAction).Name, obj);
@@ -369,6 +400,20 @@ namespace UI
                 }
             }
             return has_cst;
+        }
+        public void UpdateSamplingDataCombobox()
+        {
+            UiForm.WriteLog(LogLevelType.NormalFunctionInOut, this.GetType().Name + "." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Enter);
+            if (UiForm.cv_SamplingData != null)
+            {
+                cb_samplingRate.Items.Clear();
+                cb_samplingRate.SelectedIndex = -1;
+                foreach (SamplingIem item in UiForm.cv_SamplingData.cv_SamplingList)
+                {
+                    cb_samplingRate.Items.Add(item.PNo);
+                }
+            }
+            UiForm.WriteLog(LogLevelType.NormalFunctionInOut, this.GetType().Name + "." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Leave);
         }
     }
 }

@@ -7,6 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
+using CommonData.HIRATA;
+using KgsCommon;
+using BaseAp;
 
 namespace UI
 {
@@ -77,6 +81,102 @@ namespace UI
             PortStatusColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             PortStatusColumn.ReadOnly = true;
             dataGrid_LotSummary.Columns.Add(PortStatusColumn);
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            int portid = getSeletPort();
+            if (portid != 0)
+            {
+                if (canChangeType(portid))
+                {
+                    //send change port type msg to LCG.
+                }
+            }
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            int portid = getSeletPort();
+            if (portid != 0)
+            {
+                if (canChangeType(portid))
+                {
+                    //send change port type msg to LCG.
+                }
+            }
+        }
+        private int getSeletPort()
+        {
+            int portid = 0;
+            if(dataGrid_LotSummary.CurrentRow != null)
+            {
+                string port_id = dataGrid_LotSummary.CurrentRow.Cells[0].Value.ToString();
+                if(int.TryParse(port_id , out portid))
+                {
+                }
+            }
+            return portid;
+        }
+        private bool canChangeType(int portId)
+        {
+            bool rtn = false;
+            Port port = UiForm.GetPort(portId);
+            if( (port.cv_Data.PPortHasCst == PortHasCst.Empty) ||
+                (port.cv_Data.PPortHasCst == PortHasCst.Has && (port.cv_Data.PPortStatus == PortStaus.LDRQ || port.cv_Data.PPortStatus == PortStaus.UDCM || port.cv_Data.PPortStatus == PortStaus.UDRQ))
+                )
+            {
+                rtn = true;
+            }
+            return rtn;
+        }
+
+
+        private void dataGrid_LotSummary_CellClick(object sender, DataGridViewCellEventArgs e)
+        {//dataGrid_LotSummary
+            /*
+            UiForm.WriteLog(LogLevelType.NormalFunctionInOut, this.GetType().Name + "." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Enter);
+            if (e.RowIndex == -1) return;
+            string select_str = dataGrid_LotSummary.Rows[e.RowIndex].Cells[0].Value.ToString().Trim();
+            int port_id = 0;
+            if(int.TryParse(select_str , out port_id))
+            {
+                Port port = UiForm.GetPort(port_id);
+                if(port != null)
+                {
+                    
+                }
+            }
+            if (-1 != index)
+            {
+                textBox1.Text = UiForm.cv_SamplingData.cv_SamplingList[index].PNo.ToString();
+                textBox2.Text = UiForm.cv_SamplingData.cv_SamplingList[index].PDesription;
+                //clean all.
+                for(int i=0; i< checkedListBox1.Items.Count;i++)
+                {
+                    checkedListBox1.SetItemChecked(i, false);
+                }
+                //set true.
+                for(int i=0; i< checkedListBox1.Items.Count;i++)
+                {
+                    string tmp = checkedListBox1.Items[i].ToString();
+                    Match match = Regex.Match(tmp, @"\d+");
+                    if(match.Success)
+                    {
+                        string str_slot = match.Value;
+                        int slot = -1;
+                        if(int.TryParse(str_slot , out slot))
+                        {
+                            if(UiForm.cv_SamplingData.cv_SamplingList[index].PHitList.Contains(slot))
+                            {
+                                checkedListBox1.SetItemChecked(i, true);
+                            }
+                        }
+                    }
+                }
+            }
+            UiForm.WriteLog(LogLevelType.NormalFunctionInOut, this.GetType().Name + "." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Leave);
+            */
         }
     }
 }
