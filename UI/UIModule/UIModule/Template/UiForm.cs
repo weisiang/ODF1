@@ -88,6 +88,7 @@ namespace UI
             this.cv_AlarmHView.AutoGenerateColumns = false;
             this.cv_AlarmHView.AutoGenerateColumns = false;
 
+            AddUiObjToEnableList(btn_station, enumGroup.Group2);
             AddUiObjToEnableList(cv_btnSelectMode, enumGroup.Group2);
             AddUiObjToEnableList(btn_ReIni, enumGroup.Group1);
             AddUiObjToEnableList(btn_TimeOut, enumGroup.Group4);
@@ -894,6 +895,10 @@ cb_PortActionSlotType
             }
             cv_RecipeSetting.Dock = DockStyle.Fill;
             cv_tpRecipe.Controls.Add(cv_RecipeSetting);
+
+            KIniFile ini = new KIniFile(CommonData.HIRATA.CommonStaticData.g_ModuleSystemIniFile);
+            bool cansee = ini.ReadString("RecipeUi", "setNoNeedUiVisiable" , "0") == "1" ? true : false;
+            cv_RecipeSetting.setNoNeedUiVisiable(cansee);
         }
         protected override void initLog()
         {
@@ -1927,6 +1932,7 @@ cb_PortActionSlotType
             log += "Data Check Rule  : " + obj.PDataCheckRule.ToString("X4") + Environment.NewLine;
             log += "OCR mode  : " + obj.POcrMode.ToString() + Environment.NewLine;
             log += "Initialize OK  : " + obj.PInitaiizeOk.ToString() + Environment.NewLine;
+            log += "Station Mode  : " + obj.PStationMode.ToString() + Environment.NewLine;
             log += CommonData.HIRATA.CommonStaticData.g_SplitLine + Environment.NewLine;
 
             //cv_btnSelectMode.Enabled = true;
@@ -2035,6 +2041,31 @@ cb_PortActionSlotType
             if (obj.PFFUSpeed.ToString() != lbl_FFUSpeed.Text.Trim())
             {
                 lbl_FFUSpeed.Text = obj.PFFUSpeed.ToString();
+            }
+
+            if(obj.PStationMode == EStationMod.AOI)
+            {
+                if(lbl_station.Text.Trim() != "AOI")
+                {
+                    lbl_station.Text = "AOI";
+                    lbl_station.BackColor = Color.BlueViolet;
+                }
+            }
+            else if(obj.PStationMode == EStationMod.ODF)
+            {
+                if(lbl_station.Text.Trim() != "ODF")
+                {
+                    lbl_station.Text = "ODF";
+                    lbl_station.BackColor = Color.Lime;
+                }
+            }
+            else
+            {
+                if(lbl_station.Text.Trim() != "NONE")
+                {
+                    lbl_station.Text = "NONE";
+                    lbl_station.BackColor = Color.Red;
+                }
             }
 
 
@@ -2175,12 +2206,56 @@ cb_PortActionSlotType
                     cv_SamplingForm.dataGridView2.DataSource = cv_SamplingData.cv_SamplingList;
                     cv_RecipeSetting.UpdateSamplingDataCombobox();
 
+                    RecipeItem recipe = new RecipeItem();
+                    if (cv_Recipes.GetCurRecipe(out recipe))
+                    {
+                        SamplingIem sampling = cv_SamplingData.getSamplingItem(recipe.PSampling);
+                        if (sampling != null)
+                        {
+                            if (sampling.PIsFull)
+                            {
+                                if (lbl_samplingFull.Text.Trim() != "FULL")
+                                {
+                                    lbl_samplingFull.Text = "FULL";
+                                }
+                            }
+                            else
+                            {
+                                if (lbl_samplingFull.Text.Trim() != "PARTIAL")
+                                {
+                                    lbl_samplingFull.Text = "PARTIAL";
+                                }
+                            }
+                        }
+                    }
                 }));
             }
             else
             {
                 cv_SamplingForm.dataGridView2.DataSource = cv_SamplingData.cv_SamplingList;
                 cv_RecipeSetting.UpdateSamplingDataCombobox();
+                RecipeItem recipe = new RecipeItem();
+                if (cv_Recipes.GetCurRecipe(out recipe))
+                {
+                    SamplingIem sampling = cv_SamplingData.getSamplingItem(recipe.PSampling);
+                    if (sampling != null)
+                    {
+                        if (sampling.PIsFull)
+                        {
+                            if (lbl_samplingFull.Text.Trim() != "FULL")
+                            {
+                                lbl_samplingFull.Text = "FULL";
+                            }
+                        }
+                        else
+                        {
+                            if (lbl_samplingFull.Text.Trim() != "PARTIAL")
+                            {
+                                lbl_samplingFull.Text = "PARTIAL";
+                            }
+                        }
+                    }
+                }
             }
             //WriteNormalOut
         }
@@ -2210,6 +2285,24 @@ cb_PortActionSlotType
                         {
                             lbl_samplingRate.Text = recipe.PSampling.ToString();
                         }
+                        SamplingIem sampling = cv_SamplingData.getSamplingItem(recipe.PSampling);
+                        if (sampling != null)
+                        {
+                            if (sampling.PIsFull)
+                            {
+                                if (lbl_samplingFull.Text.Trim() != "FULL")
+                                {
+                                    lbl_samplingFull.Text = "FULL";
+                                }
+                            }
+                            else
+                            {
+                                if (lbl_samplingFull.Text.Trim() != "PARTIAL")
+                                {
+                                    lbl_samplingFull.Text = "PARTIAL";
+                                }
+                            }
+                        }
                     }
                 }));
             }
@@ -2231,6 +2324,24 @@ cb_PortActionSlotType
                     if (lbl_samplingRate.Text != recipe.PSampling.ToString())
                     {
                         lbl_samplingRate.Text = recipe.PSampling.ToString();
+                    }
+                    SamplingIem sampling = cv_SamplingData.getSamplingItem(recipe.PSampling);
+                    if (sampling != null)
+                    {
+                        if (sampling.PIsFull)
+                        {
+                            if (lbl_samplingFull.Text.Trim() != "FULL")
+                            {
+                                lbl_samplingFull.Text = "FULL";
+                            }
+                        }
+                        else
+                        {
+                            if (lbl_samplingFull.Text.Trim() != "PARTIAL")
+                            {
+                                lbl_samplingFull.Text = "PARTIAL";
+                            }
+                        }
                     }
                 }
             }
@@ -3499,6 +3610,67 @@ cb_IoFfu
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void toolStripMenuItem1_Click_1(object sender, EventArgs e)
+        {
+            string log = "User press Change to ODF mode" + Environment.NewLine;
+            if (UiForm.PSystemData.PStationMode != EStationMod.ODF )
+            {
+                if (!IsHasCstLDCM())
+                {
+                    log += "Send change to ODF mode msg";
+                    UIController.g_Controller.SendStationModeChangeReq(MmfEventClientEventType.etRequest, EStationMod.ODF, false);
+                    //LockOnlineButton(true);
+                }
+                else
+                {
+                    log += "can't change to ODF , because has port at LDCM";
+                }
+            }
+            else
+            {
+                log += "Cur station mode : " + UiForm.PSystemData.PStationMode.ToString() + " reject user ask.";
+            }
+            WriteLog(LogLevelType.General, log);
+        }
+
+        private void toolStripMenuItem2_Click_1(object sender, EventArgs e)
+        {
+            string log = "User press Change to AOI mode" + Environment.NewLine;
+            if (UiForm.PSystemData.PStationMode != EStationMod.AOI )
+            {
+                if (!IsHasCstLDCM())
+                {
+                    log += "Send change to AOI mode msg";
+                    UIController.g_Controller.SendStationModeChangeReq(MmfEventClientEventType.etRequest, EStationMod.AOI, false);
+                    //LockOnlineButton(true);
+                }
+                else
+                {
+                    log += "can't change to AOI , because has port at LDCM";
+                }
+            }
+            else
+            {
+                log += "Cur station mode : " + UiForm.PSystemData.PStationMode.ToString() + " reject user ask.";
+            }
+            WriteLog(LogLevelType.General, log);
+
+        }
+        private bool IsHasCstLDCM()
+        {
+            bool has_cst = false;
+            for (int i = 1; i <= CommonData.HIRATA.CommonStaticData.g_PortNumber; i++)
+            {
+                if (UiForm.GetPort(i).cv_Data.PPortStatus == PortStaus.LDCM)
+                {
+                    //log += "But Port : " + i.ToString() + " has Cst !!!" + Environment.NewLine;
+                    has_cst = true;
+                    break;
+                }
+            }
+            return has_cst;
         }
     }
 }

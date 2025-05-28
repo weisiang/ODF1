@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cb_samplingRate = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.cb_NeedGlass = new System.Windows.Forms.CheckBox();
             this.btn_CurRecipe = new System.Windows.Forms.Button();
@@ -63,7 +64,9 @@
             this.Sampling = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cv_TimeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cb_samplingRate = new System.Windows.Forms.ComboBox();
+            this.cb_backToLd = new System.Windows.Forms.CheckBox();
+            this.cb_waferPutUp = new System.Windows.Forms.CheckBox();
+            this.cb_FlipToUv = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cv_RecipeDataView)).BeginInit();
@@ -72,6 +75,9 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(252)))), ((int)(((byte)(254)))));
+            this.panel1.Controls.Add(this.cb_FlipToUv);
+            this.panel1.Controls.Add(this.cb_waferPutUp);
+            this.panel1.Controls.Add(this.cb_backToLd);
             this.panel1.Controls.Add(this.cb_samplingRate);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.cb_NeedGlass);
@@ -100,6 +106,14 @@
             this.panel1.Size = new System.Drawing.Size(1509, 259);
             this.panel1.TabIndex = 22;
             // 
+            // cb_samplingRate
+            // 
+            this.cb_samplingRate.FormattingEnabled = true;
+            this.cb_samplingRate.Location = new System.Drawing.Point(822, 184);
+            this.cb_samplingRate.Name = "cb_samplingRate";
+            this.cb_samplingRate.Size = new System.Drawing.Size(106, 20);
+            this.cb_samplingRate.TabIndex = 46;
+            // 
             // label5
             // 
             this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -121,7 +135,6 @@
             this.cb_NeedGlass.TabIndex = 44;
             this.cb_NeedGlass.Text = "Glass";
             this.cb_NeedGlass.UseVisualStyleBackColor = true;
-            this.cb_NeedGlass.Visible = false;
             // 
             // btn_CurRecipe
             // 
@@ -421,13 +434,38 @@
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
             // 
-            // cb_samplingRate
+            // cb_backToLd
             // 
-            this.cb_samplingRate.FormattingEnabled = true;
-            this.cb_samplingRate.Location = new System.Drawing.Point(822, 184);
-            this.cb_samplingRate.Name = "cb_samplingRate";
-            this.cb_samplingRate.Size = new System.Drawing.Size(106, 20);
-            this.cb_samplingRate.TabIndex = 46;
+            this.cb_backToLd.AutoSize = true;
+            this.cb_backToLd.Enabled = false;
+            this.cb_backToLd.Location = new System.Drawing.Point(968, 131);
+            this.cb_backToLd.Name = "cb_backToLd";
+            this.cb_backToLd.Size = new System.Drawing.Size(74, 16);
+            this.cb_backToLd.TabIndex = 47;
+            this.cb_backToLd.Text = "BackToLd";
+            this.cb_backToLd.UseVisualStyleBackColor = true;
+            // 
+            // cb_waferPutUp
+            // 
+            this.cb_waferPutUp.AutoSize = true;
+            this.cb_waferPutUp.Enabled = false;
+            this.cb_waferPutUp.Location = new System.Drawing.Point(968, 153);
+            this.cb_waferPutUp.Name = "cb_waferPutUp";
+            this.cb_waferPutUp.Size = new System.Drawing.Size(82, 16);
+            this.cb_waferPutUp.TabIndex = 48;
+            this.cb_waferPutUp.Text = "WaferPutUp";
+            this.cb_waferPutUp.UseVisualStyleBackColor = true;
+            // 
+            // cb_FlipToUv
+            // 
+            this.cb_FlipToUv.AutoSize = true;
+            this.cb_FlipToUv.Enabled = false;
+            this.cb_FlipToUv.Location = new System.Drawing.Point(968, 175);
+            this.cb_FlipToUv.Name = "cb_FlipToUv";
+            this.cb_FlipToUv.Size = new System.Drawing.Size(69, 16);
+            this.cb_FlipToUv.TabIndex = 49;
+            this.cb_FlipToUv.Text = "FlipToUv";
+            this.cb_FlipToUv.UseVisualStyleBackColor = true;
             // 
             // RecipeSetting
             // 
@@ -482,5 +520,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cv_TimeColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.ComboBox cb_samplingRate;
+        private System.Windows.Forms.CheckBox cb_FlipToUv;
+        private System.Windows.Forms.CheckBox cb_waferPutUp;
+        private System.Windows.Forms.CheckBox cb_backToLd;
     }
 }

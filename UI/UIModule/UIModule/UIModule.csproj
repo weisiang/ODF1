@@ -279,6 +279,12 @@
     <Compile Include="UI\Robot\RobotUI.Designer.cs">
       <DependentUpon>RobotUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\SamplingMN.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\SamplingMN.Designer.cs">
+      <DependentUpon>SamplingMN.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\SamplingSlot.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -398,6 +404,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Robot\RobotUI.resx">
       <DependentUpon>RobotUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SamplingMN.resx">
+      <DependentUpon>SamplingMN.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\SamplingSlot.resx">
       <DependentUpon>SamplingSlot.cs</DependentUpon>

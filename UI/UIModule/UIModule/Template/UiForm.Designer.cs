@@ -183,8 +183,6 @@
             this.panel11 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel43 = new System.Windows.Forms.Panel();
-            this.lbl_samplingRate = new MaterialSkin.Controls.MaterialLabel();
-            this.lbl_sampling = new MaterialSkin.Controls.MaterialLabel();
             this.btn_ResetUPWarring = new System.Windows.Forms.Button();
             this.cv_AutoJob = new System.Windows.Forms.Button();
             this.cv_SystemAuto = new System.Windows.Forms.Button();
@@ -205,9 +203,13 @@
             this.remoteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lbl_RobotInline = new System.Windows.Forms.Label();
             this.lbl_RobotStatus = new System.Windows.Forms.Button();
+            this.panel44 = new System.Windows.Forms.Panel();
+            this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
+            this.lbl_Ocr = new System.Windows.Forms.Label();
             this.panel38 = new System.Windows.Forms.Panel();
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
-            this.lbl_Ocr = new System.Windows.Forms.Label();
+            this.lbl_samplingRate = new System.Windows.Forms.Label();
+            this.lbl_samplingFull = new System.Windows.Forms.Label();
             this.panel37 = new System.Windows.Forms.Panel();
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             this.lbl_CurFlow = new System.Windows.Forms.Label();
@@ -221,6 +223,9 @@
             this.panel14 = new System.Windows.Forms.Panel();
             this.lbl_plcStatusTxt = new MaterialSkin.Controls.MaterialLabel();
             this.lbl_plcStatus = new System.Windows.Forms.Label();
+            this.panel45 = new System.Windows.Forms.Panel();
+            this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
+            this.lbl_station = new System.Windows.Forms.Label();
             this.panel13 = new System.Windows.Forms.Panel();
             this.lbl_systemStatusTxt = new MaterialSkin.Controls.MaterialLabel();
             this.lbl_systemStatus = new System.Windows.Forms.Label();
@@ -281,6 +286,11 @@
             this.setToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cancelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.materialDivider12 = new MaterialSkin.Controls.MaterialDivider();
+            this.btn_station = new System.Windows.Forms.Button();
+            this.materialContext_stationMode = new MaterialSkin.Controls.MaterialContextMenuStrip();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.materialDivider3 = new MaterialSkin.Controls.MaterialDivider();
             this.cv_btnSelectMode = new System.Windows.Forms.Button();
             this.menu_systemMode = new MaterialSkin.Controls.MaterialContextMenuStrip();
@@ -332,17 +342,18 @@
             this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.panel43.SuspendLayout();
             this.panel18.SuspendLayout();
             this.panel17.SuspendLayout();
             this.panel16.SuspendLayout();
             this.panel24.SuspendLayout();
             this.menu_RbInline.SuspendLayout();
+            this.panel44.SuspendLayout();
             this.panel38.SuspendLayout();
             this.panel37.SuspendLayout();
             this.panel23.SuspendLayout();
             this.panel15.SuspendLayout();
             this.panel14.SuspendLayout();
+            this.panel45.SuspendLayout();
             this.panel13.SuspendLayout();
             this.panel12.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -359,6 +370,7 @@
             this.panel34.SuspendLayout();
             this.materialContextMenuStrip3.SuspendLayout();
             this.materialContextMenuStrip1.SuspendLayout();
+            this.materialContext_stationMode.SuspendLayout();
             this.menu_systemMode.SuspendLayout();
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -2072,11 +2084,13 @@
             this.panel3.Controls.Add(this.panel17);
             this.panel3.Controls.Add(this.panel16);
             this.panel3.Controls.Add(this.panel24);
+            this.panel3.Controls.Add(this.panel44);
             this.panel3.Controls.Add(this.panel38);
             this.panel3.Controls.Add(this.panel37);
             this.panel3.Controls.Add(this.panel23);
             this.panel3.Controls.Add(this.panel15);
             this.panel3.Controls.Add(this.panel14);
+            this.panel3.Controls.Add(this.panel45);
             this.panel3.Controls.Add(this.panel13);
             this.panel3.Controls.Add(this.panel12);
             this.panel3.Controls.Add(this.panel10);
@@ -2090,45 +2104,11 @@
             // panel43
             // 
             this.panel43.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel43.Controls.Add(this.lbl_samplingRate);
-            this.panel43.Controls.Add(this.lbl_sampling);
             this.panel43.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel43.Location = new System.Drawing.Point(1466, 3);
+            this.panel43.Location = new System.Drawing.Point(1690, 3);
             this.panel43.Name = "panel43";
             this.panel43.Size = new System.Drawing.Size(95, 111);
             this.panel43.TabIndex = 28;
-            // 
-            // lbl_samplingRate
-            // 
-            this.lbl_samplingRate.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.lbl_samplingRate.Depth = 0;
-            this.lbl_samplingRate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbl_samplingRate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lbl_samplingRate.Font = new System.Drawing.Font("Roboto", 11F);
-            this.lbl_samplingRate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lbl_samplingRate.Location = new System.Drawing.Point(0, 75);
-            this.lbl_samplingRate.MouseState = MaterialSkin.MouseState.HOVER;
-            this.lbl_samplingRate.Name = "lbl_samplingRate";
-            this.lbl_samplingRate.Size = new System.Drawing.Size(93, 34);
-            this.lbl_samplingRate.TabIndex = 12;
-            this.lbl_samplingRate.Text = "5";
-            this.lbl_samplingRate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lbl_sampling
-            // 
-            this.lbl_sampling.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.lbl_sampling.Depth = 0;
-            this.lbl_sampling.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lbl_sampling.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lbl_sampling.Font = new System.Drawing.Font("Roboto", 11F);
-            this.lbl_sampling.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lbl_sampling.Location = new System.Drawing.Point(0, 0);
-            this.lbl_sampling.MouseState = MaterialSkin.MouseState.HOVER;
-            this.lbl_sampling.Name = "lbl_sampling";
-            this.lbl_sampling.Size = new System.Drawing.Size(93, 75);
-            this.lbl_sampling.TabIndex = 11;
-            this.lbl_sampling.Text = "AOI Sampling";
-            this.lbl_sampling.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btn_ResetUPWarring
             // 
@@ -2140,7 +2120,7 @@
             this.btn_ResetUPWarring.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_ResetUPWarring.Font = new System.Drawing.Font("新細明體", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btn_ResetUPWarring.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_ResetUPWarring.Location = new System.Drawing.Point(1371, 3);
+            this.btn_ResetUPWarring.Location = new System.Drawing.Point(1595, 3);
             this.btn_ResetUPWarring.Name = "btn_ResetUPWarring";
             this.btn_ResetUPWarring.Size = new System.Drawing.Size(95, 111);
             this.btn_ResetUPWarring.TabIndex = 27;
@@ -2158,7 +2138,7 @@
             this.cv_AutoJob.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cv_AutoJob.Font = new System.Drawing.Font("新細明體", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.cv_AutoJob.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.cv_AutoJob.Location = new System.Drawing.Point(1276, 3);
+            this.cv_AutoJob.Location = new System.Drawing.Point(1500, 3);
             this.cv_AutoJob.Name = "cv_AutoJob";
             this.cv_AutoJob.Size = new System.Drawing.Size(95, 111);
             this.cv_AutoJob.TabIndex = 24;
@@ -2176,7 +2156,7 @@
             this.cv_SystemAuto.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cv_SystemAuto.Font = new System.Drawing.Font("新細明體", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.cv_SystemAuto.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.cv_SystemAuto.Location = new System.Drawing.Point(1181, 3);
+            this.cv_SystemAuto.Location = new System.Drawing.Point(1405, 3);
             this.cv_SystemAuto.Name = "cv_SystemAuto";
             this.cv_SystemAuto.Size = new System.Drawing.Size(95, 111);
             this.cv_SystemAuto.TabIndex = 26;
@@ -2194,7 +2174,7 @@
             this.btn_monitor.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_monitor.Font = new System.Drawing.Font("新細明體", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btn_monitor.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_monitor.Location = new System.Drawing.Point(1086, 3);
+            this.btn_monitor.Location = new System.Drawing.Point(1310, 3);
             this.btn_monitor.Name = "btn_monitor";
             this.btn_monitor.Size = new System.Drawing.Size(95, 111);
             this.btn_monitor.TabIndex = 22;
@@ -2253,7 +2233,7 @@
             this.panel17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel17.Controls.Add(this.lbl_warningStatus);
             this.panel17.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel17.Location = new System.Drawing.Point(991, 3);
+            this.panel17.Location = new System.Drawing.Point(1215, 3);
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(95, 111);
             this.panel17.TabIndex = 8;
@@ -2279,7 +2259,7 @@
             this.panel16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel16.Controls.Add(this.lbl_alarmStatus);
             this.panel16.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel16.Location = new System.Drawing.Point(896, 3);
+            this.panel16.Location = new System.Drawing.Point(1120, 3);
             this.panel16.Name = "panel16";
             this.panel16.Size = new System.Drawing.Size(95, 111);
             this.panel16.TabIndex = 7;
@@ -2309,7 +2289,7 @@
             this.panel24.Controls.Add(this.lbl_RobotInline);
             this.panel24.Controls.Add(this.lbl_RobotStatus);
             this.panel24.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel24.Location = new System.Drawing.Point(784, 3);
+            this.panel24.Location = new System.Drawing.Point(1008, 3);
             this.panel24.Name = "panel24";
             this.panel24.Size = new System.Drawing.Size(112, 111);
             this.panel24.TabIndex = 14;
@@ -2390,14 +2370,54 @@
             this.lbl_RobotStatus.UseVisualStyleBackColor = false;
             this.lbl_RobotStatus.Click += new System.EventHandler(this.lbl_RobotStatus_Click);
             // 
+            // panel44
+            // 
+            this.panel44.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.panel44.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel44.Controls.Add(this.materialLabel5);
+            this.panel44.Controls.Add(this.lbl_Ocr);
+            this.panel44.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel44.Location = new System.Drawing.Point(896, 3);
+            this.panel44.Name = "panel44";
+            this.panel44.Size = new System.Drawing.Size(112, 111);
+            this.panel44.TabIndex = 29;
+            // 
+            // materialLabel5
+            // 
+            this.materialLabel5.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.materialLabel5.Depth = 0;
+            this.materialLabel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.materialLabel5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.materialLabel5.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel5.Location = new System.Drawing.Point(0, 0);
+            this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel5.Name = "materialLabel5";
+            this.materialLabel5.Size = new System.Drawing.Size(110, 51);
+            this.materialLabel5.TabIndex = 8;
+            this.materialLabel5.Text = "OCR mode";
+            this.materialLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbl_Ocr
+            // 
+            this.lbl_Ocr.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.lbl_Ocr.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lbl_Ocr.Font = new System.Drawing.Font("新細明體", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lbl_Ocr.Location = new System.Drawing.Point(0, 51);
+            this.lbl_Ocr.Name = "lbl_Ocr";
+            this.lbl_Ocr.Size = new System.Drawing.Size(110, 58);
+            this.lbl_Ocr.TabIndex = 0;
+            this.lbl_Ocr.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // panel38
             // 
             this.panel38.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.panel38.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel38.Controls.Add(this.materialLabel4);
-            this.panel38.Controls.Add(this.lbl_Ocr);
+            this.panel38.Controls.Add(this.lbl_samplingRate);
+            this.panel38.Controls.Add(this.lbl_samplingFull);
             this.panel38.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel38.Location = new System.Drawing.Point(672, 3);
+            this.panel38.Location = new System.Drawing.Point(784, 3);
             this.panel38.Name = "panel38";
             this.panel38.Size = new System.Drawing.Size(112, 111);
             this.panel38.TabIndex = 18;
@@ -2415,19 +2435,30 @@
             this.materialLabel4.Name = "materialLabel4";
             this.materialLabel4.Size = new System.Drawing.Size(110, 51);
             this.materialLabel4.TabIndex = 8;
-            this.materialLabel4.Text = "OCR mode";
+            this.materialLabel4.Text = "AOI Sampling";
             this.materialLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lbl_Ocr
+            // lbl_samplingRate
             // 
-            this.lbl_Ocr.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.lbl_Ocr.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lbl_Ocr.Font = new System.Drawing.Font("新細明體", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lbl_Ocr.Location = new System.Drawing.Point(0, 51);
-            this.lbl_Ocr.Name = "lbl_Ocr";
-            this.lbl_Ocr.Size = new System.Drawing.Size(110, 58);
-            this.lbl_Ocr.TabIndex = 0;
-            this.lbl_Ocr.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_samplingRate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.lbl_samplingRate.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lbl_samplingRate.Font = new System.Drawing.Font("新細明體", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lbl_samplingRate.Location = new System.Drawing.Point(0, 51);
+            this.lbl_samplingRate.Name = "lbl_samplingRate";
+            this.lbl_samplingRate.Size = new System.Drawing.Size(110, 24);
+            this.lbl_samplingRate.TabIndex = 13;
+            this.lbl_samplingRate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbl_samplingFull
+            // 
+            this.lbl_samplingFull.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.lbl_samplingFull.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lbl_samplingFull.Font = new System.Drawing.Font("新細明體", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lbl_samplingFull.Location = new System.Drawing.Point(0, 75);
+            this.lbl_samplingFull.Name = "lbl_samplingFull";
+            this.lbl_samplingFull.Size = new System.Drawing.Size(110, 34);
+            this.lbl_samplingFull.TabIndex = 0;
+            this.lbl_samplingFull.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel37
             // 
@@ -2437,7 +2468,7 @@
             this.panel37.Controls.Add(this.lbl_CurFlow);
             this.panel37.Controls.Add(this.lbl_CurRecipe);
             this.panel37.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel37.Location = new System.Drawing.Point(560, 3);
+            this.panel37.Location = new System.Drawing.Point(672, 3);
             this.panel37.Name = "panel37";
             this.panel37.Size = new System.Drawing.Size(112, 111);
             this.panel37.TabIndex = 17;
@@ -2487,7 +2518,7 @@
             this.panel23.Controls.Add(this.materialLabel1);
             this.panel23.Controls.Add(this.lbl_RobotConnect);
             this.panel23.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel23.Location = new System.Drawing.Point(448, 3);
+            this.panel23.Location = new System.Drawing.Point(560, 3);
             this.panel23.Name = "panel23";
             this.panel23.Size = new System.Drawing.Size(112, 111);
             this.panel23.TabIndex = 13;
@@ -2525,7 +2556,7 @@
             this.panel15.Controls.Add(this.lbl_hsmsStatusTxt);
             this.panel15.Controls.Add(this.lbl_hsmsStatus);
             this.panel15.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel15.Location = new System.Drawing.Point(336, 3);
+            this.panel15.Location = new System.Drawing.Point(448, 3);
             this.panel15.Name = "panel15";
             this.panel15.Size = new System.Drawing.Size(112, 111);
             this.panel15.TabIndex = 6;
@@ -2563,7 +2594,7 @@
             this.panel14.Controls.Add(this.lbl_plcStatusTxt);
             this.panel14.Controls.Add(this.lbl_plcStatus);
             this.panel14.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel14.Location = new System.Drawing.Point(224, 3);
+            this.panel14.Location = new System.Drawing.Point(336, 3);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(112, 111);
             this.panel14.TabIndex = 5;
@@ -2594,6 +2625,44 @@
             this.lbl_plcStatus.Size = new System.Drawing.Size(110, 58);
             this.lbl_plcStatus.TabIndex = 0;
             this.lbl_plcStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel45
+            // 
+            this.panel45.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel45.Controls.Add(this.materialLabel6);
+            this.panel45.Controls.Add(this.lbl_station);
+            this.panel45.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel45.Location = new System.Drawing.Point(224, 3);
+            this.panel45.Name = "panel45";
+            this.panel45.Size = new System.Drawing.Size(112, 111);
+            this.panel45.TabIndex = 30;
+            // 
+            // materialLabel6
+            // 
+            this.materialLabel6.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.materialLabel6.Depth = 0;
+            this.materialLabel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.materialLabel6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.materialLabel6.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel6.Location = new System.Drawing.Point(0, 0);
+            this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel6.Name = "materialLabel6";
+            this.materialLabel6.Size = new System.Drawing.Size(110, 51);
+            this.materialLabel6.TabIndex = 5;
+            this.materialLabel6.Text = "Station";
+            this.materialLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbl_station
+            // 
+            this.lbl_station.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.lbl_station.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lbl_station.Font = new System.Drawing.Font("新細明體", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lbl_station.Location = new System.Drawing.Point(0, 51);
+            this.lbl_station.Name = "lbl_station";
+            this.lbl_station.Size = new System.Drawing.Size(110, 58);
+            this.lbl_station.TabIndex = 0;
+            this.lbl_station.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel13
             // 
@@ -2722,6 +2791,8 @@
             this.panel39.Controls.Add(this.btn_ReIni);
             this.panel39.Controls.Add(this.materialDivider6);
             this.panel39.Controls.Add(this.btn_pos);
+            this.panel39.Controls.Add(this.materialDivider12);
+            this.panel39.Controls.Add(this.btn_station);
             this.panel39.Controls.Add(this.materialDivider3);
             this.panel39.Controls.Add(this.cv_btnSelectMode);
             this.panel39.Controls.Add(this.materialDivider5);
@@ -3055,7 +3126,7 @@
             this.materialDivider4.BackColor = System.Drawing.Color.White;
             this.materialDivider4.Depth = 0;
             this.materialDivider4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.materialDivider4.Location = new System.Drawing.Point(0, 711);
+            this.materialDivider4.Location = new System.Drawing.Point(0, 790);
             this.materialDivider4.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialDivider4.Name = "materialDivider4";
             this.materialDivider4.Size = new System.Drawing.Size(131, 3);
@@ -3072,7 +3143,7 @@
             this.btn_Exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Exit.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Exit.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btn_Exit.Location = new System.Drawing.Point(0, 635);
+            this.btn_Exit.Location = new System.Drawing.Point(0, 714);
             this.btn_Exit.Name = "btn_Exit";
             this.btn_Exit.Size = new System.Drawing.Size(131, 76);
             this.btn_Exit.TabIndex = 43;
@@ -3085,7 +3156,7 @@
             this.materialDivider2.BackColor = System.Drawing.Color.White;
             this.materialDivider2.Depth = 0;
             this.materialDivider2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.materialDivider2.Location = new System.Drawing.Point(0, 632);
+            this.materialDivider2.Location = new System.Drawing.Point(0, 711);
             this.materialDivider2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialDivider2.Name = "materialDivider2";
             this.materialDivider2.Size = new System.Drawing.Size(131, 3);
@@ -3103,7 +3174,7 @@
             this.btn_OcrMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_OcrMode.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_OcrMode.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btn_OcrMode.Location = new System.Drawing.Point(0, 556);
+            this.btn_OcrMode.Location = new System.Drawing.Point(0, 635);
             this.btn_OcrMode.Name = "btn_OcrMode";
             this.btn_OcrMode.Size = new System.Drawing.Size(131, 76);
             this.btn_OcrMode.TabIndex = 51;
@@ -3160,7 +3231,7 @@
             this.materialDivider11.BackColor = System.Drawing.Color.White;
             this.materialDivider11.Depth = 0;
             this.materialDivider11.Dock = System.Windows.Forms.DockStyle.Top;
-            this.materialDivider11.Location = new System.Drawing.Point(0, 553);
+            this.materialDivider11.Location = new System.Drawing.Point(0, 632);
             this.materialDivider11.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialDivider11.Name = "materialDivider11";
             this.materialDivider11.Size = new System.Drawing.Size(131, 3);
@@ -3177,7 +3248,7 @@
             this.btn_RecipeCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_RecipeCheck.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_RecipeCheck.ForeColor = System.Drawing.Color.White;
-            this.btn_RecipeCheck.Location = new System.Drawing.Point(0, 477);
+            this.btn_RecipeCheck.Location = new System.Drawing.Point(0, 556);
             this.btn_RecipeCheck.Name = "btn_RecipeCheck";
             this.btn_RecipeCheck.Size = new System.Drawing.Size(131, 76);
             this.btn_RecipeCheck.TabIndex = 49;
@@ -3190,7 +3261,7 @@
             this.materialDivider10.BackColor = System.Drawing.Color.White;
             this.materialDivider10.Depth = 0;
             this.materialDivider10.Dock = System.Windows.Forms.DockStyle.Top;
-            this.materialDivider10.Location = new System.Drawing.Point(0, 474);
+            this.materialDivider10.Location = new System.Drawing.Point(0, 553);
             this.materialDivider10.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialDivider10.Name = "materialDivider10";
             this.materialDivider10.Size = new System.Drawing.Size(131, 3);
@@ -3207,7 +3278,7 @@
             this.btn_CopyLogs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_CopyLogs.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_CopyLogs.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btn_CopyLogs.Location = new System.Drawing.Point(0, 398);
+            this.btn_CopyLogs.Location = new System.Drawing.Point(0, 477);
             this.btn_CopyLogs.Name = "btn_CopyLogs";
             this.btn_CopyLogs.Size = new System.Drawing.Size(131, 76);
             this.btn_CopyLogs.TabIndex = 47;
@@ -3220,7 +3291,7 @@
             this.materialDivider9.BackColor = System.Drawing.Color.White;
             this.materialDivider9.Depth = 0;
             this.materialDivider9.Dock = System.Windows.Forms.DockStyle.Top;
-            this.materialDivider9.Location = new System.Drawing.Point(0, 395);
+            this.materialDivider9.Location = new System.Drawing.Point(0, 474);
             this.materialDivider9.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialDivider9.Name = "materialDivider9";
             this.materialDivider9.Size = new System.Drawing.Size(131, 3);
@@ -3237,7 +3308,7 @@
             this.btn_TimeOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_TimeOut.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_TimeOut.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btn_TimeOut.Location = new System.Drawing.Point(0, 319);
+            this.btn_TimeOut.Location = new System.Drawing.Point(0, 398);
             this.btn_TimeOut.Name = "btn_TimeOut";
             this.btn_TimeOut.Size = new System.Drawing.Size(131, 76);
             this.btn_TimeOut.TabIndex = 45;
@@ -3250,7 +3321,7 @@
             this.materialDivider8.BackColor = System.Drawing.Color.White;
             this.materialDivider8.Depth = 0;
             this.materialDivider8.Dock = System.Windows.Forms.DockStyle.Top;
-            this.materialDivider8.Location = new System.Drawing.Point(0, 316);
+            this.materialDivider8.Location = new System.Drawing.Point(0, 395);
             this.materialDivider8.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialDivider8.Name = "materialDivider8";
             this.materialDivider8.Size = new System.Drawing.Size(131, 3);
@@ -3267,7 +3338,7 @@
             this.btn_ReIni.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_ReIni.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_ReIni.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btn_ReIni.Location = new System.Drawing.Point(0, 240);
+            this.btn_ReIni.Location = new System.Drawing.Point(0, 319);
             this.btn_ReIni.Name = "btn_ReIni";
             this.btn_ReIni.Size = new System.Drawing.Size(131, 76);
             this.btn_ReIni.TabIndex = 41;
@@ -3280,7 +3351,7 @@
             this.materialDivider6.BackColor = System.Drawing.Color.White;
             this.materialDivider6.Depth = 0;
             this.materialDivider6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.materialDivider6.Location = new System.Drawing.Point(0, 237);
+            this.materialDivider6.Location = new System.Drawing.Point(0, 316);
             this.materialDivider6.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialDivider6.Name = "materialDivider6";
             this.materialDivider6.Size = new System.Drawing.Size(131, 3);
@@ -3298,7 +3369,7 @@
             this.btn_pos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_pos.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_pos.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btn_pos.Location = new System.Drawing.Point(0, 161);
+            this.btn_pos.Location = new System.Drawing.Point(0, 240);
             this.btn_pos.Name = "btn_pos";
             this.btn_pos.Size = new System.Drawing.Size(131, 76);
             this.btn_pos.TabIndex = 38;
@@ -3338,6 +3409,66 @@
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
+            // materialDivider12
+            // 
+            this.materialDivider12.BackColor = System.Drawing.Color.White;
+            this.materialDivider12.Depth = 0;
+            this.materialDivider12.Dock = System.Windows.Forms.DockStyle.Top;
+            this.materialDivider12.Location = new System.Drawing.Point(0, 237);
+            this.materialDivider12.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialDivider12.Name = "materialDivider12";
+            this.materialDivider12.Size = new System.Drawing.Size(131, 3);
+            this.materialDivider12.TabIndex = 58;
+            this.materialDivider12.Text = "materialDivider12";
+            // 
+            // btn_station
+            // 
+            this.btn_station.ContextMenuStrip = this.materialContext_stationMode;
+            this.btn_station.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_station.Enabled = false;
+            this.btn_station.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(75)))), ((int)(((byte)(81)))));
+            this.btn_station.FlatAppearance.BorderSize = 3;
+            this.btn_station.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btn_station.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(67)))), ((int)(((byte)(53)))));
+            this.btn_station.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_station.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_station.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_station.Location = new System.Drawing.Point(0, 161);
+            this.btn_station.Name = "btn_station";
+            this.btn_station.Size = new System.Drawing.Size(131, 76);
+            this.btn_station.TabIndex = 57;
+            this.btn_station.Text = "Station Mode";
+            this.btn_station.UseVisualStyleBackColor = true;
+            // 
+            // materialContext_stationMode
+            // 
+            this.materialContext_stationMode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(80)))), ((int)(((byte)(129)))));
+            this.materialContext_stationMode.Depth = 0;
+            this.materialContext_stationMode.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.materialContext_stationMode.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1,
+            this.toolStripMenuItem2});
+            this.materialContext_stationMode.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Table;
+            this.materialContext_stationMode.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialContext_stationMode.Name = "materialContextMenuStrip1";
+            this.materialContext_stationMode.Size = new System.Drawing.Size(103, 48);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.BackColor = System.Drawing.Color.DimGray;
+            this.toolStripMenuItem1.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(102, 22);
+            this.toolStripMenuItem1.Text = "ODF ";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click_1);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(102, 22);
+            this.toolStripMenuItem2.Text = "AOI";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click_1);
             // 
             // materialDivider3
             // 
@@ -3520,17 +3651,18 @@
             this.panel6.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            this.panel43.ResumeLayout(false);
             this.panel18.ResumeLayout(false);
             this.panel17.ResumeLayout(false);
             this.panel16.ResumeLayout(false);
             this.panel24.ResumeLayout(false);
             this.menu_RbInline.ResumeLayout(false);
+            this.panel44.ResumeLayout(false);
             this.panel38.ResumeLayout(false);
             this.panel37.ResumeLayout(false);
             this.panel23.ResumeLayout(false);
             this.panel15.ResumeLayout(false);
             this.panel14.ResumeLayout(false);
+            this.panel45.ResumeLayout(false);
             this.panel13.ResumeLayout(false);
             this.panel12.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -3547,6 +3679,7 @@
             this.panel34.ResumeLayout(false);
             this.materialContextMenuStrip3.ResumeLayout(false);
             this.materialContextMenuStrip1.ResumeLayout(false);
+            this.materialContext_stationMode.ResumeLayout(false);
             this.menu_systemMode.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -3703,7 +3836,7 @@
         private System.Windows.Forms.ToolStripMenuItem errorReturnToolStripMenuItem;
         private System.Windows.Forms.Panel panel38;
         private MaterialSkin.Controls.MaterialLabel materialLabel4;
-        private System.Windows.Forms.Label lbl_Ocr;
+        private System.Windows.Forms.Label lbl_samplingFull;
         private System.Windows.Forms.ToolStripMenuItem oCROFFToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
@@ -3815,9 +3948,19 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button btn_ResetUPWarring;
         private System.Windows.Forms.Panel panel43;
-        private MaterialSkin.Controls.MaterialLabel lbl_samplingRate;
-        private MaterialSkin.Controls.MaterialLabel lbl_sampling;
         private System.Windows.Forms.TabPage cv_AoiSlot;
+        private System.Windows.Forms.Panel panel44;
+        private MaterialSkin.Controls.MaterialLabel materialLabel5;
+        private System.Windows.Forms.Label lbl_Ocr;
+        private System.Windows.Forms.Label lbl_samplingRate;
+        private MaterialSkin.Controls.MaterialDivider materialDivider12;
+        private System.Windows.Forms.Button btn_station;
+        private MaterialSkin.Controls.MaterialContextMenuStrip materialContext_stationMode;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.Panel panel45;
+        private MaterialSkin.Controls.MaterialLabel materialLabel6;
+        private System.Windows.Forms.Label lbl_station;
     }
 }
 

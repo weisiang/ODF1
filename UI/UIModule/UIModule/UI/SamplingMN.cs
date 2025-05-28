@@ -14,9 +14,9 @@ using BaseAp;
 
 namespace UI
 {
-    public partial class user_SamplingSlot : UserControl
+    public partial class user_SamplingMN : UserControl
     {
-        public user_SamplingSlot()
+        public user_SamplingMN()
         {
             InitializeComponent();
             dataGridView2.AutoGenerateColumns = false;
@@ -42,41 +42,16 @@ namespace UI
         {
             UiForm.WriteLog(LogLevelType.NormalFunctionInOut, this.GetType().Name + "." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Enter);
             bool is_ok = true;
-            string id = textBox_id.Text.Trim();
-            bool method_slot = radioButton_byslot.Checked;
-            bool method_period = radioButton_byPeriod.Checked;
-            bool front = radioButton_front.Checked;
-            bool back = radioButton_back.Checked;
-            string des = textBox_description.Text.Trim();
-            string  n = textBox_n.Text.Trim();
-            string  m = textBox_m.Text.Trim();
-
-            if( id=="" || (!Regex.Match(textBox_id.Text, @"\d+").Success)) //|| Regex.Match(cv_TxRecipeId.Text , @"^0" , RegexOptions.IgnoreCase).Succes
-            { 
-                UI.CommonStaticData.PopForm("The id should be digital number!", true, false);
-                return false;
-            }
-            if( !method_period && !method_slot)
+            if (!Regex.Match(textBox1.Text, @"\d").Success) //|| Regex.Match(cv_TxRecipeId.Text , @"^0" , RegexOptions.IgnoreCase).Succes
+            { is_ok = false; }
+            if (!is_ok)
             {
-                UI.CommonStaticData.PopForm("The method can't empty !!!", true, false);
-                return false;
-            }
-            if (method_period)
-            {
-                if( (n == "") || (m == "") || (!Regex.Match(n, @"\d+").Success) || (!Regex.Match(m, @"\d+").Success))
-                {
-                    UI.CommonStaticData.PopForm("The N and M can't be empty and should be digital !!!", true, false);
-                    return false;
-                }
-                if (!front && !back)
-                {
-                    UI.CommonStaticData.PopForm("The fron and back can't be empty !!!", true, false);
-                    return false;
-                }
+                UI.CommonStaticData.PopForm("The id data can't empty !!!", true, false);
+                return is_ok;
             }
 
             int tmp_no = -1;
-            if (int.TryParse(textBox_id.Text, out tmp_no))
+            if (int.TryParse(textBox1.Text, out tmp_no))
             {
                 bool is_exist = UiForm.cv_SamplingData.cv_SamplingList.Exists(x => x.PNo == tmp_no);
 
@@ -125,64 +100,15 @@ namespace UI
 
             };
 
-            bool is_ok = true;
-            string id = textBox_id.Text.Trim();
-            bool method_slot = radioButton_byslot.Checked;
-            bool method_period = radioButton_byPeriod.Checked;
-            bool front = radioButton_front.Checked;
-            bool back = radioButton_back.Checked;
-            string des = textBox_description.Text.Trim();
-            string n = textBox_n.Text.Trim();
-            string m = textBox_m.Text.Trim();
-
             CommonData.HIRATA.SamplingIem tmp = new CommonData.HIRATA.SamplingIem();
-            tmp.PNo = int.Parse(textBox_id.Text.Trim());
+            tmp.PNo = int.Parse(textBox1.Text.Trim());
             tmp.PTime = DateTime.Now.ToString("yyyyMMddhhmmss");
-            tmp.PDesription = textBox_description.Text.Trim();
-            tmp.PMethod = getmethod();
-            if(tmp.PMethod == SamplingMethod.BySlot)
-            {
-                tmp.PHitList = GetHitList();
-            }
-            else if(tmp.PMethod == SamplingMethod.ByPeriod)
-            {
-                tmp.PFromfornt = isFront();
-                tmp.PM = int.Parse(m);
-                tmp.PN = int.Parse(n);
-            }
+            tmp.PDesription = textBox2.Text.Trim();
+            tmp.PHitList = GetHitList();
+
             obj.SamplingDatas.Add(tmp);
             Global.Controller.SendMmfNotifyObject(typeof(CommonData.HIRATA.MDSamplingDataAction).Name, obj , KParseObjToXmlPropertyType.Field);
             UiForm.WriteLog(LogLevelType.NormalFunctionInOut, this.GetType().Name + "." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Leave);
-        }
-        private SamplingMethod getmethod()
-        {
-            SamplingMethod rtn = SamplingMethod.None;
-            bool method_slot = radioButton_byslot.Checked;
-            bool method_period = radioButton_byPeriod.Checked;
-            if(method_period && !method_slot)
-            {
-                rtn = SamplingMethod.ByPeriod;
-            }
-            else if(!method_period && method_slot)
-            {
-                rtn = SamplingMethod.BySlot;
-            }
-            return rtn;
-        }
-        private bool isFront()
-        {
-            bool rtn = false;
-            bool front = radioButton_front.Checked;
-            bool back = radioButton_back.Checked;
-            if (front && !back)
-            {
-                rtn = true;
-            }
-            else if (!front && back)
-            {
-                rtn = false;
-            }
-            return rtn;
         }
         private bool IsHasCstLDCM()
         {
@@ -201,7 +127,7 @@ namespace UI
         private void button2_Click(object sender, EventArgs e)
         {
             UiForm.WriteLog(LogLevelType.NormalFunctionInOut, this.GetType().Name + "." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Enter);
-            string sampling_id = textBox_id.Text.Trim();
+            string sampling_id = textBox1.Text.Trim();
             string log = "User press sampling item modify : " + sampling_id + Environment.NewLine;
             RecipeItem recipe = null;
             if (UiForm.cv_Recipes.GetCurRecipe(out recipe))
@@ -235,7 +161,7 @@ namespace UI
         private void button3_Click(object sender, EventArgs e)
         {
             UiForm.WriteLog(LogLevelType.NormalFunctionInOut, this.GetType().Name + "." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Enter);
-            string sampling_id = textBox_id.Text.Trim();
+            string sampling_id = textBox1.Text.Trim();
             RecipeItem recipe = null;
             if (UiForm.cv_Recipes.GetCurRecipe(out recipe))
             {
@@ -300,90 +226,33 @@ namespace UI
             int index = UiForm.cv_SamplingData.cv_SamplingList.FindIndex(x => x.PNo.ToString() == select_str);
             if (-1 != index)
             {
-                clear();
-                SamplingIem sampling = UiForm.cv_SamplingData.cv_SamplingList[index];
-                if(sampling.PMethod == SamplingMethod.ByPeriod)
+                textBox1.Text = UiForm.cv_SamplingData.cv_SamplingList[index].PNo.ToString();
+                textBox2.Text = UiForm.cv_SamplingData.cv_SamplingList[index].PDesription;
+                //clean all.
+                for(int i=0; i< checkedListBox1.Items.Count;i++)
                 {
-                    radioButton_byPeriod.Checked = true;
+                    checkedListBox1.SetItemChecked(i, false);
                 }
-                else if(sampling.PMethod == SamplingMethod.BySlot)
+                //set true.
+                for(int i=0; i< checkedListBox1.Items.Count;i++)
                 {
-                    radioButton_byslot.Checked = true;
-                }
-
-                textBox_id.Text = UiForm.cv_SamplingData.cv_SamplingList[index].PNo.ToString();
-                textBox_description.Text = UiForm.cv_SamplingData.cv_SamplingList[index].PDesription;
-
-                if (sampling.PMethod == SamplingMethod.BySlot)
-                {
-                    //clean all.
-                    for (int i = 0; i < checkedListBox1.Items.Count; i++)
+                    string tmp = checkedListBox1.Items[i].ToString();
+                    Match match = Regex.Match(tmp, @"\d+");
+                    if(match.Success)
                     {
-                        checkedListBox1.SetItemChecked(i, false);
-                    }
-                    //set true.
-                    for (int i = 0; i < checkedListBox1.Items.Count; i++)
-                    {
-                        string tmp = checkedListBox1.Items[i].ToString();
-                        Match match = Regex.Match(tmp, @"\d+");
-                        if (match.Success)
+                        string str_slot = match.Value;
+                        int slot = -1;
+                        if(int.TryParse(str_slot , out slot))
                         {
-                            string str_slot = match.Value;
-                            int slot = -1;
-                            if (int.TryParse(str_slot, out slot))
+                            if(UiForm.cv_SamplingData.cv_SamplingList[index].PHitList.Contains(slot))
                             {
-                                if (UiForm.cv_SamplingData.cv_SamplingList[index].PHitList.Contains(slot))
-                                {
-                                    checkedListBox1.SetItemChecked(i, true);
-                                }
+                                checkedListBox1.SetItemChecked(i, true);
                             }
                         }
                     }
                 }
-                else if(sampling.PMethod == SamplingMethod.ByPeriod)
-                {
-                    if(sampling.PFromfornt)
-                    {
-                        radioButton_front.Checked = true;
-                        radioButton_back.Checked = false;
-                    }
-                    else
-                    {
-                        radioButton_front.Checked = false;
-                        radioButton_back.Checked = true;
-                    }
-                    textBox_n.Text = sampling.PN.ToString();
-                    textBox_m.Text = sampling.PM.ToString();
-                }
             }
             UiForm.WriteLog(LogLevelType.NormalFunctionInOut, this.GetType().Name + "." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Leave);
-        }
-        private void clear()
-        {
-            /*
-            bool is_ok = true;
-            string id = textBox_id.Text.Trim();
-            bool method_slot = radioButton_byslot.Checked;
-            bool method_period = radioButton_byPeriod.Checked;
-            bool front = radioButton_front.Checked;
-            bool back = radioButton_back.Checked;
-            string des = textBox_description.Text.Trim();
-            string n = textBox_n.Text.Trim();
-            string m = textBox_m.Text.Trim();
-            */
-
-            textBox_id.Text = "";
-            radioButton_byslot.Checked = false;
-            radioButton_byPeriod.Checked = false;
-            radioButton_front.Checked = false;
-            radioButton_back.Checked = false;
-            textBox_description.Text = "";
-            textBox_n.Text = "";
-            textBox_m.Text = "";
-            for (int i = 0; i < checkedListBox1.Items.Count; i++)
-            {
-                checkedListBox1.SetItemChecked(i, false);
-            }
         }
 
         private void button6_Click(object sender, EventArgs e)

@@ -28,6 +28,16 @@ namespace UI
             UiForm.AddUiObjToEnableList(btn_Del, UiForm.enumGroup.Group4);
             UiForm.AddUiObjToEnableList(btn_CurRecipe, UiForm.enumGroup.Group4);
             UiForm.AddUiObjToEnableList(cb_NeedGlass, UiForm.enumGroup.Group4);
+            UiForm.AddUiObjToEnableList(cb_waferPutUp, UiForm.enumGroup.Group4);
+            UiForm.AddUiObjToEnableList(cb_FlipToUv, UiForm.enumGroup.Group4);
+            UiForm.AddUiObjToEnableList(cb_backToLd, UiForm.enumGroup.Group4);
+        }
+        public void setNoNeedUiVisiable(bool m_canSee)
+        {
+            cb_NeedGlass.Visible = m_canSee;
+            cb_waferPutUp.Visible = m_canSee;
+            cb_FlipToUv.Visible = m_canSee;
+            cb_backToLd.Visible = m_canSee;
         }
         private void InitFlowDescription()
         {
@@ -95,12 +105,18 @@ namespace UI
             cv_FlowDescription.Add(CommonData.HIRATA.OdfFlow.Flow7_4, "Wafer :  Port(LP5/LP6) -> Aligner -> Buffer -> SDP -> AOI -> IJP -> VAS(Up)\n\n");
             cv_FlowDescription[CommonData.HIRATA.OdfFlow.Flow7_4] += "Glass : Port(LP3/LP4) -> Aligner -> Buffer -> VAS(Low)\n\n";
             cv_FlowDescription[CommonData.HIRATA.OdfFlow.Flow7_4] += "Combination : VAS(Low) -> UV -> Unload Port(ULD1/ULD2)";
+
+            cv_FlowDescription.Add(CommonData.HIRATA.OdfFlow.Flow8_1, "Combination :  Port(LP5/LP6) -> Aligner -> Buffer -> AOI -> UD");
+            cv_FlowDescription.Add(CommonData.HIRATA.OdfFlow.Flow8_2, "Combination :  Port(UP1/UP2) -> Aligner -> Buffer -> AOI -> UD");
             UiForm.WriteLog(LogLevelType.NormalFunctionInOut, this.GetType().Name + "." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Leave);
         }
         private void LoadFlowName()
         {
             UiForm.WriteLog(LogLevelType.NormalFunctionInOut, this.GetType().Name + "." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Enter);
-            foreach (string flow in Enum.GetNames(typeof(CommonData.HIRATA.OdfFlow)).ToList<string>())
+            List<string> flows = Enum.GetNames(typeof(CommonData.HIRATA.OdfFlow)).ToList<string>();
+            flows.Sort();
+
+            foreach (string flow in flows)
             {
                 if (!Regex.Match(flow, @"4_", RegexOptions.IgnoreCase).Success)
                 {
@@ -270,7 +286,7 @@ namespace UI
             tmp.PFlow = (CommonData.HIRATA.OdfFlow)Enum.Parse(typeof(CommonData.HIRATA.OdfFlow), cb_Flow.Text.Trim());
 
             if (tmp.PFlow == OdfFlow.Flow1_1 || tmp.PFlow == OdfFlow.Flow1_2 || tmp.PFlow == OdfFlow.FLow4_1 || tmp.PFlow == OdfFlow.Flow4_2 || tmp.PFlow == OdfFlow.Flow5_1 || tmp.PFlow == OdfFlow.Flow5_2 ||
-                tmp.PFlow == OdfFlow.Flow6_1 || tmp.PFlow == OdfFlow.Flow6_2 || tmp.PFlow == OdfFlow.Flow7_2 || tmp.PFlow == OdfFlow.Flow7_3)
+                tmp.PFlow == OdfFlow.Flow6_1 || tmp.PFlow == OdfFlow.Flow6_2 || tmp.PFlow == OdfFlow.Flow6_3 || tmp.PFlow == OdfFlow.Flow7_2 || tmp.PFlow == OdfFlow.Flow7_3 || tmp.PFlow == OdfFlow.Flow7_4)
             {
                 tmp.PVasNeedGlass = true;
             }
@@ -278,6 +294,32 @@ namespace UI
             {
                 tmp.PVasNeedGlass = false;
             }
+            if(tmp.PFlow == OdfFlow.Flow5_1 || tmp.PFlow == OdfFlow.Flow5_2 || tmp.PFlow == OdfFlow.Flow7_2 || tmp.PFlow == OdfFlow.Flow7_3 || tmp.PFlow == OdfFlow.Flow7_4 )
+            {
+                tmp.PWaferPutUp = true;
+            }
+            else
+            {
+                tmp.PWaferPutUp = false;
+            }    
+            if(tmp.PFlow == OdfFlow.Flow5_1)
+            {
+                tmp.PFlipToUv = true;
+            }
+            else
+            {
+                tmp.PFlipToUv = false;
+            }
+
+            if(tmp.PFlow == OdfFlow.Flow2_3 || tmp.PFlow == OdfFlow.Flow8_1 || tmp.PFlow == OdfFlow.Flow8_2)
+            {
+                tmp.PBackToLD = true;
+            }
+            else
+            {
+                tmp.PBackToLD = false;
+            }
+
             tmp.PWaferVASDegree = float.Parse(cv_TxWaferOCR.Text.Trim(), System.Globalization.CultureInfo.InvariantCulture);
             tmp.PWaferIJPDegree = float.Parse(cv_TxWaferVas.Text.Trim(), System.Globalization.CultureInfo.InvariantCulture);
             tmp.PGlassVASDegree = float.Parse(cv_TxGlassVas.Text.Trim(), System.Globalization.CultureInfo.InvariantCulture);
@@ -377,6 +419,49 @@ namespace UI
                             cb_NeedGlass.Checked = false;
                         }
                     }
+
+                    if (recipe.PBackToLD)
+                    {
+                        if (!cb_backToLd.Checked)
+                        {
+                            cb_backToLd.Checked = true;
+                        }
+                    }
+                    else
+                    {
+                        if (cb_backToLd.Checked)
+                        {
+                            cb_backToLd.Checked = false;
+                        }
+                    }
+                    if (recipe.PWaferPutUp)
+                    {
+                        if (!cb_waferPutUp.Checked)
+                        {
+                            cb_waferPutUp.Checked = true;
+                        }
+                    }
+                    else
+                    {
+                        if (cb_waferPutUp.Checked)
+                        {
+                            cb_waferPutUp.Checked = false;
+                        }
+                    }
+                    if (recipe.PFlipToUv)
+                    {
+                        if (!cb_FlipToUv.Checked)
+                        {
+                            cb_FlipToUv.Checked = true;
+                        }
+                    }
+                    else
+                    {
+                        if (cb_FlipToUv.Checked)
+                        {
+                            cb_FlipToUv.Checked = false;
+                        }
+                    }
                 }
             }
             else
@@ -384,6 +469,18 @@ namespace UI
                 if (cb_NeedGlass.Checked)
                 {
                     cb_NeedGlass.Checked = false;
+                }
+                if (cb_backToLd.Checked)
+                {
+                    cb_backToLd.Checked = false;
+                }
+                if (cb_waferPutUp.Checked)
+                {
+                    cb_waferPutUp.Checked = false;
+                }
+                if (cb_FlipToUv.Checked)
+                {
+                    cb_FlipToUv.Checked = false;
                 }
             }
         }

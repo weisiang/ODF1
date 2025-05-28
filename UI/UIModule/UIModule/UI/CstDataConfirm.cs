@@ -253,7 +253,7 @@ namespace UI
             //m_GlassData.cv_Nods[node_index].PRecipe = Convert.ToInt32(txt_AOIRecipe.Text.Trim());
             m_GlassData.cv_Nods[node_index].PRecipe = Convert.ToInt32(UiForm.cv_Recipes.PCurRecipeId);
 
-            m_GlassData.cv_Nods[2].PProcessHistory = 1;
+            //m_GlassData.cv_Nods[node_index].PProcessHistory = 1;
         }
         private void Button_DefaultCstData_Click(object sender, EventArgs e)
         {
