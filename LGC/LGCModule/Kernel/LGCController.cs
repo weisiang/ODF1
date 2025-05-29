@@ -143,6 +143,10 @@ namespace LGC
             AssignMmfEventObjectFunction(typeof(CommonData.HIRATA.MDForceIni).Name, ProcessForceIni);
             AssignMmfEventObjectFunction(typeof(CommonData.HIRATA.MDResetTimeChart).Name, ProcessRsetTImechart);
 
+            AssignMmfEventObjectFunction(typeof(CommonData.HIRATA.MDStationModeChangeReq).Name, ProcessStationModeChangeReq);
+
+            
+
         }
 
         #region base
@@ -502,14 +506,14 @@ namespace LGC
                     //LgcForm.PSystemData.POperationMode = obj.PChangeOperationMode;
                     if(obj.PChangeOperationMode == OperationMode.Manual)
                     {
-                        if(LgcForm.cv_RobotJobPath.Count > 0)
+                        if (LgcForm.cv_RobotJobPath.Count > 0)
                         {
-                            if(!obj.PIsForce)
+                            if (!obj.PIsForce)
                             {
-                            LgcForm.cv_IsCycleStop = true;
-                        }
-                        else
-                        {
+                                LgcForm.cv_IsCycleStop = true;
+                            }
+                            else
+                            {
                                 LgcForm.cv_IsCycleStop = false;
                                 LgcForm.PSystemData.POperationMode = OperationMode.Manual;
                             }
@@ -1163,6 +1167,7 @@ namespace LGC
                     CommonData.HIRATA.PortData obj = m_Object as CommonData.HIRATA.PortData;
                     CommonData.HIRATA.PortData tmp = LgcForm.cv_PortContainer[(int)obj.PId].cv_Data;
                     tmp.GlassDataMap = tmp.GlassDataMap;
+                    setSamplingToWorkData(tmp);
                     Global.Controller.SendMmfNotifyObject(typeof(CommonData.HIRATA.PortData).Name, tmp, KParseObjToXmlPropertyType.Field);
                 }
                 else if (m_SourceModule == "CIM")
@@ -1343,6 +1348,7 @@ namespace LGC
                             }
                             if (!error)
                             {
+                                setSamplingToWorkData(job_port.cv_Data);
                                 if (need_change_recipe)
                                 {
                                     if (LgcForm.cv_Recipes.IsRecipeExist(want_change_recipe.ToString()))
@@ -1386,6 +1392,113 @@ namespace LGC
             catch (Exception e)
             {
                 WriteLog(LogLevelType.Error, e.StackTrace.ToString());
+            }
+        }
+        void setSamplingToWorkData(PortData m_port)
+        {
+            //set as 1 first.
+            for (int i = 1; i <= m_port.cv_SlotCount; i++)
+            {
+                if (m_port.GlassDataMap[i].PHasData && m_port.GlassDataMap[i].PHasSensor)
+                {
+                    int node_index = m_port.GlassDataMap[i].cv_Nods.FindIndex(x => x.PNodeId == 2);
+                    if (m_port.GlassDataMap[i].cv_Nods[node_index].PProcessHistory != 1)
+                    {
+                        m_port.GlassDataMap[i].cv_Nods[node_index].PProcessHistory = 1;
+                    }
+                }
+            }
+
+            RecipeItem recipe = null;
+            if (LgcForm.cv_Recipes.GetCurRecipe(out recipe))
+            {
+                SamplingIem samplingdata = LgcForm.cv_SamplingData.getSamplingItem(recipe.PSampling);
+                if(samplingdata !=null)
+                {
+                    if(samplingdata.PMethod == SamplingMethod.ByPeriod)
+                    {
+                        int m = samplingdata.PM;
+                        int n = samplingdata.PN;
+                        bool fromfront = samplingdata.PFromfornt;
+                        int hit_count = 0;
+                        if(fromfront)
+                        {
+                            for(int i=1; i<= m_port.cv_SlotCount;i++)
+                            {
+                                if (m_port.GlassDataMap[i].PHasData && m_port.GlassDataMap[i].PHasSensor && m_port.GlassDataMap[i].PProcessFlag == ProcessFlag.Need)
+                                {
+                                    hit_count++;
+                                    if (hit_count < m)
+                                    {
+                                        int node_index = m_port.GlassDataMap[i].cv_Nods.FindIndex(x => x.PNodeId == 2);
+                                        if (m_port.GlassDataMap[i].cv_Nods[node_index].PProcessHistory != 3)
+                                        {
+                                            m_port.GlassDataMap[i].cv_Nods[node_index].PProcessHistory = 3;
+                                        }
+                                    }
+                                    if (hit_count == n)
+                                    {
+                                        hit_count = 0;
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            for(int i=1; i<= m_port.cv_SlotCount;i++)
+                            {
+                                if (m_port.GlassDataMap[i].PHasData && m_port.GlassDataMap[i].PHasSensor && m_port.GlassDataMap[i].PProcessFlag == ProcessFlag.Need)
+                                {
+                                    hit_count++;
+                                    if (hit_count > (n - m))
+                                    {
+                                        int node_index = m_port.GlassDataMap[i].cv_Nods.FindIndex(x => x.PNodeId == 2);
+                                        if (m_port.GlassDataMap[i].cv_Nods[node_index].PProcessHistory != 3)
+                                        {
+                                            m_port.GlassDataMap[i].cv_Nods[node_index].PProcessHistory = 3;
+                                        }
+                                    }
+                                    if (hit_count == n)
+                                    {
+                                        hit_count = 0;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else if(samplingdata.PMethod == SamplingMethod.BySlot)
+                    {
+                        for(int i=1; i<= m_port.cv_SlotCount;i++)
+                        {
+                            if (samplingdata.PHitList.Contains(i))
+                            {
+                                if (m_port.GlassDataMap[i].PHasData && m_port.GlassDataMap[i].PHasSensor && m_port.GlassDataMap[i].PProcessFlag == ProcessFlag.Need)
+                                {
+                                    int node_index = m_port.GlassDataMap[i].cv_Nods.FindIndex(x => x.PNodeId == 2);
+                                    if (m_port.GlassDataMap[i].cv_Nods[node_index].PProcessHistory != 3)
+                                    {
+                                        m_port.GlassDataMap[i].cv_Nods[node_index].PProcessHistory = 3;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                if (m_port.GlassDataMap[i].PHasData && m_port.GlassDataMap[i].PHasSensor && m_port.GlassDataMap[i].PProcessFlag == ProcessFlag.Need)
+                                {
+                                    int node_index = m_port.GlassDataMap[i].cv_Nods.FindIndex(x => x.PNodeId == 2);
+                                    if (m_port.GlassDataMap[i].cv_Nods[node_index].PProcessHistory != 3)
+                                    {
+                                        m_port.GlassDataMap[i].cv_Nods[node_index].PProcessHistory = 3;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        WriteLog(LogLevelType.Error, " sampling id : " + recipe.PSampling.ToString() + " error");
+                    }
+                }
             }
         }
         void ProcessEqData(string m_SourceModule, int m_Type, string m_MessageId, string m_RequestNotifyMessageId, uint m_Ticket, Object m_Object)
@@ -1773,6 +1886,46 @@ namespace LGC
         }
 
         #endregion
+        
+        void changePortMode(EStationMod m_mode)
+        {
+            if (m_mode == EStationMod.AOI)
+            {
+                for (int portid = 1; portid <= CommonData.HIRATA.CommonStaticData.g_PortNumber; portid++)
+                {
+                    LgcForm.GetPortById(portid).PportMode = PortMode.Both;
+                }
+            }
+            else if (m_mode == EStationMod.ODF)
+            {
+                LgcForm.GetPortById(1).PportMode = PortMode.Unloader;
+                LgcForm.GetPortById(2).PportMode = PortMode.Unloader;
+                LgcForm.GetPortById(3).PportMode = PortMode.Loader;
+                LgcForm.GetPortById(4).PportMode = PortMode.Loader;
+                LgcForm.GetPortById(5).PportMode = PortMode.Loader;
+                LgcForm.GetPortById(6).PportMode = PortMode.Loader;
+
+            }
+        }
+        void ProcessStationModeChangeReq(string m_SourceModule, int m_Type, string m_MessageId, string m_RequestNotifyMessageId, uint m_Ticket, Object m_Object)
+        {
+            CommonData.HIRATA.MDStationModeChangeReq obj = m_Object as CommonData.HIRATA.MDStationModeChangeReq;
+            if(obj.PStationMode != EStationMod.None && obj.PStationMode != LgcForm.PSystemData.PStationMode)
+            {
+                if(obj.PStationMode == EStationMod.AOI)
+                {
+                    //todo : change each port to unloader/loader
+                    changePortMode(EStationMod.AOI);
+                    LgcForm.PSystemData.PStationMode = EStationMod.AOI;
+                }
+                else if(obj.PStationMode == EStationMod.ODF)
+                {
+                    //todo : change each port to unloader/loader
+                    changePortMode(EStationMod.ODF);
+                    LgcForm.PSystemData.PStationMode = EStationMod.ODF;
+                }
+            }
+        }
         void ProcessRsetTImechart(string m_SourceModule, int m_Type, string m_MessageId, string m_RequestNotifyMessageId, uint m_Ticket, Object m_Object)
         {
             MDResetTimeChart obj = m_Object as MDResetTimeChart;

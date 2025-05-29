@@ -9,7 +9,7 @@
         <cv_PortAgvMode>2</cv_PortAgvMode>
         <cv_PortEnable>1</cv_PortEnable>
         <cv_PortType>3</cv_PortType>
-        <cv_PortMode>2</cv_PortMode>
+        <cv_PortMode>1</cv_PortMode>
         <cv_LotStatus>8</cv_LotStatus>
         <cv_PortStatus>3</cv_PortStatus>
         <cv_WorkCount>9</cv_WorkCount>

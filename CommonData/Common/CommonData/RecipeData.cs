@@ -19,6 +19,33 @@ namespace CommonData.HIRATA
         public float cv_WaferVASDegree;
         public bool cv_VasNeedGlass;
         public int cv_Sampling;
+        public bool cv_BackToLD;
+        public bool cv_WaferPutUp;
+        public bool cv_FlipToUv;
+
+        public bool cv_ReworkFlow;
+        public int cv_AoiNextStep;
+        public int cv_IjpStep;
+        public bool PReworkFlow
+        {
+            get { return cv_ReworkFlow; }
+            set { cv_ReworkFlow = value; }
+        }
+        public bool PFlipToUv
+        {
+            get { return cv_FlipToUv; }
+            set { cv_FlipToUv = value; }
+        }
+        public bool PWaferPutUp
+        {
+            get { return cv_WaferPutUp; }
+            set { cv_WaferPutUp = value; }
+        }
+        public bool PBackToLD
+        {
+            get { return cv_BackToLD; }
+            set { cv_BackToLD = value; }
+        }
         public int PSampling
         {
             get { return cv_Sampling; }

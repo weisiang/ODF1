@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <System>
     <SystemData>
+        <cv_stationMode>2</cv_stationMode>
         <cv_SystemStatus>0</cv_SystemStatus>
         <cv_SystemOnlineMode>4</cv_SystemOnlineMode>
         <cv_RobotOnlineMode>-1</cv_RobotOnlineMode>

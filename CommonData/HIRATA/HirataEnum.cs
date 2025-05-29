@@ -88,4 +88,5 @@ namespace CommonData.HIRATA
     public enum SignalTowerColor { All , Red , Yellow , Green , Blue, };
     public enum SignalTowerControl { On , Off , Flash , };
     public enum RobotJobAction { None, preView, Clean,DropTop };
+    public enum EStationMod { None , ODF , AOI}
 }

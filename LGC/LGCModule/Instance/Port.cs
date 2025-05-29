@@ -21,6 +21,19 @@ namespace LGC
             InitData();
             InitComm();
         }
+        public CommonData.HIRATA.PortMode PportMode
+        {
+            get { return (CommonData.HIRATA.PortMode)cv_Data.cv_PortMode; }
+            set 
+            { 
+                if(cv_Data.cv_PortMode != (UInt16)value )
+                {
+                    cv_Data.cv_PortMode = (UInt16)value;
+                    SendDataViaMmf();
+                }
+            }
+
+        }
         public CommonData.HIRATA.PortStaus PPortStatus
         {
             get { return (CommonData.HIRATA.PortStaus)cv_Data.cv_PortStatus; }

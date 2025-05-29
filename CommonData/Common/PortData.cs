@@ -175,31 +175,6 @@ namespace CommonData.HIRATA
             }
             return rtn;
         }
-        public bool HasOtherJobHaveToDoExceptSelf(int m_Slot)
-        {
-            bool rtn = false;
-            for (int i = 1; i <= cv_SlotCount; i++)
-            {
-                if (PPortMode == PortMode.Loader)
-                {
-                    if (GlassDataMap[i].PHasData && GlassDataMap[i].PHasSensor)
-                    {
-                        if (GlassDataMap[i].PProcessFlag == ProcessFlag.Need)
-                        {
-                            rtn = true;
-                        }
-                    }
-                }
-                else if (PPortMode == PortMode.Unloader)
-                {
-                    if (!GlassDataMap[i].PHasData && !GlassDataMap[i].PHasSensor)
-                    {
-                        rtn = true;
-                    }
-                }
-            }
-            return rtn;
-        }
         public void LoadFromFile()
         {
             string ori_path = cv_FilePath;
@@ -216,11 +191,11 @@ namespace CommonData.HIRATA
             }
             PPortAgvMode = CommonData.HIRATA.PortAgv.MGV;
             PPortEnable = CommonData.HIRATA.PortEnable.Enable;
-            PPortMode = CommonData.HIRATA.PortMode.Loader;
+            //PPortMode = CommonData.HIRATA.PortMode.Loader;
             PPortType = CommonData.HIRATA.PortType.MIX;
             if ((cv_Id == 1) || (cv_Id == 2))
             {
-                PPortMode = CommonData.HIRATA.PortMode.Unloader;
+                //PPortMode = CommonData.HIRATA.PortMode.Unloader;
                 cv_ProductionType = (int)ProductCategory.None;
             }
             else if ((cv_Id == 3) || (cv_Id == 4))

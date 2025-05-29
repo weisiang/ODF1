@@ -22,6 +22,7 @@ namespace LGC
         public static KMemoLog cv_AlarmLog;
         public static Dictionary<string, List<AlarmItem>> cv_ApiAlarm = new Dictionary<string, List<AlarmItem>>();
         public static Dictionary<int, List<AllDevice>> cv_CurRecipeFlowStepSetting = new Dictionary<int, List<AllDevice>>();
+        public bool cv_CurFlowIncludeAoi;
         public static Queue<RobotJob> cv_RobotJobPath = new Queue<RobotJob>();
         public static Queue<RobotJob> cv_RobotJobPathCompare = new Queue<RobotJob>();
         public static Queue<RobotJob> cv_RobotManaulJobPath = new Queue<RobotJob>();
@@ -311,6 +312,7 @@ namespace LGC
                     }
                 }
             }
+            cv_CurFlowIncludeAoi = false;
             string log = "Set recipe flow : " + Environment.NewLine;
             foreach (KeyValuePair<int, List<AllDevice>> item in cv_CurRecipeFlowStepSetting)
             {
@@ -318,9 +320,14 @@ namespace LGC
                 foreach (AllDevice device_item in item.Value)
                 {
                     log += device_item.ToString() + "  ";
+                    if(device_item == AllDevice.AOI)
+                    {
+                        cv_CurFlowIncludeAoi = true;
+                    }
                 }
                 log += Environment.NewLine;
             }
+            log += "cv_CurFlowIncludeAoi : " + cv_CurFlowIncludeAoi.ToString();
             WriteLog(LogLevelType.General, log);
             WriteLog(LogLevelType.NormalFunctionInOut, this.GetType().Name + "." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Leave);
         }
@@ -857,11 +864,15 @@ namespace LGC
                 }
             }
         }
-        private bool FindEndStep(int m_CurStep, ref int m_EndPos, ref Dictionary<int, RobotJob> m_JobMap)
+        private bool FindEndStep(int m_CurStep, ref int m_EndPos, ref Dictionary<int, RobotJob> m_JobMap , int m_jumpStep=0)
         {
             bool rtn = false;
             int pre_step = m_CurStep;
             int now_step = m_CurStep + 1;
+            if(m_jumpStep != 0)
+            {
+                now_step = m_jumpStep;
+            }
             if (cv_CurRecipeFlowStepSetting.ContainsKey(now_step))
             {
                 List<AllDevice> cv_stepDevice = cv_CurRecipeFlowStepSetting[now_step];
@@ -907,26 +918,35 @@ namespace LGC
                             rtn = false;
                         }
                     }
-                    //R20250521. Allen add return to load port. (uncomplete)
-                    else if (device == AllDevice.LP)
+                    else if (device == AllDevice.LP) 
                     {
                         int port = 0;
                         int slot = 0;
-                        if (FindUnloadPortToPutSubstrate(out port, out slot , m_JobMap[pre_step]))
+                        //todo : get glass data from last eq.
+                        GlassData last_glass_data = getGlassDataFromLastEq(m_JobMap, now_step);
+
+                        if (last_glass_data != null)
                         {
-                            if (m_JobMap[pre_step].PGetArm != RobotArm.rabNone)
+                            if (checkLoadPortSlotCanPut((int)last_glass_data.PFoupSeq, (int)last_glass_data.PWorkSlot, out port))
                             {
-                                m_JobMap[now_step] = new RobotJob(1, m_JobMap[pre_step].PGetArm, RobotArm.rabNone, RobotAction.Put,
-                                    ActionTarget.Port, port, slot, false);
-                                rtn = true;
-                                m_EndPos = now_step;
-                                break;
+                                if (m_JobMap[pre_step].PGetArm != RobotArm.rabNone)
+                                {
+                                    m_JobMap[now_step] = new RobotJob(1, m_JobMap[pre_step].PGetArm, RobotArm.rabNone, RobotAction.Put,
+                                        ActionTarget.Port, port, (int)last_glass_data.PWorkSlot, false);
+                                    rtn = true;
+                                    m_EndPos = now_step;
+                                    break;
+                                }
+                            }
+                            else
+                            {
+                                m_JobMap.Remove(now_step);
+                                rtn = false;
                             }
                         }
                         else
                         {
-                            m_JobMap.Remove(now_step);
-                            rtn = false;
+                            WriteLog(LogLevelType.Error, "last EQ's glass data is null");
                         }
                     }
                     else
@@ -978,15 +998,54 @@ namespace LGC
                                 {
                                     if (m_JobMap[pre_step].PGetArm == RobotArm.rabNone)
                                     {
-                                        m_JobMap[pre_step].PGetArm = eq.PPutArm;
                                         RecipeItem recipe = null;
+                                        if(eq_id == EqId.AOI)
+                                        {
+                                            //because aoi send load , so checkpathHasAoiInMiddle always ok.
+                                            if (checkpathHasAoiInMiddle(m_JobMap , now_step))
+                                            {
+                                                rtn = false;
+                                                break;
+                                            }
+                                        }
+                                        if(cv_Recipes.GetCurRecipe(out recipe))
+                                        {
+                                            if(recipe.PReworkFlow)
+                                            {
+                                                if(eq_id == EqId.SDP1 || eq_id == EqId.SDP2 || eq_id == EqId.SDP3)
+                                                {
+                                                    int aoi_step = FindAoiStepInJobpath(m_JobMap, now_step);
+                                                    if(aoi_step != 0)
+                                                    {
+                                                        GlassData aoi_glass = getEqUnloadGlassDataExceptVas((int)EqId.AOI);
+                                                        if ( (aoi_glass != null) && (!aoi_glass.IsNull()))
+                                                        {
+                                                            if (IsAoiUnloadGlassHasAbnormalBit(aoi_glass))
+                                                            {
+                                                                if (getAoiSpecifySeal(aoi_glass) !=eq_id)
+                                                                {
+                                                                    //find Seal' next sibling.
+                                                                    break;
+                                                                }
+                                                            }
+                                                        }
+                                                        else
+                                                        {
+                                                            rtn = false;
+                                                            break;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        m_JobMap[pre_step].PGetArm = eq.PPutArm;
                                         if (cv_Recipes.GetCurRecipe(out recipe) && (recipe.PFlow == OdfFlow.Flow5_1 || recipe.PFlow == OdfFlow.Flow5_2) && eq_id == EqId.VAS)
                                         {
                                             m_JobMap[now_step] = new RobotJob(1, eq.PPutArm, RobotArm.rabNone, RobotAction.Put, ActionTarget.Eq, (int)eq_id, 2, true);
                                         }
                                         else
                                         {
-                                        m_JobMap[now_step] = new RobotJob(1, eq.PPutArm, RobotArm.rabNone, RobotAction.Put, ActionTarget.Eq, (int)eq_id, 1, true);
+                                            m_JobMap[now_step] = new RobotJob(1, eq.PPutArm, RobotArm.rabNone, RobotAction.Put, ActionTarget.Eq, (int)eq_id, 1, true);
                                         }
                                         m_EndPos = now_step;
                                         rtn = true;
@@ -999,12 +1058,65 @@ namespace LGC
                                     {
                                         if (eq.PPutArm != RobotArm.rbaBoth)
                                         {
-                                            if (m_JobMap[pre_step].PGetArm == eq.PPutArm)
+                                            if (!cv_CurFlowIncludeAoi)
                                             {
-                                                m_JobMap[now_step] = new RobotJob(1, eq.PPutArm, RobotArm.rabNone, RobotAction.Put, ActionTarget.Eq, (int)eq_id, 1, true);
-                                                rtn = true;
-                                                m_EndPos = now_step;
-                                                break;
+                                                if (m_JobMap[pre_step].PGetArm == eq.PPutArm)
+                                                {
+                                                    m_JobMap[now_step] = new RobotJob(1, eq.PPutArm, RobotArm.rabNone, RobotAction.Put, ActionTarget.Eq, (int)eq_id, 1, true);
+                                                    rtn = true;
+                                                    m_EndPos = now_step;
+                                                    break;
+                                                }
+                                            }
+                                            else
+                                            {
+                                                if (eq_id == EqId.AOI)
+                                                {
+                                                    //because aoi send load , so checkpathHasAoiInMiddle always ok.
+                                                    if (checkpathHasAoiInMiddle(m_JobMap, now_step))
+                                                    {
+                                                        rtn = false;
+                                                        break;
+                                                    }
+                                                }
+                                                RecipeItem recipe = null;
+                                                if (cv_Recipes.GetCurRecipe(out recipe))
+                                                {
+                                                    if (recipe.PReworkFlow)
+                                                    {
+                                                        if (eq_id == EqId.SDP1 || eq_id == EqId.SDP2 || eq_id == EqId.SDP3)
+                                                        {
+                                                            int aoi_step = FindAoiStepInJobpath(m_JobMap, now_step);
+                                                            if (aoi_step != 0)
+                                                            {
+                                                                GlassData aoi_glass = getEqUnloadGlassDataExceptVas((int)EqId.AOI);
+                                                                if ((aoi_glass != null) && (!aoi_glass.IsNull()))
+                                                                {
+                                                                    if (IsAoiUnloadGlassHasAbnormalBit(aoi_glass))
+                                                                    {
+                                                                        if (getAoiSpecifySeal(aoi_glass) != eq_id)
+                                                                        {
+                                                                            //find Seal' next sibling.
+                                                                            break;
+                                                                        }
+                                                                    }
+                                                                }
+                                                                else
+                                                                {
+                                                                    rtn = false;
+                                                                    break;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                                //if (m_JobMap[pre_step].PGetArm == eq.PPutArm)
+                                                {
+                                                    m_JobMap[now_step] = new RobotJob(1, eq.PPutArm, RobotArm.rabNone, RobotAction.Put, ActionTarget.Eq, (int)eq_id, 1, true);
+                                                    rtn = true;
+                                                    m_EndPos = now_step;
+                                                    break;
+                                                }
                                             }
                                         }
                                         else
@@ -1031,34 +1143,135 @@ namespace LGC
                                 {
                                     if (m_JobMap[pre_step].PGetArm == RobotArm.rabNone)
                                     {
+                                        if (eq_id == EqId.AOI)
+                                        {
+                                            if (checkpathHasAoiInMiddle(m_JobMap, now_step))
+                                            {
+                                                rtn = false;
+                                                break;
+                                            }
+                                        }
+                                        RecipeItem recipe = null;
+                                        if (cv_Recipes.GetCurRecipe(out recipe))
+                                        {
+                                            if (recipe.PReworkFlow)
+                                            {
+                                                if (eq_id == EqId.SDP1 || eq_id == EqId.SDP2 || eq_id == EqId.SDP3)
+                                                {
+                                                    int aoi_step = FindAoiStepInJobpath(m_JobMap, now_step);
+                                                    if (aoi_step != 0)
+                                                    {
+                                                        GlassData aoi_glass = getEqUnloadGlassDataExceptVas((int)EqId.AOI);
+                                                        if ((aoi_glass != null) && (!aoi_glass.IsNull()))
+                                                        {
+                                                            if (IsAoiUnloadGlassHasAbnormalBit(aoi_glass))
+                                                            {
+                                                                if (getAoiSpecifySeal(aoi_glass) != eq_id)
+                                                                {
+                                                                    //find Seal' next sibling.
+                                                                    break;
+                                                                }
+                                                            }
+                                                        }
+                                                        else
+                                                        {
+                                                            rtn = false;
+                                                            break;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+
                                         m_JobMap[pre_step].PGetArm = eq.PPutArm;
                                         m_JobMap[now_step] = new RobotJob(1, eq.PPutArm, eq.PGetArm, RobotAction.Exchange, ActionTarget.Eq, (int)eq_id, 1, true);
-                                        rtn = FindEndStep(now_step, ref m_EndPos, ref m_JobMap);
-                                        if (rtn)
+                                        if (cv_Recipes.GetCurRecipe(out recipe))
                                         {
-                                            //if this device job ok , not need fine sibling.
-                                            break;
+                                            if(recipe.PReworkFlow)
+                                            {
+                                                if(eq_id == EqId.AOI)
+                                                {
+                                                    GlassData aoi_glass = getEqUnloadGlassDataExceptVas((int)EqId.AOI);
+                                                    if ((aoi_glass != null) && (!aoi_glass.IsNull()))
+                                                    {
+                                                        if (!IsAoiUnloadGlassHasAbnormalBit(aoi_glass))
+                                                        {
+                                                            int aoi_normal_next_step = getAoiNextStep();
+                                                            rtn = FindEndStep(now_step, ref m_EndPos, ref m_JobMap , aoi_normal_next_step);
+                                                        }
+                                                        else
+                                                        {
+                                                            //because flow seting is Seal -> AOI -> Seal -> AOI. So just scan next step. No need to jump.
+                                                        }
+                                                    }
+                                                }
+                                                else if(eq_id == EqId.SDP1 || eq_id == EqId.SDP2 ||eq_id == EqId.SDP3)
+                                                {
+                                                    GlassData seal_glass = getEqUnloadGlassDataExceptVas((int)eq_id);
+                                                    if (GlassNeedEnterAoi(seal_glass))
+                                                    {
+                                                        if (AlradyEnterAoi(seal_glass))
+                                                        {
+                                                            int ijp_step = getIjpStep();
+                                                            rtn = FindEndStep(now_step, ref m_EndPos, ref m_JobMap , ijp_step);
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        int aoi_normal_next_step = getAoiNextStep();
+                                                        rtn = FindEndStep(now_step, ref m_EndPos, ref m_JobMap , aoi_normal_next_step);
+                                                    }
+                                                }
+                                            }
+                                            else
+                                            {
+                                                rtn = FindEndStep(now_step, ref m_EndPos, ref m_JobMap);
+                                            }
+                                            if (rtn)
+                                            {
+                                                //if this device job ok , not need fine sibling.
+                                                break;
+                                            }
                                         }
                                     }
                                 }
                                 else
                                 {
-                                    if (m_JobMap[pre_step].PGetArm == eq.PPutArm ) //Ref20230411 Tommy in Flow5_1 Maybe Do Exchange bug only can TopPut
+                                    if (!cv_CurFlowIncludeAoi)
                                     {
-                                        RecipeItem recipe = null;
-                                        if (cv_Recipes.GetCurRecipe(out recipe) && (recipe.PFlow == OdfFlow.Flow5_1 || recipe.PFlow == OdfFlow.Flow5_2) && (eq_id == EqId.UV_1 || eq_id == EqId.UV_2))
+                                        if (m_JobMap[pre_step].PGetArm == eq.PPutArm) //Ref20230411 Tommy in Flow5_1 Maybe Do Exchange bug only can TopPut
                                         {
+                                            RecipeItem recipe = null;
+                                            if (cv_Recipes.GetCurRecipe(out recipe) && (recipe.PFlow == OdfFlow.Flow5_1 || recipe.PFlow == OdfFlow.Flow5_2) && (eq_id == EqId.UV_1 || eq_id == EqId.UV_2))
+                                            {
+                                            }
+                                            else
+                                            {
+                                                m_JobMap[now_step] = new RobotJob(1, eq.PPutArm, eq.PGetArm, RobotAction.Exchange, ActionTarget.Eq, (int)eq_id, 1, true);
+                                                rtn = FindEndStep(now_step, ref m_EndPos, ref m_JobMap);
+                                                if (rtn)
+                                                {
+                                                    break;
+                                                }
+                                            }
+
                                         }
-                                        else
+                                    }
+                                    else
+                                    {
+                                        if (eq_id == EqId.AOI)
                                         {
-                                            m_JobMap[now_step] = new RobotJob(1, eq.PPutArm, eq.PGetArm, RobotAction.Exchange, ActionTarget.Eq, (int)eq_id, 1, true);
-                                            rtn = FindEndStep(now_step, ref m_EndPos, ref m_JobMap);
-                                            if (rtn)
+                                            if (checkpathHasAoiInMiddle(m_JobMap, now_step))
                                             {
                                                 break;
                                             }
                                         }
-                                        
+                                        m_JobMap[now_step] = new RobotJob(1, eq.PPutArm, eq.PGetArm, RobotAction.Exchange, ActionTarget.Eq, (int)eq_id, 1, true);
+                                        rtn = FindEndStep(now_step, ref m_EndPos, ref m_JobMap);
+                                        if (rtn)
+                                        {
+                                            break;
+                                        }
                                     }
                                 }
                             }
@@ -1101,6 +1314,7 @@ namespace LGC
             }
             for (int i = m_Start; i <= m_End; i++)
             {
+                if (!m_Map.ContainsKey(i)) continue;
                 bool via_vas = (m_Map[i].PTarget == ActionTarget.Eq && m_Map[i].PTargetId == (int)EqId.VAS && m_Map[i].PTargetSlot == 1 && m_Map[i].PAction == RobotAction.Put);
                 bool vas_can_load_glass = GetEqById(4).GetTimeChatCurStep(2) == TimechartNormal.STEP_ID_ActionReady;
                 if (via_vas)
@@ -1926,6 +2140,158 @@ namespace LGC
             return rtn;
         }
         #endregion
+        private bool IsAoiUnloadGlassHasAbnormalBit(GlassData m_AoiGlass)
+        {
+            //aoi is node 9.
+            bool rtn = false;
+            if( (m_AoiGlass != null) &&  (!m_AoiGlass.IsNull() ))
+            {
+                int node_index = m_AoiGlass.cv_Nods.FindIndex(x => x.PNodeId == 9);
+                if (m_AoiGlass.cv_Nods[node_index].cv_ProcessAbnormal != 0)
+                {
+                    rtn = true;
+                }
+            }
+
+            return rtn;
+        }
+        private EqId getAoiSpecifySeal(GlassData m_AoiGlass)
+        {
+            //seal1 : node 3 , seal2 : node4 , seal3 : node8.
+            EqId rtn = EqId.None;
+            if( (m_AoiGlass != null) &&  (!m_AoiGlass.IsNull() ))
+            {
+                int node_index = m_AoiGlass.cv_Nods.FindIndex(x => x.PNodeId == 3);
+                if (m_AoiGlass.cv_Nods[node_index].cv_ProcessHistory != 0)
+                {
+                    rtn = EqId.SDP1;
+                }
+                node_index = m_AoiGlass.cv_Nods.FindIndex(x => x.PNodeId == 4);
+                if (m_AoiGlass.cv_Nods[node_index].cv_ProcessHistory != 0)
+                {
+                    rtn = EqId.SDP2;
+                }
+                /*
+                node_index = m_AoiGlass.cv_Nods.FindIndex(x => x.PNodeId == 8);
+                if (m_AoiGlass.cv_Nods[node_index].cv_ProcessHistory != 0)
+                {
+                    rtn = EqId.SDP3;
+                }
+                */
+            }
+            return rtn;
+        }
+        private GlassData getEqUnloadGlassDataExceptVas(int eqid)
+        {
+            GlassData rtn = null;
+            TimechartNormal time_chart_instance = null;
+            int time_chart_id = -1;
+            time_chart_id = GetEqById(eqid).cv_Comm.cv_TimeChatId;
+            time_chart_instance = (TimechartNormal)cv_MmfController.cv_TimechartController.GetTimeChartInstance(time_chart_id);
+            rtn = new GlassData(cv_Mio, time_chart_instance.cv_ReadDataStartPort);
+            return rtn;
+        }
+        
+        private int FindAoiStepInJobpath(Dictionary<int , RobotJob> m_jobpath, int m_NowStep)
+        {
+            int rtn = 0;
+            int max_step = cv_CurRecipeFlowStepSetting.Count;
+            int first_step = 1;
+            for (int step = first_step; step < m_NowStep; step++)
+            {
+                if (m_jobpath.ContainsKey(step))
+                {
+                    if (m_jobpath[step].PTarget == ActionTarget.Eq && m_jobpath[step].PTargetId == (int)EqId.AOI)
+                    {
+                        rtn = step;
+                    }
+                }
+            }
+            return rtn;
+        }
+        private bool checkpathHasAoiInMiddle(Dictionary<int , RobotJob> m_jobpath , int m_NowStep)
+        {
+            bool rtn = false;
+            int max_step = cv_CurRecipeFlowStepSetting.Count;
+            int first_step = 1;
+            int acture_first_step = 0;
+            for (int step = first_step; step < m_NowStep; step++)
+            {
+                if(m_jobpath.ContainsKey(step))
+                {
+                    if(acture_first_step == 0)
+                    {
+                        acture_first_step = step;
+                    }
+                    if(m_jobpath[step].PTarget == ActionTarget.Eq && m_jobpath[step].PTargetId == (int)EqId.AOI)
+                    {
+                        if(step != acture_first_step)
+                        {
+                            rtn = true;
+                            break;
+                        }
+                    }
+                }
+            }
+            return rtn;
+        }
+        private int getAoiNextStep()
+        {
+            //cv_CurRecipeFlowStepSetting = new Dictionary<int, List<AllDevice>>();
+            int rtn = 0;
+            int max_step = cv_CurRecipeFlowStepSetting.Count;
+            int first_step = 1;
+            for (int step = first_step; step <= max_step; step++)
+            {
+                List<AllDevice> cv_stepDevice = cv_CurRecipeFlowStepSetting[step];
+                if (cv_stepDevice.Contains(AllDevice.AOI))
+                {
+                    rtn = step + 1;
+                }
+            }
+            return rtn;
+        }
+        private bool AlradyEnterAoi(GlassData m_Glass)
+        {
+            bool rtn = false;
+            if (m_Glass != null)
+            {
+                int node_index = m_Glass.cv_Nods.FindIndex(x => x.PNodeId == 9);
+                if (m_Glass.cv_Nods[node_index].PProcessHistory != 0)
+                {
+                    rtn = true;
+                }
+            }
+            return rtn;
+        }
+        private bool GlassNeedEnterAoi(GlassData m_Glass)
+        {
+            bool rtn = false;
+            if(m_Glass != null)
+            {
+                int node_index = m_Glass.cv_Nods.FindIndex(x => x.PNodeId == 2);
+                if (m_Glass.cv_Nods[node_index].PProcessHistory == 3)
+                {
+                    rtn = true;
+                }
+            }
+            return rtn;
+        }
+        private int getIjpStep()
+        {
+            int rtn = 0;
+            int max_step = cv_CurRecipeFlowStepSetting.Count;
+            int first_step = 1;
+            for (int step = first_step; step <= max_step; step++)
+            {
+                List<AllDevice> cv_stepDevice = cv_CurRecipeFlowStepSetting[step];
+                if (cv_stepDevice.Contains(AllDevice.IJP))
+                {
+                    rtn = step;
+                }
+            }
+            return rtn;
+        }
         private void OnRobotActionTimer()
         {
             DerivedTimer();
@@ -2865,10 +3231,12 @@ namespace LGC
                         {
                             if (robot.cv_Data.GlassDataMap[(int)job.PPutArm].cv_Nods[node_index].PProcessHistory != 1)
                             {
+                                /*
                                 robot.cv_Data.GlassDataMap[(int)job.PPutArm].cv_Nods[node_index].PProcessHistory = 1;
                                 CommonData.HIRATA.MDBCWorkDataUpdateReport report_bc = new MDBCWorkDataUpdateReport();
                                 report_bc.PGlass = robot.cv_Data.GlassDataMap[(int)job.PPutArm];
                                 cv_MmfController.SendMmfNotifyObject(typeof(CommonData.HIRATA.MDBCWorkDataUpdateReport).Name, report_bc, KParseObjToXmlPropertyType.Field);
+                                */
                             }
                         }
                         //
@@ -3239,10 +3607,12 @@ namespace LGC
                                 int node_index = robot.cv_Data.GlassDataMap[(int)job.PPutArm].cv_Nods.FindIndex(x => x.PNodeId == 2);
                                 if (robot.cv_Data.GlassDataMap[(int)job.PPutArm].cv_Nods[node_index].PProcessHistory != 1)
                                 {
+                                    /*
                                     robot.cv_Data.GlassDataMap[(int)job.PPutArm].cv_Nods[node_index].PProcessHistory = 1;
                                     CommonData.HIRATA.MDBCWorkDataUpdateReport report_bc = new MDBCWorkDataUpdateReport();
                                     report_bc.PGlass = robot.cv_Data.GlassDataMap[(int)job.PPutArm];
                                     cv_MmfController.SendMmfNotifyObject(typeof(CommonData.HIRATA.MDBCWorkDataUpdateReport).Name, report_bc, KParseObjToXmlPropertyType.Field);
+                                    */
                                 }
                             }
                         }
@@ -3607,6 +3977,83 @@ namespace LGC
 
             return true;
 
+        }
+        private GlassData readEqUnloadGlassData(int m_EqId)
+        {
+            GlassData rtn = null;
+            if (m_EqId != 0)
+            {
+                EqId eq_id = (EqId)m_EqId;
+                int time_chart_id = -1;
+                TimechartNormal time_chart_instance = null;
+                if (eq_id == EqId.VAS)
+                {
+                    time_chart_id = (int)EqGifTimeChartId.TIMECHART_ID_VAS_DOWN;
+                }
+                else
+                {
+                    time_chart_id = GetEqById(m_EqId).cv_Comm.cv_TimeChatId;
+                }
+                time_chart_instance = (TimechartNormal)cv_MmfController.cv_TimechartController.GetTimeChartInstance(time_chart_id);
+                GlassData tmp = new GlassData(cv_Mio, time_chart_instance.cv_ReadDataStartPort);
+                if (!tmp.IsNull())
+                {
+                    rtn = tmp;
+                }
+            }
+            return rtn;
+        }
+        private GlassData getGlassDataFromLastEq(Dictionary<int , RobotJob> m_jobMap , int m_endStep)
+        {
+            GlassData rtn = null;
+            for(int i= m_endStep; i >= 1 ;i--)
+            {
+                if(m_jobMap.ContainsKey(i))
+                {
+                    RobotJob job = m_jobMap[i];
+                    if(job.PTarget == ActionTarget.Eq && job.PTargetId != 0)
+                    {
+                        GlassData tmp = readEqUnloadGlassData(job.PTargetId);
+                        if(!tmp.IsNull())
+                        {
+                            rtn = tmp;
+                        }
+                        break;
+                    }
+                }
+            }
+            return rtn;
+        }
+        private bool checkLoadPortSlotCanPut(int m_FoupSeq , int m_Slot , out int m_port)
+        {
+            bool rtn = false;
+            m_port = 0;
+
+            for (int port_id = 0; port_id < cv_InProcessPort.Count; port_id++)
+            {
+                Port job_port = GetPortById(cv_InProcessPort[port_id]);
+                if (job_port.cv_Data.PPortMode == PortMode.Both)
+                {
+                    if (job_port.PPortStatus == PortStaus.LDCM)// && job_port.PLotStatus == LotStatus.Process)// && job_port.cv_Data.PPortMode == PortMode.Unloader)
+                    {
+                        if (job_port.PLotStatus == LotStatus.Process)
+                        {
+                            if (job_port.cv_Data.HasDataOrSensor())
+                            {
+                                if (job_port.cv_Data.PFoupSeq == m_FoupSeq)
+                                {
+                                    if( (!job_port.cv_Data.GlassDataMap[m_Slot].PHasData) &&  (!job_port.cv_Data.GlassDataMap[m_Slot].PHasSensor))
+                                    {
+                                        rtn = true;
+                                        m_port = job_port.cv_Id;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return rtn;
         }
 
         private bool FindUnloadPortToPutSubstrate(out int m_Port, out int m_Slot , RobotJob m_Job)

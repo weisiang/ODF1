@@ -44,5 +44,7 @@ namespace CommonData.HIRATA
     public enum HomeAction {  None , Hone , Complete};
     public enum BuzzerAction { None , ON , OFF};
     public enum MmfEventClientEventType { etRequest = 1, etReply = 2, etNotify = 3 };
+    public enum SamplingMethod { None , BySlot , ByPeriod};
+    public enum SamplingDirection { None , Front , Back};
 
 }

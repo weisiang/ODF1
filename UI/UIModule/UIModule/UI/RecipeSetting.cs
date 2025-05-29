@@ -31,6 +31,7 @@ namespace UI
             UiForm.AddUiObjToEnableList(cb_waferPutUp, UiForm.enumGroup.Group4);
             UiForm.AddUiObjToEnableList(cb_FlipToUv, UiForm.enumGroup.Group4);
             UiForm.AddUiObjToEnableList(cb_backToLd, UiForm.enumGroup.Group4);
+            UiForm.AddUiObjToEnableList(cb_Rework, UiForm.enumGroup.Group4);
         }
         public void setNoNeedUiVisiable(bool m_canSee)
         {
@@ -320,6 +321,17 @@ namespace UI
                 tmp.PBackToLD = false;
             }
 
+            if(tmp.PFlow == OdfFlow.Flow6_1 || tmp.PFlow == OdfFlow.Flow6_2 || tmp.PFlow == OdfFlow.Flow6_3 || tmp.PFlow == OdfFlow.Flow7_2 ||
+                tmp.PFlow == OdfFlow.Flow7_3 || tmp.PFlow == OdfFlow.Flow7_4)
+            {
+                tmp.PReworkFlow = true;
+            }
+            else
+            {
+                tmp.PReworkFlow = false;
+            }
+
+
             tmp.PWaferVASDegree = float.Parse(cv_TxWaferOCR.Text.Trim(), System.Globalization.CultureInfo.InvariantCulture);
             tmp.PWaferIJPDegree = float.Parse(cv_TxWaferVas.Text.Trim(), System.Globalization.CultureInfo.InvariantCulture);
             tmp.PGlassVASDegree = float.Parse(cv_TxGlassVas.Text.Trim(), System.Globalization.CultureInfo.InvariantCulture);
@@ -462,6 +474,20 @@ namespace UI
                             cb_FlipToUv.Checked = false;
                         }
                     }
+                    if (recipe.PReworkFlow)
+                    {
+                        if (!cb_Rework.Checked)
+                        {
+                            cb_Rework.Checked = true;
+                        }
+                    }
+                    else
+                    {
+                        if (cb_Rework.Checked)
+                        {
+                            cb_Rework.Checked = false;
+                        }
+                    }
                 }
             }
             else
@@ -481,6 +507,10 @@ namespace UI
                 if (cb_FlipToUv.Checked)
                 {
                     cb_FlipToUv.Checked = false;
+                }
+                if (cb_Rework.Checked)
+                {
+                    cb_Rework.Checked = false;
                 }
             }
         }

@@ -17,6 +17,7 @@ namespace CommonData.HIRATA
             get;
         }
 
+        public int cv_stationMode = 0;
         public int cv_SystemStatus = 0;
         public int cv_SystemOnlineMode = 0;
         public int cv_RobotOnlineMode = 0;
@@ -36,6 +37,20 @@ namespace CommonData.HIRATA
 
 
         private KDateTime cv_IdleTime = SysUtils.Now();
+
+        public EStationMod PStationMode
+        {
+            get { return (EStationMod)cv_stationMode; }
+            set
+            {
+                cv_stationMode = (int)value;
+                SaveToFile();
+                if (OnSystemDataChange != null)
+                {
+                    OnSystemDataChange();
+                }
+            }
+        }
         public KDateTime PIdleTime
         {
             get { return cv_IdleTime; }
@@ -352,6 +367,7 @@ namespace CommonData.HIRATA
             cv_DataCheckRule = m_OtherData.cv_DataCheckRule;
             cv_InitializeOk = m_OtherData.cv_InitializeOk;
             cv_OntMode = m_OtherData.cv_OntMode;
+            cv_stationMode = m_OtherData.cv_stationMode;
         }
         public void LoadFromFile()
         {
@@ -381,7 +397,6 @@ namespace CommonData.HIRATA
             {
                 cv_FilePath = ori_path;
             }
-
         }
         public void SaveToFile()
         {

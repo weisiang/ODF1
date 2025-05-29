@@ -575,6 +575,37 @@ namespace BaseAp
             WriteLog(LogLevelType.NormalFunctionInOut, "BaseMmfController." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Leave);
             return result;
         }
+
+        public virtual bool SendStationModeChangeReq(MmfEventClientEventType m_Type, CommonData.HIRATA.EStationMod m_Mode, bool m_IsTimeoutType)
+        {
+            WriteLog(LogLevelType.NormalFunctionInOut, "BaseMmfController." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Enter);
+            bool result = false;
+            CommonData.HIRATA.MDStationModeChangeReq obj = new CommonData.HIRATA.MDStationModeChangeReq();
+            obj.PType = m_Type;
+            obj.PStationMode = m_Mode;
+            if (!m_IsTimeoutType)
+            {
+                SendMmfNotifyObject(typeof(CommonData.HIRATA.MDStationModeChangeReq).Name, obj, KParseObjToXmlPropertyType.Field);
+                result = true;
+            }
+            else
+            {
+                string rtn;
+                object rtn_tmp = null;
+                uint ticket;
+
+                if (!SendMmfRequestObjectTimeout(typeof(CommonData.HIRATA.MDStationModeChangeReq).Name, obj, out ticket, out rtn, out rtn_tmp, 3000, KParseObjToXmlPropertyType.Field))
+                {
+                    WriteLog(LogLevelType.Warning, "[Time out] Wait : " + typeof(CommonData.HIRATA.MDOnlineRequest).Name, FunInOut.None);
+                }
+                else
+                {
+                    result = true;
+                }
+            }
+            WriteLog(LogLevelType.NormalFunctionInOut, "BaseMmfController." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Leave);
+            return result;
+        }
         public virtual bool SendOnlineReq(MmfEventClientEventType m_Type, OnlineMode m_Mode, bool m_IsTimeoutType)
         {
             WriteLog(LogLevelType.NormalFunctionInOut, "BaseMmfController." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Enter);

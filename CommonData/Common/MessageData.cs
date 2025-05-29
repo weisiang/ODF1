@@ -48,6 +48,15 @@ namespace CommonData.HIRATA
     }
     #endregion
 
+    public class MDStationModeChangeReq : MessageBase
+    {
+        public int StationMode = 0;
+        public CommonData.HIRATA.EStationMod PStationMode
+        {
+            get { return (CommonData.HIRATA.EStationMod)StationMode; }
+            set { StationMode = (int)value; }
+        }
+    }
     public class MDSamplingDataAction : MessageBase
     {
         public int Action;

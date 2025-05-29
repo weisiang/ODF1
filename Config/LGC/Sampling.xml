@@ -3,24 +3,34 @@
     <SamplingData>
         <cv_SamplingList>
             <SamplingIem>
-                <cv_No>232</cv_No>
-                <cv_hitSlot>
-                    <Item>2</Item>
-                    <Item>4</Item>
-                    <Item>6</Item>
-                    <Item>8</Item>
-                    <Item>24</Item>
-                </cv_hitSlot>
-                <cv_Desription>222</cv_Desription>
-                <cv_Time>20250521020259</cv_Time>
+                <cv_No>1</cv_No>
+                <cv_Method>2</cv_Method>
+                <cv_FromFront>0</cv_FromFront>
+                <cv_hitSlot/>
+                <cv_Desription>11</cv_Desription>
+                <cv_Time>20250527114309</cv_Time>
+                <cv_n>2</cv_n>
+                <cv_m>1</cv_m>
             </SamplingIem>
             <SamplingIem>
-                <cv_No>1</cv_No>
-                <cv_hitSlot>
-                    <Item>14</Item>
-                </cv_hitSlot>
-                <cv_Desription>12345</cv_Desription>
-                <cv_Time>20250521020316</cv_Time>
+                <cv_No>3</cv_No>
+                <cv_Method>2</cv_Method>
+                <cv_FromFront>1</cv_FromFront>
+                <cv_hitSlot/>
+                <cv_Desription>22</cv_Desription>
+                <cv_Time>20250527022609</cv_Time>
+                <cv_n>3</cv_n>
+                <cv_m>3</cv_m>
+            </SamplingIem>
+            <SamplingIem>
+                <cv_No>4</cv_No>
+                <cv_Method>2</cv_Method>
+                <cv_FromFront>1</cv_FromFront>
+                <cv_hitSlot/>
+                <cv_Desription>22</cv_Desription>
+                <cv_Time>20250527022656</cv_Time>
+                <cv_n>3</cv_n>
+                <cv_m>3</cv_m>
             </SamplingIem>
         </cv_SamplingList>
     </SamplingData>
