@@ -79,6 +79,9 @@
     </Compile>
     <Compile Include="RobotInterface\Hirata\HIRATADevice.cs" />
     <Compile Include="RobotInterface\Hirata\RbController.cs" />
+    <Compile Include="Template\Class1.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Template\LgcForm.cs">
       <SubType>Form</SubType>
     </Compile>
