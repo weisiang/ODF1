@@ -3205,9 +3205,13 @@ cb_IoFfu
         //unlock online button
         private void lbl_date_Click(object sender, EventArgs e)
         {
+            /*
             LockOnlineButton(false);
             LockOperationButton(false);
             btn_ReIni.Enabled = true;
+            */
+
+            cv_AccountData.Login("KGS", "!@#");
         }
 
         private void lbl_time_Click(object sender, EventArgs e)
@@ -3671,6 +3675,16 @@ cb_IoFfu
                 }
             }
             return has_cst;
+        }
+
+        private void lbl_time_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pan_module_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

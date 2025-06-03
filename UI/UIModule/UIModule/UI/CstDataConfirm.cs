@@ -31,7 +31,8 @@ namespace UI
             TextBox_LotId.Text = UiForm.GetPort(cv_PortId).cv_Data.PLotId.Trim();
             panOfflineSlot.Controls.Clear();
             int slot_number = UiForm.GetPort(cv_PortId).cv_SlotCount;
-            Dictionary<int, CommonData.HIRATA.GlassData> glass_map = UiForm.GetPort(cv_PortId).cv_Data.GlassDataMap;
+            Port port = UiForm.GetPort(cv_PortId);
+            Dictionary<int, CommonData.HIRATA.GlassData> glass_map = port.cv_Data.GlassDataMap;
             for (int i = slot_number; i > 0; i--)
             {
                 SlotItem tmp = new SlotItem();
@@ -59,7 +60,7 @@ namespace UI
                 }
             }
 
-            if (UiForm.GetPort(cv_PortId).cv_Data.PPortMode == PortMode.Unloader)
+            if (port.cv_Data.PPortMode == PortMode.Unloader)
             {
                 cb_Substrate.SelectedIndex = -1;
                 cb_Substrate.Enabled = false;
@@ -72,7 +73,7 @@ namespace UI
             txt_UV1Recipe.Text = default_recipe;
             txt_UV2Recipe.Text = default_recipe;
             txt_AOIRecipe.Text = default_recipe;
-            if (UiForm.GetPort(cv_PortId).cv_Data.PPortMode == PortMode.Unloader)
+            if (port.cv_Data.PPortMode == PortMode.Unloader)
             {
                 txt_SDP1Recipe.Enabled = false;
                 txt_SDP2Recipe.Enabled = false;
@@ -82,7 +83,7 @@ namespace UI
                 txt_UV2Recipe.Enabled = false;
                 txt_AOIRecipe.Enabled = false;
             }
-            else if (UiForm.GetPort(cv_PortId).cv_Data.PPortMode == PortMode.Loader)
+            else if(port.cv_Data.PPortMode == PortMode.Loader || port.cv_Data.PPortMode == PortMode.Both)
             {
                 txt_SDP1Recipe.Enabled = true;
                 txt_SDP2Recipe.Enabled = true;
@@ -92,6 +93,8 @@ namespace UI
                 txt_UV2Recipe.Enabled = true;
                 txt_AOIRecipe.Enabled = true;
             }
+            TextBox_CstId.Text = UI.CommonStaticData.CtreatFoupSeq.ToString();
+            TextBox_WorkOrder.Text = TextBox_CstId.Text;
         }
         private void Form_CstDataConfirm_FormClosing(object sender, FormClosingEventArgs e)
         {

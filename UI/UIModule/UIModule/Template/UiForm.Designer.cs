@@ -2205,6 +2205,7 @@
             this.lbl_time.TabIndex = 1;
             this.lbl_time.Text = "21:12:13";
             this.lbl_time.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_time.Click += new System.EventHandler(this.lbl_time_Click_1);
             // 
             // pan_module
             // 
@@ -2214,6 +2215,7 @@
             this.pan_module.Name = "pan_module";
             this.pan_module.Size = new System.Drawing.Size(178, 25);
             this.pan_module.TabIndex = 2;
+            this.pan_module.Paint += new System.Windows.Forms.PaintEventHandler(this.pan_module_Paint);
             // 
             // lbl_date
             // 

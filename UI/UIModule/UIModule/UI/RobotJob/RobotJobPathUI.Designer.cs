@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_DropTop = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.btn_preVirw = new System.Windows.Forms.Button();
             this.gdv_PathData = new System.Windows.Forms.DataGridView();
@@ -38,7 +39,6 @@
             this.Action = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Put = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Get = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn_DropTop = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gdv_PathData)).BeginInit();
             this.SuspendLayout();
@@ -54,6 +54,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(475, 63);
             this.panel1.TabIndex = 1;
+            // 
+            // btn_DropTop
+            // 
+            this.btn_DropTop.Location = new System.Drawing.Point(84, 32);
+            this.btn_DropTop.Name = "btn_DropTop";
+            this.btn_DropTop.Size = new System.Drawing.Size(75, 23);
+            this.btn_DropTop.TabIndex = 2;
+            this.btn_DropTop.Text = "Drop Top";
+            this.btn_DropTop.UseVisualStyleBackColor = true;
+            this.btn_DropTop.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -73,7 +83,6 @@
             this.btn_preVirw.TabIndex = 0;
             this.btn_preVirw.Text = "PreView";
             this.btn_preVirw.UseVisualStyleBackColor = true;
-            this.btn_preVirw.Visible = false;
             this.btn_preVirw.Click += new System.EventHandler(this.btn_preVirw_Click);
             // 
             // gdv_PathData
@@ -139,16 +148,6 @@
             this.Get.HeaderText = "Get";
             this.Get.Name = "Get";
             this.Get.ReadOnly = true;
-            // 
-            // btn_DropTop
-            // 
-            this.btn_DropTop.Location = new System.Drawing.Point(84, 32);
-            this.btn_DropTop.Name = "btn_DropTop";
-            this.btn_DropTop.Size = new System.Drawing.Size(75, 23);
-            this.btn_DropTop.TabIndex = 2;
-            this.btn_DropTop.Text = "Drop Top";
-            this.btn_DropTop.UseVisualStyleBackColor = true;
-            this.btn_DropTop.Click += new System.EventHandler(this.button1_Click);
             // 
             // RobotJobPathUI
             // 
