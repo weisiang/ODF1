@@ -831,7 +831,7 @@ namespace LGC
                     break;
                     //the same with BC sepc quit
                 case BCPortCommand.Cancel:
-                    if (job_port.cv_Data.PPortMode == PortMode.Loader)
+                    if (job_port.cv_Data.PPortMode == PortMode.Loader || job_port.cv_Data.PPortMode == PortMode.Both)
                     {
                         if (job_port.PLotStatus == LotStatus.MappingEnd || job_port.PLotStatus == LotStatus.WaitCommand || job_port.PLotStatus == LotStatus.WaitReserve)
                         {
@@ -871,7 +871,7 @@ namespace LGC
                     }
                     break;
                 case BCPortCommand.Finish:
-                    if (job_port.cv_Data.PPortMode == PortMode.Loader)
+                    if (job_port.cv_Data.PPortMode == PortMode.Loader || job_port.cv_Data.PPortMode == PortMode.Both)
                     {
                         if (job_port.PLotStatus != LotStatus.ProcessEnd && job_port.PLotStatus != LotStatus.Cancel && job_port.PLotStatus != LotStatus.Abort)
                         {
@@ -925,7 +925,7 @@ namespace LGC
                 case BCPortCommand.LDUD:
                     break;
                 case BCPortCommand.Start:
-                    if (job_port.cv_Data.PPortMode == PortMode.Loader)
+                    if (job_port.cv_Data.PPortMode == PortMode.Loader || job_port.cv_Data.PPortMode == PortMode.Both)
                     {
                         if (job_port.PLotStatus != LotStatus.WaitCommand)
                         {
@@ -952,7 +952,7 @@ namespace LGC
                     break;
 
                 case BCPortCommand.Reserve:
-                    if (job_port.cv_Data.PPortMode == PortMode.Loader)
+                    if (job_port.cv_Data.PPortMode == PortMode.Loader || job_port.cv_Data.PPortMode == PortMode.Both)
                     {
                         if (job_port.PLotStatus != LotStatus.WaitReserve)
                         {
@@ -1402,9 +1402,9 @@ namespace LGC
                 if (m_port.GlassDataMap[i].PHasData && m_port.GlassDataMap[i].PHasSensor)
                 {
                     int node_index = m_port.GlassDataMap[i].cv_Nods.FindIndex(x => x.PNodeId == 2);
-                    if (m_port.GlassDataMap[i].cv_Nods[node_index].PProcessHistory != 1)
+                    if (m_port.GlassDataMap[i].cv_Nods[node_index].PProcessHistory != 0)
                     {
-                        m_port.GlassDataMap[i].cv_Nods[node_index].PProcessHistory = 1;
+                        m_port.GlassDataMap[i].cv_Nods[node_index].PProcessHistory = 0;
                     }
                 }
             }
@@ -1425,15 +1425,15 @@ namespace LGC
                         {
                             for(int i=1; i<= m_port.cv_SlotCount;i++)
                             {
-                                if (m_port.GlassDataMap[i].PHasData && m_port.GlassDataMap[i].PHasSensor && m_port.GlassDataMap[i].PProcessFlag == ProcessFlag.Need)
+                                if (m_port.GlassDataMap[i].PHasData && m_port.GlassDataMap[i].PHasSensor)// && m_port.GlassDataMap[i].PProcessFlag == ProcessFlag.Need)
                                 {
                                     hit_count++;
                                     if (hit_count < m)
                                     {
                                         int node_index = m_port.GlassDataMap[i].cv_Nods.FindIndex(x => x.PNodeId == 2);
-                                        if (m_port.GlassDataMap[i].cv_Nods[node_index].PProcessHistory != 3)
+                                        if (m_port.GlassDataMap[i].cv_Nods[node_index].PProcessHistory != 2)
                                         {
-                                            m_port.GlassDataMap[i].cv_Nods[node_index].PProcessHistory = 3;
+                                            m_port.GlassDataMap[i].cv_Nods[node_index].PProcessHistory = 2;
                                         }
                                     }
                                     if (hit_count == n)
@@ -1453,9 +1453,9 @@ namespace LGC
                                     if (hit_count > (n - m))
                                     {
                                         int node_index = m_port.GlassDataMap[i].cv_Nods.FindIndex(x => x.PNodeId == 2);
-                                        if (m_port.GlassDataMap[i].cv_Nods[node_index].PProcessHistory != 3)
+                                        if (m_port.GlassDataMap[i].cv_Nods[node_index].PProcessHistory != 2)
                                         {
-                                            m_port.GlassDataMap[i].cv_Nods[node_index].PProcessHistory = 3;
+                                            m_port.GlassDataMap[i].cv_Nods[node_index].PProcessHistory = 2;
                                         }
                                     }
                                     if (hit_count == n)
@@ -1475,9 +1475,9 @@ namespace LGC
                                 if (m_port.GlassDataMap[i].PHasData && m_port.GlassDataMap[i].PHasSensor && m_port.GlassDataMap[i].PProcessFlag == ProcessFlag.Need)
                                 {
                                     int node_index = m_port.GlassDataMap[i].cv_Nods.FindIndex(x => x.PNodeId == 2);
-                                    if (m_port.GlassDataMap[i].cv_Nods[node_index].PProcessHistory != 3)
+                                    if (m_port.GlassDataMap[i].cv_Nods[node_index].PProcessHistory != 2)
                                     {
-                                        m_port.GlassDataMap[i].cv_Nods[node_index].PProcessHistory = 3;
+                                        m_port.GlassDataMap[i].cv_Nods[node_index].PProcessHistory = 2;
                                     }
                                 }
                             }
@@ -1486,9 +1486,9 @@ namespace LGC
                                 if (m_port.GlassDataMap[i].PHasData && m_port.GlassDataMap[i].PHasSensor && m_port.GlassDataMap[i].PProcessFlag == ProcessFlag.Need)
                                 {
                                     int node_index = m_port.GlassDataMap[i].cv_Nods.FindIndex(x => x.PNodeId == 2);
-                                    if (m_port.GlassDataMap[i].cv_Nods[node_index].PProcessHistory != 3)
+                                    if (m_port.GlassDataMap[i].cv_Nods[node_index].PProcessHistory != 2)
                                     {
-                                        m_port.GlassDataMap[i].cv_Nods[node_index].PProcessHistory = 3;
+                                        m_port.GlassDataMap[i].cv_Nods[node_index].PProcessHistory = 2;
                                     }
                                 }
                             }

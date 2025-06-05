@@ -40,6 +40,10 @@ namespace LGC
         internal bool cv_GetPutStandbyExceptVas = false;
         internal bool cv_CheckEqDataLocalMode = false;
         internal bool cv_PutToBufferFirst = false;  //Ref20230224 Tommy Add to Select to  is need Buffer First
+        internal bool cv_NeedCaculateUnloadPortCountForIjp = true;
+        internal int cv_VasUnloadPeriod = 0;
+        internal int cv_OnlyDoVasUnloadPeriod = 0;
+        internal KDateTime cv_VasUnloadTime = SysUtils.Now();
         public static List<string> cv_WarringNeedBuzzerList = new List<string>();
         //MMF
         internal static LGCController cv_MmfController = null;
@@ -109,7 +113,7 @@ namespace LGC
         }
         public static void WriteAlarmLog(CommonData.HIRATA.AlarmItem m_AlarmItem)
         {
-            if(cv_AlarmLog != null)
+            if (cv_AlarmLog != null)
             {
                 string log = m_AlarmItem.PTime + ",";
                 log += m_AlarmItem.PCode + ",";
@@ -128,7 +132,7 @@ namespace LGC
             {
                 if (IsNeedSendRobotJobPath())
                 {
-                obj.RobotJob = cv_RobotJobPath.ToList();
+                    obj.RobotJob = cv_RobotJobPath.ToList();
                     cv_MmfController.SendMmfNotifyObject(typeof(MDRobotjobPath).Name, obj, KParseObjToXmlPropertyType.Field);
                 }
             }
@@ -143,7 +147,7 @@ namespace LGC
         {
             //WriteLog(LogLevelType.NormalFunctionInOut, this.GetType().Name + "." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Enter);
             bool rtn = false;
-            if(cv_RobotJobPathCompare.Count != cv_RobotJobPath.Count)
+            if (cv_RobotJobPathCompare.Count != cv_RobotJobPath.Count)
             {
                 rtn = true;
             }
@@ -163,7 +167,7 @@ namespace LGC
                     }
                 }
             }
-            if(rtn)
+            if (rtn)
             {
                 cv_RobotJobPathCompare.Clear();
                 cv_RobotJobPathCompare = new Queue<RobotJob>(cv_RobotJobPath);
@@ -181,102 +185,15 @@ namespace LGC
             RecipeItem recipe = null;
             if (cv_Recipes.GetCurRecipe(out recipe))
             {
-                initialEqGetPutArm();
-                if (recipe.PFlow == OdfFlow.Flow2_1 || recipe.PFlow == OdfFlow.Flow2_2)
-                {
-                    WriteLog(LogLevelType.General, "Set Flow2. Change UV get arm : " + RobotArm.rbaDown.ToString() +
-                        " put arm : " + RobotArm.rbaUp.ToString());
-                    GetEqById((int)EqId.UV_1).PGetArm = RobotArm.rbaDown;
-                    GetEqById((int)EqId.UV_1).PPutArm = RobotArm.rbaUp;
-                }
-                /*
-                else
-                {
-                    WriteLog(LogLevelType.General, "Set Not Flow2. Set UV get arm : " + RobotArm.rbaUp.ToString() +
-                        " put arm : " + RobotArm.rbaDown.ToString());
-                    GetEqById((int)EqId.UV_1).PGetArm = RobotArm.rbaUp;
-                    GetEqById((int)EqId.UV_1).PPutArm = RobotArm.rbaDown;
-                }
-                */
-                else if (recipe.PFlow == OdfFlow.Flow5_1 || recipe.PFlow == OdfFlow.Flow5_2)
-                {
-                    WriteLog(LogLevelType.General, "Set Flow5. Set VAS get arm : " + RobotArm.rbaDown.ToString() +
-                        " put arm : " + RobotArm.rbaDown.ToString());
-                    GetEqById((int)EqId.VAS).PGetArm = RobotArm.rbaDown;
-                    GetEqById((int)EqId.VAS).PPutArm = RobotArm.rbaDown;
-                }
-                else if (recipe.PFlow == OdfFlow.Flow6_1 || recipe.PFlow == OdfFlow.Flow6_2 || recipe.PFlow == OdfFlow.Flow2_3)
-                {
-                    /*
-                    WriteLog(LogLevelType.General, "Set Flow :" + recipe.PFlow.ToString() + "  Set  all eq arm : ");
-
-                    GetEqById((int)EqId.SDP1).PGetArm = RobotArm.rbaUp;
-                    GetEqById((int)EqId.SDP1).PPutArm = RobotArm.rbaDown ;
-                    GetEqById((int)EqId.SDP2).PGetArm = RobotArm.rbaUp;
-                    GetEqById((int)EqId.SDP2).PPutArm = RobotArm.rbaDown ;
-                    GetEqById((int)EqId.SDP3).PGetArm = RobotArm.rbaUp;
-                    GetEqById((int)EqId.SDP3).PPutArm = RobotArm.rbaDown ;
-
-                    GetEqById((int)EqId.AOI).PGetArm = RobotArm.rbaDown;
-                    GetEqById((int)EqId.AOI).PPutArm = RobotArm.rbaUp ;
-
-                    GetEqById((int)EqId.IJP).PGetArm = RobotArm.rbaUp;
-                    GetEqById((int)EqId.IJP).PPutArm = RobotArm.rbaDown ;
-
-                    GetEqById((int)EqId.VAS).PGetArm = RobotArm.rbaDown;
-                    GetEqById((int)EqId.VAS).PPutArm = RobotArm.rbaUp ;
-
-                    GetEqById((int)EqId.UV_1).PGetArm = RobotArm.rbaUp;
-                    GetEqById((int)EqId.UV_1).PPutArm = RobotArm.rbaDown ;
-                    GetEqById((int)EqId.UV_2).PGetArm = RobotArm.rbaUp;
-                    GetEqById((int)EqId.UV_2).PPutArm = RobotArm.rbaDown ;
-                    */
-                }
-                else if (recipe.PFlow == OdfFlow.Flow7_2 || recipe.PFlow == OdfFlow.Flow7_3)
-                {
-                    /*
-                    WriteLog(LogLevelType.General, "Set Flow :" + recipe.PFlow.ToString() + "  Set  all eq arm : ");
-                    
-                    GetEqById((int)EqId.SDP1).PGetArm = RobotArm.rbaDown;
-                    GetEqById((int)EqId.SDP1).PPutArm = RobotArm.rbaUp ;
-                    GetEqById((int)EqId.SDP2).PGetArm = RobotArm.rbaDown;
-                    GetEqById((int)EqId.SDP2).PPutArm = RobotArm.rbaUp ;
-                    GetEqById((int)EqId.SDP3).PGetArm = RobotArm.rbaDown;
-                    GetEqById((int)EqId.SDP3).PPutArm = RobotArm.rbaUp ;
-
-                    GetEqById((int)EqId.AOI).PGetArm = RobotArm.rbaUp;
-                    GetEqById((int)EqId.AOI).PPutArm = RobotArm.rbaDown ;
-
-                    GetEqById((int)EqId.IJP).PGetArm = RobotArm.rbaDown;
-                    GetEqById((int)EqId.IJP).PPutArm = RobotArm.rbaUp ;
-
-                    GetEqById((int)EqId.VAS).PGetArm = RobotArm.rbaUp;
-                    GetEqById((int)EqId.VAS).PPutArm = RobotArm.rbaDown ;
-
-                    GetEqById((int)EqId.UV_1).PGetArm = RobotArm.rbaDown;
-                    GetEqById((int)EqId.UV_1).PPutArm = RobotArm.rbaUp ;
-                    GetEqById((int)EqId.UV_2).PGetArm = RobotArm.rbaDown;
-                    GetEqById((int)EqId.UV_2).PPutArm = RobotArm.rbaUp ;
-                    */
-                }
-
-                /*
-                else
-                {
-                    WriteLog(LogLevelType.General, "Set Not Flow5. Set VAS get arm : " + RobotArm.rbaDown.ToString() +
-                        " put arm : " + RobotArm.rbaUp.ToString());
-                    GetEqById((int)EqId.VAS).PGetArm = RobotArm.rbaDown;
-                    GetEqById((int)EqId.VAS).PPutArm = RobotArm.rbaUp;
-                }
-                */
-
+                cv_CurFlowIncludeAoi = false;
+                string log = "Set recipe flow : " + Environment.NewLine;
 
                 string section = recipe.PFlow.ToString().Substring(4);
                 stepIni.ReadSection(section, tmp);
                 foreach (KeyValuePair<string, string> pair in tmp)
                 {
                     Match match = Match.Empty;
-                    match = Regex.Match(pair.Key, @"\d", RegexOptions.IgnoreCase);
+                    match = Regex.Match(pair.Key, @"\d+", RegexOptions.IgnoreCase);
                     if (match.Success)
                     {
                         int step_id = Convert.ToInt16(match.Value);
@@ -311,29 +228,82 @@ namespace LGC
                         cv_CurRecipeFlowStepSetting[step_id] = step_devices;
                     }
                 }
-            }
-            cv_CurFlowIncludeAoi = false;
-            string log = "Set recipe flow : " + Environment.NewLine;
-            foreach (KeyValuePair<int, List<AllDevice>> item in cv_CurRecipeFlowStepSetting)
-            {
-                log += "Step : " + item.Key + " : ";
-                foreach (AllDevice device_item in item.Value)
+
+                foreach (KeyValuePair<int, List<AllDevice>> item in cv_CurRecipeFlowStepSetting)
                 {
-                    log += device_item.ToString() + "  ";
-                    if(device_item == AllDevice.AOI)
+                    log += "Step : " + item.Key + " : ";
+                    foreach (AllDevice device_item in item.Value)
                     {
-                        cv_CurFlowIncludeAoi = true;
+                        log += device_item.ToString() + "  ";
+                        if (device_item == AllDevice.AOI)
+                        {
+                            cv_CurFlowIncludeAoi = true;
+                        }
                     }
+                    log += Environment.NewLine;
                 }
-                log += Environment.NewLine;
+                log += "cv_CurFlowIncludeAoi : " + cv_CurFlowIncludeAoi.ToString();
+                WriteLog(LogLevelType.General, log);
+
+
+                initialEqGetPutArm();
+                if (recipe.PFlow == OdfFlow.Flow2_1 || recipe.PFlow == OdfFlow.Flow2_2)
+                {
+                    WriteLog(LogLevelType.General, "Set Flow2. Change UV get arm : " + RobotArm.rbaDown.ToString() +
+                        " put arm : " + RobotArm.rbaUp.ToString());
+                    GetEqById((int)EqId.UV_1).PGetArm = RobotArm.rbaDown;
+                    GetEqById((int)EqId.UV_1).PPutArm = RobotArm.rbaUp;
+                }
+                else
+                {
+                    WriteLog(LogLevelType.General, "Set Not Flow2. Set UV get arm : " + RobotArm.rbaUp.ToString() +
+                        " put arm : " + RobotArm.rbaDown.ToString());
+                    GetEqById((int)EqId.UV_1).PGetArm = RobotArm.rbaUp;
+                    GetEqById((int)EqId.UV_1).PPutArm = RobotArm.rbaDown;
+                }
+                //if (recipe.PFlow == OdfFlow.Flow5_1 || recipe.PFlow == OdfFlow.Flow5_2)
+                if (recipe.PWaferPutUp)
+                {
+                    WriteLog(LogLevelType.General, "Set Flow5. Set VAS get arm : " + RobotArm.rbaDown.ToString() +
+                        " put arm : " + RobotArm.rbaDown.ToString());
+                    GetEqById((int)EqId.VAS).PGetArm = RobotArm.rbaDown;
+                    GetEqById((int)EqId.VAS).PPutArm = RobotArm.rbaDown;
+                }
+                else
+                {
+                    WriteLog(LogLevelType.General, "Set Not Flow5. Set VAS get arm : " + RobotArm.rbaDown.ToString() +
+                        " put arm : " + RobotArm.rbaUp.ToString());
+                    GetEqById((int)EqId.VAS).PGetArm = RobotArm.rbaDown;
+                    GetEqById((int)EqId.VAS).PPutArm = RobotArm.rbaUp;
+                }
+
+
             }
-            log += "cv_CurFlowIncludeAoi : " + cv_CurFlowIncludeAoi.ToString();
-            WriteLog(LogLevelType.General, log);
+
             WriteLog(LogLevelType.NormalFunctionInOut, this.GetType().Name + "." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Leave);
         }
         private void initialEqGetPutArm()
         {
-
+            int eq_number = CommonData.HIRATA.CommonStaticData.g_EqNumber;
+            string get_arm;
+            string put_arm;
+            for (int i = 0; i < eq_number; ++i)
+            {
+                int eq_no = i + 1;
+                if (!cv_CurFlowIncludeAoi)
+                {
+                    get_arm = CommonData.HIRATA.CommonStaticData.g_EqXml.Items[i].Attributes["GetArm"].Trim();
+                    put_arm = CommonData.HIRATA.CommonStaticData.g_EqXml.Items[i].Attributes["PutArm"].Trim();
+                }
+                else
+                {
+                    get_arm = CommonData.HIRATA.CommonStaticData.g_EqXml.Items[i].Attributes["AoiGetArm"].Trim();
+                    put_arm = CommonData.HIRATA.CommonStaticData.g_EqXml.Items[i].Attributes["AoiPutArm"].Trim();
+                }
+                Eq eq = GetEqById(eq_no);
+                eq.PGetArm = GetRobotArmEnumString(get_arm);
+                eq.PPutArm = GetRobotArmEnumString(put_arm);
+            }
         }
 
         #region Calculate Robot Job Path
@@ -357,7 +327,7 @@ namespace LGC
             return rtn;
         }
         //this function only check VAS unload for ODF1
-        //because actions.FindIndex( x=> (x.PAction == RobotAction.Get) && (x.PTarget == ActionTarget.Eq) && (x.PTargetId == (int)EqId.VAS) ) ;
+        //because this statement : actions.FindIndex( x=> (x.PAction == RobotAction.Get) && (x.PTarget == ActionTarget.Eq) && (x.PTargetId == (int)EqId.VAS) ) ;
         private void CalculateRobotJobPathForVasUnload()
         {
             if (!GetVasIsUnload()) return;
@@ -437,7 +407,7 @@ namespace LGC
                                             if (start_pos != end_pos && start_pos <= end_pos)
                                             {
                                                 List<RobotJob> actions = job_map.Values.ToList();
-                                                int vas_index = actions.FindIndex( x=> (x.PAction == RobotAction.Get) && (x.PTarget == ActionTarget.Eq) && (x.PTargetId == (int)EqId.VAS) ) ;
+                                                int vas_index = actions.FindIndex(x => (x.PAction == RobotAction.Get) && (x.PTarget == ActionTarget.Eq) && (x.PTargetId == (int)EqId.VAS));
                                                 if (vas_index != -1)
                                                 {
                                                     GetRobotJobQFormMap(start_pos, end_pos, job_map);
@@ -459,7 +429,7 @@ namespace LGC
                                     if (eq_id == EqId.SDP1)
                                     {
                                         EqInterFaceType sdp2_gif_type = cv_MmfController.cv_TimechartController.GetTimeChartInstance((int)EqGifTimeChartId.TIMECHART_ID_SDP2).cv_ActionType;
-                                        if(sdp2_gif_type == EqInterFaceType.Exchange)
+                                        if (sdp2_gif_type == EqInterFaceType.Exchange)
                                         {
                                             if (cv_MmfController.cv_TimechartController.GetTimeChartInstance((int)EqGifTimeChartId.TIMECHART_ID_SDP1).cv_DataTime < cv_MmfController.cv_TimechartController.GetTimeChartInstance((int)EqGifTimeChartId.TIMECHART_ID_SDP2).cv_DataTime)
                                             {
@@ -472,7 +442,7 @@ namespace LGC
                                             job_map[step] = new RobotJob(1, eq.PPutArm, eq.PGetArm, RobotAction.Get, ActionTarget.Eq, (int)EqId.SDP1, 1, true);
                                         }
                                     }
-                                    else if(eq_id == EqId.SDP2)
+                                    else if (eq_id == EqId.SDP2)
                                     {
                                         EqInterFaceType sdp1_gif_type = cv_MmfController.cv_TimechartController.GetTimeChartInstance((int)EqGifTimeChartId.TIMECHART_ID_SDP1).cv_ActionType;
                                         if (sdp1_gif_type == EqInterFaceType.Exchange)
@@ -483,9 +453,10 @@ namespace LGC
                                                 is_change = true;
                                             }
                                         }
-                                        if(!is_change)
+                                        if (!is_change)
                                         {
-                                            job_map[step] = new RobotJob(1, eq.PPutArm, eq.PGetArm, RobotAction.Get, ActionTarget.Eq, (int)EqId.SDP2, 1, true);                                        }
+                                            job_map[step] = new RobotJob(1, eq.PPutArm, eq.PGetArm, RobotAction.Get, ActionTarget.Eq, (int)EqId.SDP2, 1, true);
+                                        }
                                     }
                                     else
                                     {
@@ -550,10 +521,11 @@ namespace LGC
                 int first_step = 1;
 
                 RecipeItem recipe = null;
-                bool IsFlow5Set = false;
-                if (cv_Recipes.GetCurRecipe(out recipe))
+                //bool IsFlow5Set = false;
+                if (!cv_Recipes.GetCurRecipe(out recipe))
                 {
-                    IsFlow5Set = (recipe.PFlow == OdfFlow.Flow5_1 || recipe.PFlow == OdfFlow.Flow5_2);
+                    return;
+                    //IsFlow5Set = (recipe.PFlow == OdfFlow.Flow5_1 || recipe.PFlow == OdfFlow.Flow5_2);
                 }
 
                 for (int step = first_step; step <= max_step; step++)
@@ -568,6 +540,7 @@ namespace LGC
                     }
                     foreach (AllDevice device in cv_stepDevice)
                     {
+                        if (job_map != null) job_map.Clear();
                         if (device != AllDevice.Aligner && device != AllDevice.LP && device != AllDevice.UP && device != AllDevice.Buffer)
                         {
                             EqId eq_id = EqId.None;
@@ -577,17 +550,8 @@ namespace LGC
                             {
                                 if (eq_id == EqId.VAS)
                                 {
-                                    //if (IsFlow5Set)
-                                    //{
-                                    //    eq_time_chart_cur_step = GetEqById((int)eq_id).GetTimeChatCurStep(2);
-                                    //    time_chart_instance = (int)EqGifTimeChartId.TIMECHART_ID_VAS_UP;
-                                    //}
-                                    //else
-                                    {
-                                        eq_time_chart_cur_step = GetEqById((int)eq_id).GetTimeChatCurStep(1);
-                                        time_chart_instance = (int)EqGifTimeChartId.TIMECHART_ID_VAS_DOWN;
-                                    }
-                                    
+                                    eq_time_chart_cur_step = GetEqById((int)eq_id).GetTimeChatCurStep(1);
+                                    time_chart_instance = (int)EqGifTimeChartId.TIMECHART_ID_VAS_DOWN;
                                 }
                                 else
                                 {
@@ -611,17 +575,14 @@ namespace LGC
                                                 if (GetEqById((int)eq_id).GetTimeChatCurStep(2) == (int)TimechartNormal.STEP_ID_ActionReady)
                                                 {
                                                     job_map[step] = new RobotJob(1, RobotArm.rabNone, RobotArm.rbaDown, RobotAction.Get, ActionTarget.Buffer, 1, buffer_slot, false);
-                                                    
+
                                                     job_map[step] = new RobotJob(1, RobotArm.rbaDown, RobotArm.rabNone, RobotAction.Put, ActionTarget.Eq, 1, 2, true);
                                                 }
                                             }
                                         }
-                                        job_map[step] = new RobotJob(1, RobotArm.rabNone, eq.PGetArm, RobotAction.Get, ActionTarget.Eq, (int)eq_id, 1, true);
                                     }
-                                    else
-                                    {
-                                        job_map[step] = new RobotJob(1, RobotArm.rabNone, eq.PGetArm, RobotAction.Get, ActionTarget.Eq, (int)eq_id, 1, true);
-                                    }
+                                    job_map[step] = new RobotJob(1, RobotArm.rabNone, eq.PGetArm, RobotAction.Get, ActionTarget.Eq, (int)eq_id, 1, true);
+
                                     start_pos = step;
                                     if (!cv_CurFlowIncludeAoi)
                                     {
@@ -647,9 +608,9 @@ namespace LGC
                                         if (eq_id == EqId.AOI || eq_id == EqId.SDP1 || eq_id == EqId.SDP2 || eq_id == EqId.SDP3)
                                         {
                                             int jump_step = 0;
-                                            if (FindJumpStep(eq_id, job_map, start_pos, out jump_step))
+                                            if (FindJumpStep(eq_id, job_map, step, out jump_step))
                                             {
-                                                if (FindEndStep(step, ref end_pos, ref job_map , jump_step))
+                                                if (FindEndStep(step, ref end_pos, ref job_map, jump_step))
                                                 {
                                                     if (end_pos != step)
                                                     {
@@ -696,8 +657,11 @@ namespace LGC
                                         {
                                             if (cv_MmfController.cv_TimechartController.GetTimeChartInstance((int)EqGifTimeChartId.TIMECHART_ID_SDP1).cv_DataTime < cv_MmfController.cv_TimechartController.GetTimeChartInstance((int)EqGifTimeChartId.TIMECHART_ID_SDP2).cv_DataTime)
                                             {
-                                                job_map[step] = new RobotJob(1, eq.PPutArm, eq.PGetArm, RobotAction.Get, ActionTarget.Eq, (int)EqId.SDP2, 1, true);
-                                                is_change = true;
+                                                if (!recipe.PReworkFlow)
+                                                {
+                                                    job_map[step] = new RobotJob(1, eq.PPutArm, eq.PGetArm, RobotAction.Get, ActionTarget.Eq, (int)EqId.SDP2, 1, true);
+                                                    is_change = true;
+                                                }
                                             }
                                         }
                                         if (!is_change)
@@ -712,8 +676,11 @@ namespace LGC
                                         {
                                             if (cv_MmfController.cv_TimechartController.GetTimeChartInstance((int)EqGifTimeChartId.TIMECHART_ID_SDP1).cv_DataTime > cv_MmfController.cv_TimechartController.GetTimeChartInstance((int)EqGifTimeChartId.TIMECHART_ID_SDP2).cv_DataTime)
                                             {
-                                                job_map[step] = new RobotJob(1, eq.PPutArm, eq.PGetArm, RobotAction.Get, ActionTarget.Eq, (int)EqId.SDP1, 1, true);
-                                                is_change = true;
+                                                if (!recipe.PReworkFlow)
+                                                {
+                                                    job_map[step] = new RobotJob(1, eq.PPutArm, eq.PGetArm, RobotAction.Get, ActionTarget.Eq, (int)EqId.SDP1, 1, true);
+                                                    is_change = true;
+                                                }
                                             }
                                         }
                                         if (!is_change)
@@ -723,7 +690,7 @@ namespace LGC
                                     }
                                     else
                                     {
-                                        if (eq_id == EqId.VAS && IsFlow5Set)
+                                        if (eq_id == EqId.VAS && recipe.PWaferPutUp)
                                         {
                                             job_map[step] = new RobotJob(1, eq.PPutArm, eq.PGetArm, RobotAction.Get, ActionTarget.Eq, (int)eq_id, 2, true);
                                         }
@@ -762,7 +729,7 @@ namespace LGC
                                         if (eq_id == EqId.AOI || eq_id == EqId.SDP1 || eq_id == EqId.SDP2 || eq_id == EqId.SDP3)
                                         {
                                             int jump_step = 0;
-                                            if (FindJumpStep(eq_id, job_map, start_pos, out jump_step))
+                                            if (FindJumpStep(eq_id, job_map, step, out jump_step))
                                             {
                                                 if (FindEndStep(step, ref end_pos, ref job_map, jump_step))
                                                 {
@@ -827,12 +794,124 @@ namespace LGC
             sw.Stop();
             WriteLog(LogLevelType.General, "Calculate run mode speed : " + sw.Elapsed.TotalMilliseconds.ToString() + " ms");
         }
+        private void adjustFlowArm()
+        {
+            int startstep = 0;
+            bool ok = false;
+            RecipeItem recipe = null;
+            if (cv_Recipes.GetCurRecipe(out recipe))
+            {
+                if (cv_CurFlowIncludeAoi)
+                {
+                    for (int i = cv_RobotJobPath.Count - 1; i >= 0; i--)
+                    {
+                        RobotJob cur_job = cv_RobotJobPath.ElementAt(i);
+                        if (cur_job.PTarget == ActionTarget.Eq)
+                        {
+                            if (startstep == 0)
+                            {
+                                startstep = i;
+                                break;
+                            }
+                        }
+                    }
+                    if (startstep != 0)
+                    {
+                        for (int i = startstep; i >= 0; i--)
+                        {
+                            if (i == cv_RobotJobPath.Count - 1)
+                            {
+                                continue;
+                            }
+                            if (!adjust(i))
+                            {
+                                cv_RobotJobPath.Clear();
+                            }
+                            else
+                            {
+                                ok = true;
+                            }
+                        }
+                        if (ok) //debug : check vas put arm.
+                        {
+                            for (int i = cv_RobotJobPath.Count - 1; i >= 0; i--)
+                            {
+                                RobotJob cur_job = cv_RobotJobPath.ElementAt(i);
+                                if (cur_job.PTarget == ActionTarget.Eq && cur_job.PTargetId == (int)EqId.VAS)
+                                {
+                                    if (cur_job.PTargetSlot == 2 && (!recipe.PWaferPutUp))
+                                    {
+                                        cv_RobotJobPath.Clear();
+                                    }
+                                    else if (cur_job.PTargetSlot == 1 && recipe.PWaferPutUp)
+                                    {
+                                        cv_RobotJobPath.Clear();
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    //old flows no need to adjust.
+                }
+            }
+        }
+        private CommonData.HIRATA.RobotArm getOtherArm(RobotArm m_Arm)
+        {
+            RobotArm rtn = RobotArm.rabNone;
+            if (m_Arm == RobotArm.rbaDown)
+            {
+                rtn = RobotArm.rbaUp;
+            }
+            else if (m_Arm == RobotArm.rbaUp)
+            {
+                rtn = RobotArm.rbaDown;
+            }
+            return rtn;
+        }
+        private bool adjust(int m_adjustIndex)
+        {
+            bool rtn = false;
+            if (cv_RobotJobPath != null && cv_RobotJobPath.Count > 1)
+            {
+                if (m_adjustIndex < cv_RobotJobPath.Count && m_adjustIndex >= 0)
+                {
+                    RobotJob cur_job = cv_RobotJobPath.ElementAt(m_adjustIndex);
+                    RobotJob next_job = cv_RobotJobPath.ElementAt(m_adjustIndex + 1);
+                    if (next_job.PAction == RobotAction.Put || next_job.PAction == RobotAction.Exchange)
+                    {
+                        if (cur_job.PGetArm != next_job.PPutArm)
+                        {
+                            if (next_job.PPutArm != RobotArm.rabNone)
+                            {
+                                cur_job.PGetArm = next_job.PPutArm;
+                                cur_job.PPutArm = getOtherArm(cur_job.PGetArm);
+                                rtn = true;
+                            }
+                            else
+                            {
+                                rtn = false;
+                            }
+                        }
+                        else
+                        {
+                            cur_job.PPutArm = getOtherArm(cur_job.PGetArm);
+                            rtn = true;
+                        }
+                    }
+                }
+            }
+            return rtn;
+        }
         private void CalculateVasGlass()
         {
             RecipeItem recipe = null;
             if (cv_Recipes.GetCurRecipe(out recipe))
             {
-                if (recipe.PFlow != OdfFlow.Flow1_1 && recipe.PFlow != OdfFlow.Flow1_2 && recipe.PFlow != OdfFlow.Flow5_1 && recipe.PFlow != OdfFlow.Flow5_2)
+                //if (recipe.PFlow != OdfFlow.Flow1_1 && recipe.PFlow != OdfFlow.Flow1_2 && recipe.PFlow != OdfFlow.Flow5_1 && recipe.PFlow != OdfFlow.Flow5_2)
+                if (!recipe.PVasNeedGlass)
                 {
                     return;
                 }
@@ -857,18 +936,20 @@ namespace LGC
             Robot robot = GetRobotById(1);
             int buffer_glass_slot = 0;
 
-            bool IsFlow5Set = (recipe.PFlow == OdfFlow.Flow5_1 || recipe.PFlow == OdfFlow.Flow5_2);
-            bool Isgif_typeTypeOk = IsFlow5Set ? gif_type_down == EqInterFaceType.Load : (gif_type == EqInterFaceType.Load && gif_type_down != EqInterFaceType.Unload);
+            //bool IsFlow5Set = (recipe.PFlow == OdfFlow.Flow5_1 || recipe.PFlow == OdfFlow.Flow5_2);
+            //bool Isgif_typeTypeOk = IsFlow5Set ? gif_type_down == EqInterFaceType.Load : (gif_type == EqInterFaceType.Load && gif_type_down != EqInterFaceType.Unload);
+            bool Isgif_typeTypeOk = recipe.PWaferPutUp ? gif_type_down == EqInterFaceType.Load : (gif_type == EqInterFaceType.Load && gif_type_down != EqInterFaceType.Unload);
 
             //first do unload then load glass
             int eq_time_chart_cur_step_up = 0;
-            if (IsFlow5Set)
+            //if (IsFlow5Set)
+            if (recipe.PWaferPutUp)
             {
                 eq_time_chart_cur_step_up = GetEqById((int)EqId.VAS).GetTimeChatCurStep(1);
             }
             else
             {
-            eq_time_chart_cur_step_up = GetEqById((int)EqId.VAS).GetTimeChatCurStep(2);
+                eq_time_chart_cur_step_up = GetEqById((int)EqId.VAS).GetTimeChatCurStep(2);
             }
 
 
@@ -877,7 +958,7 @@ namespace LGC
                 if (buffer.cv_Data.GetUnloadSlot(BufferSlotType.Glass, out buffer_glass_slot))
                 {
                     //if (gif_type == EqInterFaceType.Load && gif_type_down != EqInterFaceType.Unload)
-                    if(Isgif_typeTypeOk)
+                    if (Isgif_typeTypeOk)
                     {
                         if (cv_RobotJobPath != null && cv_RobotJobPath.Count == 0 && !robot.IsBusy)
                         {
@@ -901,7 +982,8 @@ namespace LGC
                                             int time_chart_instance = GetEqById((int)eq).cv_Comm.cv_TimeChatId;
                                             if (eq == EqId.VAS)
                                             {
-                                                if (IsFlow5Set)
+                                                //if (IsFlow5Set)
+                                                if (recipe.PWaferPutUp)
                                                 {
                                                     time_chart_instance = (int)EqGifTimeChartId.TIMECHART_ID_VAS_UP;
                                                 }
@@ -936,7 +1018,8 @@ namespace LGC
                                 if (!is_first_can_load)
                                 {
                                     RobotJob job;
-                                    if (IsFlow5Set)
+                                    //if (IsFlow5Set)
+                                    if (recipe.PWaferPutUp)
                                     {
                                         job = new RobotJob(1, RobotArm.rabNone, RobotArm.rbaUp, RobotAction.Get, ActionTarget.Buffer, 1, buffer_glass_slot, false);
                                         cv_RobotJobPath.Enqueue(job);
@@ -955,7 +1038,8 @@ namespace LGC
                             else
                             {
                                 RobotJob job;
-                                if (IsFlow5Set)
+                                //if (IsFlow5Set)
+                                if (recipe.PWaferPutUp)
                                 {
                                     job = new RobotJob(1, RobotArm.rabNone, RobotArm.rbaUp, RobotAction.Get, ActionTarget.Buffer, 1, buffer_glass_slot, false);
                                     cv_RobotJobPath.Enqueue(job);
@@ -974,15 +1058,22 @@ namespace LGC
                 }
             }
         }
-        private bool FindEndStep(int m_CurStep, ref int m_EndPos, ref Dictionary<int, RobotJob> m_JobMap , int m_jumpStep=0)
+        private bool FindEndStep(int m_CurStep, ref int m_EndPos, ref Dictionary<int, RobotJob> m_JobMap, int m_jumpStep = 0)
         {
             bool rtn = false;
             int pre_step = m_CurStep;
             int now_step = m_CurStep + 1;
-            if(m_jumpStep != 0)
+            if (m_jumpStep != 0)
             {
                 now_step = m_jumpStep;
             }
+            RecipeItem recipe = null;
+            if(!cv_Recipes.GetCurRecipe(out recipe))
+            {
+                WriteLog(LogLevelType.Error, "FindEndStep get cur recipe error");
+                return rtn;
+            }
+
             if (cv_CurRecipeFlowStepSetting.ContainsKey(now_step))
             {
                 List<AllDevice> cv_stepDevice = cv_CurRecipeFlowStepSetting[now_step];
@@ -1011,7 +1102,7 @@ namespace LGC
                     {
                         int port = 0;
                         int slot = 0;
-                        if (FindUnloadPortToPutSubstrate(out port, out slot , m_JobMap[pre_step]))
+                        if (FindUnloadPortToPutSubstrate(out port, out slot, m_JobMap[pre_step]))
                         {
                             if (m_JobMap[pre_step].PGetArm != RobotArm.rabNone)
                             {
@@ -1028,7 +1119,7 @@ namespace LGC
                             rtn = false;
                         }
                     }
-                    else if (device == AllDevice.LP) 
+                    else if (device == AllDevice.LP)
                     {
                         int port = 0;
                         int slot = 0;
@@ -1068,8 +1159,7 @@ namespace LGC
                         {
                             if (eq_id == EqId.VAS)
                             {
-                                RecipeItem recipe = null;
-                                if (cv_Recipes.GetCurRecipe(out recipe) && (recipe.PFlow == OdfFlow.Flow5_1 || recipe.PFlow == OdfFlow.Flow5_2))
+                                if (recipe.PWaferPutUp)
                                 {
                                     eq_time_chart_cur_step = GetEqById((int)eq_id).GetTimeChatCurStep(2);
                                     time_chart_instance = (int)EqGifTimeChartId.TIMECHART_ID_VAS_UP;
@@ -1089,10 +1179,16 @@ namespace LGC
                         //Ref20230414 Tommy Add START
                         if (eq_id == EqId.IJP)
                         {
-                            if (!CheckNeedToUnloadPortGlassAndUnloadPortCanLoad(AllDevice.IJP))
+                            if (cv_NeedCaculateUnloadPortCountForIjp)
                             {
-                                rtn = true;
-                                break;
+                                if (!recipe.PBackToLD)
+                                {
+                                    if (!CheckNeedToUnloadPortGlassAndUnloadPortCanLoad(AllDevice.IJP))
+                                    {
+                                        rtn = true;
+                                        break;
+                                    }
+                                }
                             }
                         }
                         //Ref20230414 Tommy Add END
@@ -1119,7 +1215,7 @@ namespace LGC
                                                     break;
                                                 }
                                             }// in findNextStep , if eq id == Seal , must be AOI rework.
-                                            if (eq_id == EqId.SDP1 || eq_id == EqId.SDP2 || eq_id == EqId.SDP3)
+                                            else if (eq_id == EqId.SDP1 || eq_id == EqId.SDP2 || eq_id == EqId.SDP3)
                                             {
                                                 if (!checkPathConditionAtEqLoad(eq_id, m_JobMap, now_step))
                                                 {
@@ -1128,9 +1224,9 @@ namespace LGC
                                                 }
                                             }
                                         }
-                                        RecipeItem recipe = null;
                                         m_JobMap[pre_step].PGetArm = eq.PPutArm;
-                                        if (cv_Recipes.GetCurRecipe(out recipe) && (recipe.PFlow == OdfFlow.Flow5_1 || recipe.PFlow == OdfFlow.Flow5_2) && eq_id == EqId.VAS)
+                                        //if (cv_Recipes.GetCurRecipe(out recipe) && (recipe.PFlow == OdfFlow.Flow5_1 || recipe.PFlow == OdfFlow.Flow5_2) && eq_id == EqId.VAS)
+                                        if ( eq_id == EqId.VAS && recipe.PWaferPutUp)
                                         {
                                             m_JobMap[now_step] = new RobotJob(1, eq.PPutArm, RobotArm.rabNone, RobotAction.Put, ActionTarget.Eq, (int)eq_id, 2, true);
                                         }
@@ -1153,6 +1249,8 @@ namespace LGC
                                             {
                                                 if (m_JobMap[pre_step].PGetArm == eq.PPutArm)
                                                 {
+                                                    //below statement , we don't think through if wafer put to top then how can we do. because only 5-1 and 5-2 use wafer put top
+                                                    // and 5-1,5-2's flow is ijp->aligner->vas. So we just check wafer put top situration at "pre_step == Aligner"
                                                     m_JobMap[now_step] = new RobotJob(1, eq.PPutArm, RobotArm.rabNone, RobotAction.Put, ActionTarget.Eq, (int)eq_id, 1, true);
                                                     rtn = true;
                                                     m_EndPos = now_step;
@@ -1161,6 +1259,7 @@ namespace LGC
                                             }
                                             else
                                             {
+                                                //here , don't care arm is correct or not. bacause finnally we adjust arm.
                                                 if (eq_id == EqId.AOI)
                                                 {
                                                     //because aoi send load , so checkpathHasAoiInMiddle always ok.
@@ -1178,27 +1277,18 @@ namespace LGC
                                                         break;
                                                     }
                                                 }
-                                                //here , don't care arm is correct or not. bacause finnally we adjust arm.
-                                                m_JobMap[now_step] = new RobotJob(1, eq.PPutArm, RobotArm.rabNone, RobotAction.Put, ActionTarget.Eq, (int)eq_id, 1, true);
+                                                if (eq_id == EqId.VAS && recipe.PWaferPutUp)
+                                                {
+                                                    m_JobMap[now_step] = new RobotJob(1, eq.PPutArm, RobotArm.rabNone, RobotAction.Put, ActionTarget.Eq, (int)eq_id, 2, true);
+                                                }
+                                                else
+                                                {
+                                                    m_JobMap[now_step] = new RobotJob(1, eq.PPutArm, RobotArm.rabNone, RobotAction.Put, ActionTarget.Eq, (int)eq_id, 1, true);
+                                                }
                                                 rtn = true;
                                                 m_EndPos = now_step;
                                                 break;
                                             }
-                                        }
-                                        else
-                                        {
-                                            RecipeItem recipe = null;
-                                            if (eq_id == EqId.VAS && cv_Recipes.GetCurRecipe(out recipe) && (recipe.PFlow == OdfFlow.Flow5_1 || recipe.PFlow == OdfFlow.Flow5_2))
-                                            {
-                                                m_JobMap[now_step] = new RobotJob(1, m_JobMap[pre_step].PGetArm, RobotArm.rabNone, RobotAction.Put, ActionTarget.Eq, (int)eq_id, 2, true);
-                                            }
-                                            else
-                                            {
-                                                m_JobMap[now_step] = new RobotJob(1, m_JobMap[pre_step].PGetArm, RobotArm.rabNone, RobotAction.Put, ActionTarget.Eq, (int)eq_id, 1, true);
-                                            }
-                                            rtn = true;
-                                            m_EndPos = now_step;
-                                            break;
                                         }
                                     }
                                 }
@@ -1221,31 +1311,31 @@ namespace LGC
                                             }
                                         }
 
-                                        RecipeItem recipe = null;
                                         m_JobMap[pre_step].PGetArm = eq.PPutArm;
                                         m_JobMap[now_step] = new RobotJob(1, eq.PPutArm, eq.PGetArm, RobotAction.Exchange, ActionTarget.Eq, (int)eq_id, 1, true);
-                                        if (cv_Recipes.GetCurRecipe(out recipe))
+                                        if (cv_CurFlowIncludeAoi)
                                         {
-                                            if(cv_CurFlowIncludeAoi)
+                                            if (eq_id == EqId.AOI || eq_id == EqId.SDP1 || eq_id == EqId.SDP2 || eq_id == EqId.SDP3)
                                             {
-                                                if (eq_id == EqId.AOI || eq_id == EqId.SDP1 || eq_id == EqId.SDP2 || eq_id == EqId.SDP3)
+                                                int jump_step = 0;
+                                                if (FindJumpStep(eq_id, m_JobMap, now_step, out jump_step))
                                                 {
-                                                    int jump_step = 0;
-                                                    if (FindJumpStep(eq_id, m_JobMap, now_step, out jump_step))
-                                                    {
-                                                        rtn = FindEndStep(now_step, ref m_EndPos, ref m_JobMap, jump_step);
-                                                    }
+                                                    rtn = FindEndStep(now_step, ref m_EndPos, ref m_JobMap, jump_step);
                                                 }
                                             }
                                             else
                                             {
                                                 rtn = FindEndStep(now_step, ref m_EndPos, ref m_JobMap);
                                             }
-                                            if (rtn)
-                                            {
-                                                //if this device job ok , not need fine sibling.
-                                                break;
-                                            }
+                                        }
+                                        else
+                                        {
+                                            rtn = FindEndStep(now_step, ref m_EndPos, ref m_JobMap);
+                                        }
+                                        if (rtn)
+                                        {
+                                            //if this device job ok , not need fine sibling.
+                                            break;
                                         }
                                     }
                                 }
@@ -1255,8 +1345,7 @@ namespace LGC
                                     {
                                         if (m_JobMap[pre_step].PGetArm == eq.PPutArm) //Ref20230411 Tommy in Flow5_1 Maybe Do Exchange bug only can TopPut
                                         {
-                                            RecipeItem recipe = null;
-                                            if (cv_Recipes.GetCurRecipe(out recipe) && (recipe.PFlow == OdfFlow.Flow5_1 || recipe.PFlow == OdfFlow.Flow5_2) && (eq_id == EqId.UV_1 || eq_id == EqId.UV_2))
+                                            if ( (recipe.PFlow == OdfFlow.Flow5_1 || recipe.PFlow == OdfFlow.Flow5_2) && (eq_id == EqId.UV_1 || eq_id == EqId.UV_2))
                                             {
                                             }
                                             else
@@ -1274,7 +1363,59 @@ namespace LGC
                                     else
                                     {
                                         m_JobMap[now_step] = new RobotJob(1, eq.PPutArm, eq.PGetArm, RobotAction.Exchange, ActionTarget.Eq, (int)eq_id, 1, true);
-                                        if (eq_id == EqId.AOI || eq_id == EqId.SDP1 || eq_id == EqId.SDP2 || eq_id == EqId.SDP3)
+                                        if (eq_id == EqId.SDP1 || eq_id == EqId.SDP2 || eq_id == EqId.SDP3)
+                                        {
+                                            if (JobpathalreayhasAoi(m_JobMap))
+                                            {
+                                                GlassData aoi_glass = getEqUnloadGlassDataExceptVas((int)EqId.AOI);
+                                                EqId aoi_seal_id = getAoiSpecifySeal(aoi_glass);
+                                                EqId headsealId = EqId.None;
+                                                if (JobpathalreayhasSealAtHead(m_JobMap , out headsealId))
+                                                {
+                                                    if( (headsealId == aoi_seal_id ) && (aoi_seal_id == eq_id))
+                                                    {
+                                                        m_JobMap.Remove(now_step);
+                                                        m_JobMap[now_step] = new RobotJob(1, eq.PPutArm, eq.PGetArm, RobotAction.Exchange, ActionTarget.Eq, (int)eq_id, 1, true);
+                                                        m_JobMap[now_step].PAction = RobotAction.Put;
+                                                        m_EndPos = now_step;
+                                                        rtn = true;
+                                                        break;
+                                                    }
+                                                    else
+                                                    {
+                                                        if (eq_id == aoi_seal_id)
+                                                        {
+                                                            int jump_step = 0;
+                                                            if (FindJumpStep(eq_id, m_JobMap, now_step, out jump_step))
+                                                            {
+                                                                rtn = FindEndStep(now_step, ref m_EndPos, ref m_JobMap, jump_step);
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    //if (headsealId == seal_id)
+                                                    if (eq_id == aoi_seal_id)
+                                                    {
+                                                        int jump_step = 0;
+                                                        if (FindJumpStep(eq_id, m_JobMap, now_step, out jump_step))
+                                                        {
+                                                            rtn = FindEndStep(now_step, ref m_EndPos, ref m_JobMap, jump_step);
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            else
+                                            {
+                                                int jump_step = 0;
+                                                if (FindJumpStep(eq_id, m_JobMap, now_step, out jump_step))
+                                                {
+                                                    rtn = FindEndStep(now_step, ref m_EndPos, ref m_JobMap, jump_step);
+                                                }
+                                            }
+                                        }
+                                        else if (eq_id == EqId.AOI)
                                         {
                                             int jump_step = 0;
                                             if (FindJumpStep(eq_id, m_JobMap, now_step, out jump_step))
@@ -1376,138 +1517,10 @@ namespace LGC
                     cv_RobotJobPath.Enqueue(m_Map[i]);
                 }
             }
-            /* write this for recovery if has job but can't do.But not use now.
-             * 
-            Dictionary<int, RobotJob> tmp_map = new Dictionary<int, RobotJob>();
-            Queue<RobotJob> backupQ = new Queue<RobotJob>(cv_RobotJobPath);
-            int tmp_step = 1;
-            while (cv_RobotJobPath.Count > 0)
+            if (cv_CurFlowIncludeAoi)
             {
-                tmp_map[tmp_step] = cv_RobotJobPath.Dequeue();
-                tmp_step++;
+                adjustFlowArm();
             }
-            if (tmp_map != null && tmp_map.Count > 0)
-            {
-                foreach (int port_id in cv_InProcessPort)
-                {
-                    Port port = GetPortById(port_id);
-                    if (port.PPortStatus == PortStaus.LDCM && port.PLotStatus == LotStatus.Process && port.cv_Data.PProductionType == ProductCategory.Wafer
-                        && port.cv_Data.PPortMode == PortMode.Loader)
-                    {
-                        for (int i = 1; i < port.cv_Data.cv_SlotCount; i++)
-                        {
-                            if (port.cv_Data.GlassDataMap[i].PLastDevice != AllDevice.None)
-                            {
-                                GlassData glass = port.cv_Data.GlassDataMap[i];
-                                int start_pos = -1;
-                                if (glass.PLastDevice == AllDevice.UP)
-                                {
-                                    foreach (KeyValuePair<int, RobotJob> pair in tmp_map)
-                                    {
-                                        if (pair.Value.PTarget == ActionTarget.Port)
-                                        {
-                                            if ((pair.Value.PTargetId == 1) || (pair.Value.PTargetId == 2))
-                                            {
-                                                start_pos = pair.Key;
-                                                break;
-                                            }
-                                        }
-                                    }
-                                    if (start_pos != -1)
-                                    {
-                                        tmp_map[start_pos - 1] = new RobotJob(1, RobotArm.rabNone, tmp_map[start_pos].PPutArm, RobotAction.Get,
-                                            ActionTarget.Port, port_id, i, false);
-                                        cv_RobotJobPath = new Queue<RobotJob>();
-                                        int re_start = start_pos - 1;
-                                        while (tmp_map.ContainsKey(re_start))
-                                        {
-                                            cv_RobotJobPath.Enqueue(tmp_map[re_start]);
-                                            re_start++;
-                                        }
-                                        return;
-                                    }
-                                }
-                                if (glass.PLastDevice == AllDevice.Aligner)
-                                {
-                                    foreach (KeyValuePair<int, RobotJob> pair in tmp_map)
-                                    {
-                                        if (pair.Value.PTarget == ActionTarget.Aligner)
-                                        {
-                                            start_pos = pair.Key;
-                                            break;
-                                        }
-                                    }
-                                    if (start_pos != -1)
-                                    {
-                                        tmp_map[start_pos - 1] = new RobotJob(1, RobotArm.rabNone, tmp_map[start_pos].PPutArm, RobotAction.Get,
-                                            ActionTarget.Port, port_id, i, false);
-                                        cv_RobotJobPath = new Queue<RobotJob>();
-                                        int re_start = start_pos - 1;
-                                        while (tmp_map.ContainsKey(re_start))
-                                        {
-                                            cv_RobotJobPath.Enqueue(tmp_map[re_start]);
-                                            re_start++;
-                                        }
-                                        return;
-                                    }
-                                }
-                                if (((int)glass.PLastDevice) >= ((int)AllDevice.SDP1) && ((int)glass.PLastDevice) <= ((int)AllDevice.UV_2))
-                                {
-                                    EqId eq_id = (EqId)Enum.Parse(typeof(EqId), glass.PLastDevice.ToString());
-                                    foreach (KeyValuePair<int, RobotJob> pair in tmp_map)
-                                    {
-                                        if (pair.Value.PTarget == ActionTarget.Eq)
-                                        {
-                                            if (pair.Value.PTargetId == (int)eq_id)
-                                            {
-                                                start_pos = pair.Key;
-                                                break;
-                                            }
-                                        }
-                                    }
-                                    if (start_pos != -1)
-                                    {
-                                        if (GetEqById((int)eq_id).GetTimeChatCurStep(1) == TimechartNormal.STEP_ID_ActionReady)
-                                        {
-                                            int time_chart_instance = (int)EqGifTimeChartId.TIMECHART_ID_VAS_DOWN;
-                                            if (eq_id != EqId.VAS)
-                                            {
-                                                time_chart_instance = GetEqById((int)eq_id).cv_Comm.cv_TimeChatId;
-                                            }
-                                            EqInterFaceType gif_type = cv_MmfController.cv_TimechartController.GetTimeChartInstance(time_chart_instance).cv_ActionType;
-                                            if (gif_type == EqInterFaceType.Load)
-                                            {
-                                                tmp_map[start_pos - 1] = new RobotJob(1, RobotArm.rabNone, tmp_map[start_pos].PPutArm, RobotAction.Get,
-                                                    ActionTarget.Port, port_id, i, false);
-                                            }
-                                            else if (gif_type == EqInterFaceType.Exchange)
-                                            {
-                                                if (tmp_map[start_pos].PAction == RobotAction.Get)
-                                                {
-                                                    tmp_map[start_pos].PAction = RobotAction.Exchange;
-                                                    tmp_map[start_pos].PPutArm = GetEqById((int)eq_id).PPutArm;
-                                                }
-                                                tmp_map[start_pos - 1] = new RobotJob(1, RobotArm.rabNone, tmp_map[start_pos].PPutArm, RobotAction.Get,
-                                                    ActionTarget.Port, port_id, i, false);
-                                            }
-                                            cv_RobotJobPath = new Queue<RobotJob>();
-                                            int re_start = start_pos - 1;
-                                            while (tmp_map.ContainsKey(re_start))
-                                            {
-                                                cv_RobotJobPath.Enqueue(tmp_map[re_start]);
-                                                re_start++;
-                                            }
-                                            return;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                cv_RobotJobPath = backupQ;
-            }
-            */
         }
         //only find buffer , not include port.
         private bool FindPortOrBufferAsFirstStep(int m_CurStep, ref int m_StartPos, ref Dictionary<int, RobotJob> m_JobMap)
@@ -1550,7 +1563,7 @@ namespace LGC
                                     {
                                         if ((port.cv_Data.GlassDataMap[slot_id].PHasData) && (port.cv_Data.GlassDataMap[slot_id].PHasSensor))
                                         {
-                                            if (port.cv_Data.GlassDataMap[slot_id].PProcessFlag == ProcessFlag.Need)
+                                            if (port.cv_Data.GlassDataMap[slot_id].PProcessFlag == ProcessFlag.Need && (!alreadytakeout(port.cv_Data.GlassDataMap[slot_id])))
                                             {
                                                 m_StartPos = now_step;
                                                 m_JobMap[now_step] = new RobotJob(1, RobotArm.rabNone, m_JobMap[next_step].PPutArm, RobotAction.Get, ActionTarget.Port, port_id, slot_id, false);
@@ -1575,7 +1588,7 @@ namespace LGC
                 return false;
             }
 
-            bool IsFlow5Set = (recipe.PFlow == OdfFlow.Flow5_1 || recipe.PFlow == OdfFlow.Flow5_2);
+            //bool IsFlow5Set = (recipe.PFlow == OdfFlow.Flow5_1 || recipe.PFlow == OdfFlow.Flow5_2);
 
             bool rtn = false;
             //first find abnormal wafer.
@@ -1598,7 +1611,7 @@ namespace LGC
                                 int time_chart_instance = GetEqById((int)eq).cv_Comm.cv_TimeChatId;
                                 if (eq == EqId.VAS)
                                 {
-                                    if (IsFlow5Set)
+                                    if (recipe.PWaferPutUp)
                                     {
                                         time_chart_instance = (int)EqGifTimeChartId.TIMECHART_ID_VAS_UP;
                                     }
@@ -1653,7 +1666,7 @@ namespace LGC
                         int time_chart_instance = GetEqById((int)eq).cv_Comm.cv_TimeChatId;
                         if (eq == EqId.VAS)
                         {
-                            if (IsFlow5Set)
+                            if (recipe.PWaferPutUp)
                             {
                                 time_chart_instance = (int)EqGifTimeChartId.TIMECHART_ID_VAS_UP;
                             }
@@ -1682,7 +1695,7 @@ namespace LGC
                                             GetEqById((int)eq).PPutArm, RobotAction.Get, ActionTarget.Buffer, 1, slot, false);
                                             cv_RobotJobPath.Enqueue(tmp);
 
-                                            if (IsFlow5Set)
+                                            if (recipe.PWaferPutUp)
                                             {
                                                 tmp = new RobotJob(1, GetEqById((int)eq).PPutArm,
                                                 RobotArm.rabNone, RobotAction.Put, ActionTarget.Eq, (int)eq, 2, true);
@@ -1746,7 +1759,8 @@ namespace LGC
                 RecipeItem recipe = null;
                 if (cv_Recipes.GetCurRecipe(out recipe))
                 {
-                    if (recipe.PFlow != OdfFlow.Flow1_1 && recipe.PFlow != OdfFlow.Flow1_2 && recipe.PFlow != OdfFlow.Flow5_1 && recipe.PFlow != OdfFlow.Flow5_2)
+                    //if (recipe.PFlow != OdfFlow.Flow1_1 && recipe.PFlow != OdfFlow.Flow1_2 && recipe.PFlow != OdfFlow.Flow5_1 && recipe.PFlow != OdfFlow.Flow5_2)
+                    if (!recipe.PVasNeedGlass)
                     {
                         return false;
                     }
@@ -1771,7 +1785,7 @@ namespace LGC
                             if (!port.cv_Data.HasDataAndSensor(slot)) continue;
                             if (port.cv_Data.GlassDataMap[slot].PProcessFlag == ProcessFlag.Need && port.cv_Data.GlassDataMap[slot].PLastDevice == AllDevice.None)
                             {
-                                if (port.cv_Data.GlassDataMap[slot].POcrResult == OCRResult.None)
+                                if (port.cv_Data.GlassDataMap[slot].POcrResult == OCRResult.None && (!alreadytakeout(port.cv_Data.GlassDataMap[slot])))
                                 {
                                     RobotJob tmp = new RobotJob(1, RobotArm.rabNone, RobotArm.rbaDown, RobotAction.Get, ActionTarget.Port, port.cv_Id, slot, false);
                                     cv_RobotJobPath.Enqueue(tmp);
@@ -1783,10 +1797,11 @@ namespace LGC
                                     bool is_direct_put_to_eq = false;
 
                                     RecipeItem recipe = null;
-                                    bool IsFlow5Set = false;
-                                    if (cv_Recipes.GetCurRecipe(out recipe))
+                                    //bool IsFlow5Set = false;
+                                    if (!cv_Recipes.GetCurRecipe(out recipe))
                                     {
-                                        IsFlow5Set = (recipe.PFlow == OdfFlow.Flow5_1 || recipe.PFlow == OdfFlow.Flow5_2);
+                                        return false;
+                                        //IsFlow5Set = (recipe.PFlow == OdfFlow.Flow5_1 || recipe.PFlow == OdfFlow.Flow5_2);
                                     }
 
                                     if (port.cv_Data.PProductionType == ProductCategory.Wafer)
@@ -1807,7 +1822,8 @@ namespace LGC
                                                     int time_chart_instance = GetEqById((int)eq).cv_Comm.cv_TimeChatId;
                                                     if (eq == EqId.VAS)
                                                     {
-                                                        if (IsFlow5Set)
+                                                        //if (IsFlow5Set)
+                                                        if (recipe.PWaferPutUp)
                                                         {
                                                             time_chart_instance = (int)EqGifTimeChartId.TIMECHART_ID_VAS_UP;
                                                         }
@@ -1832,7 +1848,8 @@ namespace LGC
                                                                     tmp = new RobotJob(1, RobotArm.rabNone, GetEqById((int)eq).PPutArm, RobotAction.Get, ActionTarget.Aligner, 1, 1, false);
                                                                     cv_RobotJobPath.Enqueue(tmp);
 
-                                                                    if (IsFlow5Set)
+                                                                    //if (IsFlow5Set)
+                                                                    if (recipe.PWaferPutUp)
                                                                     {
                                                                         tmp = new RobotJob(1, RobotArm.rbaDown, RobotArm.rabNone, RobotAction.Put, ActionTarget.Eq, (int)EqId.VAS, 2, true);
                                                                         cv_RobotJobPath.Enqueue(tmp);
@@ -1852,7 +1869,8 @@ namespace LGC
                                                                 tmp = new RobotJob(1, RobotArm.rabNone, GetEqById((int)eq).PPutArm, RobotAction.Get, ActionTarget.Aligner, 1, 1, false);
                                                                 cv_RobotJobPath.Enqueue(tmp);
 
-                                                                if (eq == EqId.VAS && IsFlow5Set)
+                                                                //if (eq == EqId.VAS && IsFlow5Set)
+                                                                if (eq == EqId.VAS && recipe.PWaferPutUp)
                                                                 {
                                                                     tmp = new RobotJob(1, RobotArm.rbaDown, RobotArm.rabNone, RobotAction.Put, ActionTarget.Eq, (int)EqId.VAS, 2, true);
                                                                     cv_RobotJobPath.Enqueue(tmp);
@@ -1876,7 +1894,7 @@ namespace LGC
                                                         if (cv_RobotJobPath.Count > 0)
                                                         {
                                                             bool cangetnewsubstratetoseal = CanGetNewSubstratePutToSeal(cv_RobotJobPath);
-                                                            if ( (!cv_CurFlowIncludeAoi) || (cv_CurFlowIncludeAoi && cangetnewsubstratetoseal))
+                                                            if ((!cv_CurFlowIncludeAoi) || (cv_CurFlowIncludeAoi && cangetnewsubstratetoseal))
                                                             {
                                                                 Queue<RobotJob> tmp_q = new Queue<RobotJob>();
                                                                 RobotJob job = cv_RobotJobPath.Peek();
@@ -1937,7 +1955,8 @@ namespace LGC
                                     else // if type is glass port. Direct put to vas glass slot if vas at load status.
                                     {
                                         int time_chart_instance = 0;
-                                        if (IsFlow5Set)
+                                        //if (IsFlow5Set)
+                                        if (recipe.PWaferPutUp)
                                         {
                                             time_chart_instance = (int)EqGifTimeChartId.TIMECHART_ID_VAS_DOWN;
                                         }
@@ -1970,7 +1989,8 @@ namespace LGC
                                                             tmp = new RobotJob(1, RobotArm.rabNone, RobotArm.rbaDown, RobotAction.Get, ActionTarget.Aligner, 1, 1, false);
                                                             cv_RobotJobPath.Enqueue(tmp);
 
-                                                            if (IsFlow5Set)
+                                                            //if (IsFlow5Set)
+                                                            if (recipe.PWaferPutUp)
                                                             {
                                                                 tmp = new RobotJob(1, RobotArm.rbaDown, RobotArm.rabNone, RobotAction.Put, ActionTarget.Eq, (int)EqId.VAS, 1, true);
                                                             }
@@ -1985,7 +2005,7 @@ namespace LGC
                                                         }
                                                     }
                                                 }
-                                                
+
                                             }
                                             if (!is_direct_put_to_eq)
                                             {
@@ -2038,7 +2058,8 @@ namespace LGC
             time_chart_instance_ijp = (int)EqGifTimeChartId.TIMECHART_ID_IJP;
             EqInterFaceType gif_type_ijp = cv_MmfController.cv_TimechartController.GetTimeChartInstance(time_chart_instance_ijp).cv_ActionType;
 
-            if (cur_recipe.PFlow == OdfFlow.Flow5_1 || cur_recipe.PFlow == OdfFlow.Flow5_2)
+            //if (cur_recipe.PFlow == OdfFlow.Flow5_1 || cur_recipe.PFlow == OdfFlow.Flow5_2)
+            if (cur_recipe.PWaferPutUp)
             {
                 if ((gif_type_down == EqInterFaceType.Unload) ||
                 (gif_type == EqInterFaceType.Load && (gif_type_ijp == EqInterFaceType.Unload || gif_type_ijp == EqInterFaceType.Exchange)))
@@ -2054,7 +2075,7 @@ namespace LGC
                     return;
                 }
             }
-            
+
             //
             if (!LgcForm.GetAlignerById(1).cv_Data.GlassDataMap[1].PHasData && !LgcForm.GetAlignerById(1).cv_Data.GlassDataMap[1].PHasSensor)
             {
@@ -2162,186 +2183,7 @@ namespace LGC
             return rtn;
         }
         #endregion
-        private int getSecondSealStep()
-        {
-            int first_seal_step = 0;
-            int second_seal_step = 0;
-            int max_step = cv_CurRecipeFlowStepSetting.Count;
-            int first_step = 1;
-            for (int step = first_step; step < max_step; step++)
-            {
-                if (cv_CurRecipeFlowStepSetting.ContainsKey(step))
-                {
-                    if (cv_CurRecipeFlowStepSetting[step].Contains(AllDevice.SDP1) ||
-                        cv_CurRecipeFlowStepSetting[step].Contains(AllDevice.SDP2) ||
-                        cv_CurRecipeFlowStepSetting[step].Contains(AllDevice.SDP3) )
-                    {
-                        if(first_seal_step == 0)
-                        {
-                            first_seal_step = step;
-                        }
-                        else if(second_seal_step == 0)
-                        {
-                            second_seal_step = step;
-                            break;
-                        }
-                    }
-                }
-            }
-            return second_seal_step;
-        }
-        private bool IsAoiUnloadGlassHasAbnormalBit(GlassData m_AoiGlass)
-        {
-            //aoi is node 9.
-            bool rtn = false;
-            if( (m_AoiGlass != null) &&  (!m_AoiGlass.IsNull() ))
-            {
-                int node_index = m_AoiGlass.cv_Nods.FindIndex(x => x.PNodeId == 9);
-                if (m_AoiGlass.cv_Nods[node_index].cv_ProcessAbnormal != 0)
-                {
-                    rtn = true;
-                }
-            }
 
-            return rtn;
-        }
-        private EqId getAoiSpecifySeal(GlassData m_AoiGlass)
-        {
-            //seal1 : node 3 , seal2 : node4 , seal3 : node8.
-            EqId rtn = EqId.None;
-            if( (m_AoiGlass != null) &&  (!m_AoiGlass.IsNull() ))
-            {
-                int node_index = m_AoiGlass.cv_Nods.FindIndex(x => x.PNodeId == 3);
-                if (m_AoiGlass.cv_Nods[node_index].cv_ProcessHistory != 0)
-                {
-                    rtn = EqId.SDP1;
-                }
-                node_index = m_AoiGlass.cv_Nods.FindIndex(x => x.PNodeId == 4);
-                if (m_AoiGlass.cv_Nods[node_index].cv_ProcessHistory != 0)
-                {
-                    rtn = EqId.SDP2;
-                }
-                /*
-                node_index = m_AoiGlass.cv_Nods.FindIndex(x => x.PNodeId == 8);
-                if (m_AoiGlass.cv_Nods[node_index].cv_ProcessHistory != 0)
-                {
-                    rtn = EqId.SDP3;
-                }
-                */
-            }
-            return rtn;
-        }
-        private GlassData getEqUnloadGlassDataExceptVas(int eqid)
-        {
-            GlassData rtn = null;
-            TimechartNormal time_chart_instance = null;
-            int time_chart_id = -1;
-            time_chart_id = GetEqById(eqid).cv_Comm.cv_TimeChatId;
-            time_chart_instance = (TimechartNormal)cv_MmfController.cv_TimechartController.GetTimeChartInstance(time_chart_id);
-            rtn = new GlassData(cv_Mio, time_chart_instance.cv_ReadDataStartPort);
-            return rtn;
-        }
-        
-        private int FindAoiStepInJobpath(Dictionary<int , RobotJob> m_jobpath, int m_NowStep)
-        {
-            int rtn = 0;
-            int max_step = cv_CurRecipeFlowStepSetting.Count;
-            int first_step = 1;
-            for (int step = first_step; step < m_NowStep; step++)
-            {
-                if (m_jobpath.ContainsKey(step))
-                {
-                    if (m_jobpath[step].PTarget == ActionTarget.Eq && m_jobpath[step].PTargetId == (int)EqId.AOI)
-                    {
-                        rtn = step;
-                    }
-                }
-            }
-            return rtn;
-        }
-        private bool checkpathHasAoiInMiddle(Dictionary<int , RobotJob> m_jobpath , int m_NowStep)
-        {
-            bool rtn = false;
-            int max_step = cv_CurRecipeFlowStepSetting.Count;
-            int first_step = 1;
-            int acture_first_step = 0;
-            for (int step = first_step; step < m_NowStep; step++)
-            {
-                if(m_jobpath.ContainsKey(step))
-                {
-                    if(acture_first_step == 0)
-                    {
-                        acture_first_step = step;
-                    }
-                    if(m_jobpath[step].PTarget == ActionTarget.Eq && m_jobpath[step].PTargetId == (int)EqId.AOI)
-                    {
-                        if(step != acture_first_step)
-                        {
-                            rtn = true;
-                            break;
-                        }
-                    }
-                }
-            }
-            return rtn;
-        }
-        private int getAoiNextStep()
-        {
-            //cv_CurRecipeFlowStepSetting = new Dictionary<int, List<AllDevice>>();
-            int rtn = 0;
-            int max_step = cv_CurRecipeFlowStepSetting.Count;
-            int first_step = 1;
-            for (int step = first_step; step <= max_step; step++)
-            {
-                List<AllDevice> cv_stepDevice = cv_CurRecipeFlowStepSetting[step];
-                if (cv_stepDevice.Contains(AllDevice.AOI))
-                {
-                    rtn = step + 1;
-                }
-            }
-            return rtn;
-        }
-        private bool AlradyEnterAoi(GlassData m_Glass)
-        {
-            bool rtn = false;
-            if (m_Glass != null)
-            {
-                int node_index = m_Glass.cv_Nods.FindIndex(x => x.PNodeId == 9);
-                if (m_Glass.cv_Nods[node_index].PProcessHistory != 0)
-                {
-                    rtn = true;
-                }
-            }
-            return rtn;
-        }
-        private bool GlassNeedEnterAoi(GlassData m_Glass)
-        {
-            bool rtn = false;
-            if(m_Glass != null)
-            {
-                int node_index = m_Glass.cv_Nods.FindIndex(x => x.PNodeId == 2);
-                if (m_Glass.cv_Nods[node_index].PProcessHistory == 3)
-                {
-                    rtn = true;
-                }
-            }
-            return rtn;
-        }
-        private int getIjpStep()
-        {
-            int rtn = 0;
-            int max_step = cv_CurRecipeFlowStepSetting.Count;
-            int first_step = 1;
-            for (int step = first_step; step <= max_step; step++)
-            {
-                List<AllDevice> cv_stepDevice = cv_CurRecipeFlowStepSetting[step];
-                if (cv_stepDevice.Contains(AllDevice.IJP))
-                {
-                    rtn = step;
-                }
-            }
-            return rtn;
-        }
         private void OnRobotActionTimer()
         {
             DerivedTimer();
@@ -2353,7 +2195,7 @@ namespace LGC
                 return;
             }
 
-            bool IsFlow5Set = (recipe.PFlow == OdfFlow.Flow5_1 || recipe.PFlow == OdfFlow.Flow5_2);
+            //bool IsFlow5Set = (recipe.PFlow == OdfFlow.Flow5_1 || recipe.PFlow == OdfFlow.Flow5_2);
 
             if ((PSystemData.POperationMode == OperationMode.Auto && !cv_Alarms.IsHasAlarm() &&
                 PSystemData.PSystemStatus != EquipmentStatus.Down) || cv_IsPreView)
@@ -2405,7 +2247,7 @@ namespace LGC
                                 }
                             }
                         }
-                        if(cv_RobotJobPath.Count != 0)
+                        if (cv_RobotJobPath.Count != 0)
                         {
                             WriteLog(LogLevelType.Detail, "Get job from CalculateVasGlass");
                         }
@@ -2425,8 +2267,21 @@ namespace LGC
                             WriteLog(LogLevelType.Detail, "Get job from CalculateRobotJobPathForUnload");
                         }
                     }
+                    // only vas unload timer.
+                    bool vas_time = false;
+                    if (cv_VasUnloadPeriod > 0)
+                    {
+                        if (SysUtils.SecondsBetween(SysUtils.Now(), cv_VasUnloadTime) >= cv_VasUnloadPeriod)
+                        {
+                            if (SysUtils.SecondsBetween(SysUtils.Now(), cv_VasUnloadTime) <= cv_VasUnloadPeriod + cv_OnlyDoVasUnloadPeriod)
+                            {
+                                vas_time = true;
+                            }
+                        }
+                    }
 
-                    if (IsFlow5Set) //Ref20230225 Tommy 修改優先
+                    //if (IsFlow5Set) //Ref20230225 Tommy 修改優先
+                    if (recipe.PWaferPutUp) //Ref20230225 Tommy 修改優先
                     {
                         if ((cv_RobotJobPath == null || cv_RobotJobPath.Count == 0))
                         {
@@ -2434,6 +2289,7 @@ namespace LGC
                             {
                                 if (!robot.IsHasAnyDataAndSensor())
                                 {
+                                    if(!vas_time)
                                     CalculateVasGlass();
                                 }
                             }
@@ -2452,12 +2308,14 @@ namespace LGC
                         {
                             if (!robot.IsHasAnyDataAndSensor())
                             {
+                                if(!vas_time)
                                 CalculateRobotJobPath();
                             }
                         }
-                        if(cv_RobotJobPath.Count != 0)
+                        if (cv_RobotJobPath.Count != 0)
                         {
                             WriteLog(LogLevelType.Detail, "Get job from CalculateRobotJobPath");
+                            return; //because i want to check all path first.
                         }
                     }
                     if ((cv_RobotJobPath == null || cv_RobotJobPath.Count == 0))
@@ -2466,16 +2324,18 @@ namespace LGC
                         {
                             if (!robot.IsHasAnyDataAndSensor())
                             {
+                                if(!vas_time)
                                 DoFirstStepWhenNoEqUnloadExchange();
                             }
                         }
-                        if(cv_RobotJobPath.Count != 0)
+                        if (cv_RobotJobPath.Count != 0)
                         {
                             WriteLog(LogLevelType.Detail, "Get job from DoFirstStepWhenNoEqUnloadExchange");
                         }
                     }
 
-                    if (!IsFlow5Set)    //Ref20230225 Tommy 修改優先
+                    //if (!IsFlow5Set)    //Ref20230225 Tommy 修改優先
+                    if (!recipe.PWaferPutUp)    //Ref20230225 Tommy 修改優先
                     {
                         if ((cv_RobotJobPath == null || cv_RobotJobPath.Count == 0))
                         {
@@ -2483,6 +2343,7 @@ namespace LGC
                             {
                                 if (!robot.IsHasAnyDataAndSensor())
                                 {
+                                    if(!vas_time)
                                     CalculateVasGlass();
                                 }
                             }
@@ -2492,7 +2353,7 @@ namespace LGC
                             }
                         }
                     }
-                    
+
                     if ((cv_RobotJobPath == null || cv_RobotJobPath.Count == 0))
                     {
                         //RecipeItem recipe = null;
@@ -2502,11 +2363,12 @@ namespace LGC
                             {
                                 if (recipe.PFlow != OdfFlow.Flow3)
                                 {
+                                    if(!vas_time)
                                     CalculatePreActionJob();
                                 }
                             }
                         }
-                        if(cv_RobotJobPath.Count != 0)
+                        if (cv_RobotJobPath.Count != 0)
                         {
                             WriteLog(LogLevelType.Detail, "Get job from CalculatePreActionJob");
                         }
@@ -2595,7 +2457,7 @@ namespace LGC
                         {
                             if (PSystemData.POperationMode != OperationMode.Manual)
                             {
-                                if (port.cv_Data.PPortMode == PortMode.Unloader)
+                                if (port.cv_Data.PPortMode == PortMode.Unloader || port.cv_Data.PPortMode == PortMode.Both)
                                 {
                                     if (!port.cv_Data.HasOtherJobHaveToDo())
                                     {
@@ -2909,10 +2771,10 @@ namespace LGC
                             {
                                 //if (glass.PPortProductionCategory == ProductCategory.Wafer)
                                 //{
-                                if(!job.PManualExchangeForAligner)
+                                if (!job.PManualExchangeForAligner)
                                     robot.cv_Comm.SetAlignerDegree(recipe.PWaferVASDegree);
                                 else
-                                    robot.cv_Comm.SetAlignerDegree((float) Convert.ToDouble(job.PManualExchangeForAlignerDeg));
+                                    robot.cv_Comm.SetAlignerDegree((float)Convert.ToDouble(job.PManualExchangeForAlignerDeg));
                                 aligner.cv_Data.PPreAction = AlignerPreAction.VuccumOff1;
                                 //}
                             }
@@ -3039,7 +2901,7 @@ namespace LGC
                 job = cv_RobotJobPath.Peek();
                 if (cv_RobotJobPath.Count >= 2)
                 {
-                    if( (cv_RobotJobPath.ElementAt(1).PTarget == ActionTarget.Aligner ) && (job.PTargetId != (int)EqId.IJP) )
+                    if ((cv_RobotJobPath.ElementAt(1).PTarget == ActionTarget.Aligner) && (job.PTargetId != (int)EqId.IJP))
                     {
                         Aligner aligner = GetAlignerById(1);
                         if (aligner.cv_Data.PPreAction != AlignerPreAction.WaitHome && aligner.cv_Data.PPreAction != AlignerPreAction.SetToAngle)
@@ -3087,6 +2949,10 @@ namespace LGC
 
             if (m_Type == RobotAction.Get)// && (gif_type == EqInterFaceType.Unload || gif_type == EqInterFaceType.Exchange))
             {
+                if(eq_id == EqId.VAS)
+                {
+                    cv_VasUnloadTime = SysUtils.Now();
+                }
                 bool robot_get_arm_sensor = robot.cv_Data.GlassDataMap[(int)job.PGetArm].PHasSensor;
                 bool robot_get_arm_data = robot.cv_Data.GlassDataMap[(int)job.PGetArm].PHasData;
                 GlassData glass = null;
@@ -3131,7 +2997,7 @@ namespace LGC
                             time_chart_instance.cv_Action = EqInterFaceType.Unload;
                             if (job.PTarget == ActionTarget.Eq && job.PTargetId == (int)EqId.VAS)
                             {
-                                if(job.PTargetSlot == 1)
+                                if (job.PTargetSlot == 1)
                                 {
                                     GetVasStandby();
                                 }
@@ -3279,8 +3145,10 @@ namespace LGC
                         int node_index = robot.cv_Data.GlassDataMap[(int)job.PPutArm].cv_Nods.FindIndex(x => x.PNodeId == 2);
                         if (node_index != -1)
                         {
-                            if (robot.cv_Data.GlassDataMap[(int)job.PPutArm].cv_Nods[node_index].PProcessHistory != 1)
+                            if ((robot.cv_Data.GlassDataMap[(int)job.PPutArm].cv_Nods[node_index].PProcessHistory & 0x1) != 1)
                             {
+                                robot.cv_Data.GlassDataMap[(int)job.PPutArm].cv_Nods[node_index].PProcessHistory += 1;
+
                                 /*
                                 robot.cv_Data.GlassDataMap[(int)job.PPutArm].cv_Nods[node_index].PProcessHistory = 1;
                                 CommonData.HIRATA.MDBCWorkDataUpdateReport report_bc = new MDBCWorkDataUpdateReport();
@@ -3307,13 +3175,13 @@ namespace LGC
                             }
                             if (job.PTarget == ActionTarget.Eq && job.PTargetId == (int)EqId.VAS)
                             {
-                                if(job.PTargetSlot == 1)
+                                if (job.PTargetSlot == 1)
                                 {
                                     PutVasStandby(true);
                                 }
-                                else if(job.PTargetSlot == 2)
+                                else if (job.PTargetSlot == 2)
                                 {
-                                    if(cv_PutGlassStandby)
+                                    if (cv_PutGlassStandby)
                                     {
                                         PutVasStandby(false);
                                     }
@@ -3327,8 +3195,8 @@ namespace LGC
                                     {
                                         RecipeItem recipe = null;
                                         cv_Recipes.GetCurRecipe(out recipe);
-                                        if (job.PTargetId == (int)EqId.UV_1 && 
-                                            ((recipe.PFlow == OdfFlow.Flow5_2 &&!m_IsMaunal) ||    //in auto flow5_2 is set topput
+                                        if (job.PTargetId == (int)EqId.UV_1 &&
+                                            ((recipe.PFlow == OdfFlow.Flow5_2 && !m_IsMaunal) ||    //in auto flow5_2 is set topput
                                             (m_Type == RobotAction.TopPut && m_IsMaunal)))          // in manual set use TopPut
                                         {
                                             //不做事
@@ -3610,7 +3478,7 @@ namespace LGC
                                     time_chart_instance.cv_PutArm = job.PPutArm;
                                     time_chart_instance.SetTrigger(time_chart_id);
 
-                                    if(cv_GetPutStandbyExceptVas)
+                                    if (cv_GetPutStandbyExceptVas)
                                     {
                                         GetEqStandbyExceptVas(job.cv_TargetId, job.cv_TargetSlot, job.PGetArm);
                                     }
@@ -3655,8 +3523,9 @@ namespace LGC
                                 time_chart_instance.SetTrigger(time_chart_id);
                                 GetPutNormalEq(job.PPutArm, eq_id, 1, false, true);
                                 int node_index = robot.cv_Data.GlassDataMap[(int)job.PPutArm].cv_Nods.FindIndex(x => x.PNodeId == 2);
-                                if (robot.cv_Data.GlassDataMap[(int)job.PPutArm].cv_Nods[node_index].PProcessHistory != 1)
+                                if ((robot.cv_Data.GlassDataMap[(int)job.PPutArm].cv_Nods[node_index].PProcessHistory & 0x1) != 1)
                                 {
+                                    robot.cv_Data.GlassDataMap[(int)job.PPutArm].cv_Nods[node_index].PProcessHistory += 1;
                                     /*
                                     robot.cv_Data.GlassDataMap[(int)job.PPutArm].cv_Nods[node_index].PProcessHistory = 1;
                                     CommonData.HIRATA.MDBCWorkDataUpdateReport report_bc = new MDBCWorkDataUpdateReport();
@@ -3921,6 +3790,7 @@ namespace LGC
             //    IsFlow5Set = (recipe.PFlow == OdfFlow.Flow5_1 || recipe.PFlow == OdfFlow.Flow5_2);
             //}
 
+            bool rtn = true;
             int UnloadPortCanLoadCount = 0;
             for (int port_id = 0; port_id < cv_InProcessPort.Count; port_id++)
             {
@@ -4000,7 +3870,8 @@ namespace LGC
                         GlassData glass = null;
                         try
                         {
-                            glass = new GlassData(cv_Mio, time_chart_instance.cv_ReadDataStartPort);
+                            if (time_chart_instance != null)
+                                glass = new GlassData(cv_Mio, time_chart_instance.cv_ReadDataStartPort);
                         }
                         catch (Exception e)
                         {
@@ -4015,17 +3886,30 @@ namespace LGC
                         }
                     }
                 }
-                
+
             }
 
             if (CalculateInEQGlassCount > UnloadPortCanLoadCount)
             {
-                WriteLog(LogLevelType.Error, "[CheckNeedToUnloadPortGlassAndUnloadPortCanLoad] Find CalculateInEQGlassCount: "+ CalculateInEQGlassCount.ToString()+ " >  UnloadPortCanLoadCount: "+ UnloadPortCanLoadCount.ToString());
-                WriteLog(LogLevelType.Error, "[CheckNeedToUnloadPortGlassAndUnloadPortCanLoad] Can Not Do Unload From EQ "+ m_Device.ToString());
-                return false;
+                WriteLog(LogLevelType.Error, "[CheckNeedToUnloadPortGlassAndUnloadPortCanLoad] Find CalculateInEQGlassCount: " + CalculateInEQGlassCount.ToString() + " >  UnloadPortCanLoadCount: " + UnloadPortCanLoadCount.ToString());
+                WriteLog(LogLevelType.Error, "[CheckNeedToUnloadPortGlassAndUnloadPortCanLoad] Can Not Do Unload From EQ " + m_Device.ToString());
+                //return false;
+                rtn = false;
+            }
+            if (!rtn)
+            {
+                RecipeItem recipe = null;
+                if (cv_Recipes.GetCurRecipe(out recipe))
+                {
+                    if (recipe.PBackToLD)
+                    {
+                        rtn = true;
+                    }
+                }
             }
 
-            return true;
+            //return true;
+            return rtn;
 
         }
         private GlassData readEqUnloadGlassData(int m_EqId)
@@ -4053,18 +3937,18 @@ namespace LGC
             }
             return rtn;
         }
-        private GlassData getGlassDataFromLastEq(Dictionary<int , RobotJob> m_jobMap , int m_endStep)
+        private GlassData getGlassDataFromLastEq(Dictionary<int, RobotJob> m_jobMap, int m_endStep)
         {
             GlassData rtn = null;
-            for(int i= m_endStep; i >= 1 ;i--)
+            for (int i = m_endStep; i >= 1; i--)
             {
-                if(m_jobMap.ContainsKey(i))
+                if (m_jobMap.ContainsKey(i))
                 {
                     RobotJob job = m_jobMap[i];
-                    if(job.PTarget == ActionTarget.Eq && job.PTargetId != 0)
+                    if (job.PTarget == ActionTarget.Eq && job.PTargetId != 0)
                     {
                         GlassData tmp = readEqUnloadGlassData(job.PTargetId);
-                        if(!tmp.IsNull())
+                        if ( (!tmp.IsNull()) && (tmp != null))
                         {
                             rtn = tmp;
                         }
@@ -4074,7 +3958,7 @@ namespace LGC
             }
             return rtn;
         }
-        private bool checkLoadPortSlotCanPut(int m_FoupSeq , int m_Slot , out int m_port)
+        private bool checkLoadPortSlotCanPut(int m_FoupSeq, int m_Slot, out int m_port)
         {
             bool rtn = false;
             m_port = 0;
@@ -4088,15 +3972,12 @@ namespace LGC
                     {
                         if (job_port.PLotStatus == LotStatus.Process)
                         {
-                            if (job_port.cv_Data.HasDataOrSensor())
+                            if (job_port.cv_Data.PFoupSeq == m_FoupSeq)
                             {
-                                if (job_port.cv_Data.PFoupSeq == m_FoupSeq)
+                                if ((!job_port.cv_Data.GlassDataMap[m_Slot].PHasData) && (!job_port.cv_Data.GlassDataMap[m_Slot].PHasSensor))
                                 {
-                                    if( (!job_port.cv_Data.GlassDataMap[m_Slot].PHasData) &&  (!job_port.cv_Data.GlassDataMap[m_Slot].PHasSensor))
-                                    {
-                                        rtn = true;
-                                        m_port = job_port.cv_Id;
-                                    }
+                                    rtn = true;
+                                    m_port = job_port.cv_Id;
                                 }
                             }
                         }
@@ -4106,7 +3987,7 @@ namespace LGC
             return rtn;
         }
 
-        private bool FindUnloadPortToPutSubstrate(out int m_Port, out int m_Slot , RobotJob m_Job)
+        private bool FindUnloadPortToPutSubstrate(out int m_Port, out int m_Slot, RobotJob m_Job)
         {
             bool rtn = false;
             int port = 1;
@@ -4267,7 +4148,7 @@ namespace LGC
         #endregion
 
         #region Sampling data change
-        
+
         protected override void OnSamplingDataChange()
         {
             if (cv_MmfController != null)
@@ -4328,7 +4209,7 @@ namespace LGC
             {
                 AddTowerCommand(SignalTowerColor.All, SignalTowerControl.Off);
                 AddTowerCommand(SignalTowerColor.Red, SignalTowerControl.On);
-                if(PSystemData.POperationMode == OperationMode.Auto)
+                if (PSystemData.POperationMode == OperationMode.Auto)
                 {
                     PSystemData.POperationMode = OperationMode.Manual;
                 }
@@ -4457,7 +4338,7 @@ namespace LGC
             PSystemData.SaveToFile();
 
             KIniFile ini = new KIniFile(CommonData.HIRATA.CommonStaticData.g_ModuleSystemIniFile);
-            if(ini.ReadString("Config", "PutGlassStandby", "0").Trim() == "1")
+            if (ini.ReadString("Config", "PutGlassStandby", "0").Trim() == "1")
             {
                 cv_PutGlassStandby = true;
                 WriteLog(LogLevelType.Detail, "Set PutGlassStandby : 1");
@@ -4501,6 +4382,17 @@ namespace LGC
                 WriteLog(LogLevelType.Detail, "Set cv_GetPutStandbyExceptVas : 0");
             }
 
+            if (ini.ReadString("Config", "NeedCaculateUnloadPortCountForIjp", "0").Trim() == "1")
+            {
+                cv_NeedCaculateUnloadPortCountForIjp = true;
+                WriteLog(LogLevelType.Detail, "Set cv_NeedCaculateUnloadPortCountForIjp : 1");
+            }
+            else
+            {
+                cv_NeedCaculateUnloadPortCountForIjp = false;
+                WriteLog(LogLevelType.Detail, "Set cv_NeedCaculateUnloadPortCountForIjp : 0");
+            }
+
             if (ini.ReadString("Config", "PutToBufferFirst", "0").Trim() == "1")
             {
                 cv_PutToBufferFirst = true;
@@ -4524,6 +4416,12 @@ namespace LGC
                 cv_CheckEqDataLocalMode = false;
                 WriteLog(LogLevelType.Detail, "Set cv_CheckEqDataLocalMode : 0");
             }
+
+
+            cv_VasUnloadPeriod = int.Parse(ini.ReadString("Config", "VasUnloadPeriod", "0"));
+            WriteLog(LogLevelType.Detail, "Set cv_VasUnloadPeriod" + cv_VasUnloadPeriod.ToString());
+            cv_OnlyDoVasUnloadPeriod = int.Parse(ini.ReadString("Config", "OnlyDoVasUnloadPeriod", "0"));
+            WriteLog(LogLevelType.Detail, "Set cv_OnlyDoVasUnloadPeriod" + cv_OnlyDoVasUnloadPeriod.ToString());
 
             string str_WarringNeedBuzzer = ini.ReadString("Config", "WarringNeedBuzzer", "");
 
@@ -4560,7 +4458,7 @@ namespace LGC
             {
                 Port port = LgcForm.GetPortById(i);
 
-                if(port.PPortStatus == PortStaus.LDCM)
+                if (port.PPortStatus == PortStaus.LDCM)
                 {
                     for (int slot = 1; slot <= port.cv_Data.cv_SlotCount; slot++)
                     {
@@ -4758,12 +4656,12 @@ namespace LGC
                 {
                     if (PSystemData.PSystemStatus != EquipmentStatus.WaitIdle && PSystemData.PSystemStatus != EquipmentStatus.Idle)
                     {
-                        if(PSystemData.PSystemStatus == EquipmentStatus.None)
+                        if (PSystemData.PSystemStatus == EquipmentStatus.None)
                         {
-                            if(PSystemData.PRobotConnect)
-                            PSystemData.PSystemStatus = EquipmentStatus.Idle;
+                            if (PSystemData.PRobotConnect)
+                                PSystemData.PSystemStatus = EquipmentStatus.Idle;
                             else
-                            PSystemData.PSystemStatus = EquipmentStatus.Down;
+                                PSystemData.PSystemStatus = EquipmentStatus.Down;
                         }
                         else
                         {
@@ -5163,7 +5061,7 @@ namespace LGC
             }
             return true;
         }
-        public bool GetPutNormalEq(RobotArm m_Arm, EqId m_EqId, int m_Slot, bool IsGet, bool m_UseHS = true ,bool m_IsMaunalTopWafterPut = false, bool m_IsMaunal = false)
+        public bool GetPutNormalEq(RobotArm m_Arm, EqId m_EqId, int m_Slot, bool IsGet, bool m_UseHS = true, bool m_IsMaunalTopWafterPut = false, bool m_IsMaunal = false)
         {
             Robot robot = LgcForm.GetRobotById(1);
             if (!robot.IsBusy)
@@ -5171,7 +5069,7 @@ namespace LGC
                 RecipeItem recipe = null;
                 cv_Recipes.GetCurRecipe(out recipe);
 
-                    int stage = GetEqById((int)m_EqId).cv_Comm.cv_RobotPosition;
+                int stage = GetEqById((int)m_EqId).cv_Comm.cv_RobotPosition;
                 APIEnum.RobotCommand robot_command = APIEnum.RobotCommand.None;
                 if (IsGet)
                     robot_command = APIEnum.RobotCommand.WaferGet;
@@ -5262,7 +5160,7 @@ namespace LGC
             }
             return true;
         }
-        public static bool GetEqStandbyExceptVas(int m_EqId , int m_Slot , RobotArm m_Arm)
+        public static bool GetEqStandbyExceptVas(int m_EqId, int m_Slot, RobotArm m_Arm)
         {
             Robot robot = LgcForm.GetRobotById(1);
             RobotAction action = RobotAction.None;
@@ -5277,15 +5175,15 @@ namespace LGC
                 para.Add("Stage" + stage.ToString());
                 para.Add("1");
                 RobotJob tmp_job = null;// new RobotJob(obj.RobotId, obj.Source.PArm, obj.PAction, obj.Source.PTarget, obj.Source.Id, obj.Source.Slot);
-                tmp_job = new RobotJob(1, RobotArm.rabNone, m_Arm , action
-                    , ActionTarget.Eq, m_EqId , 1, true);
+                tmp_job = new RobotJob(1, RobotArm.rabNone, m_Arm, action
+                    , ActionTarget.Eq, m_EqId, 1, true);
                 CommandData tmp_command = new CommandData(APIEnum.CommandType.Robot, robot_command.ToString(),
                     APIEnum.CommnadDevice.Robot, 0, para);
                 robot.SetRobotTransferAction(tmp_command, tmp_job);
             }
             return true;
         }
-        public static bool PutEqStandbyExceptVas(int m_EqId , int m_Slot , RobotArm m_Arm)
+        public static bool PutEqStandbyExceptVas(int m_EqId, int m_Slot, RobotArm m_Arm)
         {
             Robot robot = LgcForm.GetRobotById(1);
             RobotAction action = RobotAction.None;
@@ -5300,7 +5198,7 @@ namespace LGC
                 para.Add("Stage" + stage.ToString());
                 para.Add("1");
                 RobotJob tmp_job = null;// new RobotJob(obj.RobotId, obj.Source.PArm, obj.PAction, obj.Source.PTarget, obj.Source.Id, obj.Source.Slot);
-                tmp_job = new RobotJob(1, m_Arm, RobotArm.rabNone , action
+                tmp_job = new RobotJob(1, m_Arm, RobotArm.rabNone, action
                     , ActionTarget.Eq, m_EqId, 1, true);
                 CommandData tmp_command = new CommandData(APIEnum.CommandType.Robot, robot_command.ToString(),
                     APIEnum.CommnadDevice.Robot, 0, para);
@@ -5628,7 +5526,7 @@ namespace LGC
             }
             WriteLog(LogLevelType.NormalFunctionInOut, CommonData.HIRATA.CommonStaticData.__FUN(), FunInOut.Leave);
         }
-        public static void EditAlarm(CommonData.HIRATA.AlarmItem m_Alarm , bool m_IsApi = false)
+        public static void EditAlarm(CommonData.HIRATA.AlarmItem m_Alarm, bool m_IsApi = false)
         {
             WriteLog(LogLevelType.NormalFunctionInOut, CommonData.HIRATA.CommonStaticData.__FUN(), FunInOut.Enter);
             if (m_Alarm.PStatus == AlarmStatus.Occur)
@@ -5683,15 +5581,15 @@ namespace LGC
         {
             if (cv_ApiAlarm == null)
             {
-                cv_ApiAlarm = new Dictionary<string,List<AlarmItem>>();
+                cv_ApiAlarm = new Dictionary<string, List<AlarmItem>>();
             }
             cv_ApiAlarm.Clear();
-            for(int i=1 ; i<=10 ; i++)
+            for (int i = 1; i <= 10; i++)
             {
-                if(i<10)
-                cv_ApiAlarm[i.ToString().PadLeft(2,'0')] = new List<AlarmItem>();
+                if (i < 10)
+                    cv_ApiAlarm[i.ToString().PadLeft(2, '0')] = new List<AlarmItem>();
                 else
-                cv_ApiAlarm[i.ToString()] = new List<AlarmItem>();
+                    cv_ApiAlarm[i.ToString()] = new List<AlarmItem>();
             }
             KXmlItem file = new KXmlItem();
 
@@ -5701,17 +5599,17 @@ namespace LGC
             int index = 0;
             int alarm_count = file.ItemsByName["Data"].ItemNumber;
             Match match = Match.Empty;
-            while(index < alarm_count )
+            while (index < alarm_count)
             {
                 KXmlItem xml = file.ItemsByName["Data"].Items[index];
                 AlarmItem tmp = new AlarmItem();
                 tmp.cv_ApiTypeCode = xml.Attributes["Type"].Trim();
                 tmp.PCode = xml.Attributes["RepCode"].Trim();
                 string level = xml.Attributes["Level"].Trim();
-                if(level == "L")
-                tmp.PLevel =AlarmLevele.Light;
-                else if(level == "S")
-                tmp.PLevel =AlarmLevele.Serious;
+                if (level == "L")
+                    tmp.PLevel = AlarmLevele.Light;
+                else if (level == "S")
+                    tmp.PLevel = AlarmLevele.Serious;
                 match = Match.Empty;
                 match = Regex.Match(xml.Attributes["Device"].Trim(), @"\D*", RegexOptions.IgnoreCase);
                 if (match.Success)
@@ -5821,7 +5719,7 @@ namespace LGC
                 Port port = GetPortById(i);
                 if (port.PPortStatus == PortStaus.LDCM)
                 {
-                    if (port.cv_Data.PPortMode == PortMode.Loader)
+                    if (port.cv_Data.PPortMode == PortMode.Loader || port.cv_Data.PPortMode == PortMode.Both)
                     {
                         if (port.PLotStatus == LotStatus.Process)
                         {
@@ -5969,7 +5867,7 @@ namespace LGC
             WriteLog(CommonData.HIRATA.LogLevelType.Detail, log);
             WriteLog(CommonData.HIRATA.LogLevelType.NormalFunctionInOut, "WritePortToPlc", CommonData.HIRATA.FunInOut.Leave);
         }
-        private bool CheckEqSideData(GlassData data , EqId m_Eq)
+        private bool CheckEqSideData(GlassData data, EqId m_Eq)
         {
             bool rtn = true;
             if (PSystemData.IsCheckRecipe)
@@ -6096,7 +5994,7 @@ namespace LGC
             for (int slot = 1; slot <= port.cv_Data.cv_SlotCount; slot++)
             {
                 GlassData glass = port.cv_Data.GlassDataMap[slot];
-                if (glass.PHasData && glass.PHasSensor && glass.PProcessFlag == ProcessFlag.Need)
+                if (glass.PHasData && glass.PHasSensor && glass.PProcessFlag == ProcessFlag.Need && (!alreadytakeout(glass)))
                 {
                     if (!ppid_sort.ContainsKey((int)glass.PPriority))
                     {
@@ -6123,7 +6021,7 @@ namespace LGC
                 GlassData glass = port.cv_Data.GlassDataMap[slot];
                 if (glass.PHasSensor && glass.PHasData)
                 {
-                    if (glass.PPID.Trim() == m_Ppid.Trim() && glass.POcrResult == OCRResult.None && glass.PProcessFlag == ProcessFlag.Need)
+                    if (glass.PPID.Trim() == m_Ppid.Trim() && glass.POcrResult == OCRResult.None && glass.PProcessFlag == ProcessFlag.Need && (!alreadytakeout(glass)))
                     {
                         if (!slot_sort.ContainsKey((int)glass.PPriority))
                         {
@@ -6148,7 +6046,21 @@ namespace LGC
 
         private void LgcForm_Shown(object sender, EventArgs e)
         {
-            Hide();
+            //Hide();
+            for (int i = 1; i <= CommonData.HIRATA.CommonStaticData.g_EqNumber; i++)
+            {
+                if (GetEqById(i).cv_SlotCount > 1)
+                {
+                    for (int j = 1; j <= GetEqById(i).cv_SlotCount; j++)
+                    {
+                        comboBox1.Items.Add(GetEqById(i).cv_Alias + (j == 1 ? "_Low" : "_Up"));
+                    }
+                }
+                else
+                {
+                    comboBox1.Items.Add(GetEqById(i).cv_Alias);
+                }
+            }
         }
         public static void AdjustRobotJob(EqInterFaceType m_Action, int m_TimeChartId)
         {
@@ -6360,11 +6272,143 @@ namespace LGC
             RobotJob job = new RobotJob(1, RobotArm.rabNone, RobotArm.rbaDown, RobotAction.Get, ActionTarget.Buffer, 1, 2, false);
             cv_RobotJobPath.Enqueue(job);
 
-            job = new RobotJob(1, RobotArm.rbaDown, RobotArm.rbaUp, RobotAction.Exchange, ActionTarget.Aligner,1, 1, false);
+            job = new RobotJob(1, RobotArm.rbaDown, RobotArm.rbaUp, RobotAction.Exchange, ActionTarget.Aligner, 1, 1, false);
             cv_RobotJobPath.Enqueue(job);
 
             job = new RobotJob(1, RobotArm.rbaUp, RobotArm.rabNone, RobotAction.Put, ActionTarget.Port, 6, 1, false);
             cv_RobotJobPath.Enqueue(job);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Eq eq = getEq();
+            EqId eqid = (EqId)eq.cv_Id;
+            GlassData glass = new GlassData();
+            glass.PCimMode = OnlineMode.Control;
+            glass.PFoupSeq = 100;
+            glass.PWorkSlot = 1;
+            glass.PWorkOrderNo = 100;
+            glass.PId = "P123";
+            glass.PPID = "CIMON1";
+            glass.PWorkType = WorkType.Production;
+            //if (port_id == 3 || port_id == 4)
+            //    glass.PProductionCategory = ProductCategory.Glass;
+            //else if (port_id == 5 || port_id == 6)
+            glass.PProductionCategory = ProductCategory.Wafer;
+            glass.PGlassJudge = GlassJudge.OK;
+            glass.PProcessFlag = ProcessFlag.Need;
+            glass.PPriority = (25 % 8) + 1;
+            glass.POcrRead = OCRRead.Need;
+            glass.PAssamblyFlag = AssambleNeed.Need;
+            int seal_1_hisotry = int.Parse(seal_1_h.Text.Trim());
+            int seal_2_hisotry = int.Parse(seal_2_h.Text.Trim());
+            int seal_3_hisotry = int.Parse(seal_3_h.Text.Trim());
+            int efem_hisotry = int.Parse(seal_e.Text.Trim());
+            int aoi_hisotry = int.Parse(seal_a.Text.Trim());
+            int aoi_abnormall = int.Parse(aoi_abnormal.Text.Trim());
+            foreach (GlassDataNodeItem item in glass.cv_Nods)
+            {
+                item.PRecipe = 77;
+                if (item.PNodeId == GetEqById((int)EqId.AOI).PNode)
+                {
+                    item.PProcessAbnormal = aoi_abnormall == 1 ? true : false;
+                    item.PProcessHistory = aoi_hisotry;
+                }
+                else if (item.PNodeId == 2)
+                {
+                    item.PProcessHistory = efem_hisotry;
+                }
+                else if (item.PNodeId == GetEqById((int)EqId.SDP1).PNode)
+                {
+                    item.PProcessHistory = seal_1_hisotry;
+                }
+                else if (item.PNodeId == GetEqById((int)EqId.SDP2).PNode)
+                {
+                    item.PProcessHistory = seal_2_hisotry;
+                }
+                else if (item.PNodeId == GetEqById((int)EqId.SDP3).PNode)
+                {
+                    item.PProcessHistory = seal_3_hisotry;
+                }
+            }
+
+
+            int slot_start = cv_MmfController.cv_TimechartController.GetTimeChartInstance(eq.cv_Comm.cv_TimeChatId).cv_ReadDataStartPort;
+            glass.Write(cv_Mio, slot_start);
+        }
+        private Eq getEq()
+        {
+            EqId eqid = getTestEq();
+            Eq eq = null;
+            switch (eqid)
+            {
+                case EqId.SDP1:
+                    eq = GetEqById((int)EqId.SDP1);
+                    break;
+                case EqId.SDP2:
+                    eq = GetEqById((int)EqId.SDP2);
+                    break;
+                case EqId.SDP3:
+                    eq = GetEqById((int)EqId.SDP3);
+                    break;
+                case EqId.IJP:
+                    eq = GetEqById((int)EqId.IJP);
+                    break;
+                case EqId.VAS:
+                    eq = GetEqById((int)EqId.VAS);
+                    break;
+                    break;
+                case EqId.UV_1:
+                    eq = GetEqById((int)EqId.UV_1);
+                    break;
+                case EqId.AOI:
+                    eq = GetEqById((int)EqId.AOI);
+                    break;
+                case EqId.UV_2:
+                    eq = GetEqById((int)EqId.UV_2);
+                    break;
+                default:
+                    break;
+            };
+            return eq;
+        }
+        private EqId getTestEq()
+        {
+            EqId eq = EqId.None;
+            string eq_name = comboBox1.Text.Trim();
+            switch (eq_name)
+            {
+                case "SDP1":
+                    eq = EqId.SDP1;
+                    break;
+                case "SDP2":
+                    eq = EqId.SDP2;
+                    break;
+                case "SDP3":
+                    eq = EqId.SDP3;
+                    break;
+                case "IJP":
+                    eq = EqId.IJP;
+                    break;
+                case "VAS_Low":
+                    eq = EqId.VAS;
+                    break;
+                case "VAS_Up":
+                    eq = EqId.VAS;
+                    break;
+                case "UV1":
+                    eq = EqId.UV_1;
+                    break;
+                case "AOI":
+                    eq = EqId.AOI;
+                    break;
+                case "UV2":
+                    eq = EqId.UV_2;
+                    break;
+                default:
+                    break;
+            };
+            return eq;
         }
     }
 

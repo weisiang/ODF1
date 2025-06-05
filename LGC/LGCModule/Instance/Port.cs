@@ -43,7 +43,8 @@ namespace LGC
                 {
                     cv_Data.cv_PortStatus = (UInt16)value;
                     SendDataViaMmf();
-                    if (value == PortStaus.UDRQ && this.cv_Data.PPortMode == PortMode.Unloader && LgcForm.PSystemData.PSystemOnlineMode == OnlineMode.Control)
+                    //if (value == PortStaus.UDRQ && this.cv_Data.PPortMode == PortMode.Unloader && LgcForm.PSystemData.PSystemOnlineMode == OnlineMode.Control)
+                    if (value == PortStaus.UDRQ && (this.cv_Data.PPortMode == PortMode.Unloader || this.cv_Data.PPortMode == PortMode.Both) && LgcForm.PSystemData.PSystemOnlineMode == OnlineMode.Control)
                     {
                         CommonData.HIRATA.AlarmItem alarm = new AlarmItem();
                         alarm.PCode = Alarmtable.UnloadPortIsUDRQWhenOnlineMode.ToString();

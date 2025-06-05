@@ -823,7 +823,7 @@ namespace LGC
                         robot.cv_Data.SaveToFile();
                         LgcForm.cv_MmfController.SendBcTreansferReport(DataFlowAction.Fetch, robot.cv_Data.GlassDataMap[(int)job.PGetArm] , (int)port.cv_Data.cv_Id,
                             (int)job.PTargetSlot);
-                        if(!port.cv_Data.HasOtherJobHaveToDo())
+                        if(port.cv_Data.needReportLastSubstrate())
                         {
                             LgcForm.cv_MmfController.SendBcLastSubstrateReport(robot.cv_Data.GlassDataMap[(int)job.PGetArm], (int)port.cv_Data.cv_Id, job.PTargetSlot);
                         }
