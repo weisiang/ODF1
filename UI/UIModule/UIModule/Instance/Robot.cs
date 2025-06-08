@@ -46,5 +46,13 @@ namespace UI
             (cv_Ui as RobotUI).refresh(cv_Data);
         }
 
+        public void updateJobType(RobotArm m_Arm , EJobType m_Type)
+        {
+            (cv_Ui as RobotUI).updateJobType(m_Arm, m_Type);
+        }
+        public void ClearJobType()
+        {
+            (cv_Ui as RobotUI).ClearJobType();
+        }
     }
 }

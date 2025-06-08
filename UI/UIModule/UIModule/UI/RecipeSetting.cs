@@ -135,6 +135,7 @@ namespace UI
             int index = UiForm.cv_Recipes.cv_RecipeList.FindIndex(x => x.cv_Id == select_str);
             if (-1 != index)
             {
+                cv_TxRecipeId.Text = "";
                 cv_TxRecipeId.Text = UiForm.cv_Recipes.cv_RecipeList[index].PId;
                 cb_Flow.Text = UiForm.cv_Recipes.cv_RecipeList[index].PFlow.ToString();
                 cv_TxWaferOCR.Text = UiForm.cv_Recipes.cv_RecipeList[index].PWaferVASDegree.ToString();
@@ -286,6 +287,7 @@ namespace UI
             tmp.PId = cv_TxRecipeId.Text.Trim();
             tmp.PFlow = (CommonData.HIRATA.OdfFlow)Enum.Parse(typeof(CommonData.HIRATA.OdfFlow), cb_Flow.Text.Trim());
 
+            /*
             if (tmp.PFlow == OdfFlow.Flow1_1 || tmp.PFlow == OdfFlow.Flow1_2 || tmp.PFlow == OdfFlow.FLow4_1 || tmp.PFlow == OdfFlow.Flow4_2 || tmp.PFlow == OdfFlow.Flow5_1 || tmp.PFlow == OdfFlow.Flow5_2 ||
                 tmp.PFlow == OdfFlow.Flow6_1 || tmp.PFlow == OdfFlow.Flow6_2 || tmp.PFlow == OdfFlow.Flow6_3 || tmp.PFlow == OdfFlow.Flow7_2 || tmp.PFlow == OdfFlow.Flow7_3 || tmp.PFlow == OdfFlow.Flow7_4)
             {
@@ -330,6 +332,7 @@ namespace UI
             {
                 tmp.PReworkFlow = false;
             }
+            */
 
 
             tmp.PWaferVASDegree = float.Parse(cv_TxWaferOCR.Text.Trim(), System.Globalization.CultureInfo.InvariantCulture);
@@ -341,6 +344,7 @@ namespace UI
 
             obj.Recipes.Add(tmp);
             Global.Controller.SendMmfNotifyObject(typeof(CommonData.HIRATA.MDRecipeAction).Name, obj);
+            cv_TxRecipeId.Text = "";
             UiForm.WriteLog(LogLevelType.NormalFunctionInOut, this.GetType().Name + "." + System.Reflection.MethodBase.GetCurrentMethod().Name, CommonData.HIRATA.FunInOut.Leave);
         }
         private void cb_Flow_SelectedIndexChanged(object sender, EventArgs e)

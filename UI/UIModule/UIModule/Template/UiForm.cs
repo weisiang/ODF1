@@ -1756,6 +1756,7 @@ cb_PortActionSlotType
             cv_AppEventMap.Add(typeof(CommonData.HIRATA.MDPopOpidForm).Name, ProcessPopOpidFormReq);
             cv_AppEventMap.Add(typeof(CommonData.HIRATA.MDPopMonitorForm).Name, ProcessPopMonitorFormReq);
             cv_AppEventMap.Add(typeof(CommonData.HIRATA.MDRobotAction).Name, PrcessRobotAction);
+            cv_AppEventMap.Add(typeof(CommonData.HIRATA.MDRobotjobType).Name, PrcessRobotType);
             cv_AppEventMap.Add(typeof(CommonData.HIRATA.SystemData).Name, ProcessSystemData);
             cv_AppEventMap.Add(typeof(CommonData.HIRATA.TimeOutData).Name, ProcessTimeOutData);
             cv_AppEventMap.Add(typeof(CommonData.HIRATA.GlassCountData).Name, ProcessGlassCountData);
@@ -2066,6 +2067,17 @@ cb_PortActionSlotType
                     lbl_station.Text = "NONE";
                     lbl_station.BackColor = Color.Red;
                 }
+            }
+
+            if (PSystemData.PRobotStatus == EquipmentStatus.Down)
+            {
+            }
+            else if (PSystemData.PRobotStatus == EquipmentStatus.Idle)
+            {
+                CleanJobTypeAtArm();
+            }
+            else if (PSystemData.PRobotStatus == EquipmentStatus.Run)
+            {
             }
 
 
@@ -2438,7 +2450,12 @@ cb_PortActionSlotType
             WriteLog(LogLevelType.General, log);
             //WriteNormalOut
         }
-
+        //
+        void PrcessRobotType(string m_MessageId, object m_Object)
+        {
+            CommonData.HIRATA.MDRobotjobType obj = m_Object as CommonData.HIRATA.MDRobotjobType;
+            DisplayRobotJobType(obj.RobotJob);
+        }
         void PrcessRobotAction(string m_MessageId, object m_Object)
         { //WriteNormalIn 
             string log = ""; CommonData.HIRATA.MDRobotAction obj = m_Object as CommonData.HIRATA.MDRobotAction;
@@ -2463,6 +2480,41 @@ cb_PortActionSlotType
                 }
             }
             //WriteNormalOut
+        }
+        protected override void OnRobotStatusChange()
+        {
+        }
+        void setJobTypeAtArm(RobotArm m_Arm , EJobType m_Type)
+        {
+            GetRobot(1).updateJobType(m_Arm, m_Type);
+        }
+        void CleanJobTypeAtArm()
+        {
+            GetRobot(1).ClearJobType();
+        }
+        void DisplayRobotJobType(RobotJob m_Job)
+        {
+            if (m_Job != null)
+            {
+                if (m_Job.PAction == RobotAction.Exchange || m_Job.PAction == RobotAction.Put)
+                {
+                    setJobTypeAtArm(m_Job.PPutArm, m_Job.PJobType);
+                }
+                /*
+                    if (m_Job.PJobType == EJobType.AfterRework)
+                    {
+                    }
+                    else if (m_Job.PJobType == EJobType.EnterAOI)
+                    {
+                    }
+                    else if (m_Job.PJobType == EJobType.PassAOI)
+                    {
+                    }
+                    else if (m_Job.PJobType == EJobType.Rework)
+                    {
+                    }
+                */
+            }
         }
         void DisplayRobotAction(MDRobotAction m_obj)
         {

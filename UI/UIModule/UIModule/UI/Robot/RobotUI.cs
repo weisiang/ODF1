@@ -102,6 +102,23 @@ namespace UI.GUI
             Region reg = new Region(path);
             m_Obj.Region = reg;
         }
+        public void updateJobType(RobotArm m_Arm , EJobType m_Type)
+        {
+            if(m_Arm == RobotArm.rbaDown)
+            {
+                lbl_lowarmrework.Text = m_Type.ToString();
+            }
+            else if(m_Arm == RobotArm.rbaUp)
+            {
+                lbl_uparmrework.Text = m_Type.ToString();
+            }
+        }
+        public void ClearJobType()
+        {
+            lbl_lowarmrework.Text = "";
+            lbl_uparmrework.Text = "";
+        }
+
         public void refresh(RobotData m_Data)
         {
             if (UiForm.PSystemData.PRobotConnect)

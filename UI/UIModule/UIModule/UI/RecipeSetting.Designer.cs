@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cb_Rework = new System.Windows.Forms.CheckBox();
             this.cb_FlipToUv = new System.Windows.Forms.CheckBox();
             this.cb_waferPutUp = new System.Windows.Forms.CheckBox();
             this.cb_backToLd = new System.Windows.Forms.CheckBox();
@@ -67,11 +68,6 @@
             this.Sampling = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cv_TimeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cb_Rework = new System.Windows.Forms.CheckBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.lbl_AoiNextStep = new System.Windows.Forms.Label();
-            this.lbl_IJPStep = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cv_RecipeDataView)).BeginInit();
@@ -80,10 +76,6 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(252)))), ((int)(((byte)(254)))));
-            this.panel1.Controls.Add(this.lbl_IJPStep);
-            this.panel1.Controls.Add(this.lbl_AoiNextStep);
-            this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.cb_Rework);
             this.panel1.Controls.Add(this.cb_FlipToUv);
             this.panel1.Controls.Add(this.cb_waferPutUp);
@@ -115,6 +107,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1509, 259);
             this.panel1.TabIndex = 22;
+            // 
+            // cb_Rework
+            // 
+            this.cb_Rework.AutoSize = true;
+            this.cb_Rework.Enabled = false;
+            this.cb_Rework.Location = new System.Drawing.Point(1075, 109);
+            this.cb_Rework.Name = "cb_Rework";
+            this.cb_Rework.Size = new System.Drawing.Size(84, 16);
+            this.cb_Rework.TabIndex = 50;
+            this.cb_Rework.Text = "ReworkFlow";
+            this.cb_Rework.UseVisualStyleBackColor = true;
             // 
             // cb_FlipToUv
             // 
@@ -477,57 +480,6 @@
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
             // 
-            // cb_Rework
-            // 
-            this.cb_Rework.AutoSize = true;
-            this.cb_Rework.Enabled = false;
-            this.cb_Rework.Location = new System.Drawing.Point(1075, 109);
-            this.cb_Rework.Name = "cb_Rework";
-            this.cb_Rework.Size = new System.Drawing.Size(84, 16);
-            this.cb_Rework.TabIndex = 50;
-            this.cb_Rework.Text = "ReworkFlow";
-            this.cb_Rework.UseVisualStyleBackColor = true;
-            // 
-            // label6
-            // 
-            this.label6.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label6.Location = new System.Drawing.Point(1075, 138);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(89, 23);
-            this.label6.TabIndex = 51;
-            this.label6.Text = "AoiNextStep";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label7
-            // 
-            this.label7.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label7.Location = new System.Drawing.Point(1075, 170);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(89, 23);
-            this.label7.TabIndex = 52;
-            this.label7.Text = "IJP Step";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lbl_AoiNextStep
-            // 
-            this.lbl_AoiNextStep.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lbl_AoiNextStep.Location = new System.Drawing.Point(1170, 137);
-            this.lbl_AoiNextStep.Name = "lbl_AoiNextStep";
-            this.lbl_AoiNextStep.Size = new System.Drawing.Size(89, 23);
-            this.lbl_AoiNextStep.TabIndex = 53;
-            this.lbl_AoiNextStep.Text = "0";
-            this.lbl_AoiNextStep.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lbl_IJPStep
-            // 
-            this.lbl_IJPStep.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lbl_IJPStep.Location = new System.Drawing.Point(1170, 168);
-            this.lbl_IJPStep.Name = "lbl_IJPStep";
-            this.lbl_IJPStep.Size = new System.Drawing.Size(89, 23);
-            this.lbl_IJPStep.TabIndex = 54;
-            this.lbl_IJPStep.Text = "0";
-            this.lbl_IJPStep.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // RecipeSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -584,10 +536,6 @@
         private System.Windows.Forms.CheckBox cb_FlipToUv;
         private System.Windows.Forms.CheckBox cb_waferPutUp;
         private System.Windows.Forms.CheckBox cb_backToLd;
-        private System.Windows.Forms.Label lbl_IJPStep;
-        private System.Windows.Forms.Label lbl_AoiNextStep;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.CheckBox cb_Rework;
     }
 }

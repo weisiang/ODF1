@@ -51,6 +51,7 @@ namespace UI
             AssignMmfEventObjectFunction(typeof(CommonData.HIRATA.MDEfemStatus).Name, ProcessMmfEvent);
             AssignMmfEventObjectFunction(typeof(CommonData.HIRATA.MDEfemStatusSingle).Name, ProcessMmfEvent);
             AssignMmfEventObjectFunction(typeof(CommonData.HIRATA.MDTimeChartChange).Name, ProcessMmfEvent);
+            AssignMmfEventObjectFunction(typeof(CommonData.HIRATA.MDRobotjobType).Name, ProcessMmfEvent);
         }
 
         #region base
